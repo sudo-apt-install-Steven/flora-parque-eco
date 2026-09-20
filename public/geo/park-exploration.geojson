@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "name": "park-exploration-thematic",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "exp-contour-600",
+        "category": "curva_nivel",
+        "elevation": 600,
+        "name": "Curva Altimétrica 600m",
+        "strokeColor": "#a8a29e",
+        "strokeWidth": 1.2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1220, -12.7020],
+          [-60.1215, -12.7035],
+          [-60.1218, -12.7055],
+          [-60.1210, -12.7068]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "exp-contour-605",
+        "category": "curva_nivel",
+        "elevation": 605,
+        "name": "Curva Altimétrica 605m",
+        "strokeColor": "#78716c",
+        "strokeWidth": 1.2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1225, -12.7018],
+          [-60.1222, -12.7038],
+          [-60.1224, -12.7058],
+          [-60.1218, -12.7070]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "exp-zone-mata-ripada",
+        "category": "vegetacao_setor",
+        "name": "Zona de Mata Ciliar (Margarida / Rio Barão)",
+        "fillColor": "#15803d",
+        "fillOpacity": 0.25,
+        "strokeColor": "#166534",
+        "strokeWidth": 1.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-60.1205, -12.7028],
+            [-60.1180, -12.7028],
+            [-60.1175, -12.7065],
+            [-60.1208, -12.7065],
+            [-60.1205, -12.7028]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "exp-poi-nascente",
+        "category": "poi",
+        "name": "Ponto Notável: Observatório do Lago",
+        "icon": "compass",
+        "description": "Ponto estratégico de observação botânica e identificação de macrófitas."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-60.1190, -12.7035]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "exp-poi-arvore-mestra",
+        "category": "poi",
+        "name": "Ponto Notável: Bosque Central",
+        "icon": "trees",
+        "description": "Agrupamento de alta densidade de espécies nativas do Cerrado-Amazônia."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-60.1182, -12.7050]
+      }
+    }
+  ]
+}

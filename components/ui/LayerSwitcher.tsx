@@ -47,12 +47,13 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
                 key={mode.id}
                 role="radio"
                 aria-checked={isSelected}
+                title={mode.description}
                 onClick={() => onModeChange(mode.id)}
                 className={cn(
-                  'flex items-center gap-2.5 p-1.5 rounded-xl text-left transition-all duration-200',
+                  'group flex items-center gap-2.5 p-1.5 rounded-xl text-left transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#d6a35b]/60 active:scale-[0.98]',
                   isSelected
-                    ? 'bg-[#102a26] text-[#f8f6ef] shadow-md dark:bg-white/15'
-                    : 'text-stone-700 dark:text-stone-300 hover:bg-stone-200/50 dark:hover:bg-white/5'
+                    ? 'bg-[#102a26] text-[#f8f6ef] shadow-md shadow-emerald-950/20 dark:bg-white/15'
+                    : 'text-stone-700 dark:text-stone-300 hover:bg-stone-200/50 dark:hover:bg-white/5 hover:translate-x-0.5'
                 )}
               >
                 {/* Visual Preview Swatch */}

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, Suspense } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { DynamicMap } from '@/components/map/DynamicMap';
-import { AppHeader, NavSection } from '@/components/ui/AppHeader';
+import { AppHeader } from '@/components/ui/AppHeader';
 import { MobileNav } from '@/components/ui/MobileNav';
 import { LayerSwitcher } from '@/components/ui/LayerSwitcher';
 import { MapFieldOverlay } from '@/components/ui/MapFieldOverlay';
@@ -13,45 +13,46 @@ import { LegendModal } from '@/components/ui/LegendModal';
 import { StatisticsModal } from '@/components/ui/StatisticsModal';
 import { SpeciesCatalogView } from '@/components/views/SpeciesCatalogView';
 import { ProjectAboutView } from '@/components/views/ProjectAboutView';
-import { getValidatedTrees, searchTrees, getTreeById } from '@/lib/trees';
-import { Tree, FieldGroup } from '@/lib/tree-schema';
+import {
+  useTreeStore,
+  useActiveTree,
+  useFilteredCatalog,
+  NavSection
+} from '@/lib/store/tree-store';
 
 function ParkInventoryApp() {
   const searchParams = useSearchParams();
-  const allTrees = useMemo(() => getValidatedTrees(), []);
 
-  // Seção de navegação ativa ('mapa' | 'especies' | 'dados' | 'projeto')
-  const [activeNav, setActiveNav] = useState<NavSection>('mapa');
+  // Estado global do catálogo e filtros reativos
+  const { allTrees, filteredTrees } = useFilteredCatalog();
+  const { selectedTree, selectTree, selectTreeAndFocus } = useActiveTree();
 
-  // Modos cartográficos do MapLibre: 'satellite' | 'planta' | 'exploration'
-  const [currentMode, setCurrentMode] = useState<'satellite' | 'planta' | 'exploration'>('planta');
+  // Estados de navegação e camadas do MapLibre
+  const activeNav = useTreeStore((s) => s.activeNav);
+  const setActiveNav = useTreeStore((s) => s.setActiveNav);
+  const currentMode = useTreeStore((s) => s.layerMode);
+  const setCurrentMode = useTreeStore((s) => s.setLayerMode);
 
-  // Filtro rápido por grupo de campo acadêmico (Todos, Grupo A, B ou C)
-  const [selectedGroup, setSelectedGroup] = useState<FieldGroup | 'all'>('all');
+  // Filtros ativos
+  const selectedGroup = useTreeStore((s) => s.filters.group ?? 'all');
+  const setSelectedGroup = useTreeStore((s) => s.setGroupFilter);
+  const focusKey = useTreeStore((s) => s.focusKey);
 
-  // Árvore selecionada para exibição de detalhes
-  const [selectedTree, setSelectedTree] = useState<Tree | null>(null);
-
-  // Contador para forçar re-centralização da câmera no mapa (mesmo que a árvore já esteja selecionada)
-  const [focusKey, setFocusKey] = useState(0);
-
-  // Estados de modais e busca
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isLegendOpen, setIsLegendOpen] = useState(false);
-  const [isStatsOpen, setIsStatsOpen] = useState(false);
+  // Modais e Popovers
+  const isSearchOpen = useTreeStore((s) => s.isSearchOpen);
+  const setIsSearchOpen = useTreeStore((s) => s.setSearchOpen);
+  const isLegendOpen = useTreeStore((s) => s.isLegendOpen);
+  const setIsLegendOpen = useTreeStore((s) => s.setLegendOpen);
+  const isStatsOpen = useTreeStore((s) => s.isStatsOpen);
+  const setIsStatsOpen = useTreeStore((s) => s.setStatsOpen);
 
   // Suporte a acesso direto via QR Code (ex: ?tree=mock-tree-001 ou ?id=mock-tree-001)
   useEffect(() => {
     const treeParam = searchParams.get('tree') || searchParams.get('id');
     if (treeParam) {
-      const found = getTreeById(treeParam);
-      if (found) {
-        setSelectedTree(found);
-        setActiveNav('mapa');
-        setFocusKey((prev) => prev + 1);
-      }
+      selectTreeAndFocus(treeParam);
     }
-  }, [searchParams]);
+  }, [searchParams, selectTreeAndFocus]);
 
   // Sincronização dinâmica da barra de endereços (?tree=slug) sem recarregar a página
   useEffect(() => {
@@ -72,11 +73,6 @@ function ParkInventoryApp() {
     }
   }, [selectedTree]);
 
-  // Lista filtrada de árvores de acordo com o grupo ativo
-  const filteredTrees = useMemo(() => {
-    return searchTrees('', selectedGroup);
-  }, [selectedGroup]);
-
   // Manipulador de troca de navegação no topo ou barra móvel
   const handleNavChange = (nav: NavSection) => {
     if (nav === 'dados') {
@@ -84,13 +80,6 @@ function ParkInventoryApp() {
     } else {
       setActiveNav(nav);
     }
-  };
-
-  // Selecionar árvore e focar no mapa com pulo da câmera garantido
-  const handleSelectTreeAndFocus = (tree: Tree) => {
-    setSelectedTree(tree);
-    setActiveNav('mapa');
-    setFocusKey((prev) => prev + 1);
   };
 
   return (
@@ -116,7 +105,7 @@ function ParkInventoryApp() {
             currentMode={currentMode}
             trees={filteredTrees}
             selectedTree={selectedTree}
-            onSelectTree={setSelectedTree}
+            onSelectTree={selectTree}
             focusKey={focusKey}
           />
 
@@ -138,10 +127,10 @@ function ParkInventoryApp() {
           {/* Painel do Espécime (Sidebar no Desktop / Bottom Sheet no Mobile) */}
           <TreePanel
             selectedTree={selectedTree}
-            onClose={() => setSelectedTree(null)}
+            onClose={() => selectTree(null)}
             filteredTrees={filteredTrees}
-            onSelectTree={handleSelectTreeAndFocus}
-            onCenterOnMap={handleSelectTreeAndFocus}
+            onSelectTree={selectTreeAndFocus}
+            onCenterOnMap={selectTreeAndFocus}
           />
         </div>
 
@@ -151,7 +140,7 @@ function ParkInventoryApp() {
             <SpeciesCatalogView
               trees={allTrees}
               onBackToMap={() => setActiveNav('mapa')}
-              onSelectTree={handleSelectTreeAndFocus}
+              onSelectTree={selectTreeAndFocus}
             />
           </div>
         )}
@@ -177,7 +166,7 @@ function ParkInventoryApp() {
       <SearchPopover
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        onSelectTree={handleSelectTreeAndFocus}
+        onSelectTree={selectTreeAndFocus}
         trees={allTrees}
       />
 

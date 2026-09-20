@@ -1,72 +1,98 @@
-# UDM — AGENT HANDOFF: PARQUE ECOLÓGICO VILHENA (UI INTEGRATION & REFINEMENT SESSION)
+# UDM — AGENT HANDOFF: PARQUE ECOLÓGICO VILHENA (DATA ARCHITECTURE & QA HANDOFF)
 
-> **Aviso ao Próximo Agente (Claude/Codex/Antigravity):** Este documento é a memória de transição oficial do projeto. Você NÃO precisa pedir ao usuário para reexplicar o histórico. Leia este documento com atenção antes de realizar qualquer alteração.
-
----
-
-## 1. Estado Atual da Interface e do Projeto
-- A migração e o refino de engenharia de UI a partir do protótipo v0 (`design_do_v0_aqui/`) estão **100% concluídos, validados e compilando com zero erros**.
-- **O Mapa WebGL (MapLibre GL JS) continua sendo o protagonista absoluto da interface**, com camadas (Satélite, Planta e Exploração), clustering dinâmico e aceleração por GPU.
-- **Novos refinamentos críticos de UI entregues nesta sessão:**
-  1. **Marcador Ativo do v0 no Mapa:** Quando um espécime é selecionado (via mapa, busca ou catálogo), um marcador HTML exclusivo com o ícone botânico de folha dourada e aura pulsante (`breathe`) é renderizado exatamente nas coordenadas do espécime e removido ao fechar.
-  2. **Re-centralização Garantida com `focusKey`:** Clicar em "Centralizar este espécime no mapa" ou selecionar o mesmo espécime na busca/catálogo força o mapa a voar e recentralizar (`map.easeTo`), mesmo que o espécime já estivesse selecionado.
-  3. **Bottom Sheet Móvel Ergonômico:** Ancorado perfeitamente na borda inferior (`bottom-0 z-50`), com backdrop scrim (`z-40`) para fechamento ao toque fora, e suporte a gesto tátil de arrasto para baixo (swipe down > 50px) no puxador.
-  4. **Sincronização de URL & Compartilhamento:** A URL do navegador agora sincroniza automaticamente com o espécime ativo (`/?tree=slug`) via `history.replaceState`. O botão de compartilhar gera URLs parametrizadas com feedback visual ("Link copiado!").
-  5. **Modais Harmonizados:** `LegendModal` e `StatisticsModal` adotaram os tokens da paleta editorial (Warm Paper `#f8f6ef`, Deep Forest `#0b211d` e Warm Gold `#d6a35b`).
-  6. **Conectores MCP & Skills Antigravity 2.0:** O caminho do servidor MCP `udm-memory` foi corrigido para usar o script Node.js real em `D:\Universal-Agent-Memory`, e o plugin `vibe-coder-plugin` foi expandido com 5 skills de referência.
-- **Testes:** 12/12 testes Vitest PASS (`test/trees.test.ts` e `test/ui.test.ts`).
-- **Compilação TypeScript:** 0 erros (`npx tsc --noEmit`).
-- **Build de Produção:** Next.js 15.5 100% PASS gerando páginas estáticas otimizadas.
+> **Aviso ao Próximo Agente (Claude / Codex / Antigravity):** Este documento é a memória de transição oficial do projeto após a conclusão das fases de UI Integration e Data Engineering / State Architecture. Você NÃO precisa pedir ao usuário para reexplicar o histórico. Leia este documento com atenção antes de realizar qualquer alteração.
 
 ---
 
-## 2. Mapa de Componentes Integrados e Localização
-
-| Componente | Localização | Descrição e Papel na Arquitetura |
-| :--- | :--- | :--- |
-| `cn` Helper | `lib/utils.ts` | Utilitário de mesclagem condicional de classes Tailwind usando `clsx` e `tailwind-merge`. |
-| Design Tokens & Keyframes | `app/globals.css` | Paleta Deep Forest (`#0b211d`), Warm Paper (`#f8f6ef`), Gold (`#d6a35b`), animações `panel-in`, `sheet-in`, `breathe`, `.tree-marker`, `.marker-core` e `.marker-pulse`. |
-| `MapContainer` & `DynamicMap` | `components/map/` | MapLibre GL com aceleração GPU, clustering dinâmico, marcador botânico ativo e controle de foco com `focusKey`. |
-| `AppHeader` | `components/ui/AppHeader.tsx` | Cabeçalho com Brand lockup oficial do IFRO/Parque, abas de navegação (Mapa, Espécies, Métricas, Projeto) e gatilho de busca. |
-| `MobileNav` | `components/ui/MobileNav.tsx` | Barra de navegação móvel inferior em vidro jateado com alvos de toque e estado ativo dourado. |
-| `SearchPopover` | `components/ui/SearchPopover.tsx` | Modal/popover flutuante de busca instantânea com suporte a `⌘ K` e `ESC`, filtros rápidos e foco automático no mapa. |
-| `LayerSwitcher` | `components/ui/LayerSwitcher.tsx` | Seletor de camadas cartográficas com mini-amostras visuais para Satélite, Planta e Exploração, e estado colapsável. |
-| `MapFieldOverlay` | `components/ui/MapFieldOverlay.tsx` | Selo cartográfico com coordenadas de Vilhena (`12°42′ S · 60°07′ O`), chips de filtro de equipes acadêmicas (Grupos A, B, C) e legenda botânica. |
-| `TreePanel` | `components/tree/TreePanel.tsx` | Container adaptativo: Sidebar com animação `panel-in` no desktop e Bottom Sheet no mobile ancorado em `bottom-0` com scrim e gesto swipe-down. |
-| `TreeDetail` | `components/tree/TreeDetail.tsx` | Ficha dendrológica editorial em Georgia serif, fatos botânicos, card PlantNet, botão de compartilhar com URL direta e botão "Centralizar no mapa". |
-| `TreeGallery` | `components/tree/TreeGallery.tsx` | Galeria de fotos com foto de destaque, miniaturas por categoria (casca, folha, flor, fruto) e modal de zoom. |
-| `SpeciesCatalogView` | `components/views/SpeciesCatalogView.tsx` | Tela do catálogo vivo com métricas em tempo real calculadas a partir dos espécimes, busca interna e listagem interativa. |
-| `ProjectAboutView` | `components/views/ProjectAboutView.tsx` | Tela editorial sobre o projeto, metodologia dos 3 pilares acadêmicos e parceria IFRO Campus Vilhena. |
-| `LegendModal` & `StatisticsModal` | `components/ui/` | Modais informativos com visual botânico harmonizado. |
-| Orquestrador Principal | `app/page.tsx` | Orquestra estado global, sincronização de URL (`?tree=...`), mapas, modais e sub-views. |
+## 1. Estado Geral do Projeto
+- **Framework:** Next.js 15.5.25 (App Router), React 19, TypeScript estrito (0% `any`).
+- **Cartografia:** MapLibre GL JS (WebGL acelerado por GPU).
+- **Estilização:** Tailwind CSS v4, Glassmorphism orgânico e paleta botânica editorial.
+- **Gerenciamento de Estado:** Zustand 5 (`lib/store/tree-store.ts`).
+- **Validação & Parsing:** Zod (`lib/tree-schema.ts`), CSV RFC 4180 puro, EXIF DMS Converter, PlantNet v2 Mapper.
+- **Blindagem de Dados:** `lib/fallbacks.ts` (100% de proteção contra dados parciais ou nulos).
+- **QA & Testes:** 47/47 testes aprovados no Vitest (`npm test`). Compilação TypeScript com 0 erros (`npx tsc --noEmit`). Build Next.js 100% PASS.
 
 ---
 
-## 3. Conectores e Skills Antigravity 2.0 Instalados
-1. **Plugin Vibe Coder (`C:\Users\Steven\.gemini\config\plugins\vibe-coder-plugin\`):**
-   - `vibe-coder`: Diretrizes de desenvolvimento ágil para apps Full-AI.
-   - `design-system-craft`: Artesanato de interfaces botânicas e cartografia editorial.
-   - `full-ai-architecture`: Arquitetura para Full-AI Apps, Zod contracts, streaming e resiliência offline.
-   - `maplibre-spatial-craft`: Práticas de alto nível para WebGL, clustering, GeoJSON e marcadores de mapa.
-   - `tailwind-v4-motion`: Animações aceleradas por hardware, gestos mobile táteis e CSS variables no Tailwind v4.
-2. **Servidor MCP `udm-memory`:**
-   - Configurado em `C:\Users\Steven\.gemini\config\mcp_config.json` e `C:\Users\Steven\.gemini\antigravity\settings.json` apontando para o script real Node.js compilado em `D:\Universal-Agent-Memory\repo\universal-development-memory\packages\retrieval-broker\dist\src\index.js`.
-3. **Regras de Governança:**
-   - Registradas em `AGENTS.md` e `.agents/rules/vibe-coding.md`.
+## 2. Como Consumir o Estado Global (`useTreeStore`)
+
+A aplicação utiliza seletores atômicos memoizados em `lib/store/tree-store.ts` para evitar re-renderizações desnecessárias:
+
+```tsx
+import { 
+  useActiveTree, 
+  useFilteredCatalog, 
+  useFilterCriteria, 
+  useFilterActions, 
+  useFacetedStats,
+  useTreeStore 
+} from "@/lib/store/tree-store";
+
+// Para ler a árvore ativa (já blindada com getSafeTree()):
+const activeTree = useActiveTree();
+
+// Para obter a lista de árvores filtradas:
+const filteredTrees = useFilteredCatalog();
+
+// Para acessar as estatísticas calculadas em tempo real:
+const stats = useFacetedStats(); // { totalCount, uniqueFamiliesCount, plantnetConfirmedCount, etc. }
+
+// Para manipular seleção e filtros:
+const { 
+  selectTree,      // (treeOrId: Tree | string | null) => void
+  setSearchQuery,  // (query: string) => void
+  setSelectedGroup,// (group: string | null) => void
+  setSelectedFamily,// (family: string | null) => void
+  setSelectedConfidence, // (confidence: TreeConfidence | null) => void
+  resetFilters,    // () => void
+  triggerFocusKey  // () => void (força recentralização do mapa)
+} = useFilterActions();
+```
 
 ---
 
-## 4. Status da Pasta de Design Raw (`design_do_v0_aqui/`)
-- A pasta original `design_do_v0_aqui/` (referenciada como `_v0_design_raw/`) foi **100% absorvida e aprimorada**.
-- Todos os marcadores, microinterações, estilos, paleta e telas foram migrados com desacoplamento arquitetural e tipagem estrita.
-- A pasta pode ser removida com segurança pelo usuário a qualquer momento para limpeza do repositório.
+## 3. Pipeline de Ingestão de Dados de Campo (`lib/ingestion/`)
+
+O projeto está pronto para processar planilhas reais e metadados de fotos coletadas pelos Grupos A, B e C:
+
+### 3.1. Ingestão de CSV (`lib/ingestion/csv-parser.ts`)
+- Suporta delimitadores `,` e `;`.
+- Trata campos com aspas e quebras de linha (RFC 4180).
+- Dicionário de cabeçalhos bilíngue: mapeia colunas como `nome_comum`, `lat`, `long`, `coleta_grupo` automaticamente.
+
+### 3.2. Metadados de GPS EXIF (`lib/ingestion/exif-extractor.ts`)
+- Converte DMS (`[deg, min, sec]`) para graus decimais levando em conta as referências cardeais `N`, `S`, `E`, `W`.
+- Suporta parsing de timestamps em formato EXIF (`YYYY:MM:DD HH:MM:SS`) para ISO 8601.
+
+### 3.3. API PlantNet v2 (`lib/ingestion/plantnet-mapper.ts`)
+- Normaliza respostas da API do PlantNet v2.
+- Clampa scores entre 0.0 e 1.0 e classifica em `high` (>= 0.70), `medium` (>= 0.40) ou `low`.
+- Constrói links diretos para Powo (Kew Royal Botanic Gardens) e GBIF.
+
+### 3.4. Pipeline Mestre de Validação & Geocorreção (`lib/ingestion/pipeline.ts`)
+- Função: `ingestTreeRecords(records, options)`.
+- **Bounding Box do Parque:** Valida se as coordenadas estão dentro de Vilhena/RO (`[[-60.1350, -12.7180], [-60.1030, -12.6900]]`).
+- **Autocorreção de Coordenadas Invertidas:**
+  - Se a latitude vier positiva (ex: `12.7044`), converte automaticamente para Sul (`-12.7044`).
+  - Se a latitude e longitude vierem invertidas (ex: Lat ~ -60.1, Lng ~ -12.7), detecta o erro e inverte os eixos para manter a árvore no parque em Vilhena.
+- Retorna um `IngestionResult` detalhado com `validTrees`, `invalidRecords` e `warnings`.
 
 ---
 
-## 5. Próximos Passos Recomendados para a Próxima Sessão
-1. **Planilhas Reais de Campo:**
-   - Inserir os dados reais coletados pelas turmas dos Grupos A, B e C substituindo os 5 espécimes de calibração em `data/mock-trees.json`.
-2. **Voo de Drone (Ortomosaico):**
-   - Importar o GeoTIFF/PNG georreferenciado para `public/geo/` e ativar `PARK_CONFIG.customRasterOverlay.enabled: true`.
-3. **Fixação das Placas Físicas:**
-   - Conforme as plaquetas físicas forem pregadas nas árvores pelo IFRO, atribuir os números reais aos campos `displayNumber` (atualmente estritamente `null`).
+## 4. Blindagem de Dados e Fallbacks (`lib/fallbacks.ts`)
+
+Regras rígidas para nunca quebrar a interface em produção:
+1. **Fotos:** Se a árvore não tiver foto ou a foto vier com URL corrompida, `getSafeTree()` atribui `DEFAULT_FALLBACK_PHOTO` (SVG botânico em vetor data-uri embutido com gradiente Deep Forest — sem requests HTTP externos).
+2. **displayNumber:** Permanece **estritamente `null`** por padrão. A formatação de exibição via `formatDisplayNumber()` retorna `"—"` quando for `null`. Não inventar números ou placas físicas até que sejam instaladas no parque pelo IFRO.
+3. **PlantNet:** Se os dados do PlantNet forem omitidos, é atribuído `DEFAULT_FALLBACK_PLANTNET` com score `0` e status `unverified`.
+
+---
+
+## 5. Próximos Passos Recomendados
+1. **Importação do Lote Real de Campo:**
+   - Quando as turmas dos Grupos A, B e C finalizarem a coleta de campo, alimentar o pipeline via `ingestTreeRecords()` e atualizar `data/mock-trees.json` para os dados oficiais.
+2. **Camada Raster do Voo de Drone:**
+   - Inserir ortomosaico recente em `public/geo/` e ativar `customRasterOverlay` no `lib/park-config.ts`.
+3. **Placas Físicas Definitivas:**
+   - Preencher `displayNumber` somente quando as placas físicas numeradas forem pregadas em campo.

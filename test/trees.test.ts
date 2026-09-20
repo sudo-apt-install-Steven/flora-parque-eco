@@ -47,13 +47,16 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     expect(groupC.length).toBeGreaterThan(0);
   });
 
-  it('a busca deve filtrar corretamente por nome popular, científico e família', () => {
-    const byPopular = searchTrees('Ipê');
+  it('a busca deve filtrar corretamente por nome popular, científico, família e grupo', () => {
+    const byPopular = searchTrees('Calibração A1');
     expect(byPopular.length).toBe(1);
     expect(byPopular[0].id).toBe('mock-tree-001');
 
-    const byFamily = searchTrees('Fabaceae');
-    expect(byFamily.length).toBe(2);
+    const byScientificPlaceholder = searchTrees('Taxon a confirmar');
+    expect(byScientificPlaceholder.length).toBe(rawTrees.length);
+
+    const byFamilyPlaceholder = searchTrees('Família a confirmar');
+    expect(byFamilyPlaceholder.length).toBe(rawTrees.length);
 
     const byGroup = searchTrees('', 'groupA');
     expect(byGroup.length).toBe(2);

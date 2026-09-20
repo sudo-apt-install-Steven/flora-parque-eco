@@ -1,0 +1,161 @@
+{
+  "type": "FeatureCollection",
+  "name": "park-planta-vetorial",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-lago",
+        "category": "agua",
+        "name": "Lago do Parque Ecológico (Rio Barão do Melgaço)",
+        "color": "#38bdf8",
+        "fillOpacity": 0.65,
+        "strokeColor": "#0284c7",
+        "strokeWidth": 2,
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-60.1198, -12.7030],
+            [-60.1190, -12.7032],
+            [-60.1185, -12.7042],
+            [-60.1188, -12.7058],
+            [-60.1195, -12.7062],
+            [-60.1202, -12.7052],
+            [-60.1200, -12.7038],
+            [-60.1198, -12.7030]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-ponte",
+        "category": "estrutura",
+        "name": "Ponte de Passagem / Travessia",
+        "color": "#d97706",
+        "strokeWidth": 4,
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1201, -12.7045],
+          [-60.1186, -12.7045]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-trilha-oeste",
+        "category": "caminho",
+        "name": "Trilha Margem Esquerda (Grupos A e B)",
+        "color": "#10b981",
+        "strokeWidth": 2.5,
+        "dashArray": [2, 2],
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1205, -12.7025],
+          [-60.1206, -12.7038],
+          [-60.1208, -12.7052],
+          [-60.1203, -12.7065]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-trilha-leste",
+        "category": "caminho",
+        "name": "Trilha Margem Direita (Grupo C)",
+        "color": "#f59e0b",
+        "strokeWidth": 2.5,
+        "dashArray": [2, 2],
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1180, -12.7025],
+          [-60.1179, -12.7040],
+          [-60.1181, -12.7055],
+          [-60.1186, -12.7065]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-playground",
+        "category": "estrutura_nova",
+        "name": "Área do Playground Infantil (Infraestrutura Atualizada)",
+        "color": "#ec4899",
+        "fillOpacity": 0.4,
+        "strokeColor": "#db2777",
+        "strokeWidth": 2,
+        "isPlaceholder": true,
+        "notes": "Representação de estrutura recente não visível em satélites desatualizados."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-60.1210, -12.7030],
+            [-60.1204, -12.7030],
+            [-60.1204, -12.7035],
+            [-60.1210, -12.7035],
+            [-60.1210, -12.7030]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-entrada",
+        "category": "acesso",
+        "name": "Entrada Principal & Ponto de Encontro",
+        "icon": "log-in",
+        "color": "#6366f1",
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-60.1208, -12.7022]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-ifro",
+        "category": "instituicao",
+        "name": "IFRO Campus Vilhena (Área Acadêmica Adjacente)",
+        "color": "#059669",
+        "fillOpacity": 0.15,
+        "strokeColor": "#059669",
+        "strokeWidth": 1.5,
+        "dashArray": [4, 2],
+        "isPlaceholder": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-60.1215, -12.7020],
+            [-60.1165, -12.7020],
+            [-60.1165, -12.7060],
+            [-60.1215, -12.7060],
+            [-60.1215, -12.7020]
+          ]
+        ]
+      }
+    }
+  ]
+}

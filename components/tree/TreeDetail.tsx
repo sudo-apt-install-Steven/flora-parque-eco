@@ -200,7 +200,7 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
                 Identificação Assistida pelo PlantNet
               </span>
             </div>
-            {tree.plantnet.score && (
+            {typeof tree.plantnet.score === 'number' && tree.plantnet.score > 0 && (
               <span className="text-xs font-bold text-[#0b211d] bg-[#d6a35b]/30 px-2 py-0.5 rounded-md">
                 {(tree.plantnet.score * 100).toFixed(0)}% match
               </span>

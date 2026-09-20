@@ -1,8 +1,19 @@
 import rawTrees from '@/data/mock-trees.json';
 import { Tree, TreeSchema, FieldGroup } from '@/lib/tree-schema';
+import { filterTrees } from '@/lib/filters';
+import { getSafeTree } from '@/lib/fallbacks';
+
+// Re-exporta utilitários canônicos para fácil acesso
+export * from '@/lib/tree-schema';
+export * from '@/lib/fallbacks';
+export * from '@/lib/filters';
+export * from '@/lib/ingestion/pipeline';
+export * from '@/lib/ingestion/csv-parser';
+export * from '@/lib/ingestion/exif-extractor';
+export * from '@/lib/ingestion/plantnet-mapper';
 
 /**
- * Validação dos dados em tempo de execução
+ * Validação estrita dos dados em tempo de execução via Zod
  */
 export function getValidatedTrees(): Tree[] {
   return rawTrees.map((item) => TreeSchema.parse(item));
@@ -26,55 +37,53 @@ export function getTreesByGroup(group: FieldGroup): Tree[] {
 
 /**
  * Filtro de busca por termo de pesquisa (nome popular, científico ou família)
+ * Utiliza o motor normalizado e insensível a acentos
  */
 export function searchTrees(query: string, groupFilter?: FieldGroup | 'all'): Tree[] {
   const trees = getValidatedTrees();
-  const q = query.trim().toLowerCase();
-
-  return trees.filter((tree) => {
-    const matchesGroup = !groupFilter || groupFilter === 'all' || tree.group === groupFilter;
-    if (!matchesGroup) return false;
-
-    if (!q) return true;
-
-    return (
-      tree.popularName.toLowerCase().includes(q) ||
-      tree.scientificNameSuggested.toLowerCase().includes(q) ||
-      tree.family.toLowerCase().includes(q) ||
-      (tree.notes && tree.notes.toLowerCase().includes(q))
-    );
+  return filterTrees(trees, {
+    searchQuery: query,
+    group: groupFilter
   });
 }
 
 /**
  * Converte a lista de árvores para FeatureCollection GeoJSON
  * Otimizado para renderização no MapLibre GL com propriedades achatadas
+ * e garantidas contra valores nulos
  */
 export function treesToGeoJSON(trees: Tree[]): GeoJSON.FeatureCollection<GeoJSON.Point> {
   const features: GeoJSON.Feature<GeoJSON.Point>[] = trees
     .filter((tree): tree is Tree & { latitude: number; longitude: number } => 
-      typeof tree.latitude === 'number' && typeof tree.longitude === 'number'
+      typeof tree.latitude === 'number' && typeof tree.longitude === 'number' &&
+      !Number.isNaN(tree.latitude) && !Number.isNaN(tree.longitude)
     )
-    .map((tree) => ({
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [tree.longitude, tree.latitude]
-      },
-      properties: {
-        id: tree.id,
-        displayNumber: tree.displayNumber,
-        popularName: tree.popularName,
-        scientificNameSuggested: tree.scientificNameSuggested,
-        family: tree.family,
-        confidence: tree.confidence,
-        group: tree.group,
-        verificationStatus: tree.verificationStatus,
-        hasPrimaryPhoto: !!tree.primaryPhoto,
-        thumbUrl: tree.primaryPhoto?.thumbUrl || tree.primaryPhoto?.url || '',
-        plantnetScore: tree.plantnet?.score ?? null
-      }
-    }));
+    .map((tree) => {
+      const safe = getSafeTree(tree);
+      return {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [safe.longitude as number, safe.latitude as number]
+        },
+        properties: {
+          id: safe.id,
+          displayNumber: safe.displayNumber,
+          displayNumberFormatted: safe.displayNumberFormatted,
+          popularName: safe.popularName,
+          scientificNameSuggested: safe.scientificNameSuggested,
+          family: safe.family,
+          confidence: safe.confidence,
+          group: safe.group,
+          verificationStatus: safe.verificationStatus,
+          hasPrimaryPhoto: !!safe.primaryPhoto?.url,
+          thumbUrl: safe.safePrimaryPhoto.thumbUrl || safe.safePrimaryPhoto.url,
+          plantnetScore: safe.plantnet?.score ?? null,
+          plantnetScoreFormatted: safe.plantnetScoreFormatted,
+          coordinatesFormatted: safe.coordinatesFormatted
+        }
+      };
+    });
 
   return {
     type: 'FeatureCollection',

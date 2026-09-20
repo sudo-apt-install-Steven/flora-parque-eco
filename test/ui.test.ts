@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, it, expect } from 'vitest';
 import { cn } from '../lib/utils';
 import { PARK_CONFIG } from '../lib/park-config';
@@ -67,9 +69,17 @@ describe('UI & Cartografia — Helpers e Configuração de Interface', () => {
     const tree = trees[0];
     const baseUrl = 'https://flora-parque-eco.vercel.app';
     const shareUrl = `${baseUrl}/?tree=${encodeURIComponent(tree.id)}`;
-    
+
     const parsed = new URL(shareUrl);
     expect(parsed.searchParams.get('tree')).toBe(tree.id);
     expect(parsed.searchParams.get('tree')).toBe('mock-tree-001');
+  });
+
+  it('os GeoJSONs cartográficos devem estar disponíveis em public/geo para o MapLibre', () => {
+    const publicGeoDir = join(process.cwd(), 'public', 'geo');
+
+    expect(existsSync(join(publicGeoDir, 'park-boundary.geojson'))).toBe(true);
+    expect(existsSync(join(publicGeoDir, 'park-planta.geojson'))).toBe(true);
+    expect(existsSync(join(publicGeoDir, 'park-exploration.geojson'))).toBe(true);
   });
 });

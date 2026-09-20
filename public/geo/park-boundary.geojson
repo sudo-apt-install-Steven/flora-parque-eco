@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "name": "park-boundary",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perímetro Provisório do Parque Ecológico & IFRO Vilhena",
+        "status": "placeholder_validacao_futura",
+        "description": "Geometria preliminar de referência territorial para o Parque Ecológico Municipal Marechal Cândido Rondon e IFRO Campus Vilhena."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-60.1235, -12.7015],
+            [-60.1145, -12.7015],
+            [-60.1145, -12.7075],
+            [-60.1235, -12.7075],
+            [-60.1235, -12.7015]
+          ]
+        ]
+      }
+    }
+  ]
+}

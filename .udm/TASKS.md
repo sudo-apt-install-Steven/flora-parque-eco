@@ -47,7 +47,7 @@
 
 ## Fase 8: Testes e Validação Contínua (Concluída)
 - [x] Criar suíte de testes de UI em `test/ui.test.ts`.
-- [x] Executar testes com Vitest (11/11 testes PASS).
+- [x] Executar testes com Vitest (12/12 testes PASS).
 - [x] Validação de compilação de tipos TypeScript (`npx tsc --noEmit` - 0 erros).
 - [x] Build de produção do Next.js concluído com sucesso (`npm run build`).
 
@@ -58,8 +58,19 @@
 - [x] Configurar MCP servers em `C:\Users\Steven\.gemini\config\mcp_config.json`.
 - [x] Criar regras de governança para agentes em `AGENTS.md` e `.agents/rules/vibe-coding.md`.
 
+## Fase 10: Engenharia de Dados, Estado Global & QA de Resiliência (Concluída)
+- [x] Criar pipeline de ingestão CSV RFC 4180 puro com autodeteção de delimitadores e headers bilíngues (`lib/ingestion/csv-parser.ts`).
+- [x] Criar conversor geográfico de metadados EXIF DMS para Graus Decimais com quadrantes N/S/E/W (`lib/ingestion/exif-extractor.ts`).
+- [x] Criar normalizador de respostas da API PlantNet v2 com clamping e links taxonômicos canônicos (`lib/ingestion/plantnet-mapper.ts`).
+- [x] Criar pipeline mestre de sanitização geográfica com desduplicação e correção de coordenadas invertidas em Vilhena/RO (`lib/ingestion/pipeline.ts`).
+- [x] Implementar Zustand 5 store reativa (`useTreeStore`) com seletores atômicos e sincronização de URL (`lib/store/tree-store.ts`).
+- [x] Desenvolver motor de busca insensível a acentos (NFD) e filtros facetados multidimensionais (`lib/filters.ts`).
+- [x] Implementar blindagem de fallbacks com SVG vetorial embutido e sanitizador em tempo de execução (`lib/fallbacks.ts`).
+- [x] Criar suíte de 35 novos testes automatizados no Vitest cobrindo fallbacks, filtros, pipeline de ingestão e store Zustand.
+- [x] Garantir 100% de testes aprovados (47/47 testes PASS) e 0 erros de TypeScript / Build estático Next.js.
+
 ## Próximos Passos (Para o Próximo Agente)
-- [ ] Importar o dataset real de árvores levantado pelos Grupos A, B e C, substituindo os mocks de teste.
+- [ ] Importar o dataset de campo real das turmas dos Grupos A, B e C usando o pipeline `ingestTreeRecords()` diretamente na interface ou via CLI.
 - [ ] Conectar imagem aérea recente de drone como camada raster overlay no `PARK_CONFIG.customRasterOverlay`.
 - [ ] Ajustar geometrias finas do lago e playground após conferência presencial de campo com GPS geodésico.
 - [ ] Opcional: Excluir a pasta `design_do_v0_aqui/` (ou `_v0_design_raw/`) pois todo o código e design foram 100% integrados.

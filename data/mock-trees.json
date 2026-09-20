@@ -2,192 +2,101 @@
   {
     "id": "mock-tree-001",
     "displayNumber": null,
-    "popularName": "[MOCK] Espécime Teste Alpha (Ipê Simulado)",
-    "scientificNameSuggested": "Handroanthus sp. [MOCK]",
-    "family": "Bignoniaceae [MOCK]",
-    "confidence": "media",
+    "popularName": "[MOCK] Ponto Arbóreo de Calibração A1",
+    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
+    "family": "Família a confirmar [MOCK]",
+    "confidence": "indeterminada",
     "latitude": -12.7038,
     "longitude": -60.1198,
     "locationAccuracy": 4.5,
-    "primaryPhoto": {
-      "id": "photo-001-main",
-      "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80",
-      "thumbUrl": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=300&q=70",
-      "category": "arvore_inteira",
-      "caption": "Visão geral do dossel da árvore mock",
-      "credit": "Acervo Fotográfico de Teste (IFRO)",
-      "capturedAt": "2026-09-18T14:30:00Z"
-    },
-    "gallery": [
-      {
-        "id": "photo-001-leaf",
-        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1000&q=80",
-        "thumbUrl": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=300&q=70",
-        "category": "folha",
-        "caption": "Folíolo composto com nervura central evidente"
-      },
-      {
-        "id": "photo-001-bark",
-        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80",
-        "thumbUrl": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=300&q=70",
-        "category": "casca",
-        "caption": "Ritidoma rugoso e fendado"
-      }
-    ],
+    "primaryPhoto": null,
+    "gallery": [],
     "plantnet": {
-      "taxon": "Handroanthus chrysotrichus (Mart. ex DC.) Mattos",
-      "score": 0.86,
+      "taxon": "Aguardando identificação botânica validada",
+      "score": 0,
       "url": "https://identify.plantnet.org/",
-      "familySuggested": "Bignoniaceae"
+      "familySuggested": "A confirmar"
     },
     "group": "groupA",
-    "collectedAt": "2026-09-18T14:35:00Z",
-    "verificationStatus": "identificacao_preliminar",
-    "notes": "Amostra sintética de teste para validação de interface e clustering no lado esquerdo do lago.",
+    "collectedAt": "1970-01-01T00:00:00Z",
+    "verificationStatus": "pendente",
+    "notes": "[MOCK] Ponto técnico de calibração para validar renderização GIS, seleção e clustering. Substituir por registro botânico real após conferência de campo.",
     "isMock": true
   },
   {
     "id": "mock-tree-002",
     "displayNumber": null,
-    "popularName": "[MOCK] Espécime Teste Beta (Cerejeira Simulada)",
-    "scientificNameSuggested": "Amburana acreana [MOCK]",
-    "family": "Fabaceae [MOCK]",
-    "confidence": "alta",
+    "popularName": "[MOCK] Ponto Arbóreo de Calibração A2",
+    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
+    "family": "Família a confirmar [MOCK]",
+    "confidence": "indeterminada",
     "latitude": -12.7042,
     "longitude": -60.1205,
     "locationAccuracy": 3.8,
-    "primaryPhoto": {
-      "id": "photo-002-main",
-      "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
-      "thumbUrl": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=300&q=70",
-      "category": "arvore_inteira",
-      "caption": "Tronco ereto com bifurcação a 4 metros",
-      "credit": "Acervo Fotográfico de Teste (IFRO)",
-      "capturedAt": "2026-09-18T15:10:00Z"
-    },
-    "gallery": [
-      {
-        "id": "photo-002-bark",
-        "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1000&q=80",
-        "thumbUrl": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=300&q=70",
-        "category": "casca",
-        "caption": "Casca avermelhada descamante"
-      }
-    ],
-    "plantnet": {
-      "taxon": "Amburana acreana (Ducke) A.C.Sm.",
-      "score": 0.92,
-      "url": "https://identify.plantnet.org/",
-      "familySuggested": "Fabaceae"
-    },
+    "primaryPhoto": null,
+    "gallery": [],
+    "plantnet": null,
     "group": "groupA",
-    "collectedAt": "2026-09-18T15:15:00Z",
-    "verificationStatus": "verificado",
-    "notes": "Espécime localizado na trilha norte da margem esquerda.",
+    "collectedAt": "1970-01-01T00:00:00Z",
+    "verificationStatus": "pendente",
+    "notes": "[MOCK] Ponto técnico neutro na margem esquerda norte para homologação da interface. Não representa identificação taxonômica real.",
     "isMock": true
   },
   {
     "id": "mock-tree-003",
     "displayNumber": null,
-    "popularName": "[MOCK] Espécime Teste Gama (Palmeira Simulada)",
-    "scientificNameSuggested": "Mauritia flexuosa [MOCK]",
-    "family": "Arecaceae [MOCK]",
-    "confidence": "alta",
+    "popularName": "[MOCK] Ponto Arbóreo de Calibração B1",
+    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
+    "family": "Família a confirmar [MOCK]",
+    "confidence": "indeterminada",
     "latitude": -12.7055,
     "longitude": -60.1192,
     "locationAccuracy": 5.0,
-    "primaryPhoto": {
-      "id": "photo-003-main",
-      "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
-      "thumbUrl": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=300&q=70",
-      "category": "arvore_inteira",
-      "caption": "Palmeira de grande porte em área úmida adjacente ao lago",
-      "credit": "Acervo Fotográfico de Teste (IFRO)",
-      "capturedAt": "2026-09-18T16:00:00Z"
-    },
-    "gallery": [
-      {
-        "id": "photo-003-fruit",
-        "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1000&q=80",
-        "thumbUrl": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=300&q=70",
-        "category": "fruto",
-        "caption": "Cacho de frutos escamosos característicos"
-      }
-    ],
-    "plantnet": {
-      "taxon": "Mauritia flexuosa L.f.",
-      "score": 0.95,
-      "url": "https://identify.plantnet.org/",
-      "familySuggested": "Arecaceae"
-    },
+    "primaryPhoto": null,
+    "gallery": [],
+    "plantnet": null,
     "group": "groupB",
-    "collectedAt": "2026-09-18T16:05:00Z",
-    "verificationStatus": "verificado",
-    "notes": "Espécime mock do Grupo B (margem esquerda sul).",
+    "collectedAt": "1970-01-01T00:00:00Z",
+    "verificationStatus": "pendente",
+    "notes": "[MOCK] Ponto técnico neutro da margem esquerda sul para testar filtros por equipe e navegação por mapa.",
     "isMock": true
   },
   {
     "id": "mock-tree-004",
     "displayNumber": null,
-    "popularName": "[MOCK] Espécime Teste Delta (Jatobá Simulado)",
-    "scientificNameSuggested": "Hymenaea courbaril [MOCK]",
-    "family": "Fabaceae [MOCK]",
-    "confidence": "media",
+    "popularName": "[MOCK] Ponto Arbóreo de Calibração C1",
+    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
+    "family": "Família a confirmar [MOCK]",
+    "confidence": "indeterminada",
     "latitude": -12.7047,
     "longitude": -60.1175,
     "locationAccuracy": 4.1,
-    "primaryPhoto": {
-      "id": "photo-004-main",
-      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
-      "thumbUrl": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=300&q=70",
-      "category": "arvore_inteira",
-      "caption": "Porte imponente em declive leve à direita do lago",
-      "credit": "Acervo Fotográfico de Teste (IFRO)",
-      "capturedAt": "2026-09-18T16:40:00Z"
-    },
+    "primaryPhoto": null,
     "gallery": [],
-    "plantnet": {
-      "taxon": "Hymenaea courbaril L.",
-      "score": 0.79,
-      "url": "https://identify.plantnet.org/",
-      "familySuggested": "Fabaceae"
-    },
+    "plantnet": null,
     "group": "groupC",
-    "collectedAt": "2026-09-18T16:45:00Z",
-    "verificationStatus": "em_analise",
-    "notes": "Espécime mock do Grupo C (lado direito do lago).",
+    "collectedAt": "1970-01-01T00:00:00Z",
+    "verificationStatus": "pendente",
+    "notes": "[MOCK] Ponto técnico neutro da margem direita para validar abertura do painel e deslocamento da câmera.",
     "isMock": true
   },
   {
     "id": "mock-tree-005",
     "displayNumber": null,
-    "popularName": "[MOCK] Espécime Teste Épsilon (Mogno Simulado)",
-    "scientificNameSuggested": "Swietenia macrophylla [MOCK]",
-    "family": "Meliaceae [MOCK]",
-    "confidence": "baixa",
+    "popularName": "[MOCK] Ponto Arbóreo de Calibração C2",
+    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
+    "family": "Família a confirmar [MOCK]",
+    "confidence": "indeterminada",
     "latitude": -12.7032,
     "longitude": -60.1180,
     "locationAccuracy": 6.2,
-    "primaryPhoto": {
-      "id": "photo-005-main",
-      "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80",
-      "thumbUrl": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=300&q=70",
-      "category": "arvore_inteira",
-      "caption": "Muda jovem em regeneração na borda da trilha leste",
-      "credit": "Acervo Fotográfico de Teste (IFRO)",
-      "capturedAt": "2026-09-19T09:10:00Z"
-    },
+    "primaryPhoto": null,
     "gallery": [],
-    "plantnet": {
-      "taxon": "Swietenia macrophylla King",
-      "score": 0.64,
-      "url": "https://identify.plantnet.org/",
-      "familySuggested": "Meliaceae"
-    },
+    "plantnet": null,
     "group": "groupC",
-    "collectedAt": "2026-09-19T09:20:00Z",
+    "collectedAt": "1970-01-01T00:00:00Z",
     "verificationStatus": "pendente",
-    "notes": "Aguardando confirmação botânica presencial pelo docente orientador.",
+    "notes": "[MOCK] Ponto técnico neutro para testar estados NORMAL, HOVER e SELECTED dos marcadores premium.",
     "isMock": true
   }
 ]
