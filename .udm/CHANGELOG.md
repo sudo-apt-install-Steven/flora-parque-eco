@@ -1,20 +1,25 @@
 # UDM — CHANGELOG
 
-## [0.1.0] — 2026-09-20 (Fundação Técnica Concluída)
+## [0.2.1] — 2026-09-20 (Refino de UI, Marcador Ativo MapLibre, Gestos e Conectores Antigravity)
 
-### Adicionado
-- **Governança UDM:** Registrada em `.udm/` e espelhada no HD em `D:\Universal-Agent-Memory\projects\flora-parque-eco`. Memórias persistidas no banco SQLite `udm_v3.db`.
-- **Arquitetura Desacoplada (DATA, MAP, UI, LOGIC):**
-  - **DATA:** Schema Zod estrito (`lib/tree-schema.ts`), mock data validado (`data/mock-trees.json`), utilitários (`lib/trees.ts`) e 3 fontes GeoJSON (`park-boundary`, `park-planta`, `park-exploration`).
-  - **MAP:** Motor MapLibre GL JS com aceleração WebGL a 60 FPS, clustering dinâmico, controles de bússola, zoom, escala e geolocalização por GPS.
-  - **UI:** Componentes modulares prontos para o design v0 (`LayerSwitcher`, `SearchFilterBar`, `TreePanel`, `TreeDetail`, `TreeGallery`, `LegendModal`, `StatisticsModal`).
-  - **LOGIC:** Filtros por grupo (`groupA`, `groupB`, `groupC`), busca por nome popular/científico/família e suporte a acesso direto por QR Code (`?tree=id`).
-- **Suporte aos 3 Modos de Mapa:**
-  - *Satélite* (Tiles aéreos reais com slot para ortomosaico de drone);
-  - *Planta* (Camadas vetoriais do lago, caminhos, ponte, playground e IFRO);
-  - *Exploração* (Curvas de nível altimétricas, zonas botânicas e pontos notáveis).
-- **Testes & Qualidade:**
-  - Suíte Vitest com 6 testes automatizados validando schemas, integridade de IDs, regras de negócio e GeoJSON.
-  - Verificação de tipos TypeScript estrita sem erros (`tsc --noEmit`).
-  - Build de produção do Next.js gerado com sucesso.
-- **Documentação:** Criados `README.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `MAP.md`, `DEVELOPMENT.md` e artefatos de handoff UDM.
+### Corrigido & Aprimorado
+- **Marcador Ativo do v0 no MapLibre:** Integrado componente `maplibregl.Marker` com ícone SVG de folha e animação de respiração (`breathe` / `.marker-pulse`), renderizado exatamente nas coordenadas do espécime selecionado e removido ao fechar.
+- **Bug de Re-centralização ("Centralizar no mapa"):** Implementada prop `focusKey` e incremento de estado para garantir que a câmera do MapLibre volte e foque no espécime mesmo se a árvore já estiver selecionada.
+- **Ancoragem e Gestos no Bottom Sheet Mobile:**
+  - Corrigida a ancoragem do painel móvel de `bottom-16` para `bottom-0 z-50` com suporte a `pb-safe`, eliminando vão flutuante inferior.
+  - Adicionado backdrop scrim (`z-40`) permitindo fechar o painel com toque fora.
+  - Implementado listener de gestos táteis (`onTouchStart`/`onTouchEnd`) no puxador (*panel handle*), fechando o painel em caso de swipe down superior a 50px.
+- **Sincronização de URL & Compartilhamento:**
+  - Sincronização automática da barra de endereços do navegador (`?tree=slug`) via `history.replaceState`.
+  - Atualizado botão de compartilhar para gerar URL com query parameter seguro (`?tree=mock-tree-001`).
+  - Substituído `alert()` bloqueante por feedback visual não-intrusivo ("Link copiado!").
+- **Conectores Antigravity 2.0 & MCP:**
+  - Corrigida a rota do servidor MCP `udm-memory` em `~/.gemini/config/mcp_config.json` e `settings.json`, apontando para o binário Node.js real em `D:\Universal-Agent-Memory\repo\universal-development-memory\packages\retrieval-broker\dist\src\index.js`.
+  - Expandido o `vibe-coder-plugin` com 3 novos skills de ponta: `full-ai-architecture`, `maplibre-spatial-craft` e `tailwind-v4-motion`.
+- **Harmonização Visual dos Modais:**
+  - Estilizados `LegendModal` e `StatisticsModal` com a paleta botânica editorial (Warm Paper `#f8f6ef`, Deep Forest `#0b211d` e Warm Gold `#d6a35b`).
+- **Testes:**
+  - Adicionado teste em `test/ui.test.ts` para validação de URL de compartilhamento (12/12 testes PASS).
+
+## [0.2.0] — 2026-09-20 (Integração Cirúrgica do Design v0)
+...

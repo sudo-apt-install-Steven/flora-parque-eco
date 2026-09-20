@@ -31,27 +31,35 @@
 - [x] Implementar os 3 modos de mapa: Satélite (com slot de ortomosaico), Planta (lago, caminhos, ponte, playground) e Exploração (curvas de nível e zonas botânicas).
 - [x] Implementar clustering dinâmico com cores por equipe de campo.
 
-## Fase 7: Componentes de UI Modulares (UI & LOGIC) (Concluída)
-- [x] Implementar `components/ui/LayerSwitcher.tsx` (Seletor dos 3 modos).
-- [x] Implementar `components/ui/SearchFilterBar.tsx` (Filtro por nome, família e grupos A, B e C).
-- [x] Implementar `components/tree/TreePanel.tsx` (Mobile Bottom Sheet e Desktop Sidebar).
-- [x] Implementar `components/tree/TreeDetail.tsx` (Ficha botânica, galeria e PlantNet score).
-- [x] Implementar `components/tree/TreeGallery.tsx` (Miniaturas por categoria e modal de zoom).
-- [x] Implementar `components/ui/LegendModal.tsx` e `components/ui/StatisticsModal.tsx`.
-- [x] Orquestrar `app/page.tsx` e `app/layout.tsx` com suporte a deep link QR code (`?tree=id`).
+## Fase 7: Migração Cirúrgica do Design do v0 (Concluída)
+- [x] Migrar e calibrar tokens visuais do v0 em `app/globals.css` (paleta Deep Forest, Paper, Gold, keyframes).
+- [x] Implementar `lib/utils.ts` (`cn` helper com `clsx` e `tailwind-merge`).
+- [x] Migrar Brand lockup oficial e cabeçalho desktop/mobile em `components/ui/AppHeader.tsx`.
+- [x] Migrar barra de navegação móvel com vidro jateado em `components/ui/MobileNav.tsx`.
+- [x] Implementar popover flutuante de busca instantânea com suporte a `⌘ K` e `ESC` em `components/ui/SearchPopover.tsx`.
+- [x] Refatorar seletor de camadas cartográficas com mini-amostras visuais em `components/ui/LayerSwitcher.tsx`.
+- [x] Implementar selo cartográfico com coordenadas geográficas de Vilhena e filtros em `components/ui/MapFieldOverlay.tsx`.
+- [x] Refatorar ficha do espécime com tipografia Georgia serifada, fatos de campo e PlantNet em `components/tree/TreeDetail.tsx`.
+- [x] Refatorar painel lateral (desktop) e bottom sheet (mobile) com animações dedicadas em `components/tree/TreePanel.tsx`.
+- [x] Implementar tela de catálogo vivo com estatísticas dinâmicas em `components/views/SpeciesCatalogView.tsx`.
+- [x] Implementar tela institucional de metodologia e conservação em `components/views/ProjectAboutView.tsx`.
+- [x] Orquestrar `app/page.tsx` mantendo o mapa WebGL como protagonista absoluto da interface.
 
-## Fase 8: Testes e Validação (Concluída)
-- [x] Criar suíte de testes em `test/trees.test.ts`.
-- [x] Executar testes com Vitest (6/6 testes PASS).
+## Fase 8: Testes e Validação Contínua (Concluída)
+- [x] Criar suíte de testes de UI em `test/ui.test.ts`.
+- [x] Executar testes com Vitest (11/11 testes PASS).
 - [x] Validação de compilação de tipos TypeScript (`npx tsc --noEmit` - 0 erros).
 - [x] Build de produção do Next.js concluído com sucesso (`npm run build`).
 
-## Fase 9: Documentação Técnica (Concluída)
-- [x] Gerar `README.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `MAP.md`, `DEVELOPMENT.md`.
-- [x] Atualizar UDM (`CURRENT_STATE`, `TASKS`, `CHANGELOG`, `AGENT_HANDOFF`).
+## Fase 9: Melhorias Antigravity 2.0 & Skills (Concluída)
+- [x] Criar plugin `vibe-coder-plugin` em `C:\Users\Steven\.gemini\config\plugins\vibe-coder-plugin`.
+- [x] Instalar skill `vibe-coder` para desenvolvimento ágil de Full-AI Apps.
+- [x] Instalar skill `design-system-craft` para artesanato visual e cartografia digital.
+- [x] Configurar MCP servers em `C:\Users\Steven\.gemini\config\mcp_config.json`.
+- [x] Criar regras de governança para agentes em `AGENTS.md` e `.agents/rules/vibe-coding.md`.
 
 ## Próximos Passos (Para o Próximo Agente)
-- [ ] Integrar os componentes de design gerados no v0 quando exportados pelo usuário.
-- [ ] Importar o dataset real de árvores levantado pelos Grupos A, B e C.
+- [ ] Importar o dataset real de árvores levantado pelos Grupos A, B e C, substituindo os mocks de teste.
 - [ ] Conectar imagem aérea recente de drone como camada raster overlay no `PARK_CONFIG.customRasterOverlay`.
-- [ ] Ajustar geometrias finas do lago e playground após conferência presencial de campo.
+- [ ] Ajustar geometrias finas do lago e playground após conferência presencial de campo com GPS geodésico.
+- [ ] Opcional: Excluir a pasta `design_do_v0_aqui/` (ou `_v0_design_raw/`) pois todo o código e design foram 100% integrados.

@@ -10,6 +10,7 @@ interface MapContainerProps {
   trees: Tree[];
   selectedTree: Tree | null;
   onSelectTree: (tree: Tree | null) => void;
+  focusKey?: number;
 }
 
 export const DynamicMap = dynamic<MapContainerProps>(

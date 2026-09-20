@@ -43,20 +43,20 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[85vh] flex flex-col"
+        className="w-full max-w-lg bg-[#f8f6ef] dark:bg-[#0f2621] rounded-3xl shadow-2xl border border-stone-300 dark:border-white/10 overflow-hidden max-h-[85vh] flex flex-col animate-panel-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200/80 dark:border-stone-800 bg-white/50 dark:bg-black/20">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400">
+            <div className="p-2 rounded-xl bg-[#0b211d] text-[#d6a35b]">
               <BarChart3 className="w-5 h-5" />
             </div>
             <div>
-              <h2 id="stats-title" className="text-base font-bold text-slate-900 dark:text-slate-100">
+              <h2 id="stats-title" className="font-serif text-lg font-bold text-[#0b211d] dark:text-[#f8f6ef]">
                 Estatísticas do Inventário
               </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-stone-500 dark:text-stone-400">
                 Métricas e Consolidação Acadêmica
               </p>
             </div>
@@ -64,7 +64,7 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
           <button
             onClick={onClose}
             aria-label="Fechar janela de estatísticas"
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="p-2 rounded-xl text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 hover:bg-stone-200/60 dark:hover:bg-white/10 transition-colors focus:outline-none"
           >
             <X className="w-5 h-5" />
           </button>
@@ -158,10 +158,10 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 text-center">
+        <div className="px-6 py-3.5 bg-white/40 dark:bg-black/20 border-t border-stone-200/80 dark:border-stone-800 text-center">
           <button
             onClick={onClose}
-            className="w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-white text-white dark:text-slate-900 text-xs font-semibold shadow-sm transition-all focus:outline-none"
+            className="w-full py-2.5 px-4 rounded-xl bg-[#0b211d] hover:bg-[#183d35] text-[#f4f1e8] text-xs font-semibold shadow-sm transition-all focus:outline-none"
           >
             Fechar
           </button>

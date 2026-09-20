@@ -13,16 +13,19 @@ interface MapContainerProps {
   trees: Tree[];
   selectedTree: Tree | null;
   onSelectTree: (tree: Tree | null) => void;
+  focusKey?: number;
 }
 
 export const MapContainer: React.FC<MapContainerProps> = ({
   currentMode,
   trees,
   selectedTree,
-  onSelectTree
+  onSelectTree,
+  focusKey = 0
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+  const selectedMarkerRef = useRef<maplibregl.Marker | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   // Helper para obter a especificação de estilo
@@ -259,6 +262,10 @@ export const MapContainer: React.FC<MapContainerProps> = ({
     mapRef.current = map;
 
     return () => {
+      if (selectedMarkerRef.current) {
+        selectedMarkerRef.current.remove();
+        selectedMarkerRef.current = null;
+      }
       map.remove();
       mapRef.current = null;
     };
@@ -289,7 +296,40 @@ export const MapContainer: React.FC<MapContainerProps> = ({
     }
   }, [trees, mapLoaded]);
 
-  // Centralização e realce quando uma árvore é selecionada externamente (ex: busca)
+  // Marcador Botânico Ativo no MapLibre (v0 Botanical Leaf Marker com aura pulsante)
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
+
+    if (!selectedTree || selectedTree.longitude === null || selectedTree.latitude === null) {
+      if (selectedMarkerRef.current) {
+        selectedMarkerRef.current.remove();
+        selectedMarkerRef.current = null;
+      }
+      return;
+    }
+
+    if (!selectedMarkerRef.current) {
+      const el = document.createElement('div');
+      el.className = 'tree-marker is-active pointer-events-none';
+      el.innerHTML = `
+        <span class="marker-core marker-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#0b211d]"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+        </span>
+        <span class="marker-pulse"></span>
+      `;
+      selectedMarkerRef.current = new maplibregl.Marker({
+        element: el,
+        anchor: 'center'
+      })
+        .setLngLat([selectedTree.longitude, selectedTree.latitude])
+        .addTo(map);
+    } else {
+      selectedMarkerRef.current.setLngLat([selectedTree.longitude, selectedTree.latitude]);
+    }
+  }, [selectedTree, mapLoaded]);
+
+  // Centralização e realce quando uma árvore é selecionada externamente ou botão Centralizar é clicado
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded || !selectedTree) return;
@@ -302,7 +342,7 @@ export const MapContainer: React.FC<MapContainerProps> = ({
         duration: 600
       });
     }
-  }, [selectedTree, mapLoaded]);
+  }, [selectedTree, focusKey, mapLoaded]);
 
   return (
     <div className="relative w-full h-full">
