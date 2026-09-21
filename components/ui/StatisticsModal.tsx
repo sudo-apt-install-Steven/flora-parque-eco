@@ -1,8 +1,20 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { X, BarChart3, Trees, Sparkles, CheckCircle2, Clock, AlertTriangle } from 'lucide-react';
+import {
+  X,
+  BarChart3,
+  Trees,
+  Sparkles,
+  CheckCircle2,
+  Clock,
+  AlertTriangle,
+  Filter,
+  Check
+} from 'lucide-react';
 import { Tree } from '@/lib/tree-schema';
+import { useTreeStore, useFilterActions } from '@/lib/store/tree-store';
+import { cn } from '@/lib/utils';
 
 interface StatisticsModalProps {
   isOpen: boolean;
@@ -11,6 +23,10 @@ interface StatisticsModalProps {
 }
 
 export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClose, trees }) => {
+  const activeFamily = useTreeStore((s) => s.filters.family);
+  const { setFamilyFilter } = useFilterActions();
+  const setActiveNav = useTreeStore((s) => s.setActiveNav);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -32,7 +48,23 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
   const inAnalysis = trees.filter((t) => t.verificationStatus === 'em_analise' || t.verificationStatus === 'identificacao_preliminar').length;
   const pending = trees.filter((t) => t.verificationStatus === 'pendente').length;
 
-  const families = Array.from(new Set(trees.map((t) => t.family))).filter(Boolean);
+  // Agregação de famílias botânicas com contagem e ordenação decrescente
+  const familyMap: Record<string, number> = {};
+  for (const t of trees) {
+    const fam = t.family?.trim() || 'Indeterminada';
+    familyMap[fam] = (familyMap[fam] || 0) + 1;
+  }
+  const sortedFamilies = Object.entries(familyMap).sort((a, b) => b[1] - a[1]);
+
+  const handleFamilyClick = (family: string) => {
+    if (activeFamily === family) {
+      setFamilyFilter('all');
+    } else {
+      setFamilyFilter(family);
+    }
+    setActiveNav('mapa');
+    onClose();
+  };
 
   return (
     <div
@@ -43,7 +75,7 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-[#f8f6ef] dark:bg-[#0f2621] rounded-3xl shadow-2xl border border-stone-300 dark:border-white/10 overflow-hidden max-h-[85vh] flex flex-col animate-panel-in"
+        className="w-full max-w-lg bg-[#f8f6ef] dark:bg-[#0f2621] rounded-3xl shadow-2xl border border-stone-300 dark:border-white/10 overflow-hidden max-h-[88vh] flex flex-col animate-panel-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -71,7 +103,7 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
         </div>
 
         {/* Content */}
-        <div className="px-6 py-5 overflow-y-auto space-y-5 text-sm">
+        <div className="px-6 py-5 overflow-y-auto space-y-5 text-sm smooth-touch-scroll">
           {/* Card Principal: Total de Espécimes */}
           <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 flex items-center justify-between">
             <div>
@@ -81,8 +113,8 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
               <div className="text-3xl font-black text-emerald-950 dark:text-emerald-100 mt-0.5">
                 {total}
               </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                {families.length} famílias botânicas mapeadas
+              <div className="text-[11px] text-stone-500 dark:text-stone-400 mt-1">
+                {sortedFamilies.length} famílias botânicas mapeadas
               </div>
             </div>
             <div className="p-3 rounded-2xl bg-emerald-600 text-white shadow-md">
@@ -90,60 +122,118 @@ export const StatisticsModal: React.FC<StatisticsModalProps> = ({ isOpen, onClos
             </div>
           </div>
 
+          {/* FILTRO REVERSO POR FAMÍLIA BOTÂNICA */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400 flex items-center gap-1.5">
+                <Filter className="w-3.5 h-3.5 text-[#d6a35b]" />
+                Famílias Botânicas (Clique para isolar no mapa)
+              </h3>
+              {activeFamily !== 'all' && (
+                <button
+                  onClick={() => setFamilyFilter('all')}
+                  className="text-[10px] font-semibold text-rose-600 dark:text-rose-400 hover:underline"
+                >
+                  Limpar filtro
+                </button>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
+              {sortedFamilies.map(([fam, count]) => {
+                const isSelected = activeFamily === fam;
+                const percentage = total > 0 ? Math.round((count / total) * 100) : 0;
+
+                return (
+                  <button
+                    key={fam}
+                    onClick={() => handleFamilyClick(fam)}
+                    title={`Filtrar apenas espécimes da família ${fam}`}
+                    className={cn(
+                      'flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition-all duration-200 border',
+                      isSelected
+                        ? 'bg-[#0b211d] text-[#f8f6ef] border-[#d6a35b] shadow-md shadow-emerald-950/20'
+                        : 'bg-white/70 dark:bg-white/[0.04] text-stone-700 dark:text-stone-300 border-stone-200/80 dark:border-white/10 hover:border-[#d6a35b]/60 hover:bg-stone-50 dark:hover:bg-white/[0.08]'
+                    )}
+                  >
+                    <div className="min-w-0 pr-2">
+                      <div className="font-bold truncate font-serif italic">
+                        {fam}
+                      </div>
+                      <div className="text-[10px] opacity-75">
+                        {percentage}% do inventário
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <span className={cn(
+                        'px-2 py-0.5 rounded-md font-mono font-bold text-[11px]',
+                        isSelected ? 'bg-[#d6a35b] text-[#0b211d]' : 'bg-stone-200/70 dark:bg-white/10'
+                      )}>
+                        {count}
+                      </span>
+                      {isSelected && <Check className="w-3.5 h-3.5 text-[#d6a35b]" />}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Distribuição por Grupo de Campo */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
               Distribuição por Grupo de Levantamento
             </h3>
             <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
+              <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{groupA}</div>
-                <div className="text-[11px] font-semibold text-slate-700 dark:text-slate-300">Grupo A</div>
-                <div className="text-[10px] text-slate-400">Margem Esq. N</div>
+                <div className="text-[11px] font-semibold text-stone-700 dark:text-stone-300">Grupo A</div>
+                <div className="text-[10px] text-stone-400">Margem Esq. N</div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
+              <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{groupB}</div>
-                <div className="text-[11px] font-semibold text-slate-700 dark:text-slate-300">Grupo B</div>
-                <div className="text-[10px] text-slate-400">Margem Esq. S</div>
+                <div className="text-[11px] font-semibold text-stone-700 dark:text-stone-300">Grupo B</div>
+                <div className="text-[10px] text-stone-400">Margem Esq. S</div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
+              <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="text-lg font-bold text-amber-600 dark:text-amber-400">{groupC}</div>
-                <div className="text-[11px] font-semibold text-slate-700 dark:text-slate-300">Grupo C</div>
-                <div className="text-[10px] text-slate-400">Margem Dir.</div>
+                <div className="text-[11px] font-semibold text-stone-700 dark:text-stone-300">Grupo C</div>
+                <div className="text-[10px] text-stone-400">Margem Dir.</div>
               </div>
             </div>
           </div>
 
           {/* Status de Validação */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
               Status de Verificação Científica
             </h3>
             <div className="space-y-2">
-              <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300">Verificado em Campo</span>
+                  <span className="text-xs font-medium text-stone-700 dark:text-stone-300">Verificado em Campo</span>
                 </div>
-                <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{verified}</span>
+                <span className="text-xs font-bold font-mono text-stone-900 dark:text-stone-100">{verified}</span>
               </div>
 
-              <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-blue-500" />
-                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300">Em Análise / Preliminar</span>
+                  <span className="text-xs font-medium text-stone-700 dark:text-stone-300">Em Análise / Preliminar</span>
                 </div>
-                <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{inAnalysis}</span>
+                <span className="text-xs font-bold font-mono text-stone-900 dark:text-stone-100">{inAnalysis}</span>
               </div>
 
-              <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-amber-500" />
-                  <span className="text-xs font-medium text-slate-700 dark:text-slate-300">Pendente de Avaliação</span>
+                  <span className="text-xs font-medium text-stone-700 dark:text-stone-300">Pendente de Avaliação</span>
                 </div>
-                <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{pending}</span>
+                <span className="text-xs font-bold font-mono text-stone-900 dark:text-stone-100">{pending}</span>
               </div>
             </div>
           </div>

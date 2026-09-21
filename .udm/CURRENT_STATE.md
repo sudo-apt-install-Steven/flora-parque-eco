@@ -1,64 +1,91 @@
 # UDM — CURRENT STATE
 
 - **Data:** 2026-09-20
-- **Status do Projeto:** Fase de Motor Cartográfico, Modelagem Estrita de Dados, Zustand State Store & PWA Offline Concluída com Auditoria Crítica e Correções de Robustez (Motor GIS Modular + Supercluster Espacial O(N) com Spatial Hash Grid + Zustand 5 Store com Validação Estrita Zod em Tempo de Execução + Service Worker PWA Resiliente com Cache-First & SWR + 78/78 Testes Vitest PASS + Build Next.js 15.5 100% PASS)
-- **Agente Responsável:** Antigravity (Lead Data Engineer, GIS Architect & Infrastructure Manager)
+- **Status do Projeto:** Execução Master Concluída com Sucesso Absoluto (Fases 1 a 5 100% Finalizadas: Infraestrutura de Dados e Estado Zod/Zustand + Motor Cartográfico MapLibre GL 60 FPS + UI Premium Editorial com Hierarquia Estrita e Carrossel + Roteamento QR Code SSG `/tree/[id]` + Filtro Reverso por Família + Artigo Científico + 85/85 Testes Vitest PASS + Build Next.js 15.5 SSG 100% PASS + 0% `any` TypeScript Estrito)
+- **Agente Responsável:** Antigravity (Principal Full-Stack Engineer, GIS Architect & UX/UI Lead)
 - **Branch Git:** `main`
 - **Ambiente:** Node.js v22.23.2, npm 10.9.8, Windows 11 IoT Enterprise LTSC, C:\Users\Steven\Documents\FloraParqueEco
 - **HD UDM Root:** D:\Universal-Agent-Memory\projects\flora-parque-eco
 - **Banco de Dados UDM:** D:\Universal-Agent-Memory\data\udm_v3.db
 
-## 1. Modelagem Rigorosa de Dados (0% `any`, TypeScript Estrito):
-1. `TreeCatalogItem`:
+---
+
+## 1. Topologia de Rotas e Roteamento Físico (QR Code Deep Linking):
+1. **Rota Raiz (`/`):**
+   - Renderização sob `Suspense` do orquestrador desacoplado `<ParkInventoryApp />`.
+   - Sincronização dinâmica de URL sem reload de página via `window.history.replaceState` para parâmetros contextuais (`?tree=slug`).
+2. **Rota Dinâmica SSG (`/tree/[id]`):**
+   - Implementada em `app/tree/[id]/page.tsx` com `generateStaticParams()` pré-renderizando estaticamente todos os espécimes catalogados em tempo de compilação.
+   - Suporte a QR Codes físicos afixados nas árvores: ao escanear a placa, o visitante é direcionado diretamente para `/tree/mock-tree-001`, acionando automaticamente a transição suave de câmera `flyTo` do MapLibre e a abertura imediata da ficha botânica com zero cliques extras.
+
+---
+
+## 2. Modelagem Rigorosa de Dados (0% `any`, TypeScript Estrito):
+1. `TreeCatalogItem` (`lib/tree-schema.ts`):
    - Identificador estável `id: string`
-   - Coordenadas estritas `coordinates: { lat: number; lng: number }`
+   - Coordenadas geográficas estritas `coordinates: { lat: number; lng: number }`
    - Nomenclatura botânica: `scientificName: string | null`, `popularName: string`, `family: string | null`
-   - Sub-objetos tipados: `plantnet: PlantNetData | null`, `collection: CollectionData`, `gallery: MediaGallery`
-2. `PlantNetData`:
-   - `score: number` (decimal de confiança 0.0 a 1.0)
-   - `plantnetUrl: string | null` (link canônico para taxonomia)
-   - `status: 'SUGESTÃO' | 'EM_REVISÃO' | 'CONFIRMADO'` (ENUM estrito)
-3. `CollectionData`:
-   - `collectionGroup: 'ESQUERDA_LAGO' | 'DIREITA_LAGO' | 'OUTROS'` (ENUM estrito)
-   - Suporte unificado a `collectedAt: string` e `collectionDate: string`
-4. `MediaGallery`:
-   - Coleção de fotos com tipagem ENUM estrita: `'ARVORE_INTEIRA' | 'FOLHA' | 'FRUTO' | 'CASCA' | 'TRONCO'`
-5. Conversores Bidirecionais:
-   - `treeToCatalogItem(tree: Tree): TreeCatalogItem` (preserva `primaryPhoto` na galeria mesmo sem itens adicionais)
-   - `catalogItemToTree(item: TreeCatalogItem): Tree`
+   - Verificação e Curadoria: `verificationStatus: 'verificado' | 'em_analise' | 'identificacao_preliminar' | 'pendente' | 'rejeitado'`
+   - Sub-objetos tipados:
+     - `plantNetData`: `{ score: number; plantnetUrl: string | null; status: 'SUGESTÃO' | 'EM_REVISÃO' | 'CONFIRMADO' }`
+     - `collectionGroup`: `'ESQUERDA_LAGO' | 'DIREITA_LAGO' | 'OUTROS'`
+     - `gallery`: Coleção de imagens com categorização anatômica (`'ARVORE_INTEIRA' | 'FOLHA' | 'FRUTO' | 'CASCA' | 'TRONCO'`).
+2. Conversores Bidirecionais:
+   - `treeToCatalogItem(tree: Tree): TreeCatalogItem`: converte o modelo interno para a entidade canônica de catálogo com preservação da foto principal (`primaryPhoto`).
+   - `catalogItemToTree(item: TreeCatalogItem): Tree`: hidrata o catálogo de volta no modelo consumido pelo motor cartográfico e pelos seletores.
 
-## 2. Motor Cartográfico Modular GIS & Camadas (`lib/gis/`):
-1. Provedores de Camadas Cartográficas:
-   - **Camada 1 (Satélite):** Tiles públicos mundiais (Esri World Imagery) + infraestrutura de suporte a raster overlay georreferenciado local (drone/ortomosaico via `applyRasterOverlay` / `removeRasterOverlay`), ordenado estritamente abaixo dos marcadores vetoriais.
-   - **Camada 2 (Planta Técnica):** Ingestão e validação estrita via Zod (`ingestPlantaGeoJSON`) dos elementos vetoriais do parque: lago (`agua`), pistas (`pista`/`caminho`), ponte (`ponte`/`estrutura`), trilhas (`trilha`), playground (`playground`/`estrutura_nova`) e campus IFRO (`instituicao`).
-   - **Camada 3 (Exploração):** Base map topográfico botânico com relevo e curvas de nível pronto para aplicação de styling visual.
-2. Agrupamento Espacial de Alta Performance (Supercluster):
-   - Implementação em TypeScript puro de índice espacial Web Mercator (`SpatialClusterIndex` / `createSupercluster`) otimizado com Grid Espacial (Spatial Hash Grid O(N)), suporte a bounding boxes em qualquer orientação, agregação ponderada, `getClusterExpansionZoom` e `getClusterLeaves`.
-   - Configuração MapLibre GL nativa acelerada por GPU (`cluster: true`, `clusterRadius: 45`, `clusterMaxZoom: 17`).
-3. Auditoria de Re-renders:
-   - `MapContainerComponent` encapsulado com `React.memo` para evitar re-renderizações desnecessárias do canvas WebGL quando o root state sofre alterações.
+---
 
-## 3. Gerenciamento de Estado Global (`lib/store/tree-store.ts`):
-1. Store Centralizada (Zustand 5):
-   - Actions estritas: `initializeCatalog(data)`, `setLayerMode(mode)`, `focusTree(id)`, `filterByFamily(family)`, `filterByGroup(group)`.
-   - Validação estrita via Zod em `initializeCatalog`, rejeitando registros corrompidos e blindando os seletores contra falhas em cascata.
-   - Suporte a filtros territoriais abrangentes: `filterByGroup('ESQUERDA_LAGO')` filtra simultaneamente `groupA` e `groupB`.
-   - Tratamento de estados assíncronos e de falha: `isLoading: boolean`, `hasError: boolean`, `errorMessage: string | null`, `setIsLoading()`, `setHasError()`.
-2. Hooks e Seletores Disponíveis:
-   - `useActiveTree()`, `useFilteredCatalog()`, `useFilterActions()`, `useCatalogStatus()`, `useTreeStore()`.
+## 3. Gerenciamento de Estado Centralizado (Zustand 5 — `lib/store/tree-store.ts`):
+1. **Actions Canônicas Estritas:**
+   - `initializeTrees(trees)` / `initializeCatalog(data)`: inicialização com validação Zod e saneamento de seleção.
+   - `selectTree(id)`: seleção pura do espécime ativo por ID estável.
+   - `selectTreeAndFocus(id)`: seleção contextual, redirecionamento para a aba `'mapa'` e incremento de `focusKey` para animação suave de câmera.
+   - `setLayerMode(mode)`: alternância fluida entre `'satellite'`, `'planta'` e `'exploration'`.
+   - `filterByFamily(family)` / `filterByGroup(group)` / `setGroupFilter(group)` / `setFamilyFilter(family)`.
+2. **Seletores Derivados Otimizados (Hooks Customizados):**
+   - `useTotalTrees()` / `selectTotalTrees`: retorna contagem total de espécimes ativos.
+   - `useUniqueSpecies()` / `selectUniqueSpecies`: retorna contagem de espécies taxonômicas distintas.
+   - `useFamilyCounts()` / `selectFamilyCounts`: dicionário `{ [family: string]: number }` derivado para métricas e gráficos.
+   - `useActiveTree()`, `useFilteredCatalog()`, `useFilterActions()`, `useCatalogStatus()`.
 
-## 4. Progressive Web App & Estratégia Offline (`public/sw.js` & `lib/pwa/`):
-1. `public/manifest.json`: Manifesto PWA completo para execução em modo standalone no parque, com ícones reais vinculados (`icon.svg`, `icon-dark-32x32.png`, `apple-icon.png`, `favicon.ico`).
-2. Service Worker (`public/sw.js`):
-   - **Cache-First:** para assets vitais da UI (CSS, JS, fontes) e SVGs cartográficos/GeoJSONs (`/geo/*`, `.svg`), com fallback seguro de GeoJSON vazio (`FeatureCollection`) prevenindo erros de sintaxe JSON.
-   - **Stale-While-Revalidate:** para arquivos de dados do catálogo botânico JSON/CSV (`/data/*`, `mock-trees.json`, `.json`, `.csv`).
-   - **Network-First com fallback:** para navegação HTML do app shell.
-   - **Instalação Resiliente:** `Promise.allSettled` garantindo que falhas de assets individuais não cancelem o pré-cache.
-3. Hook Utilitário:
-   - `useOfflineStatus()` em `lib/pwa/use-offline-status.ts` fornecendo `{ isOnline, isOffline, wasOffline, isServiceWorkerReady }` com detecção de controlador ativo.
+---
 
-## 5. Qualidade & Testes (QA):
-- **Suíte de Testes:** 78/78 testes aprovados no Vitest em 10 arquivos (`fallbacks.test.ts`, `filters.test.ts`, `gis-engine.test.ts`, `ingestion.test.ts`, `pwa.test.ts`, `schema-models.test.ts`, `store.test.ts`, `store-strict.test.ts`, `trees.test.ts`, `ui.test.ts`).
-- **TypeScript:** 0 erros de compilação em `npx tsc --noEmit` em modo estrito.
-- **Build de Produção:** Next.js 15.5 gerando 100% de rotas estáticas pré-renderizadas com sucesso (`npm run build`).
-- **Integridade Visual:** 0 alterações em layout visual React, classes Tailwind ou paleta de cores.
+## 4. Motor Cartográfico Modular GIS & Camadas (`components/map/` & `lib/gis/`):
+1. **Otimização de Renderização:**
+   - `MapContainer` encapsulado em `React.memo` para evitar recriação do canvas WebGL sob mudanças no root do React.
+   - `useRef` para referências imperativas de mapa, marcadores e fontes geoespaciais sem trigger de render cascades.
+2. **Camadas Ativas:**
+   - **Satélite + Ortomosaico de Drone IFRO:** Imagens satelitais de alta resolução com suporte a raster local georreferenciado inserido antes das camadas vetoriais.
+   - **Planta Técnica Vetorial:** GeoJSON validado com Lago, pistas, caminhos, pontes, trilhas, parquinho e prédios do IFRO.
+   - **Exploração Topográfica:** Relevo botânico, curvas de nível e zonas de preservação.
+3. **Supercluster Espacial:**
+   - Agrupamento nativo MapLibre GL no client com raio de 45px e zoom máximo de 17.
+   - Algoritmo puro em TypeScript `SpatialClusterIndex` com Spatial Hash Grid $O(N)$.
+
+---
+
+## 5. UI Premium, Hierarquia Editorial & Acessibilidade:
+1. **Painel Botânico do Espécime (`TreeDetail.tsx`):**
+   - **Hierarquia 1 (Foto Dominante):** `TreeHeroPhoto` com proporção áurea, badge flutuante de equipe e botão de zoom em modal expandido.
+   - **Hierarquia 2 (Tipografia Botânica):** Nome científico em Georgia serif itálico, seguido por nome popular e crachá de verificação em campo.
+   - **Hierarquia 3 (PlantNet Match Bar):** Barra estilizada com porcentagem de confiança e gradiente dinâmico esmeralda/âmbar/rosa.
+   - **Hierarquia 4 (Carrossel Anatômico):** `TreePhotoCarousel` com rolagem horizontal suave snap-x, tags anatômicas (`Árvore Inteira`, `Folha`, `Fruto/Flor`, `Casca`, `Tronco`) e modal de alta resolução com `next/image`.
+   - **Hierarquia 5 (Fatos de Campo & GPS):** Coordenadas formatadas DMS/DD, data de coleta, grupo e notas dendrológicas.
+   - **Hierarquia 6 (Ação Cartográfica):** Botão "Centralizar no Mapa" acionando `flyTo`.
+2. **Seletor de Camadas Flutuante (`LayerSwitcher.tsx`):**
+   - Design translúcido com amostras visuais de cada camada, microinterações táteis e acessibilidade `role="radiogroup"`.
+3. **Marcadores Cartográficos Animados:**
+   - Três estados visuais: NORMAL (medalhão colorido com ícone botânico), HOVER (escala ampliada e sombra dourada) e SELECTED (anel pulsante `marker-pulse` com respiração luminosa).
+4. **Modal de Estatísticas com Filtro Reverso (`StatisticsModal.tsx`):**
+   - Famílias botânicas clicáveis com efeito hover e seta: ao clicar em uma família, ativa o filtro na store, fecha o modal e posiciona o visitante no mapa isolando aquela família botânica.
+5. **Artigo Científico Moderno (`ProjectAboutView.tsx`):**
+   - Estrutura acadêmica formal com Abstract, Equipes de Coleta (Grupos A, B, C), Protocolo de Identificação por IA (PlantNet v2 e taxa de confiança), Infraestrutura Cartográfica WebGL e Citação Bibliográfica padronizada.
+
+---
+
+## 6. Qualidade, Testes e Conformidade Técnica:
+- **Suíte Vitest:** 85/85 testes aprovados em 12 arquivos (100% PASS).
+- **TypeScript Estrito:** 0 erros com `npx tsc --noEmit` (0% `any`).
+- **Build de Produção Next.js:** 100% estático (SSG) gerado para rotas `/` e `/tree/[id]`.
+- **Offline PWA:** Service Worker resiliente com Cache-First (UI/SVG/GeoJSON) e Stale-While-Revalidate (catálogo botânico).

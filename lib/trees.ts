@@ -20,6 +20,11 @@ export function getValidatedTrees(): Tree[] {
 }
 
 /**
+ * Retorna todos os espécimes arbóreos cadastrados (alias canônico)
+ */
+export const getAllTrees = getValidatedTrees;
+
+/**
  * Busca de árvore por ID interno estável
  */
 export function getTreeById(id: string): Tree | undefined {

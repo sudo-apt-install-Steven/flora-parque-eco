@@ -1,5 +1,34 @@
 # UDM — CHANGELOG
 
+## [0.5.0] — 2026-09-20 [ANTIGRAVITY: MASTER FULL-STACK EXECUTION]
+
+### Adicionado & Arquitetado (Conclusão Integral das Fases 1 a 5)
+- **Fase 1: Infraestrutura de Dados e Estado Global Centralizado:**
+  - `TreeCatalogItem`: modelo de dados estrito (0% `any`) em `lib/tree-schema.ts` com identificadores estáveis, georreferenciamento exato, dados taxonômicos, status de verificação, score PlantNet v2, grupo territorial e galeria categorizada.
+  - `lib/store/tree-store.ts`: Zustand 5 store central com actions canônicas `initializeTrees()` e `selectTree(id)`, e novos hooks seletores derivados de alta performance: `useTotalTrees()` (`selectTotalTrees`), `useUniqueSpecies()` (`selectUniqueSpecies`) e `useFamilyCounts()` (`selectFamilyCounts`).
+  - Suíte de 4 testes unitários dedicados em `test/phase1-models-store.test.ts` cobrindo modelagem e seletores derivados.
+- **Fase 2: Motor Cartográfico Base com Supercluster & Memoização:**
+  - `components/map/MapContainer.tsx` memoizado com `React.memo`, blindando o canvas WebGL a 60 FPS contra re-renderizações acidentais acionadas pela UI.
+  - Gerenciamento otimizado de estados de feature no MapLibre GL (`setFeatureState`) e renderização em 3 modos: Satélite + Ortomosaico de Drone IFRO, Planta Técnica vetorial (GeoJSON validado) e Exploração botânica topográfica.
+  - Agrupamento nativo MapLibre GPU + algoritmo puro em TypeScript `SpatialClusterIndex` com Spatial Hash Grid $O(N)$.
+- **Fase 3: UI Premium, Hierarquia Editorial & Design System:**
+  - `components/tree/TreeGallery.tsx`: Desacoplamento arquitetural em `TreeHeroPhoto` (proporção áurea dominante com badge de equipe e zoom modal) e `TreePhotoCarousel` (carrossel horizontal suave snap-x com chips de partes botânicas e visualizador em alta resolução com `next/image`).
+  - `components/tree/TreeDetail.tsx`: Reestruturação completa segundo a hierarquia visual estrita: Foto Dominante -> Nome Científico e Popular com status de campo -> Barra de progresso PlantNet Score (%) com gradiente dinâmico -> Carrossel anatômico deslizante -> Fatos de campo e geolocalização -> Ação destacada "Centralizar no Mapa".
+  - `components/ui/LayerSwitcher.tsx`: Controle flutuante com amostras visuais, feedback tátil e acessibilidade `role="radiogroup"`.
+  - Estilização de marcadores cartográficos com microinterações suaves nos três estados: NORMAL, HOVER e SELECTED (`marker-pulse`).
+- **Fase 4: Roteamento Físico e Interatividade Analítica:**
+  - `components/ParkInventoryApp.tsx`: Extraído e desacoplado para suportar injeção de `initialTreeId`.
+  - `app/tree/[id]/page.tsx`: Rota dinâmica com `generateStaticParams()` pré-renderizada via SSG (Next.js 15) para QR Code Deep Linking direto das árvores do parque, disparando transição `flyTo` e abertura imediata da ficha sem cliques extras.
+  - Sincronização dinâmica de URL na raiz (`/?tree=slug`) via `window.history.replaceState` sem recarregamento de página.
+  - `components/ui/StatisticsModal.tsx`: Lista interativa de famílias botânicas com **filtro reverso no mapa** (ao clicar na família, fecha o modal, posiciona no mapa e isola os espécimes daquela família).
+  - `components/views/ProjectAboutView.tsx`: Reformulado no formato de artigo científico moderno com Abstract, Protocolo das Equipes de Campo (Grupos A, B, C), Metodologia da IA PlantNet e Citação Acadêmica padronizada.
+  - Suíte de 3 testes em `test/qr-routing.test.ts` cobrindo o roteamento e integração de parâmetros.
+- **Fase 5: Auto-auditoria, Estabilização e Governança:**
+  - 85/85 testes aprovados no Vitest em 12 arquivos (100% PASS).
+  - 0 erros em `npx tsc --noEmit` com tipagem estrita total.
+  - Build estático SSG do Next.js 15.5 gerado com 100% de sucesso para todas as rotas (`/` e `/tree/[id]`).
+  - Governança UDM atualizada e espelhada no HD com registro SQLite no `udm_v3.db`.
+
 ## [0.4.1] — 2026-09-20 [ANTIGRAVITY: CORE/DATA]
 
 ### Corrigido & Aprimorado

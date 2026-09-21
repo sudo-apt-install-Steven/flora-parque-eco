@@ -87,8 +87,16 @@
 - [x] Suíte de testes automatizados expandida de 47 para 78 testes aprovados (10/10 suítes, 100% PASS).
 - [x] Build de produção 100% PASS com zero erros TypeScript.
 
-## Próximos Passos (Para o Próximo Agente)
-- [ ] Conectar imagem aérea real de drone ao `PARK_CONFIG.customRasterOverlay` para visualização em alta resolução.
-- [ ] Importar o dataset de campo definitivo dos Grupos A, B e C usando `initializeCatalog()` ou `importData()`.
-- [ ] UI Agent: Customizar estilização temática dos marcadores e painéis com base nos seletores memoizados (`useActiveTree`, `useFilteredCatalog`, `useCatalogStatus`, `useOfflineStatus`).
+## Fase 12: Execução Master Full-Stack — Fases 1 a 5 (Concluída 100%)
+- [x] **Fase 1 (Dados & Estado):** Tipagem rigorosa `TreeCatalogItem`, store centralizada com `initializeTrees()`, `selectTree(id)`, seletores derivados (`useTotalTrees`, `useUniqueSpecies`, `useFamilyCounts`) e testes unitários dedicados em `test/phase1-models-store.test.ts`.
+- [x] **Fase 2 (Motor GIS MapLibre):** Memoização do canvas WebGL a 60 FPS com `React.memo`, camadas Satélite + Ortomosaico de Drone IFRO, Planta Técnica GeoJSON e Exploração com Supercluster espacial nativo.
+- [x] **Fase 3 (UI Premium & Design System):** Desacoplamento de `TreeHeroPhoto` e `TreePhotoCarousel` em `TreeGallery.tsx`, reestruturação da ficha `TreeDetail.tsx` com hierarquia visual estrita (Foto Dominante -> Título Botânico -> Barra PlantNet Score -> Carrossel Anatômico com zoom modal -> Fatos GPS -> Centralizar no mapa), controle flutuante `LayerSwitcher.tsx` e marcadores com microinterações suaves (NORMAL, HOVER, SELECTED).
+- [x] **Fase 4 (QR Code Routing & Interatividade):** Extração de `ParkInventoryApp.tsx`, rota dinâmica SSG `app/tree/[id]/page.tsx` com `generateStaticParams()` para leitura física de QR Code no parque com animação suave `flyTo` e abertura imediata da ficha sem cliques extras, sincronização de URL sem recarregar, `StatisticsModal` com filtro reverso por família botânica, apresentação metodológica no formato de artigo científico em `ProjectAboutView.tsx` e testes unitários em `test/qr-routing.test.ts`.
+- [x] **Fase 5 (Auto-auditoria, Estabilização e Governança):** 85/85 testes Vitest aprovados (12/12 suítes, 100% PASS), compilação estrita TypeScript com zero erros (`npx tsc --noEmit`), geração estática SSG de produção concluída com 100% de sucesso (`npm run build`), sincronização e espelhamento no UDM com registro SQLite no `udm_v3.db`.
+
+## Próximos Passos (Evolução Futura)
+- [ ] Conectar imagem aérea real de drone ao `PARK_CONFIG.customRasterOverlay` para visualização em altíssima resolução.
+- [ ] Importar dataset final consolidado das coletas de campo definitivas via `initializeCatalog()` ou painel de ingestão.
+- [ ] Produzir as placas físicas definitivas com os QR Codes apontando para `https://floraparqueeco.../tree/[id]`.
+
 

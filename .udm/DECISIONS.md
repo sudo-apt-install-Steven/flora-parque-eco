@@ -55,3 +55,26 @@
   4. Manter 100% de isolamento entre a infraestrutura de dados/mapas e os componentes visuais de UI, assegurando memoização (`React.memo`) para mitigar re-renders desnecessários no canvas WebGL.
 - **Justificativa:** Áreas remotas do Parque Ecológico em Vilhena possuem sinal celular instável; a experiência do visitante e do pesquisador de campo precisa funcionar com latência zero e suporte contínuo offline.
 
+## ADR-007: QR Code Deep Linking e Roteamento SSG (`/tree/[id]`) com FlyTo Imediato
+- **Data:** 2026-09-20
+- **Status:** ACEITO
+- **Decisão:**
+  1. Implementar a rota dinâmica `app/tree/[id]/page.tsx` com `generateStaticParams()` em Next.js 15 App Router para pré-renderização estática total (SSG) de cada ficha de espécime.
+  2. Desacoplar o orquestrador de UI em `components/ParkInventoryApp.tsx`, aceitando `initialTreeId?: string`.
+  3. Ao acessar a rota `/tree/[id]`, o sistema inicializa o mapa, executa a animação de câmera suave `flyTo` até as coordenadas exatas do espécime e abre automaticamente a ficha botânica completa sem exigir cliques extras do visitante do parque.
+  4. Manter sincronização na rota `/` via `window.history.replaceState` (`?tree=slug`) para links compartilháveis sem recarregamento.
+- **Justificativa:** As árvores do parque receberão placas físicas com QR Codes. A leitura de campo precisa abrir a página instantaneamente, mesmo em conectividade móvel limitada, posicionando o usuário geograficamente e exibindo as características botânicas sem fricção de navegação.
+
+## ADR-008: Hierarquia Visual Editorial e Desacoplamento da Galeria Anatômica
+- **Data:** 2026-09-20
+- **Status:** ACEITO
+- **Decisão:**
+  1. Estruturar a ficha do espécime (`TreeDetail.tsx`) segundo hierarquia visual estrita:
+     - 1. Foto principal dominante (`TreeHeroPhoto`) com proporção áurea e trigger de zoom.
+     - 2. Identificação com tipografia editorial clássica (Georgia serif itálico para nome científico e semiserif para popular) com badges de status de verificação botânica.
+     - 3. Barra visual estilizada com progresso PlantNet Score (%) e gradiente dinâmico de confiança.
+     - 4. Carrossel deslizante anatômico (`TreePhotoCarousel`) com categorização fotográfica (`Árvore Inteira`, `Folha`, `Fruto/Flor`, `Casca`, `Tronco`) e modal de alta resolução.
+     - 5. Fatos de campo e georreferenciamento (DMS e Graus Decimais).
+     - 6. Ação cartográfica destacada "Centralizar no Mapa".
+- **Justificativa:** A catalogação botânica acadêmica requer clareza na distinção morfológica das partes da árvore e confiabilidade científica das determinações feitas via IA, apresentadas de forma elegante e intuitiva para o público geral e pesquisadores.
+

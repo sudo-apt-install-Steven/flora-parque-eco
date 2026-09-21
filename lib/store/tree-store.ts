@@ -51,7 +51,8 @@ export interface TreeState {
   isLegendOpen: boolean;
   isStatsOpen: boolean;
 
-  // Ações Estritas da Fase 4
+  // Ações Estritas da Fase 1 e 4
+  initializeTrees: (data?: (Tree | TreeCatalogItem)[]) => void;
   initializeCatalog: (data: (Tree | TreeCatalogItem)[]) => void;
   setLayerMode: (mode: LayerMode) => void;
   focusTree: (id: string | null) => void;
@@ -135,6 +136,19 @@ export const useTreeStore = create<TreeState>((set, get) => ({
 
   setHasError: (hasError, errorMessage = null) =>
     set({ hasError, errorMessage: hasError ? errorMessage : null }),
+
+  initializeTrees: (data) => {
+    if (data && Array.isArray(data)) {
+      get().initializeCatalog(data);
+    } else {
+      set({
+        trees: getInitialValidatedTrees(),
+        isLoading: false,
+        hasError: false,
+        errorMessage: null
+      });
+    }
+  },
 
   initializeCatalog: (data) => {
     try {
@@ -475,4 +489,43 @@ export function useCatalogStatus(): {
     setHasError
   };
 }
+
+/**
+ * Seletor para o total de árvores registradas no catálogo
+ */
+export const selectTotalTrees = (state: TreeState): number => state.trees.length;
+export function useTotalTrees(): number {
+  return useTreeStore(selectTotalTrees);
+}
+
+/**
+ * Seletor para o número de espécies botânicas únicas
+ */
+export const selectUniqueSpecies = (state: TreeState): number => {
+  const species = new Set(
+    state.trees
+      .map((t) => t.scientificNameSuggested || t.popularName)
+      .filter((name): name is string => Boolean(name && name.trim()))
+  );
+  return species.size;
+};
+export function useUniqueSpecies(): number {
+  return useTreeStore(selectUniqueSpecies);
+}
+
+/**
+ * Seletor para contagem de espécimes agrupados por família botânica
+ */
+export const selectFamilyCounts = (state: TreeState): Record<string, number> => {
+  const counts: Record<string, number> = {};
+  for (const tree of state.trees) {
+    const family = tree.family?.trim() || 'Indeterminada';
+    counts[family] = (counts[family] || 0) + 1;
+  }
+  return counts;
+};
+export function useFamilyCounts(): Record<string, number> {
+  return useTreeStore(selectFamilyCounts);
+}
+
 

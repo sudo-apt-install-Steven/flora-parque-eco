@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   MapPin,
   Sparkles,
@@ -10,10 +11,11 @@ import {
   AlertCircle,
   FileText,
   LocateFixed,
-  Leaf
+  Leaf,
+  X
 } from 'lucide-react';
-import { Tree } from '@/lib/tree-schema';
-import { TreeGallery } from '@/components/tree/TreeGallery';
+import { Tree, PhotoItem } from '@/lib/tree-schema';
+import { TreeHeroPhoto, TreePhotoCarousel } from '@/components/tree/TreeGallery';
 import { PARK_CONFIG } from '@/lib/park-config';
 import { cn } from '@/lib/utils';
 
@@ -59,14 +61,20 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
   onClose,
   onCenterOnMap
 }) => {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
+  const [zoomedPhoto, setZoomedPhoto] = useState<PhotoItem | null>(null);
+
   const groupInfo = PARK_CONFIG.fieldGroups[tree.group];
   const conf = CONFIDENCE_STYLES[tree.confidence] || CONFIDENCE_STYLES.indeterminada;
   const verif = VERIFICATION_BADGES[tree.verificationStatus] || VERIFICATION_BADGES.pendente;
 
+  // Cálculo da porcentagem de confiança do PlantNet
+  const plantnetScore = tree.plantnet?.score ?? (tree.confidence === 'alta' ? 0.92 : tree.confidence === 'media' ? 0.68 : 0.35);
+  const scorePercent = Math.round(Math.min(Math.max(plantnetScore, 0), 1) * 100);
+
   const handleShare = () => {
     const url = typeof window !== 'undefined'
-      ? `${window.location.origin}${window.location.pathname}?tree=${encodeURIComponent(tree.id)}`
+      ? `${window.location.origin}/tree/${encodeURIComponent(tree.id)}`
       : '';
 
     if (navigator.share) {
@@ -84,14 +92,14 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
 
   return (
     <div className="space-y-5 text-[#102a26] dark:text-[#f8f6ef]">
-      {/* 1. Galeria de Fotos */}
-      <TreeGallery
-        primaryPhoto={tree.primaryPhoto}
-        gallery={tree.gallery}
+      {/* 1. HIERARQUIA 1: Foto Principal Dominante */}
+      <TreeHeroPhoto
+        photo={tree.primaryPhoto}
         treeName={tree.popularName}
+        onZoom={setZoomedPhoto}
       />
 
-      {/* 2. Cabeçalho Editorial com Eyebrow */}
+      {/* 2. HIERARQUIA 2: Cabeçalho Editorial — Nome Científico e Popular */}
       <div>
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
@@ -121,13 +129,13 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
           </div>
         </div>
 
-        {/* Nome Popular em Fonte Serifada */}
+        {/* Nome Popular */}
         <h1 className="font-serif text-2xl lg:text-3xl font-extrabold tracking-tight text-[#0b211d] dark:text-[#f8f6ef] mt-1 leading-tight">
           {tree.popularName}
         </h1>
 
-        {/* Nome Científico em Itálico */}
-        <p className="font-serif italic text-base text-stone-600 dark:text-[#9bb0a6] mt-0.5">
+        {/* Nome Científico em Destaque Itálico */}
+        <p className="font-serif italic text-base sm:text-lg text-stone-600 dark:text-[#9bb0a6] mt-0.5">
           {tree.scientificNameSuggested}
         </p>
 
@@ -145,7 +153,55 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
         </div>
       </div>
 
-      {/* 3. Grade de Fatos Botânicos & Localização */}
+      {/* 3. HIERARQUIA 3: Barra Visual Indicando a Confiança (Score) do PlantNet */}
+      <div className="p-4 rounded-2xl bg-gradient-to-br from-[#edf1e7] to-[#e4e9dd] dark:from-[#102a26]/70 dark:to-[#0b211d]/70 border border-stone-200/90 dark:border-white/10 shadow-sm space-y-2.5">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-bold flex items-center gap-2 text-[#0b211d] dark:text-[#f8f6ef]">
+            <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+              <Leaf className="w-3 h-3" />
+            </div>
+            Confiança Botânica (PlantNet)
+          </span>
+          <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#d6a35b]/20 text-[#0b211d] dark:text-[#d6a35b]">
+            {scorePercent}% match
+          </span>
+        </div>
+
+        {/* Barra de Progresso Visual Estilizada */}
+        <div className="w-full h-2.5 rounded-full bg-stone-300/60 dark:bg-stone-800 overflow-hidden p-0.5">
+          <div
+            className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-emerald-600 via-teal-500 to-[#d6a35b]"
+            style={{ width: `${Math.max(scorePercent, 5)}%` }}
+          />
+        </div>
+
+        <div className="flex items-center justify-between text-[11px] text-stone-600 dark:text-stone-400 pt-0.5">
+          <span>
+            Taxon: <em className="font-serif italic text-[#0b211d] dark:text-[#f8f6ef] font-medium">{tree.plantnet?.taxon || tree.scientificNameSuggested}</em>
+          </span>
+          {tree.plantnet?.url && (
+            <a
+              href={tree.plantnet.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-semibold text-[#a07232] dark:text-[#d6a35b] hover:underline"
+            >
+              PlantNet <ExternalLink className="w-3 h-3" />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* 4. HIERARQUIA 4: Galeria Fotográfica em Carrossel Deslizante (next/image) */}
+      {tree.gallery && tree.gallery.length > 0 && (
+        <TreePhotoCarousel
+          photos={tree.gallery}
+          treeName={tree.popularName}
+          onZoom={setZoomedPhoto}
+        />
+      )}
+
+      {/* 5. Grade de Fatos Botânicos & Localização */}
       <dl className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#eef0e5] dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 text-xs">
         <div>
           <dt className="text-[9px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
@@ -188,47 +244,7 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
         </div>
       </dl>
 
-      {/* 4. Card PlantNet — Identificação Assistida */}
-      {tree.plantnet && (
-        <div className="p-4 rounded-2xl bg-[#edf1e7] dark:bg-[#102a26]/50 border-l-4 border-[#d6a35b] border border-stone-200/80 dark:border-white/10 shadow-sm">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#52775e] text-[#f0f2dc] flex items-center justify-center flex-shrink-0">
-                <Leaf className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-xs font-bold text-[#102a26] dark:text-[#f8f6ef]">
-                Identificação Assistida pelo PlantNet
-              </span>
-            </div>
-            {typeof tree.plantnet.score === 'number' && tree.plantnet.score > 0 && (
-              <span className="text-xs font-bold text-[#0b211d] bg-[#d6a35b]/30 px-2 py-0.5 rounded-md">
-                {(tree.plantnet.score * 100).toFixed(0)}% match
-              </span>
-            )}
-          </div>
-
-          <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
-            <span className="font-semibold text-stone-700 dark:text-stone-200">Taxon sugerido:</span>{' '}
-            <em className="font-serif italic">{tree.plantnet.taxon || 'Não informado'}</em>.
-            Identificação baseada em registro fotográfico e revisão botânica de campo.
-          </p>
-
-          {tree.plantnet.url && (
-            <div className="mt-2 text-[11px]">
-              <a
-                href={tree.plantnet.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-semibold text-[#a07232] dark:text-[#d6a35b] hover:underline"
-              >
-                Conferir no PlantNet <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* 5. Notas de Campo */}
+      {/* 6. Anotações de Campo */}
       {tree.notes && (
         <div className="p-3.5 rounded-2xl bg-[#eef0e5] dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
           <div className="text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1 flex items-center gap-1.5">
@@ -241,11 +257,12 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
         </div>
       )}
 
-      {/* 6. Botão de Ação: Centralizar no Mapa */}
+      {/* 7. Botão de Ação: Centralizar no Mapa */}
       {onCenterOnMap && (
         <button
           onClick={() => onCenterOnMap(tree)}
-          className="flex items-center justify-center gap-2 w-full h-11 px-4 rounded-xl bg-[#0b211d] hover:bg-[#183d35] text-[#f4f1e8] font-semibold text-xs transition-all duration-200 shadow-md shadow-emerald-950/20"
+          aria-label="Centralizar este espécime no mapa interativo"
+          className="flex items-center justify-center gap-2 w-full h-11 px-4 rounded-xl bg-[#0b211d] hover:bg-[#183d35] text-[#f4f1e8] font-semibold text-xs transition-all duration-200 shadow-md shadow-emerald-950/20 active:scale-[0.99]"
         >
           <LocateFixed className="w-4 h-4 text-[#d6a35b]" />
           <span>Centralizar este espécime no mapa</span>
@@ -256,6 +273,57 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
       {tree.isMock && (
         <div className="text-[10px] text-center text-stone-400 dark:text-stone-500 italic pt-1">
           * Espécime de calibração para homologação da infraestrutura técnica digital.
+        </div>
+      )}
+
+      {/* Modal de Zoom Fotográfico Compartilhado */}
+      {zoomedPhoto && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
+          onClick={() => setZoomedPhoto(null)}
+        >
+          <div
+            className="relative max-w-2xl w-full bg-[#0b211d] rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setZoomedPhoto(null)}
+              aria-label="Fechar fotografia ampliada"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="relative w-full h-[60vh] max-h-[500px]">
+              <Image
+                src={zoomedPhoto.url}
+                alt={zoomedPhoto.caption || tree.popularName}
+                fill
+                sizes="(max-width: 768px) 100vw, 650px"
+                className="object-contain"
+              />
+            </div>
+
+            <div className="p-4 bg-[#0b211d]/95 text-white text-xs border-t border-white/10 flex items-center justify-between">
+              <div>
+                <span className="font-bold text-[#d6a35b] mr-2">
+                  [{zoomedPhoto.category}]
+                </span>
+                <span className="text-[#f8f6ef]">{zoomedPhoto.caption || tree.popularName}</span>
+                {zoomedPhoto.credit && (
+                  <div className="text-[10px] text-stone-400 mt-0.5">Crédito: {zoomedPhoto.credit}</div>
+                )}
+              </div>
+              <button
+                onClick={() => setZoomedPhoto(null)}
+                className="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-white font-medium transition-colors"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

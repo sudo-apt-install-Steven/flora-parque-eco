@@ -7,11 +7,12 @@
 
 ## 1. Stack & Arquitetura Atual
 - **Framework:** Next.js 15.5.25 (App Router), React 19, TypeScript estrito (0% `any`).
-- **Motor Cartográfico:** MapLibre GL JS acelerado por GPU (WebGL a 60 FPS).
-- **Gerenciamento de Estado:** Zustand 5 (`lib/store/tree-store.ts`).
-- **Agrupamento Espacial:** Supercluster hierárquico puro (`lib/gis/clustering.ts`) e nativo WebGL.
-- **Offline / PWA:** Service Worker com `Cache-First` (UI/SVGs) e `Stale-While-Revalidate` (catálogo botânico JSON/CSV), mais manifesto standalone (`public/manifest.json`).
-- **QA & Resiliência:** 78/78 testes Vitest aprovados (`cmd /c "npm test"`), 0 erros de compilação TypeScript (`cmd /c "npx tsc --noEmit"`), build de produção Next.js 100% estático e funcional.
+- **Rotas:** `/` (Catálogo Cartográfico principal) e `/tree/[id]` (QR Code Deep Linking com SSG estático pré-renderizado).
+- **Motor Cartográfico:** MapLibre GL JS acelerado por GPU (WebGL a 60 FPS) encapsulado com `React.memo`.
+- **Gerenciamento de Estado:** Zustand 5 (`lib/store/tree-store.ts`) com validação Zod e seletores atômicos/derivados.
+- **Agrupamento Espacial:** Supercluster hierárquico nativo WebGL e TypeScript puro (`lib/gis/clustering.ts`) com Spatial Hash Grid $O(N)$.
+- **Offline / PWA:** Service Worker com `Cache-First` (UI/SVGs/GeoJSON) e `Stale-While-Revalidate` (catálogo botânico JSON/CSV), mais manifesto standalone (`public/manifest.json`).
+- **QA & Resiliência:** 85/85 testes Vitest aprovados (`cmd /c "npm test"`), 0 erros de compilação TypeScript (`cmd /c "npx tsc --noEmit"`), build de produção Next.js 100% estático (SSG) e funcional.
 
 ---
 
@@ -38,6 +39,17 @@ function SpeciesList() {
       ))}
     </div>
   );
+}
+
+// Seletores Atômicos Derivados de Alta Performance:
+import { useTotalTrees, useUniqueSpecies, useFamilyCounts } from '@/lib/store/tree-store';
+
+function MetricBadges() {
+  const totalTrees = useTotalTrees();       // number
+  const uniqueSpecies = useUniqueSpecies(); // number
+  const familyCounts = useFamilyCounts();   // Record<string, number>
+
+  return <div>{totalTrees} árvores | {uniqueSpecies} espécies</div>;
 }
 ```
 

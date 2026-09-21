@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Image as ImageIcon, ZoomIn, X, Camera } from 'lucide-react';
+import { ZoomIn, X, Camera } from 'lucide-react';
 import { PhotoItem } from '@/lib/tree-schema';
 
 interface TreeGalleryProps {
@@ -17,13 +17,112 @@ const CATEGORY_LABELS: Record<string, string> = {
   flor: 'Flor',
   fruto: 'Fruto',
   casca: 'Casca',
-  outro: 'Detalhe'
+  outro: 'Tronco/Detalhe'
 };
 
+/**
+ * 1. Foto Principal Dominante do Espécime
+ */
+export const TreeHeroPhoto: React.FC<{
+  photo: PhotoItem | null;
+  treeName: string;
+  onZoom?: (photo: PhotoItem) => void;
+}> = ({ photo, treeName, onZoom }) => {
+  if (!photo) {
+    return (
+      <div className="w-full h-48 sm:h-56 rounded-2xl bg-stone-100 dark:bg-stone-800/60 border border-dashed border-stone-300 dark:border-stone-700 flex flex-col items-center justify-center text-stone-400 text-xs p-4 text-center">
+        <Camera className="w-8 h-8 mb-2 opacity-50 text-stone-400" />
+        <span className="font-medium">Nenhum registro fotográfico primário</span>
+        <span className="text-[10px] text-stone-500 mt-0.5">Fotos em alta resolução serão capturadas em campo</span>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      onClick={() => onZoom?.(photo)}
+      className="group relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden cursor-pointer bg-stone-100 dark:bg-stone-800 shadow-sm border border-stone-200/80 dark:border-white/10"
+    >
+      <Image
+        src={photo.url}
+        alt={photo.caption || `Fotografia principal de ${treeName}`}
+        fill
+        sizes="(max-width: 768px) 100vw, 420px"
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+      {/* Badge da Categoria */}
+      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase border border-white/10">
+        {CATEGORY_LABELS[photo.category] || photo.category}
+      </div>
+
+      {/* Botão Zoom */}
+      <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/50 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity">
+        <ZoomIn className="w-4 h-4" />
+      </div>
+
+      {/* Legenda / Crédito */}
+      {(photo.caption || photo.credit) && (
+        <div className="absolute bottom-3 left-3 right-3 text-white text-xs">
+          {photo.caption && <div className="font-semibold truncate">{photo.caption}</div>}
+          {photo.credit && <div className="text-[10px] text-stone-300 truncate">Foto: {photo.credit}</div>}
+        </div>
+      )}
+    </div>
+  );
+};
+
+/**
+ * 2. Carrossel Deslizante de Fotografias Botânicas (Next/Image)
+ */
+export const TreePhotoCarousel: React.FC<{
+  photos: PhotoItem[];
+  treeName: string;
+  onZoom?: (photo: PhotoItem) => void;
+}> = ({ photos, treeName, onZoom }) => {
+  if (photos.length === 0) return null;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+        <span>Galeria Fotográfica ({photos.length})</span>
+        <span className="text-[10px] text-stone-400 font-normal">Deslize para ver</span>
+      </div>
+
+      <div className="flex gap-2.5 overflow-x-auto pb-1.5 snap-x snap-mandatory scrollbar-none smooth-touch-scroll">
+        {photos.map((photo, idx) => (
+          <div
+            key={photo.id || idx}
+            onClick={() => onZoom?.(photo)}
+            className="group relative flex-shrink-0 w-28 sm:w-32 h-24 rounded-xl overflow-hidden cursor-pointer bg-stone-100 dark:bg-stone-800 border border-stone-200/80 dark:border-white/10 snap-start focus:outline-none focus:ring-2 focus:ring-[#d6a35b]"
+          >
+            <Image
+              src={photo.thumbUrl || photo.url}
+              alt={photo.caption || `Detalhe fotográfico de ${treeName}`}
+              fill
+              sizes="130px"
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors" />
+            <div className="absolute bottom-1 left-1 right-1 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-sm text-[9px] text-white font-medium truncate text-center">
+              {CATEGORY_LABELS[photo.category] || photo.category}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Componente unificado com modal de zoom
+ */
 export const TreeGallery: React.FC<TreeGalleryProps> = ({ primaryPhoto, gallery, treeName }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
-  const allPhotos: PhotoItem[] = [];
 
+  const allPhotos: PhotoItem[] = [];
   if (primaryPhoto) {
     allPhotos.push(primaryPhoto);
   }
@@ -33,83 +132,15 @@ export const TreeGallery: React.FC<TreeGalleryProps> = ({ primaryPhoto, gallery,
     }
   });
 
-  if (allPhotos.length === 0) {
-    return (
-      <div className="w-full h-44 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center text-slate-400 text-xs p-4 text-center">
-        <Camera className="w-8 h-8 mb-2 opacity-50 text-slate-400" />
-        <span>Nenhuma fotografia cadastrada no momento</span>
-        <span className="text-[10px] text-slate-500 mt-1">Registros fotográficos serão adicionados em campo</span>
-      </div>
-    );
-  }
-
-  const heroPhoto = allPhotos[0];
-  const remainingPhotos = allPhotos.slice(1);
+  const hero = allPhotos[0] || null;
+  const remaining = allPhotos.slice(1);
 
   return (
-    <div className="space-y-3">
-      {/* Imagem Principal em Destaque */}
-      <div
-        onClick={() => setSelectedPhoto(heroPhoto)}
-        className="group relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden cursor-pointer bg-slate-100 dark:bg-slate-800 shadow-sm border border-slate-200/80 dark:border-slate-800"
-      >
-        <Image
-          src={heroPhoto.url}
-          alt={heroPhoto.caption || `Fotografia de ${treeName}`}
-          fill
-          sizes="(max-width: 768px) 100vw, 400px"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+    <div className="space-y-4">
+      <TreeHeroPhoto photo={hero} treeName={treeName} onZoom={setSelectedPhoto} />
 
-        {/* Badge da Categoria */}
-        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold tracking-wide uppercase">
-          {CATEGORY_LABELS[heroPhoto.category] || heroPhoto.category}
-        </div>
-
-        {/* Botão Zoom */}
-        <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/50 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity">
-          <ZoomIn className="w-4 h-4" />
-        </div>
-
-        {/* Legenda / Crédito */}
-        {(heroPhoto.caption || heroPhoto.credit) && (
-          <div className="absolute bottom-3 left-3 right-3 text-white text-xs">
-            {heroPhoto.caption && <div className="font-medium truncate">{heroPhoto.caption}</div>}
-            {heroPhoto.credit && <div className="text-[10px] text-slate-300 truncate">Foto: {heroPhoto.credit}</div>}
-          </div>
-        )}
-      </div>
-
-      {/* Grade de Miniaturas da Galeria */}
-      {remainingPhotos.length > 0 && (
-        <div>
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
-            Galeria de Detalhes ({remainingPhotos.length})
-          </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-            {remainingPhotos.map((photo) => (
-              <div
-                key={photo.id}
-                onClick={() => setSelectedPhoto(photo)}
-                className="group relative h-20 rounded-xl overflow-hidden cursor-pointer bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              >
-                <Image
-                  src={photo.thumbUrl || photo.url}
-                  alt={photo.caption || `Detalhe de ${treeName}`}
-                  fill
-                  sizes="120px"
-                  className="object-cover transition-transform duration-200 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                <div className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/70 text-[9px] text-white font-medium truncate max-w-[90%]">
-                  {CATEGORY_LABELS[photo.category] || photo.category}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {remaining.length > 0 && (
+        <TreePhotoCarousel photos={remaining} treeName={treeName} onZoom={setSelectedPhoto} />
       )}
 
       {/* Modal Ampliado de Fotografia */}
@@ -121,7 +152,7 @@ export const TreeGallery: React.FC<TreeGalleryProps> = ({ primaryPhoto, gallery,
           onClick={() => setSelectedPhoto(null)}
         >
           <div
-            className="relative max-w-2xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800"
+            className="relative max-w-2xl w-full bg-[#0b211d] rounded-3xl overflow-hidden shadow-2xl border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -137,26 +168,26 @@ export const TreeGallery: React.FC<TreeGalleryProps> = ({ primaryPhoto, gallery,
                 src={selectedPhoto.url}
                 alt={selectedPhoto.caption || treeName}
                 fill
-                sizes="(max-width: 768px) 100vw, 600px"
+                sizes="(max-width: 768px) 100vw, 650px"
                 className="object-contain"
               />
             </div>
 
-            <div className="p-4 bg-slate-900/90 text-white text-xs border-t border-slate-800 flex items-center justify-between">
+            <div className="p-4 bg-[#0b211d]/95 text-white text-xs border-t border-white/10 flex items-center justify-between">
               <div>
-                <span className="font-semibold text-emerald-400 mr-2">
+                <span className="font-bold text-[#d6a35b] mr-2">
                   [{CATEGORY_LABELS[selectedPhoto.category] || selectedPhoto.category}]
                 </span>
-                <span>{selectedPhoto.caption || treeName}</span>
+                <span className="text-[#f8f6ef]">{selectedPhoto.caption || treeName}</span>
                 {selectedPhoto.credit && (
-                  <div className="text-[10px] text-slate-400 mt-0.5">Crédito: {selectedPhoto.credit}</div>
+                  <div className="text-[10px] text-stone-400 mt-0.5">Crédito: {selectedPhoto.credit}</div>
                 )}
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-white font-medium"
+                className="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-white font-medium transition-colors"
               >
-                Voltar
+                Fechar
               </button>
             </div>
           </div>

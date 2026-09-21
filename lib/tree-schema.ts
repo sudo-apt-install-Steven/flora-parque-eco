@@ -120,14 +120,29 @@ export const TreeCoordinatesSchema = z.object({
 export type TreeCoordinates = z.infer<typeof TreeCoordinatesSchema>;
 
 /**
+ * Status de verificação científica do espécime
+ */
+export const VerificationStatusSchema = z.enum([
+  'pendente',
+  'em_analise',
+  'identificacao_preliminar',
+  'verificado',
+  'rejeitado'
+]);
+export type VerificationStatus = z.infer<typeof VerificationStatusSchema>;
+
+/**
  * Modelagem estrita do item do catálogo acadêmico (TreeCatalogItem)
  */
 export const TreeCatalogItemSchema = z.object({
   id: z.string().min(1, 'ID único é obrigatório'),
   coordinates: TreeCoordinatesSchema,
-  scientificName: z.string().nullable(),
   popularName: z.string().min(1, 'Nome popular é obrigatório'),
+  scientificName: z.string().nullable(),
   family: z.string().nullable(),
+  collectionGroup: CollectionGroupSchema.optional(),
+  verificationStatus: VerificationStatusSchema.optional(),
+  plantNetData: PlantNetDataSchema.nullable().optional(),
   plantnet: PlantNetDataSchema.nullable().optional(),
   collection: CollectionDataSchema.optional(),
   gallery: MediaGallerySchema.default([])
@@ -148,18 +163,6 @@ export type FieldGroup = z.infer<typeof FieldGroupSchema>;
  */
 export const TreeConfidenceSchema = z.enum(['baixa', 'media', 'alta', 'indeterminada']);
 export type TreeConfidence = z.infer<typeof TreeConfidenceSchema>;
-
-/**
- * Status de verificação científica do espécime
- */
-export const VerificationStatusSchema = z.enum([
-  'pendente',
-  'em_analise',
-  'identificacao_preliminar',
-  'verificado',
-  'rejeitado'
-]);
-export type VerificationStatus = z.infer<typeof VerificationStatusSchema>;
 
 /**
  * Schema principal da árvore (Tree)
@@ -397,9 +400,12 @@ export function treeToCatalogItem(tree: Tree): TreeCatalogItem {
       lat: tree.latitude ?? -12.7044,
       lng: tree.longitude ?? -60.1189
     },
-    scientificName: tree.scientificNameSuggested ?? null,
     popularName: tree.popularName,
+    scientificName: tree.scientificNameSuggested ?? null,
     family: tree.family ?? null,
+    collectionGroup,
+    verificationStatus: tree.verificationStatus,
+    plantNetData: plantnetData,
     plantnet: plantnetData,
     collection: {
       collectionGroup,
@@ -414,20 +420,22 @@ export function treeToCatalogItem(tree: Tree): TreeCatalogItem {
  * Converte TreeCatalogItem de volta para a entidade interna Tree
  */
 export function catalogItemToTree(item: TreeCatalogItem): Tree {
+  const collGroup = item.collectionGroup || item.collection?.collectionGroup;
   let group: FieldGroup = 'groupA';
-  if (item.collection?.collectionGroup === 'DIREITA_LAGO') {
+  if (collGroup === 'DIREITA_LAGO') {
     group = 'groupC';
-  } else if (item.collection?.collectionGroup === 'ESQUERDA_LAGO') {
+  } else if (collGroup === 'ESQUERDA_LAGO') {
     group = 'groupA';
   }
 
+  const pNet = item.plantNetData || item.plantnet;
   let confidence: TreeConfidence = 'indeterminada';
-  if (item.plantnet) {
-    if (item.plantnet.status === 'CONFIRMADO' || (item.plantnet.score ?? 0) >= 0.85) {
+  if (pNet) {
+    if (pNet.status === 'CONFIRMADO' || (pNet.score ?? 0) >= 0.85) {
       confidence = 'alta';
-    } else if (item.plantnet.status === 'EM_REVISÃO' || (item.plantnet.score ?? 0) >= 0.6) {
+    } else if (pNet.status === 'EM_REVISÃO' || (pNet.score ?? 0) >= 0.6) {
       confidence = 'media';
-    } else if ((item.plantnet.score ?? 0) > 0) {
+    } else if ((pNet.score ?? 0) > 0) {
       confidence = 'baixa';
     }
   }
@@ -463,7 +471,7 @@ export function catalogItemToTree(item: TreeCatalogItem): Tree {
     plantnet: item.plantnet ?? null,
     group,
     collectedAt: item.collection?.collectedAt || item.collection?.collectionDate || new Date().toISOString(),
-    verificationStatus: item.plantnet?.status === 'CONFIRMADO' ? 'verificado' : 'identificacao_preliminar',
+    verificationStatus: item.verificationStatus || (item.plantnet?.status === 'CONFIRMADO' ? 'verificado' : 'identificacao_preliminar'),
     isMock: false
   };
 }
