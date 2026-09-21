@@ -1,0 +1,34 @@
+{
+  "name": "Parque Ecológico — Inventário Arbóreo Digital",
+  "short_name": "FloraParque",
+  "description": "Inventário Arbóreo Digital do Parque Ecológico Municipal Marechal Cândido Rondon e IFRO Campus Vilhena",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b211d",
+  "theme_color": "#10b981",
+  "lang": "pt-BR",
+  "categories": ["education", "navigation", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-dark-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

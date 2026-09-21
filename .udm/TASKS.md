@@ -69,8 +69,26 @@
 - [x] Criar suíte de 35 novos testes automatizados no Vitest cobrindo fallbacks, filtros, pipeline de ingestão e store Zustand.
 - [x] Garantir 100% de testes aprovados (47/47 testes PASS) e 0 erros de TypeScript / Build estático Next.js.
 
+## Fase 11: Motor GIS Modular, Modelagem Estrita, Actions Zustand & PWA Offline (Concluída e Auditada)
+- [x] Modelagem estrita de dados TypeScript/Zod (`TreeCatalogItem`, `PlantNetData`, `CollectionData`, `MediaGallery`) com 0% `any` (`lib/tree-schema.ts`).
+- [x] Conversores bidirecionais `treeToCatalogItem()` e `catalogItemToTree()` com preservação integral de fotos primárias (`primaryPhoto`).
+- [x] Motor GIS modular com alternância entre 3 provedores de dados: Satélite, Planta Técnica e Exploração (`lib/gis/gis-engine.ts`).
+- [x] Infraestrutura de suporte a raster overlay georreferenciado (drone/ortomosaico local) integrado ao MapLibre GL com ordenação z-index controlada abaixo dos pontos de árvores (`lib/gis/layers.ts`).
+- [x] Funções de ingestão GeoJSON estruturadas para Lago, Pistas, Ponte, Trilhas, Playground e IFRO (`ingestPlantaGeoJSON`).
+- [x] Algoritmo de agrupamento espacial hierárquico puro (Supercluster) otimizado com Grid Espacial O(N) e suporte a bboxes invertidos (`SpatialClusterIndex` / `lib/gis/clustering.ts`).
+- [x] Zustand 5 store com actions estritas: `initializeCatalog()`, `setLayerMode()`, `focusTree()`, `filterByFamily()`, `filterByGroup()`.
+- [x] Validação em tempo de execução Zod em `initializeCatalog()` prevenindo corrupção de estado.
+- [x] Suporte unificado de filtros para equipes de campo (`groupA`, `groupB`, `groupC`) e zonas acadêmicas (`ESQUERDA_LAGO`, `DIREITA_LAGO`).
+- [x] Tratamento de estados assíncronos e de falha na store (`isLoading`, `hasError`, `errorMessage`, `setIsLoading`, `setHasError`).
+- [x] Service Worker PWA resiliente com `Cache-First` (UI/SVGs), `Stale-While-Revalidate` (catálogo botânico JSON/CSV) e fallback GeoJSON (`public/sw.js`).
+- [x] Manifesto PWA configurado com ícones reais para modo standalone (`public/manifest.json`).
+- [x] Hook utilitário `useOfflineStatus()` com suporte a controlador ativo imediato (`lib/pwa/use-offline-status.ts`).
+- [x] Auto-auditoria de re-renders: `MapContainerComponent` encapsulado com `React.memo`.
+- [x] Suíte de testes automatizados expandida de 47 para 78 testes aprovados (10/10 suítes, 100% PASS).
+- [x] Build de produção 100% PASS com zero erros TypeScript.
+
 ## Próximos Passos (Para o Próximo Agente)
-- [ ] Importar o dataset de campo real das turmas dos Grupos A, B e C usando o pipeline `ingestTreeRecords()` diretamente na interface ou via CLI.
-- [ ] Conectar imagem aérea recente de drone como camada raster overlay no `PARK_CONFIG.customRasterOverlay`.
-- [ ] Ajustar geometrias finas do lago e playground após conferência presencial de campo com GPS geodésico.
-- [ ] Opcional: Excluir a pasta `design_do_v0_aqui/` (ou `_v0_design_raw/`) pois todo o código e design foram 100% integrados.
+- [ ] Conectar imagem aérea real de drone ao `PARK_CONFIG.customRasterOverlay` para visualização em alta resolução.
+- [ ] Importar o dataset de campo definitivo dos Grupos A, B e C usando `initializeCatalog()` ou `importData()`.
+- [ ] UI Agent: Customizar estilização temática dos marcadores e painéis com base nos seletores memoizados (`useActiveTree`, `useFilteredCatalog`, `useCatalogStatus`, `useOfflineStatus`).
+

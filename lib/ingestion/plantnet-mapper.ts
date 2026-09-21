@@ -83,9 +83,18 @@ export function mapPlantNetApiResponse(raw: RawPlantNetPayload | null | undefine
       recommendedConfidence = 'baixa';
     }
 
+    let status: 'SUGESTÃO' | 'EM_REVISÃO' | 'CONFIRMADO' = 'SUGESTÃO';
+    if (clampedScore >= 0.85) {
+      status = 'CONFIRMADO';
+    } else if (clampedScore >= 0.5) {
+      status = 'EM_REVISÃO';
+    }
+
     const plantnetData: PlantNetData = {
       taxon: taxon || undefined,
       score: Number(clampedScore.toFixed(3)),
+      plantnetUrl: referenceUrl,
+      status,
       url: referenceUrl,
       familySuggested: family,
       genusSuggested: genus,

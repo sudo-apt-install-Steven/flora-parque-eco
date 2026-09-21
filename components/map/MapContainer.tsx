@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { PARK_CONFIG } from '@/lib/park-config';
 import { SATELLITE_STYLE, PLANTA_STYLE, EXPLORATION_STYLE } from '@/lib/map-styles';
 import { Tree } from '@/lib/tree-schema';
 import { treesToGeoJSON } from '@/lib/trees';
+import { applyRasterOverlay, removeRasterOverlay } from '@/lib/gis';
 
 interface MapContainerProps {
   currentMode: 'satellite' | 'planta' | 'exploration';
@@ -19,7 +20,7 @@ const TREE_SOURCE_ID = 'trees-source';
 
 type TreeFeatureId = string | number;
 
-export const MapContainer: React.FC<MapContainerProps> = ({
+const MapContainerComponent: React.FC<MapContainerProps> = ({
   currentMode,
   trees,
   selectedTree,
@@ -474,6 +475,12 @@ export const MapContainer: React.FC<MapContainerProps> = ({
     const handleStyleLoad = () => {
       setupTreeLayers(map);
       syncSelectedFeatureState(map);
+
+      if (currentMode === 'satellite' && PARK_CONFIG.customRasterOverlay.enabled) {
+        applyRasterOverlay(map, PARK_CONFIG.customRasterOverlay);
+      } else {
+        removeRasterOverlay(map);
+      }
     };
 
     map.once('style.load', handleStyleLoad);
@@ -557,3 +564,6 @@ export const MapContainer: React.FC<MapContainerProps> = ({
     </div>
   );
 };
+
+export const MapContainer = React.memo(MapContainerComponent);
+

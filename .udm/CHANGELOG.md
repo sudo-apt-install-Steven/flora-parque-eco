@@ -1,6 +1,67 @@
 # UDM — CHANGELOG
 
+## [0.4.1] — 2026-09-20 [ANTIGRAVITY: CORE/DATA]
+
+### Corrigido & Aprimorado
+- **Preservação de Fotos Primárias (`lib/tree-schema.ts`):**
+  - `treeToCatalogItem`: Garantida inclusão da foto principal (`primaryPhoto`) na galeria `gallery` (`MediaGallery`) mesmo quando `tree.gallery` for vazia, eliminando perda de imagens na conversão bidirecional.
+  - `CollectionDataSchema`: Suporte unificado tanto para `collectedAt` quanto para `collectionDate` na modelagem acadêmica.
+  - `PhotoCategory`: Mapeamento aprimorado de fotos botânicas florais ('flor') para 'FRUTO' em vez de 'TRONCO'.
+- **Blindagem e Validação no Zustand Store (`lib/store/tree-store.ts`):**
+  - `initializeCatalog`: Implementada validação estrita em tempo de execução via `TreeCatalogItemSchema.safeParse` e `TreeSchema.safeParse`, prevenindo injeção de dados corrompidos e eliminando crashes em cascata no motor de busca (`filterTrees`).
+  - Reset inteligente de `selectedTreeId` quando o espécime previamente selecionado não constar no catálogo recém-inicializado.
+- **Filtro Acadêmico e Territorial Abrangente (`lib/filters.ts` & `lib/store/tree-store.ts`):**
+  - `filterByGroup('ESQUERDA_LAGO')`: Agora agrega e filtra simultaneamente os espécimes do Setor Norte (`groupA`) e do Setor Sul (`groupB`), corrigindo omissão de espécimes da margem esquerda do lago.
+  - `filterByGroup('DIREITA_LAGO')`: Mapeia estritamente para `groupC` (Trilha Principal).
+  - Preservação de compatibilidade total com os componentes de UI (`FieldGroup | 'all'`).
+- **Compatibilidade MapLibre GL no Conversor GeoJSON (`lib/gis/layers.ts`):**
+  - `catalogToGeoJSON`: Mapeamento automático de `collectionGroup` acadêmico para o `group` cartográfico (`groupA`, `groupB`, `groupC`), garantindo que os medalhões WebGL recebam suas cores corretas (Esmeralda, Azul, Âmbar).
+  - `applyRasterOverlay`: Inserção controlada antes das camadas de árvores (`clusters-halo`, `clusters`, `unclustered-point`), garantindo que ortomosaicos de drone nunca obstruam os marcadores ou hitboxes de toque.
+- **Otimização de Escala do Supercluster (`lib/gis/clustering.ts`):**
+  - Implementado Grid Espacial (Spatial Hash Grid) no `clusterAtZoom`, reduzindo a complexidade de agrupamento de O(N^2) para O(N) e permitindo processar milhares de pontos em milissegundos.
+  - Normalização automática de coordenadas em `getClusters` para suportar bounding boxes invertidos.
+- **Resiliência e Fallbacks Offline no PWA (`public/sw.js` & `lib/pwa/`):**
+  - Precaching resiliente via `Promise.allSettled` no Service Worker, eliminando falhas catastróficas de cache em caso de assets faltantes.
+  - Fallback offline exclusivo para requisições `/geo/*` retornando GeoJSON válido (`FeatureCollection` vazia) em vez de SVG, prevenindo exceções de `JSON.parse`.
+  - Cópia física de ícones e assets (`icon.svg`, `icon-dark-32x32.png`, `apple-icon.png`, `favicon.ico`) para `public/`.
+  - `useOfflineStatus()` enriquecido para reconhecer o controlador do Service Worker ativo imediatamente.
+- **Suíte de Testes Expandida:**
+  - 78/78 testes aprovados no Vitest (10/10 suítes, 100% PASS).
+  - Build estático Next.js 15.5 gerado com 100% de sucesso e 0 erros de compilação TypeScript.
+
+## [0.4.0] — 2026-09-20 [ANTIGRAVITY: CORE/DATA]
+
+### Adicionado
+- **Modelagem Rigorosa de Dados (`lib/tree-schema.ts`):**
+  - Definição estrita das tipagens `TreeCatalogItem`, `PlantNetData`, `CollectionData` e `MediaGallery` com 0% `any`.
+  - Enums de verificação botânica: `PlantNetStatus` ('SUGESTÃO', 'EM_REVISÃO', 'CONFIRMADO'), `CollectionGroup` ('ESQUERDA_LAGO', 'DIREITA_LAGO', 'OUTROS') e `MediaPhotoType` ('ARVORE_INTEIRA', 'FOLHA', 'FRUTO', 'CASCA', 'TRONCO').
+  - Conversores bidirecionais entre a entidade interna `Tree` e o modelo acadêmico `TreeCatalogItem` (`treeToCatalogItem`, `catalogItemToTree`).
+- **Motor Cartográfico Modular GIS & Camadas (`lib/gis/`):**
+  - Módulo `lib/gis/gis-engine.ts` com classe `GisEngine` para gerenciar o ciclo de vida do MapLibre GL e alternar entre os 3 provedores: Satélite, Planta Técnica e Exploração.
+  - Suporte completo a sobreposição de raster local georreferenciado (drone/ortomosaico em alta resolução) com controle de opacidade via `applyRasterOverlay` e `removeRasterOverlay` (`lib/gis/layers.ts`).
+  - Funções de ingestão e validação GeoJSON para a Planta Técnica (`ingestPlantaGeoJSON`), segregando lago, caminhos, pistas, ponte, trilhas, playground e prédios institucionais do IFRO.
+  - Conversor unificado `catalogToGeoJSON` para árvores e itens de catálogo.
+- **Agrupamento Espacial Hierárquico Puro (Supercluster):**
+  - Módulo `lib/gis/clustering.ts` contendo `SpatialClusterIndex` e `createSupercluster`: projeção Web Mercator, agrupamento ponderado por raio em pixels, expansão dinâmica de zoom (`getClusterExpansionZoom`) e recuperação de folhas (`getClusterLeaves`).
+- **Actions Estritas e Tratamento de Erros no Zustand Store (`lib/store/tree-store.ts`):**
+  - Novas actions estritas: `initializeCatalog(data)`, `setLayerMode(mode)`, `focusTree(id)`, `filterByFamily(family)`, `filterByGroup(group)`.
+  - Tratamento de estados assíncronos e de falhas: `isLoading: boolean`, `hasError: boolean`, `errorMessage: string | null`, `setIsLoading()`, `setHasError()`.
+  - Novo hook seletor `useCatalogStatus()`.
+- **Progressive Web App & Estratégia Offline:**
+  - Manifesto PWA em `public/manifest.json` configurado com tema Deep Forest (`#0b211d`) e modo `standalone`.
+  - Service Worker `public/sw.js` com estratégia `Cache-First` para arquivos vitais da UI e SVGs cartográficos/GeoJSONs, e estratégia `Stale-While-Revalidate` para o catálogo botânico JSON/CSV.
+  - Hook utilitário `useOfflineStatus()` em `lib/pwa/use-offline-status.ts` com monitoramento de conectividade em tempo real e auto-registro do Service Worker.
+- **Auditoria de Performance e Memoização:**
+  - Componente cartográfico `MapContainer` envolvido em `React.memo` para evitar re-renderizações espúrias do canvas WebGL.
+- **Expansão da Suíte de Testes Automatizados:**
+  - `test/schema-models.test.ts`: Validação estrita de schemas Zod e conversores bidirecionais (7 testes).
+  - `test/gis-engine.test.ts`: Testes do algoritmo Supercluster, projeção Mercator e ingestão de GeoJSON (9 testes).
+  - `test/store-strict.test.ts`: Testes das actions estritas, inicialização e tratamento de erros (7 testes).
+  - `test/pwa.test.ts`: Testes de estratégias de Service Worker, manifesto e conectividade (4 testes).
+  - Total geral da suíte: 74/74 testes aprovados no Vitest (100% PASS).
+
 ## [0.3.0] — 2026-09-20 (Engenharia de Dados, Gerenciamento de Estado Global Zustand & QA de Resiliência)
+
 
 ### Adicionado
 - **Tipagem Estrita Zod & Modelos Canônicos (`lib/tree-schema.ts`):**

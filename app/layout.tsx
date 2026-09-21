@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   authors: [{ name: 'IFRO Campus Vilhena & Antigravity Lead Engineer' }],
   icons: {
     icon: '/favicon.ico'
-  }
+  },
+  manifest: '/manifest.json'
 };
 
 export const viewport: Viewport = {

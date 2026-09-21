@@ -29,12 +29,21 @@ export const PhotoItemSchema = z.object({
 export type PhotoItem = z.infer<typeof PhotoItemSchema>;
 
 /**
+ * Status de verificação assistida pelo PlantNet
+ */
+export const PlantNetStatusSchema = z.enum(['SUGESTÃO', 'EM_REVISÃO', 'CONFIRMADO']);
+export type PlantNetStatus = z.infer<typeof PlantNetStatusSchema>;
+
+/**
  * Informações de identificação assistida pelo PlantNet
+ * Atende estritamente à modelagem acadêmica com score, plantnetUrl e status
  */
 export const PlantNetDataSchema = z.object({
-  taxon: z.string().optional(),
   score: z.number().min(0).max(1).optional(),
-  url: z.string().url('URL do PlantNet deve ser válida').optional(),
+  plantnetUrl: z.string().nullable().optional(),
+  status: PlantNetStatusSchema.optional(),
+  taxon: z.string().optional(),
+  url: z.string().optional(),
   familySuggested: z.string().optional(),
   genusSuggested: z.string().optional(),
   scientificNameWithoutAuthor: z.string().optional(),
@@ -42,6 +51,88 @@ export const PlantNetDataSchema = z.object({
   powoId: z.string().optional()
 });
 export type PlantNetData = z.infer<typeof PlantNetDataSchema>;
+
+/**
+ * Grupos de levantamento em campo para o catálogo acadêmico
+ */
+export const CollectionGroupSchema = z.enum(['ESQUERDA_LAGO', 'DIREITA_LAGO', 'OUTROS']);
+export type CollectionGroup = z.infer<typeof CollectionGroupSchema>;
+
+/**
+ * Sub-objeto contendo o grupo e a data da coleta de campo
+ */
+export const CollectionDataSchema = z.object({
+  collectionGroup: CollectionGroupSchema,
+  collectedAt: z.string().optional(),
+  collectionDate: z.string().optional(),
+  collectorName: z.string().optional(),
+  notes: z.string().optional()
+}).refine(
+  (data) => Boolean(data.collectedAt || data.collectionDate),
+  { message: 'Data da coleta é obrigatória (collectedAt ou collectionDate)' }
+);
+export type CollectionData = {
+  collectionGroup: CollectionGroup;
+  collectedAt?: string;
+  collectionDate?: string;
+  collectorName?: string;
+  notes?: string;
+};
+
+/**
+ * Tipos de foto para galeria de mídia acadêmica
+ */
+export const MediaPhotoTypeSchema = z.enum([
+  'ARVORE_INTEIRA',
+  'FOLHA',
+  'FRUTO',
+  'CASCA',
+  'TRONCO'
+]);
+export type MediaPhotoType = z.infer<typeof MediaPhotoTypeSchema>;
+
+/**
+ * Item individual da galeria de mídia do espécime
+ */
+export const MediaPhotoItemSchema = z.object({
+  id: z.string().min(1, 'ID da foto é obrigatório'),
+  url: z.string().min(1, 'URL da foto é obrigatória'),
+  type: MediaPhotoTypeSchema,
+  caption: z.string().optional(),
+  credit: z.string().optional(),
+  capturedAt: z.string().optional()
+});
+export type MediaPhotoItem = z.infer<typeof MediaPhotoItemSchema>;
+
+/**
+ * Array de objetos definindo as fotos da árvore
+ */
+export const MediaGallerySchema = z.array(MediaPhotoItemSchema);
+export type MediaGallery = z.infer<typeof MediaGallerySchema>;
+
+/**
+ * Coordenadas geográficas estritas com lat e lng numéricos
+ */
+export const TreeCoordinatesSchema = z.object({
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180)
+});
+export type TreeCoordinates = z.infer<typeof TreeCoordinatesSchema>;
+
+/**
+ * Modelagem estrita do item do catálogo acadêmico (TreeCatalogItem)
+ */
+export const TreeCatalogItemSchema = z.object({
+  id: z.string().min(1, 'ID único é obrigatório'),
+  coordinates: TreeCoordinatesSchema,
+  scientificName: z.string().nullable(),
+  popularName: z.string().min(1, 'Nome popular é obrigatório'),
+  family: z.string().nullable(),
+  plantnet: PlantNetDataSchema.nullable().optional(),
+  collection: CollectionDataSchema.optional(),
+  gallery: MediaGallerySchema.default([])
+});
+export type TreeCatalogItem = z.infer<typeof TreeCatalogItemSchema>;
 
 /**
  * Grupos de campo do levantamento arbóreo
@@ -215,6 +306,7 @@ export interface IngestionOptions {
 export interface TreeFilterCriteria {
   searchQuery?: string;
   group?: FieldGroup | 'all';
+  collectionGroup?: CollectionGroup | 'all';
   family?: string | 'all';
   confidence?: TreeConfidence | 'all';
   minPlantnetScore?: number; // 0.0 a 1.0
@@ -237,3 +329,142 @@ export interface TreeFacetedStats {
   withCoordinatesCount: number;
   withPhotosCount: number;
 }
+
+/**
+ * Converte a entidade interna Tree para o padrão estrito de catálogo acadêmico TreeCatalogItem
+ */
+export function treeToCatalogItem(tree: Tree): TreeCatalogItem {
+  let collectionGroup: CollectionGroup = 'OUTROS';
+  if (tree.group === 'groupA' || tree.group === 'groupB') {
+    collectionGroup = 'ESQUERDA_LAGO';
+  } else if (tree.group === 'groupC') {
+    collectionGroup = 'DIREITA_LAGO';
+  }
+
+  // Coleta todas as fotos incluindo primaryPhoto se não estiver duplicada na galeria
+  const allPhotos: PhotoItem[] = [];
+  if (tree.primaryPhoto) {
+    allPhotos.push(tree.primaryPhoto);
+  }
+  for (const p of tree.gallery || []) {
+    if (!allPhotos.some((existing) => existing.id === p.id || existing.url === p.url)) {
+      allPhotos.push(p);
+    }
+  }
+
+  const gallery: MediaGallery = allPhotos.map((p, idx) => {
+    let type: MediaPhotoType = 'ARVORE_INTEIRA';
+    if (p.category === 'folha') type = 'FOLHA';
+    else if (p.category === 'fruto' || p.category === 'flor') type = 'FRUTO';
+    else if (p.category === 'casca') type = 'CASCA';
+    else if (p.category === 'arvore_inteira') type = 'ARVORE_INTEIRA';
+    else type = 'TRONCO';
+
+    return {
+      id: p.id || `media-${tree.id}-${idx}`,
+      url: p.url,
+      type,
+      caption: p.caption,
+      credit: p.credit,
+      capturedAt: p.capturedAt
+    };
+  });
+
+  const plantnetData: PlantNetData | null = tree.plantnet
+    ? {
+        score: tree.plantnet.score ?? 0,
+        plantnetUrl: tree.plantnet.url || tree.plantnet.plantnetUrl || null,
+        status:
+          tree.plantnet.status ||
+          (tree.confidence === 'alta'
+            ? 'CONFIRMADO'
+            : tree.confidence === 'media'
+              ? 'EM_REVISÃO'
+              : 'SUGESTÃO'),
+        taxon: tree.plantnet.taxon,
+        url: tree.plantnet.url,
+        familySuggested: tree.plantnet.familySuggested,
+        genusSuggested: tree.plantnet.genusSuggested,
+        scientificNameWithoutAuthor: tree.plantnet.scientificNameWithoutAuthor,
+        gbifId: tree.plantnet.gbifId,
+        powoId: tree.plantnet.powoId
+      }
+    : null;
+
+  return {
+    id: tree.id,
+    coordinates: {
+      lat: tree.latitude ?? -12.7044,
+      lng: tree.longitude ?? -60.1189
+    },
+    scientificName: tree.scientificNameSuggested ?? null,
+    popularName: tree.popularName,
+    family: tree.family ?? null,
+    plantnet: plantnetData,
+    collection: {
+      collectionGroup,
+      collectedAt: tree.collectedAt,
+      collectionDate: tree.collectedAt
+    },
+    gallery
+  };
+}
+
+/**
+ * Converte TreeCatalogItem de volta para a entidade interna Tree
+ */
+export function catalogItemToTree(item: TreeCatalogItem): Tree {
+  let group: FieldGroup = 'groupA';
+  if (item.collection?.collectionGroup === 'DIREITA_LAGO') {
+    group = 'groupC';
+  } else if (item.collection?.collectionGroup === 'ESQUERDA_LAGO') {
+    group = 'groupA';
+  }
+
+  let confidence: TreeConfidence = 'indeterminada';
+  if (item.plantnet) {
+    if (item.plantnet.status === 'CONFIRMADO' || (item.plantnet.score ?? 0) >= 0.85) {
+      confidence = 'alta';
+    } else if (item.plantnet.status === 'EM_REVISÃO' || (item.plantnet.score ?? 0) >= 0.6) {
+      confidence = 'media';
+    } else if ((item.plantnet.score ?? 0) > 0) {
+      confidence = 'baixa';
+    }
+  }
+
+  const gallery: PhotoItem[] = item.gallery.map((m) => {
+    let category: PhotoCategory = 'arvore_inteira';
+    if (m.type === 'FOLHA') category = 'folha';
+    else if (m.type === 'FRUTO') category = 'fruto';
+    else if (m.type === 'CASCA') category = 'casca';
+    else if (m.type === 'TRONCO') category = 'outro';
+    return {
+      id: m.id,
+      url: m.url,
+      category,
+      caption: m.caption,
+      credit: m.credit,
+      capturedAt: m.capturedAt
+    };
+  });
+
+  return {
+    id: item.id,
+    displayNumber: null,
+    popularName: item.popularName,
+    scientificNameSuggested: item.scientificName ?? 'Espécie indeterminada',
+    family: item.family ?? 'Indeterminada',
+    confidence,
+    latitude: item.coordinates.lat,
+    longitude: item.coordinates.lng,
+    locationAccuracy: null,
+    primaryPhoto: gallery[0] ?? null,
+    gallery,
+    plantnet: item.plantnet ?? null,
+    group,
+    collectedAt: item.collection?.collectedAt || item.collection?.collectionDate || new Date().toISOString(),
+    verificationStatus: item.plantnet?.status === 'CONFIRMADO' ? 'verificado' : 'identificacao_preliminar',
+    isMock: false
+  };
+}
+

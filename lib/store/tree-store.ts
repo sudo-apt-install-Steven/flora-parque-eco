@@ -8,7 +8,12 @@ import {
   TreeFacetedStats,
   SafeTree,
   IngestionOptions,
-  IngestionResult
+  IngestionResult,
+  TreeCatalogItem,
+  catalogItemToTree,
+  CollectionGroup,
+  TreeCatalogItemSchema,
+  TreeSchema
 } from '@/lib/tree-schema';
 import { filterTrees, calculateFacetedStats, getUniqueFamilies } from '@/lib/filters';
 import { getSafeTree } from '@/lib/fallbacks';
@@ -25,6 +30,11 @@ export interface TreeState {
   // Catálogo completo
   trees: Tree[];
 
+  // Estados de Carregamento e Ingestão
+  isLoading: boolean;
+  hasError: boolean;
+  errorMessage: string | null;
+
   // Seleção e Navegação Cartográfica
   selectedTreeId: string | null;
   focusKey: number;
@@ -40,6 +50,17 @@ export interface TreeState {
   isSearchOpen: boolean;
   isLegendOpen: boolean;
   isStatsOpen: boolean;
+
+  // Ações Estritas da Fase 4
+  initializeCatalog: (data: (Tree | TreeCatalogItem)[]) => void;
+  setLayerMode: (mode: LayerMode) => void;
+  focusTree: (id: string | null) => void;
+  filterByFamily: (family: string | 'all') => void;
+  filterByGroup: (group: FieldGroup | CollectionGroup | 'all') => void;
+
+  // Controle de Carregamento / Erro
+  setIsLoading: (isLoading: boolean) => void;
+  setHasError: (hasError: boolean, errorMessage?: string | null) => void;
 
   // Ações de Modificação
   setTrees: (trees: Tree[]) => void;
@@ -59,7 +80,6 @@ export interface TreeState {
 
   // Ações de Navegação e Modais
   setActiveNav: (nav: NavSection) => void;
-  setLayerMode: (mode: LayerMode) => void;
   setSearchOpen: (open: boolean) => void;
   setLegendOpen: (open: boolean) => void;
   setStatsOpen: (open: boolean) => void;
@@ -99,6 +119,9 @@ function getInitialValidatedTrees(): Tree[] {
  */
 export const useTreeStore = create<TreeState>((set, get) => ({
   trees: getInitialValidatedTrees(),
+  isLoading: false,
+  hasError: false,
+  errorMessage: null,
   selectedTreeId: null,
   focusKey: 0,
   activeNav: 'mapa',
@@ -108,7 +131,109 @@ export const useTreeStore = create<TreeState>((set, get) => ({
   isLegendOpen: false,
   isStatsOpen: false,
 
-  setTrees: (trees) => set({ trees }),
+  setIsLoading: (isLoading) => set({ isLoading }),
+
+  setHasError: (hasError, errorMessage = null) =>
+    set({ hasError, errorMessage: hasError ? errorMessage : null }),
+
+  initializeCatalog: (data) => {
+    try {
+      if (!Array.isArray(data)) {
+        set({
+          hasError: true,
+          errorMessage: 'Catálogo fornecido inválido: esperado um array de árvores',
+          isLoading: false
+        });
+        return;
+      }
+
+      const normalized: Tree[] = [];
+      for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        if (!item || typeof item !== 'object') {
+          set({
+            hasError: true,
+            errorMessage: `Item na posição ${i} é inválido: registro nulo ou não-objeto`,
+            isLoading: false
+          });
+          return;
+        }
+
+        if ('coordinates' in item && item.coordinates) {
+          const parsedCatalog = TreeCatalogItemSchema.safeParse(item);
+          if (!parsedCatalog.success) {
+            set({
+              hasError: true,
+              errorMessage: `Item na posição ${i} (${(item as { id?: string }).id || 'sem id'}) inválido no schema do catálogo: ${parsedCatalog.error.issues[0]?.message || 'dados inválidos'}`,
+              isLoading: false
+            });
+            return;
+          }
+          normalized.push(catalogItemToTree(parsedCatalog.data));
+        } else {
+          const parsedTree = TreeSchema.safeParse(item);
+          if (!parsedTree.success) {
+            set({
+              hasError: true,
+              errorMessage: `Item na posição ${i} (${(item as { id?: string }).id || 'sem id'}) inválido no schema de árvore: ${parsedTree.error.issues[0]?.message || 'dados inválidos'}`,
+              isLoading: false
+            });
+            return;
+          }
+          normalized.push(parsedTree.data);
+        }
+      }
+
+      set((state) => {
+        const stillSelected = state.selectedTreeId && normalized.some((t) => t.id === state.selectedTreeId);
+        return {
+          trees: normalized,
+          selectedTreeId: stillSelected ? state.selectedTreeId : null,
+          hasError: false,
+          errorMessage: null,
+          isLoading: false
+        };
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      set({
+        hasError: true,
+        errorMessage: `Falha ao inicializar catálogo: ${msg}`,
+        isLoading: false
+      });
+    }
+  },
+
+  focusTree: (id) => {
+    if (!id) {
+      set({ selectedTreeId: null });
+      return;
+    }
+    set((state) => ({
+      selectedTreeId: id,
+      activeNav: 'mapa',
+      focusKey: state.focusKey + 1
+    }));
+  },
+
+  filterByFamily: (family) =>
+    set((state) => ({
+      filters: { ...state.filters, family }
+    })),
+
+  filterByGroup: (group) => {
+    if (group === 'ESQUERDA_LAGO' || group === 'DIREITA_LAGO' || group === 'OUTROS') {
+      set((state) => ({
+        filters: { ...state.filters, group: 'all', collectionGroup: group }
+      }));
+    } else {
+      set((state) => ({
+        filters: { ...state.filters, group, collectionGroup: 'all' }
+      }));
+    }
+  },
+
+  setTrees: (trees) => set({ trees, hasError: false, errorMessage: null }),
 
   selectTree: (treeOrId) => {
     if (!treeOrId) {
@@ -191,13 +316,44 @@ export const useTreeStore = create<TreeState>((set, get) => ({
   setStatsOpen: (open) => set({ isStatsOpen: open }),
 
   importData: (rawInput, options) => {
-    const result = ingestTreeRecords(rawInput, options);
-    if (result.success && result.data.length > 0) {
-      set((state) => ({
-        trees: [...state.trees, ...result.data]
-      }));
+    set({ isLoading: true });
+    try {
+      const result = ingestTreeRecords(rawInput, options);
+      if (result.success && result.data.length > 0) {
+        set((state) => ({
+          trees: [...state.trees, ...result.data],
+          isLoading: false,
+          hasError: false,
+          errorMessage: null
+        }));
+      } else if (!result.success || (result.failedCount > 0 && result.importedCount === 0)) {
+        const errorMsg = result.errors[0]?.message || 'Erro durante a ingestão do catálogo de árvores';
+        set({
+          isLoading: false,
+          hasError: true,
+          errorMessage: errorMsg
+        });
+      } else {
+        set({ isLoading: false });
+      }
+      return result;
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      set({
+        isLoading: false,
+        hasError: true,
+        errorMessage: msg
+      });
+      return {
+        success: false,
+        totalProcessed: 0,
+        importedCount: 0,
+        failedCount: 1,
+        data: [],
+        errors: [{ index: 0, message: msg }],
+        warnings: []
+      };
     }
-    return result;
   }
 }));
 
@@ -294,3 +450,29 @@ export function useFilterActions(): {
     resetFilters
   };
 }
+
+/**
+ * Hook para monitorar estado de carregamento e eventuais falhas de ingestão
+ */
+export function useCatalogStatus(): {
+  isLoading: boolean;
+  hasError: boolean;
+  errorMessage: string | null;
+  setIsLoading: (loading: boolean) => void;
+  setHasError: (hasError: boolean, msg?: string | null) => void;
+} {
+  const isLoading = useTreeStore((s) => s.isLoading);
+  const hasError = useTreeStore((s) => s.hasError);
+  const errorMessage = useTreeStore((s) => s.errorMessage);
+  const setIsLoading = useTreeStore((s) => s.setIsLoading);
+  const setHasError = useTreeStore((s) => s.setHasError);
+
+  return {
+    isLoading,
+    hasError,
+    errorMessage,
+    setIsLoading,
+    setHasError
+  };
+}
+

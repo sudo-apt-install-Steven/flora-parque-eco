@@ -8,7 +8,8 @@ import {
   IngestionResult,
   IngestionError,
   IngestionWarning,
-  PhotoItem
+  PhotoItem,
+  PlantNetData
 } from '@/lib/tree-schema';
 import { parseCsvString } from '@/lib/ingestion/csv-parser';
 import { PARK_CONFIG } from '@/lib/park-config';
@@ -266,11 +267,18 @@ export function ingestTreeRecords(
       const plantnetScore = parseNumberOrNull(raw.plantnetScore ?? raw.plantnet_score);
       const plantnetUrl = cleanString(raw.plantnetUrl ?? raw.plantnet_url, '');
 
-      const plantnet =
+      const scoreVal = plantnetScore !== null ? Math.max(0, Math.min(1, plantnetScore)) : 0;
+      let statusVal: 'SUGESTÃO' | 'EM_REVISÃO' | 'CONFIRMADO' = 'SUGESTÃO';
+      if (scoreVal >= 0.85) statusVal = 'CONFIRMADO';
+      else if (scoreVal >= 0.5) statusVal = 'EM_REVISÃO';
+
+      const plantnet: PlantNetData | null =
         plantnetTaxon || plantnetScore !== null
           ? {
               taxon: plantnetTaxon || undefined,
-              score: plantnetScore !== null ? Math.max(0, Math.min(1, plantnetScore)) : undefined,
+              score: scoreVal,
+              plantnetUrl: plantnetUrl && plantnetUrl.startsWith('http') ? plantnetUrl : null,
+              status: statusVal,
               url: plantnetUrl && plantnetUrl.startsWith('http') ? plantnetUrl : undefined,
               familySuggested: family !== 'Indeterminada' ? family : undefined
             }

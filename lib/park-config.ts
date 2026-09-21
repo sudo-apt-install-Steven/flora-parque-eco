@@ -61,7 +61,8 @@ export const PARK_CONFIG = {
       [-60.1120, -12.6980], // top-right
       [-60.1120, -12.7100], // bottom-right
       [-60.1250, -12.7100]  // bottom-left
-    ]
+    ] as [[number, number], [number, number], [number, number], [number, number]],
+    opacity: 0.85
   },
 
   // Definição dos grupos de campo acadêmicos

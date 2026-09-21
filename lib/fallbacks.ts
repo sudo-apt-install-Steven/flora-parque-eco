@@ -34,6 +34,8 @@ export const DEFAULT_FALLBACK_PHOTO: PhotoItem = {
 export const DEFAULT_FALLBACK_PLANTNET: PlantNetData = {
   taxon: 'Identificação preliminar não realizada',
   score: 0,
+  plantnetUrl: null,
+  status: 'SUGESTÃO',
   url: 'https://identify.plantnet.org/',
   familySuggested: 'Aguardando validação'
 };

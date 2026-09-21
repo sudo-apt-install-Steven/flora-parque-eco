@@ -35,6 +35,10 @@ export function filterTrees(trees: Tree[], criteria: TreeFilterCriteria): Tree[]
   const searchTokens = normalizedQuery ? normalizedQuery.split(/\s+/).filter(Boolean) : [];
 
   const targetGroup = criteria.group && criteria.group !== 'all' ? criteria.group : null;
+  const targetCollectionGroup =
+    criteria.collectionGroup && criteria.collectionGroup !== 'all'
+      ? criteria.collectionGroup
+      : null;
   const targetFamily =
     criteria.family && criteria.family !== 'all'
       ? normalizeSearchString(criteria.family)
@@ -54,6 +58,23 @@ export function filterTrees(trees: Tree[], criteria: TreeFilterCriteria): Tree[]
     // 1. Filtro por Grupo de Campo
     if (targetGroup && tree.group !== targetGroup) {
       return false;
+    }
+
+    // 1.1 Filtro por Grupo de Coleta Acadêmica (ESQUERDA_LAGO engloba groupA e groupB)
+    if (targetCollectionGroup) {
+      if (targetCollectionGroup === 'ESQUERDA_LAGO') {
+        if (tree.group !== 'groupA' && tree.group !== 'groupB') {
+          return false;
+        }
+      } else if (targetCollectionGroup === 'DIREITA_LAGO') {
+        if (tree.group !== 'groupC') {
+          return false;
+        }
+      } else if (targetCollectionGroup === 'OUTROS') {
+        if (tree.group === 'groupA' || tree.group === 'groupB' || tree.group === 'groupC') {
+          return false;
+        }
+      }
     }
 
     // 2. Filtro por Família Botânica

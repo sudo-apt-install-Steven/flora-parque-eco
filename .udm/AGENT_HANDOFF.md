@@ -1,98 +1,207 @@
-# UDM — AGENT HANDOFF: PARQUE ECOLÓGICO VILHENA (DATA ARCHITECTURE & QA HANDOFF)
+# UDM — AGENT HANDOFF: PARQUE ECOLÓGICO VILHENA
+## GUIA DE INTEGRAÇÃO FRONTEND, DADOS & MOTOR GIS
 
-> **Aviso ao Próximo Agente (Claude / Codex / Antigravity):** Este documento é a memória de transição oficial do projeto após a conclusão das fases de UI Integration e Data Engineering / State Architecture. Você NÃO precisa pedir ao usuário para reexplicar o histórico. Leia este documento com atenção antes de realizar qualquer alteração.
+> **Aviso ao Agente de Frontend e Sucessores:** Este documento é o guia definitivo de consumo da fundação de dados, motor cartográfico e estado global do projeto. É **estritamente proibido** alterar a lógica de dados, schemas Zod ou o pipeline cartográfico sem sincronização prévia no UDM. A interface gráfica deve apenas consumir os hooks e tipos descritos abaixo.
 
 ---
 
-## 1. Estado Geral do Projeto
+## 1. Stack & Arquitetura Atual
 - **Framework:** Next.js 15.5.25 (App Router), React 19, TypeScript estrito (0% `any`).
-- **Cartografia:** MapLibre GL JS (WebGL acelerado por GPU).
-- **Estilização:** Tailwind CSS v4, Glassmorphism orgânico e paleta botânica editorial.
+- **Motor Cartográfico:** MapLibre GL JS acelerado por GPU (WebGL a 60 FPS).
 - **Gerenciamento de Estado:** Zustand 5 (`lib/store/tree-store.ts`).
-- **Validação & Parsing:** Zod (`lib/tree-schema.ts`), CSV RFC 4180 puro, EXIF DMS Converter, PlantNet v2 Mapper.
-- **Blindagem de Dados:** `lib/fallbacks.ts` (100% de proteção contra dados parciais ou nulos).
-- **QA & Testes:** 47/47 testes aprovados no Vitest (`npm test`). Compilação TypeScript com 0 erros (`npx tsc --noEmit`). Build Next.js 100% PASS.
+- **Agrupamento Espacial:** Supercluster hierárquico puro (`lib/gis/clustering.ts`) e nativo WebGL.
+- **Offline / PWA:** Service Worker com `Cache-First` (UI/SVGs) e `Stale-While-Revalidate` (catálogo botânico JSON/CSV), mais manifesto standalone (`public/manifest.json`).
+- **QA & Resiliência:** 78/78 testes Vitest aprovados (`cmd /c "npm test"`), 0 erros de compilação TypeScript (`cmd /c "npx tsc --noEmit"`), build de produção Next.js 100% estático e funcional.
 
 ---
 
-## 2. Como Consumir o Estado Global (`useTreeStore`)
+## 2. Hooks Oficiais para o Agente de Frontend
 
-A aplicação utiliza seletores atômicos memoizados em `lib/store/tree-store.ts` para evitar re-renderizações desnecessárias:
+O agente de interface **NUNCA** deve acessar propriedades brutas ou dados sem fallbacks. Utilize os seguintes hooks memoizados:
 
+### 2.1. Ler o Catálogo de Árvores e Estatísticas
 ```tsx
-import { 
-  useActiveTree, 
-  useFilteredCatalog, 
-  useFilterCriteria, 
-  useFilterActions, 
-  useFacetedStats,
-  useTreeStore 
-} from "@/lib/store/tree-store";
+import { useFilteredCatalog } from '@/lib/store/tree-store';
 
-// Para ler a árvore ativa (já blindada com getSafeTree()):
-const activeTree = useActiveTree();
+function SpeciesList() {
+  // allTrees: catálogo completo validado
+  // filteredTrees: catálogo pós-aplicação de busca e filtros facetados
+  // stats: métricas em tempo real (total, contagem por grupo, famílias, média PlantNet)
+  // families: lista ordenada de famílias taxonômicas presentes
+  const { allTrees, filteredTrees, stats, families } = useFilteredCatalog();
 
-// Para obter a lista de árvores filtradas:
-const filteredTrees = useFilteredCatalog();
+  return (
+    <div>
+      <span>Exibindo {filteredTrees.length} de {allTrees.length} espécimes</span>
+      {filteredTrees.map((tree) => (
+        <div key={tree.id}>{tree.popularName} — {tree.scientificNameSuggested}</div>
+      ))}
+    </div>
+  );
+}
+```
 
-// Para acessar as estatísticas calculadas em tempo real:
-const stats = useFacetedStats(); // { totalCount, uniqueFamiliesCount, plantnetConfirmedCount, etc. }
+### 2.2. Ler e Selecionar a Árvore Ativa no Mapa
+```tsx
+import { useActiveTree } from '@/lib/store/tree-store';
 
-// Para manipular seleção e filtros:
-const { 
-  selectTree,      // (treeOrId: Tree | string | null) => void
-  setSearchQuery,  // (query: string) => void
-  setSelectedGroup,// (group: string | null) => void
-  setSelectedFamily,// (family: string | null) => void
-  setSelectedConfidence, // (confidence: TreeConfidence | null) => void
-  resetFilters,    // () => void
-  triggerFocusKey  // () => void (força recentralização do mapa)
-} = useFilterActions();
+function TreeCard() {
+  // safeSelectedTree: versão blindada (getSafeTree) com 0 riscos de null/undefined
+  // selectedTreeId: ID slug da árvore ativa ou null
+  // selectTree: seleciona sem mover câmera
+  // selectTreeAndFocus: seleciona, muda navegação para mapa e aciona easing da câmera
+  // triggerFocus: recentraliza a câmera no espécime atual
+  const { selectedTree, safeSelectedTree, selectTreeAndFocus, triggerFocus } = useActiveTree();
+
+  if (!safeSelectedTree) return <div>Nenhuma árvore selecionada</div>;
+
+  return (
+    <div>
+      <h2>{safeSelectedTree.popularName}</h2>
+      <p><em>{safeSelectedTree.scientificNameSuggested}</em></p>
+      <span>{safeSelectedTree.coordinatesFormatted}</span>
+      <span>{safeSelectedTree.displayNumberFormatted}</span>
+      <button onClick={() => triggerFocus()}>Centralizar no Mapa</button>
+    </div>
+  );
+}
+```
+
+### 2.3. Aplicar Filtros de Busca e Facetas
+```tsx
+import { useFilterActions } from '@/lib/store/tree-store';
+
+function SearchAndFilters() {
+  const {
+    filters,
+    setSearchQuery,        // (query: string) => void (insensível a acentos/NFD)
+    setGroupFilter,        // (group: FieldGroup | 'all') => void ('groupA' | 'groupB' | 'groupC' | 'all')
+    setFamilyFilter,       // (family: string | 'all') => void
+    setConfidenceFilter,   // (conf: TreeConfidence | 'all') => void
+    setMinPlantnetScore,   // (score: number) => void (0.0 a 1.0)
+    setVerificationStatusFilter, // (status: VerificationStatus | 'all') => void
+    resetFilters           // () => void
+  } = useFilterActions();
+
+  return (
+    <input
+      value={filters.searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Buscar por nome popular, científico, família..."
+    />
+  );
+}
+```
+
+### 2.4. Monitorar Estado de Carregamento e Erros
+```tsx
+import { useCatalogStatus } from '@/lib/store/tree-store';
+
+function IngestionAlert() {
+  const { isLoading, hasError, errorMessage } = useCatalogStatus();
+
+  if (isLoading) return <div>Carregando catálogo botânico...</div>;
+  if (hasError) return <div className="text-red-500">Erro: {errorMessage}</div>;
+  return null;
+}
+```
+
+### 2.5. Monitorar Conectividade Offline (PWA)
+```tsx
+import { useOfflineStatus } from '@/lib/pwa';
+
+function OfflineBanner() {
+  const { isOnline, isOffline, wasOffline } = useOfflineStatus();
+
+  if (isOffline) {
+    return (
+      <div className="bg-amber-800 text-white p-2">
+        Modo Offline Ativo: Levantamento de campo operando via cache local do Parque.
+      </div>
+    );
+  }
+
+  if (wasOffline && isOnline) {
+    return <div className="bg-emerald-800 text-white p-2">Conexão restabelecida!</div>;
+  }
+
+  return null;
+}
 ```
 
 ---
 
-## 3. Pipeline de Ingestão de Dados de Campo (`lib/ingestion/`)
+## 3. Como Inicializar ou Atualizar o Catálogo
 
-O projeto está pronto para processar planilhas reais e metadados de fotos coletadas pelos Grupos A, B e C:
+Para carregar novos lotes de árvores ou integrar fontes externas:
 
-### 3.1. Ingestão de CSV (`lib/ingestion/csv-parser.ts`)
-- Suporta delimitadores `,` e `;`.
-- Trata campos com aspas e quebras de linha (RFC 4180).
-- Dicionário de cabeçalhos bilíngue: mapeia colunas como `nome_comum`, `lat`, `long`, `coleta_grupo` automaticamente.
+```tsx
+import { useTreeStore } from '@/lib/store/tree-store';
+import { TreeCatalogItem } from '@/lib/tree-schema';
 
-### 3.2. Metadados de GPS EXIF (`lib/ingestion/exif-extractor.ts`)
-- Converte DMS (`[deg, min, sec]`) para graus decimais levando em conta as referências cardeais `N`, `S`, `E`, `W`.
-- Suporta parsing de timestamps em formato EXIF (`YYYY:MM:DD HH:MM:SS`) para ISO 8601.
+// 1. Ingestão de array com tipagem TreeCatalogItem ou Tree:
+useTreeStore.getState().initializeCatalog(items);
 
-### 3.3. API PlantNet v2 (`lib/ingestion/plantnet-mapper.ts`)
-- Normaliza respostas da API do PlantNet v2.
-- Clampa scores entre 0.0 e 1.0 e classifica em `high` (>= 0.70), `medium` (>= 0.40) ou `low`.
-- Constrói links diretos para Powo (Kew Royal Botanic Gardens) e GBIF.
+// 2. Ingestão dinâmica de texto CSV ou JSON bruto de campo:
+const result = useTreeStore.getState().importData(csvString);
+if (result.success) {
+  console.log(`Importadas ${result.importedCount} árvores com sucesso!`);
+}
 
-### 3.4. Pipeline Mestre de Validação & Geocorreção (`lib/ingestion/pipeline.ts`)
-- Função: `ingestTreeRecords(records, options)`.
-- **Bounding Box do Parque:** Valida se as coordenadas estão dentro de Vilhena/RO (`[[-60.1350, -12.7180], [-60.1030, -12.6900]]`).
-- **Autocorreção de Coordenadas Invertidas:**
-  - Se a latitude vier positiva (ex: `12.7044`), converte automaticamente para Sul (`-12.7044`).
-  - Se a latitude e longitude vierem invertidas (ex: Lat ~ -60.1, Lng ~ -12.7), detecta o erro e inverte os eixos para manter a árvore no parque em Vilhena.
-- Retorna um `IngestionResult` detalhado com `validTrees`, `invalidRecords` e `warnings`.
+// 3. Focar programaticamente em uma árvore:
+useTreeStore.getState().focusTree('tree-vilhena-001');
 
----
+// 4. Alternar modo cartográfico:
+useTreeStore.getState().setLayerMode('satellite'); // 'satellite' | 'planta' | 'exploration'
 
-## 4. Blindagem de Dados e Fallbacks (`lib/fallbacks.ts`)
-
-Regras rígidas para nunca quebrar a interface em produção:
-1. **Fotos:** Se a árvore não tiver foto ou a foto vier com URL corrompida, `getSafeTree()` atribui `DEFAULT_FALLBACK_PHOTO` (SVG botânico em vetor data-uri embutido com gradiente Deep Forest — sem requests HTTP externos).
-2. **displayNumber:** Permanece **estritamente `null`** por padrão. A formatação de exibição via `formatDisplayNumber()` retorna `"—"` quando for `null`. Não inventar números ou placas físicas até que sejam instaladas no parque pelo IFRO.
-3. **PlantNet:** Se os dados do PlantNet forem omitidos, é atribuído `DEFAULT_FALLBACK_PLANTNET` com score `0` e status `unverified`.
+// 5. Filtrar por grupo acadêmico:
+useTreeStore.getState().filterByGroup('ESQUERDA_LAGO'); // 'ESQUERDA_LAGO' | 'DIREITA_LAGO' | 'OUTROS'
+```
 
 ---
 
-## 5. Próximos Passos Recomendados
-1. **Importação do Lote Real de Campo:**
-   - Quando as turmas dos Grupos A, B e C finalizarem a coleta de campo, alimentar o pipeline via `ingestTreeRecords()` e atualizar `data/mock-trees.json` para os dados oficiais.
-2. **Camada Raster do Voo de Drone:**
-   - Inserir ortomosaico recente em `public/geo/` e ativar `customRasterOverlay` no `lib/park-config.ts`.
-3. **Placas Físicas Definitivas:**
-   - Preencher `displayNumber` somente quando as placas físicas numeradas forem pregadas em campo.
+## 4. Como Renderizar o Mapa e Marcadores (`components/map/DynamicMap.tsx`)
+
+O canvas do MapLibre GL é renderizado pelo componente dinâmico sem SSR (`DynamicMap.tsx`), que consome o `MapContainer.tsx` memoizado com `React.memo`.
+
+### Exemplo de Montagem no Layout:
+```tsx
+import { DynamicMap } from '@/components/map/DynamicMap';
+import { useTreeStore, useActiveTree, useFilteredCatalog } from '@/lib/store/tree-store';
+
+export function MapView() {
+  const { filteredTrees } = useFilteredCatalog();
+  const { selectedTree, selectTree } = useActiveTree();
+  const currentMode = useTreeStore((s) => s.layerMode);
+  const focusKey = useTreeStore((s) => s.focusKey);
+
+  return (
+    <DynamicMap
+      currentMode={currentMode}
+      trees={filteredTrees}
+      selectedTree={selectedTree}
+      onSelectTree={selectTree}
+      focusKey={focusKey}
+    />
+  );
+}
+```
+
+### Comportamento dos Marcadores Cartográficos (WebGL GPU):
+1. **Camada Clusters (`clusters` / `cluster-count`):** Nós numéricos esmeralda escuro que condensam árvores próximas durante o zoom-out (Supercluster). O clique no cluster executa um `easeTo` suave com expansão automática.
+2. **Marcador Individual (`unclustered-point-outer` / `inner` / `glyph`):** Medalhão cartográfico estilizado por equipe de campo:
+   - Grupo A (Esquerda Norte): `#52775e` (Verde Esmeralda)
+   - Grupo B (Esquerda Sul): `#4a6f91` (Azul Lago)
+   - Grupo C (Direita Trilha): `#b07a32` (Ouro Queimado)
+3. **Marcador Ativo do v0 (`selectedMarkerRef`):** Quando um espécime é selecionado, um marcador HTML do MapLibre é injetado com SVG de folha e anel pulsante (`marker-pulse`) dourado.
+
+---
+
+## 5. Modelos de Dados Rígidos (`lib/tree-schema.ts`)
+
+O frontend pode importar diretamente as tipagens:
+- `TreeCatalogItem`: id, coordinates (`{ lat, lng }`), scientificName, popularName, family, plantnet, collection, gallery.
+- `PlantNetData`: score, plantnetUrl, status ('SUGESTÃO', 'EM_REVISÃO', 'CONFIRMADO').
+- `CollectionData`: collectionGroup ('ESQUERDA_LAGO', 'DIREITA_LAGO', 'OUTROS'), collectedAt.
+- `MediaGallery`: array de `MediaPhotoItem` com type ('ARVORE_INTEIRA', 'FOLHA', 'FRUTO', 'CASCA', 'TRONCO').
+- Conversores disponíveis: `treeToCatalogItem(tree)` e `catalogItemToTree(item)`.

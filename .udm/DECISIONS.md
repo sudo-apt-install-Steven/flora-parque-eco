@@ -41,3 +41,17 @@
   2. `MAP`: Camada WebGL, renderização MapLibre, estilos e controladores de camadas.
   3. `UI`: Componentes visuais atômicos e compostos (Bottom Sheet, Sidebar, Botões, Badges, Modais) prontos para substituição ou estilização pelo design do v0.
   4. `LOGIC`: Hooks e estado global de navegação, seleção de espécimes e filtros de busca.
+
+## ADR-006: Motor GIS Modular, Agrupamento Espacial (Supercluster) e Offline-First PWA
+- **Data:** 2026-09-20
+- **Status:** ACEITO
+- **Decisão:**
+  1. Criar um motor cartográfico desacoplado (`lib/gis/`) suportando 3 modos de dados: Satélite (com imagem pública e slot de ortomosaico de drone georreferenciado), Planta Técnica (ingestão validada de lago, pistas, ponte, trilhas, parquinho e IFRO via GeoJSON) e Exploração (curvas de nível e relevo botânico).
+  2. Implementar algoritmo de clustering espacial hierárquico puro em TypeScript (`SpatialClusterIndex` / Supercluster) para Web Mercator, permitindo agregação fluida de nós sem latência no pan/zoom.
+  3. Adotar estratégia de Progressive Web App (PWA) nativa com Service Worker (`public/sw.js`):
+     - `Cache-First`: para assets estáticos vitais da UI e SVGs cartográficos.
+     - `Stale-While-Revalidate`: para catálogo botânico JSON/CSV.
+     - `Network-First`: para navegação HTML com fallback para App Shell.
+  4. Manter 100% de isolamento entre a infraestrutura de dados/mapas e os componentes visuais de UI, assegurando memoização (`React.memo`) para mitigar re-renders desnecessários no canvas WebGL.
+- **Justificativa:** Áreas remotas do Parque Ecológico em Vilhena possuem sinal celular instável; a experiência do visitante e do pesquisador de campo precisa funcionar com latência zero e suporte contínuo offline.
+
