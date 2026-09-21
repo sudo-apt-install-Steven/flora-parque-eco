@@ -217,3 +217,38 @@ O frontend pode importar diretamente as tipagens:
 - `CollectionData`: collectionGroup ('ESQUERDA_LAGO', 'DIREITA_LAGO', 'OUTROS'), collectedAt.
 - `MediaGallery`: array de `MediaPhotoItem` com type ('ARVORE_INTEIRA', 'FOLHA', 'FRUTO', 'CASCA', 'TRONCO').
 - Conversores disponíveis: `treeToCatalogItem(tree)` e `catalogItemToTree(item)`.
+
+---
+
+## 6. Instruções para Executar o Projeto em Qualquer Máquina
+
+Para qualquer engenheiro ou agente clonar e rodar o projeto do zero:
+
+### 6.1. Clonar o Repositório
+```bash
+git clone https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git
+cd parque-ecologico-inventario
+```
+
+### 6.2. Instalar Dependências
+```bash
+npm install
+```
+
+### 6.3. Executar o Servidor de Desenvolvimento Local
+```bash
+npm run dev
+```
+Acesse `http://localhost:3000` no navegador. O mapa MapLibre GL com aceleração WebGL, os controles táteis, as rotas `/` e `/tree/[id]` e o catálogo botânico estarão plenamente operacionais.
+
+### 6.4. Executar Testes Automatizados (Vitest)
+```bash
+npm test
+```
+
+### 6.5. Gerar Build Estático de Produção (SSG)
+```bash
+npm run build
+```
+O build estático gera as páginas pré-renderizadas de todos os espécimes e a rota principal sem dependência de banco de dados em runtime.
+

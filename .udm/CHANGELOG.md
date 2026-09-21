@@ -1,5 +1,19 @@
 # UDM — CHANGELOG
 
+## [RELEASE v1.0.0-MVP] — 2026-09-20 [LEAD DEVOPS & RELEASE MANAGER]
+
+### Release & Lançamento de Produção
+- **Higienização e Sanity Check:**
+  - Configuração rigorosa do `.gitignore` com exclusão de `*.log`, `.env*.local`, caches, temporários, `node_modules/`, `.next/` e `dist/`.
+  - Verificação de integridade com TypeScript estrito (`npx tsc --noEmit` — 0 erros) e build de produção estático SSG Next.js 15.5 (`npm run build` — 100% PASS).
+  - Suíte de 85/85 testes automatizados aprovada no Vitest em 12 arquivos (100% PASS).
+- **Versionamento Git:**
+  - Repositório Git estabelecido na branch padrão `main`.
+  - Commit atômico de lançamento: `feat: inventario arboreo digital - parque ecologico ifro vilhena (core, gis e camadas)`.
+  - Configuração do remote `origin` apontando para `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`.
+- **Consolidação UDM:**
+  - Status e documentação consolidados em `CURRENT_STATE.md`, `TASKS.md`, `AGENT_HANDOFF.md` e espelhados em `D:\Universal-Agent-Memory`.
+
 ## [0.5.0] — 2026-09-20 [ANTIGRAVITY: MASTER FULL-STACK EXECUTION]
 
 ### Adicionado & Arquitetado (Conclusão Integral das Fases 1 a 5)

@@ -94,9 +94,14 @@
 - [x] **Fase 4 (QR Code Routing & Interatividade):** Extração de `ParkInventoryApp.tsx`, rota dinâmica SSG `app/tree/[id]/page.tsx` com `generateStaticParams()` para leitura física de QR Code no parque com animação suave `flyTo` e abertura imediata da ficha sem cliques extras, sincronização de URL sem recarregar, `StatisticsModal` com filtro reverso por família botânica, apresentação metodológica no formato de artigo científico em `ProjectAboutView.tsx` e testes unitários em `test/qr-routing.test.ts`.
 - [x] **Fase 5 (Auto-auditoria, Estabilização e Governança):** 85/85 testes Vitest aprovados (12/12 suítes, 100% PASS), compilação estrita TypeScript com zero erros (`npx tsc --noEmit`), geração estática SSG de produção concluída com 100% de sucesso (`npm run build`), sincronização e espelhamento no UDM com registro SQLite no `udm_v3.db`.
 
-## Próximos Passos (Evolução Futura)
-- [ ] Conectar imagem aérea real de drone ao `PARK_CONFIG.customRasterOverlay` para visualização em altíssima resolução.
-- [ ] Importar dataset final consolidado das coletas de campo definitivas via `initializeCatalog()` ou painel de ingestão.
-- [ ] Produzir as placas físicas definitivas com os QR Codes apontando para `https://floraparqueeco.../tree/[id]`.
+## Fase 13: Release & DevOps v1.0.0-MVP (Concluída 100%)
+- [x] Higienização e Sanity Check: `.gitignore` calibrado com `*.log`, `.env*.local`, `node_modules/`, `.next/`, `dist/`.
+- [x] Compilação estrita e Build de Produção SSG Next.js 15.5 e TypeScript validados com 100% de sucesso.
+- [x] Versionamento Git local estabelecido na branch `main` com commit atômico de lançamento.
+- [x] Repositório remoto configurado para `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`.
+- [x] Consolidação integral dos registros de release no UDM (Universal Data Memory).
+
+## Próxima Tarefa
+- [ ] Injeção do lote final de coordenadas e fotos de campo coletadas pelos 3 grupos.
 
 
