@@ -8,25 +8,24 @@
       "properties": {
         "id": "groupA",
         "group": "groupA",
-        "name": "Grupo A — Setor Noroeste",
+        "name": "Grupo A — Setor Noroeste & Acesso",
         "shortName": "Grupo A",
         "color": "#eab308",
         "fillOpacity": 0.28,
         "strokeColor": "#facc15",
         "strokeWidth": 2.5,
-        "description": "Gramado do setor noroeste, árvores ornamentais e acesso pelo portal oeste.",
+        "description": "Faixa norte compreendendo a rodovia BR-174, área verde e acesso principal aos prédios.",
         "treeCount": 4
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12215, -12.70635],
-            [-60.12092, -12.70638],
-            [-60.12092, -12.70695],
-            [-60.12185, -12.70685],
-            [-60.12218, -12.70680],
-            [-60.12215, -12.70635]
+            [-60.12285, -12.70535],
+            [-60.12085, -12.70545],
+            [-60.12080, -12.70670],
+            [-60.12290, -12.70645],
+            [-60.12285, -12.70535]
           ]
         ]
       }
@@ -37,25 +36,25 @@
       "properties": {
         "id": "groupB",
         "group": "groupB",
-        "name": "Grupo B — Setor Nordeste / Parquinho",
+        "name": "Grupo B — Setor Predial, Pátio & Bosque Leste",
         "shortName": "Grupo B",
         "color": "#3b82f6",
         "fillOpacity": 0.28,
         "strokeColor": "#60a5fa",
         "strokeWidth": 2.5,
-        "description": "Área de convivência do parquinho infantil, gramado leste e borda da mata.",
+        "description": "Complexo predial, pátio leste e bloco de mata fechada a nordeste do lago.",
         "treeCount": 4
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12092, -12.70638],
-            [-60.12028, -12.70642],
-            [-60.12022, -12.70715],
-            [-60.12055, -12.70730],
-            [-60.12092, -12.70695],
-            [-60.12092, -12.70638]
+            [-60.12085, -12.70545],
+            [-60.11930, -12.70550],
+            [-60.11915, -12.70660],
+            [-60.11985, -12.70715],
+            [-60.12075, -12.70660],
+            [-60.12085, -12.70545]
           ]
         ]
       }
@@ -66,29 +65,28 @@
       "properties": {
         "id": "groupC",
         "group": "groupC",
-        "name": "Grupo C — Trilha da Margem Sul",
+        "name": "Grupo C — Margem Sul do Lago & Mata Ciliar",
         "shortName": "Grupo C",
         "color": "#ef4444",
         "fillOpacity": 0.32,
         "strokeColor": "#f87171",
         "strokeWidth": 2.8,
-        "description": "Trilha ecológica ciliar ao longo da margem sul do lago e orla da mata fechada.",
+        "description": "Faixa ciliar contornando toda a margem sul do lago e subindo na mata preservada a leste.",
         "treeCount": 5
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12215, -12.70730],
-            [-60.12160, -12.70755],
-            [-60.12095, -12.70780],
-            [-60.12045, -12.70760],
-            [-60.12035, -12.70725],
-            [-60.12052, -12.70735],
-            [-60.12090, -12.70770],
-            [-60.12150, -12.70745],
-            [-60.12200, -12.70725],
-            [-60.12215, -12.70730]
+            [-60.12255, -12.70705],
+            [-60.12150, -12.70785],
+            [-60.12040, -12.70825],
+            [-60.11935, -12.70750],
+            [-60.11915, -12.70685],
+            [-60.12025, -12.70775],
+            [-60.12140, -12.70755],
+            [-60.12215, -12.70700],
+            [-60.12255, -12.70705]
           ]
         ]
       }
