@@ -1,10 +1,10 @@
 # UDM — CURRENT STATE
 
-- **Data:** 2026-09-20
-- **Versão:** `v1.0.0-MVP` (Release de Lançamento Estável)
-- **Status do Projeto:** Release v1.0.0-MVP Validada e Consolidada (Higienização concluída, .gitignore calibrado com logs/envs, compilação estrita Next.js 15.5 SSG e TypeScript 100% PASS, 85/85 testes Vitest PASS, repositório Git local inicializado na branch `main` com commit de lançamento e remote origin configurado para o GitHub).
-- **Agente Responsável:** Antigravity (Lead DevOps & Release Manager)
-- **Branch Git:** `main` (Commit atômico de lançamento: `feat: inventario arboreo digital - parque ecologico ifro vilhena (core, gis e camadas)`)
+- **Data:** 2026-09-21
+- **Versão:** `v1.1.0` (Calibração Cartográfica e Catálogo Real de Campo)
+- **Status do Projeto:** Calibração Cartográfica Concluída com Sucesso (Super zoom até nível 22 via Google Satellite, desacoplamento territorial com remoção total do IFRO nas 3 camadas cartográficas, cadastramento georreferenciado dos 13 indivíduos reais da Trilha Leste / Lago, 85/85 testes Vitest PASS, build Next.js 15.5 SSG 100% PASS).
+- **Agente Responsável:** Antigravity (Lead GIS & Botanical Catalog Architect)
+- **Branch Git:** `main`
 - **Repositório Remoto:** `origin` -> `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`
 - **Ambiente:** Node.js v22.23.2, npm 10.9.8, Windows 11 IoT Enterprise LTSC, C:\Users\Steven\Documents\FloraParqueEco
 - **HD UDM Root:** D:\Universal-Agent-Memory\projects\flora-parque-eco

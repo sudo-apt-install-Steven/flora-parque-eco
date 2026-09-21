@@ -15,19 +15,19 @@ export const PARK_CONFIG = {
   institution: 'IFRO Campus Vilhena',
   municipality: 'Vilhena — RO',
   
-  // Coordenadas centrais focadas na área do Parque e IFRO
-  center: [-60.1189, -12.7044] as [number, number], // [lng, lat]
+  // Coordenadas centrais focadas exatamente no Lago e Trilhas do Parque Ecológico
+  center: [-60.1212, -12.7073] as [number, number], // [lng, lat]
   
   // Níveis de zoom
-  defaultZoom: 16.5,
-  minZoom: 14.5,
-  maxZoom: 20,
+  defaultZoom: 17.8,
+  minZoom: 15.0,
+  maxZoom: 22, // Permite super zoom em satélite e planta para inspeção de árvores individuais
 
-  // Limites geográficos (bounding box) para manter o visitante focado no parque
+  // Limites geográficos (bounding box) para manter o visitante focado estritamente no Parque Ecológico
   // [minLng, minLat, maxLng, maxLat]
   maxBounds: [
-    [-60.1350, -12.7180],
-    [-60.1030, -12.6900]
+    [-60.1290, -12.7140],
+    [-60.1130, -12.7010]
   ] as [[number, number], [number, number]],
 
   // Modos de mapa suportados

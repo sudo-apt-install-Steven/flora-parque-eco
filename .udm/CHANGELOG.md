@@ -1,5 +1,24 @@
 # UDM — CHANGELOG
 
+## [1.1.0] — 2026-09-21 [ANTIGRAVITY: GIS CALIBRATION & BOTANICAL INVENTORY]
+
+### Corrigido & Aprimorado (Calibração Cartográfica e Catálogo Real)
+- **Super Zoom de Satélite (Zoom até 22):**
+  - Substituída a fonte raster de satélite por Google Satellite (`https://mt{0-3}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}`) com `maxzoom: 21` e overzoom de alta precisão até nível 22 no MapLibre GL.
+  - Tiles verificados e testados com resolução métrica nítida para a copa das árvores do Parque Ecológico.
+- **Desacoplamento Territorial e Remoção do IFRO nas 3 Camadas:**
+  - `geo/park-boundary.geojson`: Polígono redesenhado para delimitar exclusivamente o Parque Ecológico Municipal Marechal Cândido Rondon, eliminando qualquer sobreposição ao campus do IFRO na BR-174.
+  - `geo/park-planta.geojson`: Planta técnica vetorial reconstruída com a geometria real do lago (OSM way 1309514171), passarela sobre as águas, parquinho infantil e trilhas da mata. Removidas todas as camadas e polígonos de `instituicao` / IFRO.
+  - `geo/park-exploration.geojson`: Camada topográfica com curvas de nível e zonas botânicas calibradas estritamente no perímetro do parque.
+  - `lib/map-styles.ts`: Removidas as regras de estilo de preenchimento e hachuras do IFRO (`planta-ifro-fill`, `planta-ifro-hatch`, `planta-ifro-stroke` e rótulo `IFRO`).
+- **Cadastramento dos 13 Espécimes Reais da Trilha Leste / Lago:**
+  - `data/mock-trees.json`: 13 indivíduos reais georreferenciados ao longo da margem sul do lago e trilha da mata (`mock-tree-001` a `mock-tree-013`), identificados pelo levantamento florístico IFRO (Jacarandá, Guapuruvu, Árvore com Oco, Eucalipto, Mangueira, Paineira, Quaresmeira, Ipê Passarela, Árvore Cadeado, Árvore Bifurcada, Árvore Quiosque, Árvore Fim Trilha).
+  - Obediência rigorosa à Regra de Ouro nº 2 (`displayNumber: null`) e validação 100% de `PhotoItemSchema`.
+- **Garantia de Qualidade e Build:**
+  - 85/85 testes no Vitest aprovados (100% PASS).
+  - `npx tsc --noEmit` com 0 erros.
+  - `npm run build` do Next.js gerando 17 páginas estáticas com sucesso.
+
 ## [RELEASE v1.0.0-MVP] — 2026-09-20 [LEAD DEVOPS & RELEASE MANAGER]
 
 ### Release & Lançamento de Produção

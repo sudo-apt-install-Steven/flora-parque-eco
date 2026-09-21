@@ -15,10 +15,10 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [-60.1220, -12.7020],
-          [-60.1215, -12.7035],
-          [-60.1218, -12.7055],
-          [-60.1210, -12.7068]
+          [-60.1235, -12.7068],
+          [-60.1225, -12.7075],
+          [-60.1215, -12.7082],
+          [-60.1200, -12.7085]
         ]
       }
     },
@@ -35,33 +35,33 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [-60.1225, -12.7018],
-          [-60.1222, -12.7038],
-          [-60.1224, -12.7058],
-          [-60.1218, -12.7070]
+          [-60.1240, -12.7064],
+          [-60.1230, -12.7072],
+          [-60.1220, -12.7080],
+          [-60.1205, -12.7088]
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "exp-zone-mata-ripada",
+        "id": "exp-zone-mata-ciliar",
         "category": "vegetacao_setor",
-        "name": "Zona de Mata Ciliar (Margarida / Rio Barão)",
+        "name": "Zona de Mata Ciliar (Rio Barão do Melgaço)",
         "fillColor": "#15803d",
-        "fillOpacity": 0.25,
+        "fillOpacity": 0.22,
         "strokeColor": "#166534",
-        "strokeWidth": 1.5
+        "strokeWidth": 1.4
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.1205, -12.7028],
-            [-60.1180, -12.7028],
-            [-60.1175, -12.7065],
-            [-60.1208, -12.7065],
-            [-60.1205, -12.7028]
+            [-60.1225, -12.7065],
+            [-60.1200, -12.7065],
+            [-60.1180, -12.7090],
+            [-60.1225, -12.7095],
+            [-60.1225, -12.7065]
           ]
         ]
       }
@@ -69,29 +69,29 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "exp-poi-nascente",
+        "id": "exp-poi-passarela",
         "category": "poi",
-        "name": "Ponto Notável: Observatório do Lago",
+        "name": "Ponto Notável: Passarela Suspensa",
         "icon": "compass",
-        "description": "Ponto estratégico de observação botânica e identificação de macrófitas."
+        "description": "Mirante panorâmico sobre o lago e ponto de observação de macrófitas aquáticas."
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-60.1190, -12.7035]
+        "coordinates": [-60.12107, -12.70735]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "exp-poi-arvore-mestra",
+        "id": "exp-poi-trilha-leste",
         "category": "poi",
-        "name": "Ponto Notável: Bosque Central",
+        "name": "Ponto Notável: Trilha da Mata",
         "icon": "trees",
-        "description": "Agrupamento de alta densidade de espécies nativas do Cerrado-Amazônia."
+        "description": "Trilha ecológica em mata primária preservada com alta densidade botânica."
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-60.1182, -12.7050]
+        "coordinates": [-60.12039, -12.70739]
       }
     }
   ]

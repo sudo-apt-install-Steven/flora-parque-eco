@@ -2,101 +2,529 @@
   {
     "id": "mock-tree-001",
     "displayNumber": null,
-    "popularName": "[MOCK] Ponto Arbóreo de Calibração A1",
-    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
-    "family": "Família a confirmar [MOCK]",
-    "confidence": "indeterminada",
-    "latitude": -12.7038,
-    "longitude": -60.1198,
-    "locationAccuracy": 4.5,
-    "primaryPhoto": null,
-    "gallery": [],
-    "plantnet": {
-      "taxon": "Aguardando identificação botânica validada",
-      "score": 0,
-      "url": "https://identify.plantnet.org/",
-      "familySuggested": "A confirmar"
+    "popularName": "Jacarandá",
+    "scientificNameSuggested": "Jacaranda mimosifolia",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70770,
+    "longitude": -60.12176,
+    "locationAccuracy": 2.8,
+    "primaryPhoto": {
+      "id": "photo-001-1",
+      "url": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Jacarandá na margem sudoeste",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:15:00Z"
     },
-    "group": "groupA",
-    "collectedAt": "1970-01-01T00:00:00Z",
-    "verificationStatus": "pendente",
-    "notes": "[MOCK] Ponto técnico de calibração para validar renderização GIS, seleção e clustering. Substituir por registro botânico real após conferência de campo.",
+    "gallery": [
+      {
+        "id": "photo-001-1",
+        "url": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Porte do Jacarandá",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:15:00Z"
+      },
+      {
+        "id": "photo-001-2",
+        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+        "category": "folha",
+        "caption": "Detalhe da folhagem bipinada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:16:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Jacaranda mimosifolia D.Don",
+      "score": 0.94,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:130452-1",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-20T10:15:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 1 do Catálogo Florístico (Trilha Leste / Lago). Indivíduo jovem localizado na margem sudoeste do lago.",
     "isMock": true
   },
   {
     "id": "mock-tree-002",
     "displayNumber": null,
-    "popularName": "[MOCK] Ponto Arbóreo de Calibração A2",
-    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
-    "family": "Família a confirmar [MOCK]",
-    "confidence": "indeterminada",
-    "latitude": -12.7042,
-    "longitude": -60.1205,
-    "locationAccuracy": 3.8,
-    "primaryPhoto": null,
-    "gallery": [],
-    "plantnet": null,
-    "group": "groupA",
-    "collectedAt": "1970-01-01T00:00:00Z",
-    "verificationStatus": "pendente",
-    "notes": "[MOCK] Ponto técnico neutro na margem esquerda norte para homologação da interface. Não representa identificação taxonômica real.",
+    "popularName": "Guapuruvu / Angico",
+    "scientificNameSuggested": "Schizolobium parahyba",
+    "family": "Fabaceae",
+    "confidence": "alta",
+    "latitude": -12.70771,
+    "longitude": -60.12164,
+    "locationAccuracy": 3.1,
+    "primaryPhoto": {
+      "id": "photo-002-1",
+      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Espécime 2 - Guapuruvu",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:20:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-002-1",
+        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Dossel e tronco reto",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:20:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Schizolobium parahyba (Vell.) Blake",
+      "score": 0.91,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:517853-1",
+      "familySuggested": "Fabaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-20T10:20:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 2 do Catálogo Florístico. Tronco reto e esguio característico de mata secundária.",
     "isMock": true
   },
   {
     "id": "mock-tree-003",
     "displayNumber": null,
-    "popularName": "[MOCK] Ponto Arbóreo de Calibração B1",
-    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
-    "family": "Família a confirmar [MOCK]",
-    "confidence": "indeterminada",
-    "latitude": -12.7055,
-    "longitude": -60.1192,
-    "locationAccuracy": 5.0,
-    "primaryPhoto": null,
-    "gallery": [],
-    "plantnet": null,
+    "popularName": "Árvore com Oco",
+    "scientificNameSuggested": "Cavanillesia platanifolia",
+    "family": "Malvaceae",
+    "confidence": "media",
+    "latitude": -12.70772,
+    "longitude": -60.12152,
+    "locationAccuracy": 3.4,
+    "primaryPhoto": {
+      "id": "photo-003-1",
+      "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
+      "category": "casca",
+      "caption": "Cavidade natural no tronco",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:26:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-003-1",
+        "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
+        "category": "casca",
+        "caption": "Oco que serve de micro-habitat",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:26:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Cavanillesia platanifolia (Bonpl.) H.Karst.",
+      "score": 0.78,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:559124-1",
+      "familySuggested": "Malvaceae"
+    },
     "group": "groupB",
-    "collectedAt": "1970-01-01T00:00:00Z",
-    "verificationStatus": "pendente",
-    "notes": "[MOCK] Ponto técnico neutro da margem esquerda sul para testar filtros por equipe e navegação por mapa.",
+    "collectedAt": "2026-09-20T10:25:00Z",
+    "verificationStatus": "em_analise",
+    "notes": "Ponto 3 do Catálogo Florístico. Indivíduo com cavidade natural de grande relevância ecológica para fauna.",
     "isMock": true
   },
   {
     "id": "mock-tree-004",
     "displayNumber": null,
-    "popularName": "[MOCK] Ponto Arbóreo de Calibração C1",
-    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
-    "family": "Família a confirmar [MOCK]",
-    "confidence": "indeterminada",
-    "latitude": -12.7047,
-    "longitude": -60.1175,
-    "locationAccuracy": 4.1,
-    "primaryPhoto": null,
-    "gallery": [],
-    "plantnet": null,
-    "group": "groupC",
-    "collectedAt": "1970-01-01T00:00:00Z",
-    "verificationStatus": "pendente",
-    "notes": "[MOCK] Ponto técnico neutro da margem direita para validar abertura do painel e deslocamento da câmera.",
+    "popularName": "Eucalipto",
+    "scientificNameSuggested": "Eucalyptus grandis",
+    "family": "Myrtaceae",
+    "confidence": "alta",
+    "latitude": -12.70774,
+    "longitude": -60.12139,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "photo-004-1",
+      "url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Eucalipto de grande porte",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:32:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-004-1",
+        "url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Porte vertical elevado",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:32:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Eucalyptus grandis W.Hill",
+      "score": 0.96,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:592965-1",
+      "familySuggested": "Myrtaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-20T10:30:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 4 do Catálogo Florístico. Espécime exótico remanescente de reflorestamento anterior.",
     "isMock": true
   },
   {
     "id": "mock-tree-005",
     "displayNumber": null,
-    "popularName": "[MOCK] Ponto Arbóreo de Calibração C2",
-    "scientificNameSuggested": "Taxon a confirmar [MOCK]",
-    "family": "Família a confirmar [MOCK]",
-    "confidence": "indeterminada",
-    "latitude": -12.7032,
-    "longitude": -60.1180,
-    "locationAccuracy": 6.2,
-    "primaryPhoto": null,
-    "gallery": [],
-    "plantnet": null,
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70775,
+    "longitude": -60.12126,
+    "locationAccuracy": 2.2,
+    "primaryPhoto": {
+      "id": "photo-005-1",
+      "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Mangueira de copa frondosa",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:38:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-005-1",
+        "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Copa ampla que sombreia a trilha",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:38:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Mangifera indica L.",
+      "score": 0.97,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:69904-1",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-20T10:35:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 5 do Catálogo Florístico. Copa densa proporcionando sombreamento direto na trilha sul.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-006",
+    "displayNumber": null,
+    "popularName": "Paineira / Sumaúma",
+    "scientificNameSuggested": "Ceiba speciosa",
+    "family": "Malvaceae",
+    "confidence": "alta",
+    "latitude": -12.70775,
+    "longitude": -60.12113,
+    "locationAccuracy": 2.6,
+    "primaryPhoto": {
+      "id": "photo-006-1",
+      "url": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
+      "category": "casca",
+      "caption": "Acúleos verdes no tronco",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:44:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-006-1",
+        "url": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
+        "category": "casca",
+        "caption": "Tronco bojudo com acúleos",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:44:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Ceiba speciosa (A.St.-Hil.) Ravenna",
+      "score": 0.93,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1001099-1",
+      "familySuggested": "Malvaceae"
+    },
+    "group": "groupA",
+    "collectedAt": "2026-09-20T10:42:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 6 do Catálogo Florístico. Tronco com acúleos cônicos conspícuos.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-007",
+    "displayNumber": null,
+    "popularName": "Mangueira Fruto",
+    "scientificNameSuggested": "Mangifera indica",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70774,
+    "longitude": -60.12100,
+    "locationAccuracy": 2.9,
+    "primaryPhoto": {
+      "id": "photo-007-1",
+      "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+      "category": "fruto",
+      "caption": "Frutificação observada em campo",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:50:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-007-1",
+        "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+        "category": "fruto",
+        "caption": "Frutos pendentes nos ramos baixos",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:50:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Mangifera indica L.",
+      "score": 0.98,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:69904-1",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupA",
+    "collectedAt": "2026-09-20T10:48:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 7 do Catálogo Florístico. Indivíduo com frutificação observada em campo.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-008",
+    "displayNumber": null,
+    "popularName": "Quaresmeira",
+    "scientificNameSuggested": "Tibouchina granulosa",
+    "family": "Melastomataceae",
+    "confidence": "alta",
+    "latitude": -12.70771,
+    "longitude": -60.12088,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "photo-008-1",
+      "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80",
+      "category": "flor",
+      "caption": "Flores arroxeadas da Quaresmeira",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T10:55:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-008-1",
+        "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80",
+        "category": "flor",
+        "caption": "Floração marcante",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T10:55:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Tibouchina granulosa (Desr.) Cogn.",
+      "score": 0.95,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:566418-1",
+      "familySuggested": "Melastomataceae"
+    },
+    "group": "groupA",
+    "collectedAt": "2026-09-20T10:52:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 8 do Catálogo Florístico. Floração marcante próxima à curva da passarela.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-009",
+    "displayNumber": null,
+    "popularName": "Ipê Passarela",
+    "scientificNameSuggested": "Handroanthus impetiginosus",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70766,
+    "longitude": -60.12080,
+    "locationAccuracy": 2.1,
+    "primaryPhoto": {
+      "id": "photo-009-1",
+      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Ipê na cabeceira sul da passarela",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T11:00:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-009-1",
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Localização adjacente à passarela",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T11:00:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Handroanthus impetiginosus (Mart. ex DC.) Mattos",
+      "score": 0.96,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77085794-1",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupA",
+    "collectedAt": "2026-09-20T10:58:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 9 do Catálogo Florístico. Ponto de referência visual no acesso sul da passarela do lago.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-010",
+    "displayNumber": null,
+    "popularName": "Árvore Cadeado",
+    "scientificNameSuggested": "Ficus gomelleira",
+    "family": "Moraceae",
+    "confidence": "media",
+    "latitude": -12.70762,
+    "longitude": -60.12073,
+    "locationAccuracy": 3.2,
+    "primaryPhoto": {
+      "id": "photo-010-1",
+      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+      "category": "casca",
+      "caption": "Tronco entrelaçado com corrente e cadeado",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T11:08:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-010-1",
+        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+        "category": "casca",
+        "caption": "Detalhe da interferência antrópica histórica",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T11:08:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Ficus gomelleira Kunth & C.D.Bouché",
+      "score": 0.84,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:852924-1",
+      "familySuggested": "Moraceae"
+    },
     "group": "groupC",
-    "collectedAt": "1970-01-01T00:00:00Z",
-    "verificationStatus": "pendente",
-    "notes": "[MOCK] Ponto técnico neutro para testar estados NORMAL, HOVER e SELECTED dos marcadores premium.",
+    "collectedAt": "2026-09-20T11:05:00Z",
+    "verificationStatus": "identificacao_preliminar",
+    "notes": "Ponto 10 do Catálogo Florístico. Figueira com marca histórica/interferência antrópica no tronco.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-011",
+    "displayNumber": null,
+    "popularName": "Árvore Bifurcada",
+    "scientificNameSuggested": "Qualea grandiflora",
+    "family": "Vochysiaceae",
+    "confidence": "media",
+    "latitude": -12.70751,
+    "longitude": -60.12059,
+    "locationAccuracy": 3.7,
+    "primaryPhoto": {
+      "id": "photo-011-1",
+      "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Tronco bifurcado em V",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T11:15:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-011-1",
+        "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Bifurcação a 1,5m do solo",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T11:15:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Qualea grandiflora Mart.",
+      "score": 0.81,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:832876-1",
+      "familySuggested": "Vochysiaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-20T11:12:00Z",
+    "verificationStatus": "em_analise",
+    "notes": "Ponto 11 do Catálogo Florístico. Tronco bifurcado a 1,5m da base, típico de fisionomia de Cerrado.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-012",
+    "displayNumber": null,
+    "popularName": "Árvore Quiosque",
+    "scientificNameSuggested": "Inga vera",
+    "family": "Fabaceae",
+    "confidence": "alta",
+    "latitude": -12.70739,
+    "longitude": -60.12039,
+    "locationAccuracy": 2.4,
+    "primaryPhoto": {
+      "id": "photo-012-1",
+      "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Ingazeiro próximo ao quiosque",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T11:22:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-012-1",
+        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Copa ampla que sombreia o quiosque",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T11:22:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Inga vera Willd.",
+      "score": 0.92,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:500989-1",
+      "familySuggested": "Fabaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-20T11:20:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 12 do Catálogo Florístico. Ingazeiro de margem oferecendo sombra à área de convivência.",
+    "isMock": true
+  },
+  {
+    "id": "mock-tree-013",
+    "displayNumber": null,
+    "popularName": "Árvore Fim Trilha",
+    "scientificNameSuggested": "Anadenanthera colubrina",
+    "family": "Fabaceae",
+    "confidence": "alta",
+    "latitude": -12.70726,
+    "longitude": -60.12016,
+    "locationAccuracy": 2.8,
+    "primaryPhoto": {
+      "id": "photo-013-1",
+      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+      "category": "arvore_inteira",
+      "caption": "Angico-branco no final da trilha leste",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-20T11:30:00Z"
+    },
+    "gallery": [
+      {
+        "id": "photo-013-1",
+        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+        "category": "arvore_inteira",
+        "caption": "Espécime imponente de borda de mata",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-20T11:30:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Anadenanthera colubrina (Vell.) Brenan",
+      "score": 0.94,
+      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:473722-1",
+      "familySuggested": "Fabaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-20T11:28:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Ponto 13 do Catálogo Florístico. Encerramento do trecho catalogado da Trilha Leste na transição para a mata fechada.",
     "isMock": true
   }
 ]

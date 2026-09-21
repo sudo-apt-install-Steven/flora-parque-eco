@@ -11,10 +11,14 @@ export const SATELLITE_STYLE: StyleSpecification = {
     'satellite-tiles': {
       type: 'raster',
       tiles: [
-        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+        'https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+        'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+        'https://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+        'https://mt3.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
       ],
       tileSize: 256,
-      attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+      maxzoom: 21,
+      attribution: '&copy; Google Satellite Imagery / Maxar Technologies'
     },
     'park-boundary': {
       type: 'geojson',
@@ -29,10 +33,10 @@ export const SATELLITE_STYLE: StyleSpecification = {
       minzoom: 0,
       maxzoom: 22,
       paint: {
-        'raster-saturation': -0.08,
-        'raster-contrast': 0.08,
-        'raster-brightness-min': 0.04,
-        'raster-brightness-max': 0.9
+        'raster-saturation': 0.05,
+        'raster-contrast': 0.05,
+        'raster-brightness-min': 0.0,
+        'raster-brightness-max': 1.0
       }
     },
     {
@@ -62,7 +66,7 @@ export const SATELLITE_STYLE: StyleSpecification = {
 
 /**
  * Estilo do Modo PLANTA (Vetorial)
- * Foco na geometria vetorial do parque: lago, caminhos, pontes, playground e setores
+ * Foco na geometria vetorial exclusiva do Parque Ecológico: lago, passarela, caminhos, trilhas e playground
  */
 export const PLANTA_STYLE: StyleSpecification = {
   version: 8,
@@ -74,6 +78,7 @@ export const PLANTA_STYLE: StyleSpecification = {
         'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
       ],
       tileSize: 256,
+      maxzoom: 19,
       attribution: '&copy; OpenStreetMap contributors'
     },
     'park-planta': {
@@ -101,40 +106,7 @@ export const PLANTA_STYLE: StyleSpecification = {
         'raster-brightness-max': 0.97
       }
     },
-    // Área do Campus IFRO
-    {
-      id: 'planta-ifro-fill',
-      type: 'fill',
-      source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'instituicao'],
-      paint: {
-        'fill-color': '#4d6556',
-        'fill-opacity': 0.08
-      }
-    },
-    {
-      id: 'planta-ifro-hatch',
-      type: 'fill',
-      source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'instituicao'],
-      paint: {
-        'fill-color': '#355d46',
-        'fill-opacity': 0.05
-      }
-    },
-    {
-      id: 'planta-ifro-stroke',
-      type: 'line',
-      source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'instituicao'],
-      paint: {
-        'line-color': '#3d5348',
-        'line-width': 1,
-        'line-opacity': 0.72,
-        'line-dasharray': [5, 3]
-      }
-    },
-    // Lago
+    // Lago do Parque Ecológico
     {
       id: 'planta-lago-fill',
       type: 'fill',
@@ -316,9 +288,8 @@ export const PLANTA_STYLE: StyleSpecification = {
           'agua', 'Lago',
           'estrutura_nova', 'Parquinho',
           'playground', 'Parquinho',
-          'instituicao', 'IFRO',
-          'estrutura', 'Ponte',
-          'ponte', 'Ponte',
+          'estrutura', 'Passarela',
+          'ponte', 'Passarela',
           'acesso', 'Acesso',
           ['get', 'name']
         ],

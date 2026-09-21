@@ -11,7 +11,7 @@ import {
 
 describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', () => {
   it('todos os espécimes no mock-trees.json devem satisfazer rigorosamente o TreeSchema', () => {
-    expect(rawTrees.length).toBeGreaterThan(0);
+    expect(rawTrees.length).toBe(13);
     rawTrees.forEach((tree) => {
       const parsed = TreeSchema.safeParse(tree);
       expect(parsed.success).toBe(true);
@@ -20,6 +20,7 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
 
   it('REGRA ABSOLUTA: displayNumber deve inicialmente ser null em todas as árvores', () => {
     const trees = getValidatedTrees();
+    expect(trees.length).toBe(13);
     trees.forEach((tree) => {
       expect(tree.displayNumber).toBeNull();
     });
@@ -33,7 +34,7 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
 
     trees.forEach((tree) => {
       expect(tree.isMock).toBe(true);
-      expect(tree.popularName).toContain('[MOCK]');
+      expect(tree.popularName).toBeTruthy();
     });
   });
 
@@ -42,24 +43,25 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     const groupB = getTreesByGroup('groupB');
     const groupC = getTreesByGroup('groupC');
 
-    expect(groupA.length).toBeGreaterThan(0);
-    expect(groupB.length).toBeGreaterThan(0);
-    expect(groupC.length).toBeGreaterThan(0);
+    expect(groupA.length).toBe(4);
+    expect(groupB.length).toBe(5);
+    expect(groupC.length).toBe(4);
+    expect(groupA.length + groupB.length + groupC.length).toBe(13);
   });
 
   it('a busca deve filtrar corretamente por nome popular, científico, família e grupo', () => {
-    const byPopular = searchTrees('Calibração A1');
+    const byPopular = searchTrees('Jacarandá');
     expect(byPopular.length).toBe(1);
     expect(byPopular[0].id).toBe('mock-tree-001');
 
-    const byScientificPlaceholder = searchTrees('Taxon a confirmar');
-    expect(byScientificPlaceholder.length).toBe(rawTrees.length);
+    const byFamily = searchTrees('Fabaceae');
+    expect(byFamily.length).toBe(3); // Guapuruvu, Árvore Quiosque, Árvore Fim Trilha, etc.
 
-    const byFamilyPlaceholder = searchTrees('Família a confirmar');
-    expect(byFamilyPlaceholder.length).toBe(rawTrees.length);
+    const byGroupA = searchTrees('', 'groupA');
+    expect(byGroupA.length).toBe(4);
 
-    const byGroup = searchTrees('', 'groupA');
-    expect(byGroup.length).toBe(2);
+    const byGroupB = searchTrees('', 'groupB');
+    expect(byGroupB.length).toBe(5);
   });
 
   it('a conversão para GeoJSON deve gerar Point features válidas com propriedades achatadas', () => {

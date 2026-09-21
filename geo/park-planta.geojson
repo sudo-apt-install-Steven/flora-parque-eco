@@ -7,25 +7,38 @@
       "properties": {
         "id": "planta-lago",
         "category": "agua",
-        "name": "Lago do Parque Ecológico (Rio Barão do Melgaço)",
+        "name": "Lago do Parque Ecológico",
         "color": "#38bdf8",
         "fillOpacity": 0.65,
         "strokeColor": "#0284c7",
-        "strokeWidth": 2,
-        "isPlaceholder": true
+        "strokeWidth": 2
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.1198, -12.7030],
-            [-60.1190, -12.7032],
-            [-60.1185, -12.7042],
-            [-60.1188, -12.7058],
-            [-60.1195, -12.7062],
-            [-60.1202, -12.7052],
-            [-60.1200, -12.7038],
-            [-60.1198, -12.7030]
+            [-60.1219529, -12.7071552],
+            [-60.1218444, -12.7072529],
+            [-60.1217089, -12.7073454],
+            [-60.1215422, -12.7075212],
+            [-60.1213539, -12.7076878],
+            [-60.1212387, -12.7077512],
+            [-60.1210178, -12.7077486],
+            [-60.1207359, -12.7077803],
+            [-60.1206993, -12.7077618],
+            [-60.1206668, -12.7076944],
+            [-60.1206288, -12.7074551],
+            [-60.1206275, -12.7072912],
+            [-60.1206288, -12.7071736],
+            [-60.1206654, -12.7071260],
+            [-60.1207603, -12.7070863],
+            [-60.1208687, -12.7070599],
+            [-60.1210191, -12.7069356],
+            [-60.1211397, -12.7068021],
+            [-60.1212034, -12.7067082],
+            [-60.1213406, -12.7065029],
+            [-60.1216440, -12.7068277],
+            [-60.1219529, -12.7071552]
           ]
         ]
       }
@@ -35,58 +48,67 @@
       "properties": {
         "id": "planta-ponte",
         "category": "estrutura",
-        "name": "Ponte de Passagem / Travessia",
-        "color": "#d97706",
-        "strokeWidth": 4,
-        "isPlaceholder": true
+        "name": "Passarela sobre o Lago",
+        "color": "#7a5a32",
+        "strokeWidth": 3.8
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [-60.1201, -12.7045],
-          [-60.1186, -12.7045]
+          [-60.121415, -12.707076],
+          [-60.120730, -12.707620]
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": "planta-trilha-oeste",
+        "id": "planta-trilha-sul",
         "category": "caminho",
-        "name": "Trilha Margem Esquerda (Grupos A e B)",
+        "name": "Trilha Margem Sul e Trilha da Mata (Pontos 1 a 13)",
+        "color": "#e11d48",
+        "strokeWidth": 3,
+        "dashArray": [3, 2]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.12185, -12.70716],
+          [-60.12176, -12.70724],
+          [-60.12164, -12.70733],
+          [-60.12152, -12.70745],
+          [-60.12139, -12.70755],
+          [-60.12126, -12.70765],
+          [-60.12113, -12.70768],
+          [-60.12100, -12.70767],
+          [-60.12088, -12.70765],
+          [-60.12080, -12.70761],
+          [-60.12073, -12.70756],
+          [-60.12059, -12.70748],
+          [-60.12039, -12.70739],
+          [-60.12016, -12.70726]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-trilha-norte",
+        "category": "caminho",
+        "name": "Caminho da Margem Norte (Gramado & Parquinho)",
         "color": "#10b981",
-        "strokeWidth": 2.5,
-        "dashArray": [2, 2],
-        "isPlaceholder": true
+        "strokeWidth": 2.2,
+        "dashArray": [2, 2]
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
-          [-60.1205, -12.7025],
-          [-60.1206, -12.7038],
-          [-60.1208, -12.7052],
-          [-60.1203, -12.7065]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "planta-trilha-leste",
-        "category": "caminho",
-        "name": "Trilha Margem Direita (Grupo C)",
-        "color": "#f59e0b",
-        "strokeWidth": 2.5,
-        "dashArray": [2, 2],
-        "isPlaceholder": true
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [-60.1180, -12.7025],
-          [-60.1179, -12.7040],
-          [-60.1181, -12.7055],
-          [-60.1186, -12.7065]
+          [-60.12195, -12.70716],
+          [-60.12164, -12.70683],
+          [-60.12134, -12.70650],
+          [-60.12095, -12.70660],
+          [-60.12076, -12.70709],
+          [-60.12063, -12.70729]
         ]
       }
     },
@@ -95,24 +117,45 @@
       "properties": {
         "id": "planta-playground",
         "category": "estrutura_nova",
-        "name": "Área do Playground Infantil (Infraestrutura Atualizada)",
-        "color": "#ec4899",
-        "fillOpacity": 0.4,
-        "strokeColor": "#db2777",
-        "strokeWidth": 2,
-        "isPlaceholder": true,
-        "notes": "Representação de estrutura recente não visível em satélites desatualizados."
+        "name": "Parquinho Infantil",
+        "color": "#c4a06a",
+        "fillOpacity": 0.35,
+        "strokeColor": "#8a6a3a",
+        "strokeWidth": 1.5
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.1210, -12.7030],
-            [-60.1204, -12.7030],
-            [-60.1204, -12.7035],
-            [-60.1210, -12.7035],
-            [-60.1210, -12.7030]
+            [-60.12095, -12.70670],
+            [-60.12087, -12.70673],
+            [-60.12083, -12.70678],
+            [-60.12087, -12.70683],
+            [-60.12095, -12.70686],
+            [-60.12103, -12.70683],
+            [-60.12107, -12.70678],
+            [-60.12103, -12.70673],
+            [-60.12095, -12.70670]
           ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "planta-acesso",
+        "category": "caminho",
+        "name": "Acesso ao Parque (Av. Jô Sato)",
+        "color": "#78716c",
+        "strokeWidth": 2.5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-60.1238, -12.7072],
+          [-60.1230, -12.7072],
+          [-60.1221, -12.7072],
+          [-60.12195, -12.70716]
         ]
       }
     },
@@ -121,40 +164,13 @@
       "properties": {
         "id": "planta-entrada",
         "category": "acesso",
-        "name": "Entrada Principal & Ponto de Encontro",
+        "name": "Entrada do Parque Ecológico",
         "icon": "log-in",
-        "color": "#6366f1",
-        "isPlaceholder": true
+        "color": "#6366f1"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-60.1208, -12.7022]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "planta-ifro",
-        "category": "instituicao",
-        "name": "IFRO Campus Vilhena (Área Acadêmica Adjacente)",
-        "color": "#059669",
-        "fillOpacity": 0.15,
-        "strokeColor": "#059669",
-        "strokeWidth": 1.5,
-        "dashArray": [4, 2],
-        "isPlaceholder": true
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [-60.1215, -12.7020],
-            [-60.1165, -12.7020],
-            [-60.1165, -12.7060],
-            [-60.1215, -12.7060],
-            [-60.1215, -12.7020]
-          ]
-        ]
+        "coordinates": [-60.1221, -12.7072]
       }
     }
   ]
