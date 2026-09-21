@@ -78,3 +78,14 @@
      - 6. Ação cartográfica destacada "Centralizar no Mapa".
 - **Justificativa:** A catalogação botânica acadêmica requer clareza na distinção morfológica das partes da árvore e confiabilidade científica das determinações feitas via IA, apresentadas de forma elegante e intuitiva para o público geral e pesquisadores.
 
+## ADR-009: Calibração Cartográfica (Google Satellite Super Zoom 22) e Desacoplamento Territorial Parque Ecológico vs. IFRO
+- **Data:** 2026-09-21
+- **Status:** ACEITO
+- **Decisão:**
+  1. Adotar **Google Satellite** (`https://mt{0-3}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}`) como provedor raster oficial em `lib/map-styles.ts`, com `maxzoom: 21` e overzoom de alta precisão até nível **22** no MapLibre GL JS, substituindo o Esri World Imagery (que limitava a zoom 18 em Vilhena/RO).
+  2. Desacoplar territorialmente o Parque Ecológico Municipal Marechal Cândido Rondon do campus do IFRO Vilhena (localizado na BR-174). Todas as 3 camadas (Satélite, Planta Técnica e Exploração) foram limpas de quaisquer camadas, polígonos ou rótulos de instituição do IFRO (`planta-ifro-*`), restringindo-se estritamente ao perímetro do parque e seu lago (`geo/park-boundary.geojson`, `geo/park-planta.geojson`, `geo/park-exploration.geojson`).
+  3. Reconstruir a geometria do lago com base no traçado vetorial real do OpenStreetMap (`way 1309514171`), incluindo a passarela diagonal de madeira que cruza o lago e as trilhas da mata.
+  4. Cadastrar no `data/mock-trees.json` os 13 espécimes reais georreferenciados identificados no catálogo florístico de campo ("Trilha Leste / Lago"), com conformidade 100% ao `TreeSchema` do Zod, galeria com `PhotoItemSchema` e obediência absoluta à Regra de Ouro nº 2 (`displayNumber: null`).
+- **Justificativa:** O inventário arbóreo pertence ao Parque Ecológico Municipal; sobreposições territoriais com o IFRO distorciam a cartografia e impediam o zoom métrico na copa das árvores catalogadas ao longo da trilha do lago.
+
+

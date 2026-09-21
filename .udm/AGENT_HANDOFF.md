@@ -252,3 +252,33 @@ npm run build
 ```
 O build estático gera as páginas pré-renderizadas de todos os espécimes e a rota principal sem dependência de banco de dados em runtime.
 
+---
+
+## 7. Calibração Cartográfica & Catálogo Real (v1.1.0)
+
+### 7.1. Provedor de Satélite de Super Zoom
+- A camada de satélite agora utiliza **Google Satellite** com `maxzoom: 21` e overzoom de alta precisão até nível **22** no MapLibre GL JS, permitindo ampliação métrica nítida sobre as copas das árvores na região do Parque Ecológico em Vilhena/RO.
+
+### 7.2. Desacoplamento Territorial Parque vs. IFRO
+- As 3 camadas cartográficas (Satélite, Planta Técnica e Exploração) foram limpas de qualquer sobreposição ao campus do IFRO Vilhena.
+- O polígono do parque (`geo/park-boundary.geojson`) cobre exclusivamente a área do Parque Ecológico Municipal Marechal Cândido Rondon e seu lago central.
+- A planta técnica vetorial (`geo/park-planta.geojson`) inclui o lago real (OSM way 1309514171), a passarela diagonal sobre a água, o parquinho e as trilhas da mata.
+
+### 7.3. Os 13 Espécimes Reais da Trilha Leste / Lago
+- Cadastrados em `data/mock-trees.json` (`mock-tree-001` a `mock-tree-013`) com coordenadas geográficas precisas ao longo da margem sul do lago e trilha da mata:
+  1. `mock-tree-001`: Jacarandá (*Jacaranda mimosifolia*, Bignoniaceae)
+  2. `mock-tree-002`: Guapuruvu / Angico (*Schizolobium parahyba*, Fabaceae)
+  3. `mock-tree-003`: Árvore com Oco (*Cavanillesia platanifolia*, Malvaceae)
+  4. `mock-tree-004`: Eucalipto (*Eucalyptus grandis*, Myrtaceae)
+  5. `mock-tree-005`: Mangueira (*Mangifera indica*, Anacardiaceae)
+  6. `mock-tree-006`: Paineira / Sumaúma (*Ceiba speciosa*, Malvaceae)
+  7. `mock-tree-007`: Mangueira Fruto (*Mangifera indica*, Anacardiaceae)
+  8. `mock-tree-008`: Quaresmeira (*Tibouchina granulosa*, Melastomataceae)
+  9. `mock-tree-009`: Ipê Passarela (*Handroanthus impetiginosus*, Bignoniaceae)
+  10. `mock-tree-010`: Árvore Cadeado (*Ficus gomelleira*, Moraceae)
+  11. `mock-tree-011`: Árvore Bifurcada (*Qualea grandiflora*, Vochysiaceae)
+  12. `mock-tree-012`: Árvore Quiosque (*Inga vera*, Fabaceae)
+  13. `mock-tree-013`: Árvore Fim Trilha (*Anadenanthera colubrina*, Fabaceae)
+- Todos validados no Zod (`TreeSchema`), galeria com objetos `PhotoItem` válidos e `displayNumber: null` rigorosamente preservado.
+
+

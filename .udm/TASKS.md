@@ -101,7 +101,17 @@
 - [x] Repositório remoto configurado para `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`.
 - [x] Consolidação integral dos registros de release no UDM (Universal Data Memory).
 
-## Próxima Tarefa
-- [ ] Injeção do lote final de coordenadas e fotos de campo coletadas pelos 3 grupos.
+## Fase 14: Calibração Cartográfica e Catálogo Real Florístico (Concluída 100%)
+- [x] **Super Zoom de Satélite:** Provedor atualizado para Google Satellite em `lib/map-styles.ts`, viabilizando zoom métrico nítido até o nível 22 sem perda de detalhe na copa das árvores.
+- [x] **Desacoplamento Territorial Parque Ecológico vs. IFRO:** Remoção de todas as camadas, polígonos e rótulos do IFRO nas 3 camadas cartográficas (Satélite, Planta Técnica e Exploração).
+- [x] **Geometria Real do Lago e Trilhas:** Reconstrução vetorial com base no OSM `way 1309514171`, passarela de madeira sobre as águas, parquinho infantil e trilhas da mata em `geo/park-planta.geojson`.
+- [x] **Cadastramento dos 13 Indivíduos Reais:** Georreferenciamento exato dos 13 espécimes da Trilha Leste / Lago (`mock-tree-001` a `mock-tree-013`) em `data/mock-trees.json`, com fotos anatômicas formatadas segundo `PhotoItemSchema`, validação estrita no Zod (`TreeSchema`) e obediência à regra de ouro `displayNumber: null`.
+- [x] **QA & Validação Contínua:** 85/85 testes Vitest aprovados (12/12 suítes, 100% PASS), compilação TypeScript com 0 erros (`npx tsc --noEmit`), build de produção SSG Next.js 15.5 gerando 17 páginas com sucesso (`npm run build`).
+- [x] **Governança UDM:** Atualização de `CURRENT_STATE.md`, `CHANGELOG.md`, `DECISIONS.md` (ADR-009), `TASKS.md`, `AGENT_HANDOFF.md`, espelhamento no HD e gravação persistente de handoff no `udm_v3.db`.
+
+## Próximos Passos
+- [ ] Conectar banco de dados Supabase / PostGIS se/quando for solicitado painel administrativo com login e CRUD em tempo real.
+- [ ] Expandir o catálogo para os demais setores do parque (Trilha Oeste e Setor Norte) conforme os dados de campo adicionais forem entregues pelo IFRO.
+
 
 
