@@ -81,5 +81,6 @@ describe('UI & Cartografia — Helpers e Configuração de Interface', () => {
     expect(existsSync(join(publicGeoDir, 'park-boundary.geojson'))).toBe(true);
     expect(existsSync(join(publicGeoDir, 'park-planta.geojson'))).toBe(true);
     expect(existsSync(join(publicGeoDir, 'park-exploration.geojson'))).toBe(true);
+    expect(existsSync(join(publicGeoDir, 'park-regions.geojson'))).toBe(true);
   });
 });

@@ -44,8 +44,8 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     const groupC = getTreesByGroup('groupC');
 
     expect(groupA.length).toBe(4);
-    expect(groupB.length).toBe(5);
-    expect(groupC.length).toBe(4);
+    expect(groupB.length).toBe(4);
+    expect(groupC.length).toBe(5);
     expect(groupA.length + groupB.length + groupC.length).toBe(13);
   });
 
@@ -61,7 +61,7 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     expect(byGroupA.length).toBe(4);
 
     const byGroupB = searchTrees('', 'groupB');
-    expect(byGroupB.length).toBe(5);
+    expect(byGroupB.length).toBe(4);
   });
 
   it('a conversão para GeoJSON deve gerar Point features válidas com propriedades achatadas', () => {

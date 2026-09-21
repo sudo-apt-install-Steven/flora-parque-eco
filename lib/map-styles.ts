@@ -20,9 +20,10 @@ export const SATELLITE_STYLE: StyleSpecification = {
       maxzoom: 21,
       attribution: '&copy; Google Satellite Imagery / Maxar Technologies'
     },
-    'park-boundary': {
+    'park-regions': {
       type: 'geojson',
-      data: '/geo/park-boundary.geojson'
+      data: '/geo/park-regions.geojson',
+      promoteId: 'id'
     }
   },
   layers: [
@@ -39,26 +40,38 @@ export const SATELLITE_STYLE: StyleSpecification = {
         'raster-brightness-max': 1.0
       }
     },
+    // Regiões poligonais dos Grupos A, B e C (Amarelo, Azul, Vermelho)
     {
-      id: 'satellite-boundary-glow',
-      type: 'line',
-      source: 'park-boundary',
+      id: 'satellite-regions-fill',
+      type: 'fill',
+      source: 'park-regions',
       paint: {
-        'line-color': '#d6a35b',
-        'line-width': 7,
-        'line-opacity': 0.18,
-        'line-blur': 2
+        'fill-color': ['get', 'color'],
+        'fill-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          0.52,
+          ['boolean', ['feature-state', 'hover'], false],
+          0.42,
+          0.24
+        ]
       }
     },
     {
-      id: 'satellite-boundary-line',
+      id: 'satellite-regions-stroke',
       type: 'line',
-      source: 'park-boundary',
+      source: 'park-regions',
       paint: {
-        'line-color': '#f0c77b',
-        'line-width': 1.6,
-        'line-opacity': 0.95,
-        'line-dasharray': [3, 2]
+        'line-color': ['get', 'strokeColor'],
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          3.8,
+          ['boolean', ['feature-state', 'hover'], false],
+          3.2,
+          2.0
+        ],
+        'line-opacity': 0.95
       }
     }
   ]
@@ -84,6 +97,11 @@ export const PLANTA_STYLE: StyleSpecification = {
     'park-planta': {
       type: 'geojson',
       data: '/geo/park-planta.geojson'
+    },
+    'park-regions': {
+      type: 'geojson',
+      data: '/geo/park-regions.geojson',
+      promoteId: 'id'
     }
   },
   layers: [
@@ -104,6 +122,40 @@ export const PLANTA_STYLE: StyleSpecification = {
         'raster-contrast': -0.08,
         'raster-brightness-min': 0.22,
         'raster-brightness-max': 0.97
+      }
+    },
+    // Setores de Campo (Grupos A, B, C)
+    {
+      id: 'planta-regions-fill',
+      type: 'fill',
+      source: 'park-regions',
+      paint: {
+        'fill-color': ['get', 'color'],
+        'fill-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          0.45,
+          ['boolean', ['feature-state', 'hover'], false],
+          0.35,
+          0.18
+        ]
+      }
+    },
+    {
+      id: 'planta-regions-stroke',
+      type: 'line',
+      source: 'park-regions',
+      paint: {
+        'line-color': ['get', 'strokeColor'],
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          3.2,
+          ['boolean', ['feature-state', 'hover'], false],
+          2.6,
+          1.6
+        ],
+        'line-opacity': 0.85
       }
     },
     // Lago do Parque Ecológico
@@ -332,6 +384,11 @@ export const EXPLORATION_STYLE: StyleSpecification = {
     'park-exploration': {
       type: 'geojson',
       data: '/geo/park-exploration.geojson'
+    },
+    'park-regions': {
+      type: 'geojson',
+      data: '/geo/park-regions.geojson',
+      promoteId: 'id'
     }
   },
   layers: [
@@ -352,6 +409,40 @@ export const EXPLORATION_STYLE: StyleSpecification = {
         'raster-contrast': 0.08,
         'raster-brightness-min': 0.18,
         'raster-brightness-max': 0.9
+      }
+    },
+    // Setores de Campo (Grupos A, B, C)
+    {
+      id: 'exp-regions-fill',
+      type: 'fill',
+      source: 'park-regions',
+      paint: {
+        'fill-color': ['get', 'color'],
+        'fill-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          0.45,
+          ['boolean', ['feature-state', 'hover'], false],
+          0.35,
+          0.18
+        ]
+      }
+    },
+    {
+      id: 'exp-regions-stroke',
+      type: 'line',
+      source: 'park-regions',
+      paint: {
+        'line-color': ['get', 'strokeColor'],
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          3.2,
+          ['boolean', ['feature-state', 'hover'], false],
+          2.6,
+          1.6
+        ],
+        'line-opacity': 0.85
       }
     },
     // Zonas de vegetação / relevo suave

@@ -114,6 +114,8 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
             selectedTree={selectedTree}
             onSelectTree={selectTree}
             focusKey={focusKey}
+            selectedGroup={selectedGroup}
+            onSelectGroup={setSelectedGroup}
           />
 
           {/* Selo Cartográfico, Filtros Rápidos de Grupo e Legenda do Mapa */}
@@ -131,13 +133,15 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
             onModeChange={setCurrentMode}
           />
 
-          {/* Painel do Espécime (Sidebar no Desktop / Bottom Sheet no Mobile) */}
+          {/* Painel do Espécime / Inventário da Região (Sidebar no Desktop / Bottom Sheet no Mobile) */}
           <TreePanel
             selectedTree={selectedTree}
             onClose={() => selectTree(null)}
             filteredTrees={filteredTrees}
             onSelectTree={selectTreeAndFocus}
             onCenterOnMap={selectTreeAndFocus}
+            selectedGroup={selectedGroup}
+            onCloseGroup={() => setSelectedGroup('all')}
           />
         </div>
 

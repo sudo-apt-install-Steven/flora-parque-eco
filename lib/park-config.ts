@@ -65,22 +65,22 @@ export const PARK_CONFIG = {
     opacity: 0.85
   },
 
-  // Definição dos grupos de campo acadêmicos
+  // Definição dos grupos de campo acadêmicos e suas regiões
   fieldGroups: {
     groupA: {
       name: 'Grupo A',
-      locationDescription: 'Margem esquerda do lago (Setor Norte)',
-      color: '#10b981' // emerald
+      locationDescription: 'Setor Noroeste (Gramado Norte e Acesso)',
+      color: '#eab308' // amarelo
     },
     groupB: {
       name: 'Grupo B',
-      locationDescription: 'Margem esquerda do lago (Setor Sul)',
-      color: '#3b82f6' // blue
+      locationDescription: 'Setor Nordeste (Parquinho e Gramado Leste)',
+      color: '#3b82f6' // azul
     },
     groupC: {
       name: 'Grupo C',
-      locationDescription: 'Margem direita do lago (Trilha Principal)',
-      color: '#f59e0b' // amber
+      locationDescription: 'Margem Sul do Lago (Trilha e Mata Ciliar)',
+      color: '#ef4444' // vermelho
     }
   }
 };

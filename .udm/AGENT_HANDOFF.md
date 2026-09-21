@@ -281,4 +281,37 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
   13. `mock-tree-013`: Árvore Fim Trilha (*Anadenanthera colubrina*, Fabaceae)
 - Todos validados no Zod (`TreeSchema`), galeria com objetos `PhotoItem` válidos e `displayNumber: null` rigorosamente preservado.
 
+---
+
+## 8. Setorização por Regiões Poligonais, Fotos de Campo & PlantNet (v1.2.0)
+
+### 8.1. Camada Inicial Padrão (Satélite)
+- O mapa agora inicializa diretamente na camada de **Satélite** (`layerMode: 'satellite'`) no `lib/store/tree-store.ts`.
+- O contorno amarelo listrado gigante (`satellite-boundary-line`) foi totalmente eliminado.
+
+### 8.2. Geometria Fiel do Lago e da Passarela
+- **Lago Pílula (Pill-shaped):** Formato arredondado orientado WNW-ESE (`-60.1220` a `-60.1207`, `-12.7070` a `-12.7077`).
+- **Passarela Transversal:** Reta de madeira suspensa de NW (`[-60.12182, -12.70692]`) a SE (`[-60.12118, -12.70761]`).
+- **Parquinho Infantil:** Círculo no gramado nordeste (`[-60.12080, -12.70682]`).
+
+### 8.3. Polígonos das 3 Regiões de Campo (`geo/park-regions.geojson`)
+- **Grupo A (Amarelo `#eab308`):** Setor Noroeste (Gramado Norte e acesso). Contém 4 espécimes catalogados (`mock-tree-001` a `004`).
+- **Grupo B (Azul `#3b82f6`):** Setor Nordeste (Parquinho infantil e gramado leste). Contém 4 espécimes catalogados (`mock-tree-005` a `008`).
+- **Grupo C (Vermelho `#ef4444`):** Margem Sul do Lago e Mata Ciliar. Contém 5 espécimes catalogados (`mock-tree-009` a `013`).
+- **Interatividade no MapLibre:** Hover com mudança de cursor para pointer e realce de borda; clique na região que aciona `onSelectGroup()`, animando a câmera até o centro do setor e abrindo a gaveta lateral.
+
+### 8.4. Gaveta de Inventário da Região (`components/tree/RegionTreeList.tsx`)
+- Renderizada quando um grupo de campo está selecionado e nenhuma árvore específica está com foco exclusivo.
+- Exibe cabeçalho com a cor e descrição do setor, contagem de árvores, carrossel de fotos anatômicas e nome científico em itálico.
+- **Link Direto ao PlantNet:** Botão com link seguro (`target="_blank" rel="noopener noreferrer"`) apontando para a página de identificação oficial no PlantNet.
+- Botão "Ver Ficha Completa" que transiciona fluidamente para o componente `TreeDetail`.
+
+### 8.5. Estrutura de Diretórios para Fotos do Usuário
+- Criadas as pastas dedicadas:
+  - `public/trees/grupo-a/`
+  - `public/trees/grupo-b/`
+  - `public/trees/grupo-c/`
+- O arquivo `public/trees/README.md` documenta a convenção recomendada de nomes de arquivo (`<id-da-arvore>_<orgao>.jpg`, ex: `mock-tree-001_arvore.jpg`, `mock-tree-001_folha.jpg`).
+
+
 

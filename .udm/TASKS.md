@@ -109,9 +109,15 @@
 - [x] **QA & Validação Contínua:** 85/85 testes Vitest aprovados (12/12 suítes, 100% PASS), compilação TypeScript com 0 erros (`npx tsc --noEmit`), build de produção SSG Next.js 15.5 gerando 17 páginas com sucesso (`npm run build`).
 - [x] **Governança UDM:** Atualização de `CURRENT_STATE.md`, `CHANGELOG.md`, `DECISIONS.md` (ADR-009), `TASKS.md`, `AGENT_HANDOFF.md`, espelhamento no HD e gravação persistente de handoff no `udm_v3.db`.
 
+## Fase 15: Regiões de Campo Interativas, Lago Pílula e Satélite Padrão (Concluída 100%)
+- [x] **Satélite como Camada Principal:** Inicialização direta no modo Satélite (`layerMode: 'satellite'`) com zoom livre até o nível 22 e remoção permanente da linha amarela listrada gigante (`satellite-boundary-line`).
+- [x] **Geometria Calibrada do Lago e Passarela:** Lago em formato de pílula (pill-shaped) perfeitamente alinhado às fotos de satélite e passarela transversal de madeira reta de NW para SE em todas as 3 camadas cartográficas.
+- [x] **3 Regiões Poligonais Interativas (Grupos A, B e C):** Implementação de `geo/park-regions.geojson` com cores temáticas (Grupo A amarelo `#eab308`, Grupo B azul `#3b82f6`, Grupo C vermelho `#ef4444`). Interações no MapLibre GL com realce dinâmico em hover, cursor pointer, clique na região animando a câmera e abrindo a gaveta do setor.
+- [x] **Gaveta de Árvores do Setor (`RegionTreeList`):** Lista de árvores por setor com fotos anatômicas, detalhes botânicos, botão com link direto ao PlantNet (`target="_blank" rel="noopener noreferrer"`) e botão para abrir a ficha completa.
+- [x] **Estrutura de Diretórios para Fotos:** Pastas `public/trees/grupo-a/`, `public/trees/grupo-b/`, `public/trees/grupo-c/` criadas com guia de nomenclatura em `README.md`.
+- [x] **QA & Sanity Check:** 85/85 testes Vitest aprovados, compilação TypeScript com 0 erros (`npx tsc --noEmit`), build de produção SSG Next.js 15.5 gerando 17 páginas com sucesso (`npm run build`).
+- [x] **Governança UDM:** Documentação atualizada e espelhada para `D:\Universal-Agent-Memory\projects\flora-parque-eco`.
+
 ## Próximos Passos
 - [ ] Conectar banco de dados Supabase / PostGIS se/quando for solicitado painel administrativo com login e CRUD em tempo real.
-- [ ] Expandir o catálogo para os demais setores do parque (Trilha Oeste e Setor Norte) conforme os dados de campo adicionais forem entregues pelo IFRO.
-
-
-
+- [ ] Alimentar as pastas `public/trees/grupo-[a|b|c]/` com as fotos reais coletadas pelos alunos.

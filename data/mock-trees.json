@@ -6,14 +6,14 @@
     "scientificNameSuggested": "Jacaranda mimosifolia",
     "family": "Bignoniaceae",
     "confidence": "alta",
-    "latitude": -12.70770,
-    "longitude": -60.12176,
+    "latitude": -12.70660,
+    "longitude": -60.12160,
     "locationAccuracy": 2.8,
     "primaryPhoto": {
       "id": "photo-001-1",
       "url": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
       "category": "arvore_inteira",
-      "caption": "Jacarandá na margem sudoeste",
+      "caption": "Jacarandá no gramado noroeste",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-20T10:15:00Z"
     },
@@ -41,10 +41,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:130452-1",
       "familySuggested": "Bignoniaceae"
     },
-    "group": "groupB",
+    "group": "groupA",
     "collectedAt": "2026-09-20T10:15:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 1 do Catálogo Florístico (Trilha Leste / Lago). Indivíduo jovem localizado na margem sudoeste do lago.",
+    "notes": "Ponto do Grupo A (Setor Noroeste). Indivíduo jovem localizado no gramado superior do parque.",
     "isMock": true
   },
   {
@@ -54,14 +54,14 @@
     "scientificNameSuggested": "Schizolobium parahyba",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70771,
-    "longitude": -60.12164,
+    "latitude": -12.70650,
+    "longitude": -60.12130,
     "locationAccuracy": 3.1,
     "primaryPhoto": {
       "id": "photo-002-1",
       "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
       "category": "arvore_inteira",
-      "caption": "Espécime 2 - Guapuruvu",
+      "caption": "Guapuruvu no gramado",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-20T10:20:00Z"
     },
@@ -81,10 +81,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:517853-1",
       "familySuggested": "Fabaceae"
     },
-    "group": "groupB",
+    "group": "groupA",
     "collectedAt": "2026-09-20T10:20:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 2 do Catálogo Florístico. Tronco reto e esguio característico de mata secundária.",
+    "notes": "Ponto do Grupo A. Tronco reto e esguio característico de regeneração florestal.",
     "isMock": true
   },
   {
@@ -94,8 +94,8 @@
     "scientificNameSuggested": "Cavanillesia platanifolia",
     "family": "Malvaceae",
     "confidence": "media",
-    "latitude": -12.70772,
-    "longitude": -60.12152,
+    "latitude": -12.70670,
+    "longitude": -60.12180,
     "locationAccuracy": 3.4,
     "primaryPhoto": {
       "id": "photo-003-1",
@@ -121,10 +121,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:559124-1",
       "familySuggested": "Malvaceae"
     },
-    "group": "groupB",
+    "group": "groupA",
     "collectedAt": "2026-09-20T10:25:00Z",
     "verificationStatus": "em_analise",
-    "notes": "Ponto 3 do Catálogo Florístico. Indivíduo com cavidade natural de grande relevância ecológica para fauna.",
+    "notes": "Ponto do Grupo A. Indivíduo com cavidade natural de grande relevância ecológica para fauna local.",
     "isMock": true
   },
   {
@@ -134,8 +134,8 @@
     "scientificNameSuggested": "Eucalyptus grandis",
     "family": "Myrtaceae",
     "confidence": "alta",
-    "latitude": -12.70774,
-    "longitude": -60.12139,
+    "latitude": -12.70645,
+    "longitude": -60.12110,
     "locationAccuracy": 2.5,
     "primaryPhoto": {
       "id": "photo-004-1",
@@ -161,10 +161,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:592965-1",
       "familySuggested": "Myrtaceae"
     },
-    "group": "groupB",
+    "group": "groupA",
     "collectedAt": "2026-09-20T10:30:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 4 do Catálogo Florístico. Espécime exótico remanescente de reflorestamento anterior.",
+    "notes": "Ponto do Grupo A. Espécime de porte elevado próximo ao acesso norte.",
     "isMock": true
   },
   {
@@ -174,14 +174,14 @@
     "scientificNameSuggested": "Mangifera indica",
     "family": "Anacardiaceae",
     "confidence": "alta",
-    "latitude": -12.70775,
-    "longitude": -60.12126,
+    "latitude": -12.70660,
+    "longitude": -60.12070,
     "locationAccuracy": 2.2,
     "primaryPhoto": {
       "id": "photo-005-1",
       "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
       "category": "arvore_inteira",
-      "caption": "Mangueira de copa frondosa",
+      "caption": "Mangueira sombreadora no parquinho",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-20T10:38:00Z"
     },
@@ -190,7 +190,7 @@
         "id": "photo-005-1",
         "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
         "category": "arvore_inteira",
-        "caption": "Copa ampla que sombreia a trilha",
+        "caption": "Copa ampla que sombreia o parquinho",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-20T10:38:00Z"
       }
@@ -204,7 +204,7 @@
     "group": "groupB",
     "collectedAt": "2026-09-20T10:35:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 5 do Catálogo Florístico. Copa densa proporcionando sombreamento direto na trilha sul.",
+    "notes": "Ponto do Grupo B (Setor Nordeste / Parquinho). Copa densa proporcionando sombreamento direto à área infantil.",
     "isMock": true
   },
   {
@@ -214,8 +214,8 @@
     "scientificNameSuggested": "Ceiba speciosa",
     "family": "Malvaceae",
     "confidence": "alta",
-    "latitude": -12.70775,
-    "longitude": -60.12113,
+    "latitude": -12.70685,
+    "longitude": -60.12050,
     "locationAccuracy": 2.6,
     "primaryPhoto": {
       "id": "photo-006-1",
@@ -241,10 +241,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1001099-1",
       "familySuggested": "Malvaceae"
     },
-    "group": "groupA",
+    "group": "groupB",
     "collectedAt": "2026-09-20T10:42:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 6 do Catálogo Florístico. Tronco com acúleos cônicos conspícuos.",
+    "notes": "Ponto do Grupo B. Tronco com acúleos cônicos conspícuos na orla leste do gramado.",
     "isMock": true
   },
   {
@@ -254,8 +254,8 @@
     "scientificNameSuggested": "Mangifera indica",
     "family": "Anacardiaceae",
     "confidence": "alta",
-    "latitude": -12.70774,
-    "longitude": -60.12100,
+    "latitude": -12.70655,
+    "longitude": -60.12035,
     "locationAccuracy": 2.9,
     "primaryPhoto": {
       "id": "photo-007-1",
@@ -281,10 +281,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:69904-1",
       "familySuggested": "Anacardiaceae"
     },
-    "group": "groupA",
+    "group": "groupB",
     "collectedAt": "2026-09-20T10:48:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 7 do Catálogo Florístico. Indivíduo com frutificação observada em campo.",
+    "notes": "Ponto do Grupo B. Indivíduo com frutificação observada em campo no setor leste.",
     "isMock": true
   },
   {
@@ -294,8 +294,8 @@
     "scientificNameSuggested": "Tibouchina granulosa",
     "family": "Melastomataceae",
     "confidence": "alta",
-    "latitude": -12.70771,
-    "longitude": -60.12088,
+    "latitude": -12.70695,
+    "longitude": -60.12065,
     "locationAccuracy": 3.0,
     "primaryPhoto": {
       "id": "photo-008-1",
@@ -321,10 +321,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:566418-1",
       "familySuggested": "Melastomataceae"
     },
-    "group": "groupA",
+    "group": "groupB",
     "collectedAt": "2026-09-20T10:52:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 8 do Catálogo Florístico. Floração marcante próxima à curva da passarela.",
+    "notes": "Ponto do Grupo B. Floração arroxeada viva na orla do parquinho.",
     "isMock": true
   },
   {
@@ -334,8 +334,8 @@
     "scientificNameSuggested": "Handroanthus impetiginosus",
     "family": "Bignoniaceae",
     "confidence": "alta",
-    "latitude": -12.70766,
-    "longitude": -60.12080,
+    "latitude": -12.70760,
+    "longitude": -60.12120,
     "locationAccuracy": 2.1,
     "primaryPhoto": {
       "id": "photo-009-1",
@@ -361,10 +361,10 @@
       "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77085794-1",
       "familySuggested": "Bignoniaceae"
     },
-    "group": "groupA",
+    "group": "groupC",
     "collectedAt": "2026-09-20T10:58:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 9 do Catálogo Florístico. Ponto de referência visual no acesso sul da passarela do lago.",
+    "notes": "Ponto do Grupo C (Trilha da Margem Sul). Ponto de referência visual no acesso sul da passarela transversal do lago.",
     "isMock": true
   },
   {
@@ -374,8 +374,8 @@
     "scientificNameSuggested": "Ficus gomelleira",
     "family": "Moraceae",
     "confidence": "media",
-    "latitude": -12.70762,
-    "longitude": -60.12073,
+    "latitude": -12.70755,
+    "longitude": -60.12150,
     "locationAccuracy": 3.2,
     "primaryPhoto": {
       "id": "photo-010-1",
@@ -404,7 +404,7 @@
     "group": "groupC",
     "collectedAt": "2026-09-20T11:05:00Z",
     "verificationStatus": "identificacao_preliminar",
-    "notes": "Ponto 10 do Catálogo Florístico. Figueira com marca histórica/interferência antrópica no tronco.",
+    "notes": "Ponto do Grupo C. Figueira centenária com marca histórica no tronco na trilha sul.",
     "isMock": true
   },
   {
@@ -414,8 +414,8 @@
     "scientificNameSuggested": "Qualea grandiflora",
     "family": "Vochysiaceae",
     "confidence": "media",
-    "latitude": -12.70751,
-    "longitude": -60.12059,
+    "latitude": -12.70765,
+    "longitude": -60.12090,
     "locationAccuracy": 3.7,
     "primaryPhoto": {
       "id": "photo-011-1",
@@ -444,7 +444,7 @@
     "group": "groupC",
     "collectedAt": "2026-09-20T11:12:00Z",
     "verificationStatus": "em_analise",
-    "notes": "Ponto 11 do Catálogo Florístico. Tronco bifurcado a 1,5m da base, típico de fisionomia de Cerrado.",
+    "notes": "Ponto do Grupo C. Tronco bifurcado a 1,5m da base, na transição para a mata fechada.",
     "isMock": true
   },
   {
@@ -454,8 +454,8 @@
     "scientificNameSuggested": "Inga vera",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70739,
-    "longitude": -60.12039,
+    "latitude": -12.70745,
+    "longitude": -60.12050,
     "locationAccuracy": 2.4,
     "primaryPhoto": {
       "id": "photo-012-1",
@@ -484,7 +484,7 @@
     "group": "groupC",
     "collectedAt": "2026-09-20T11:20:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 12 do Catálogo Florístico. Ingazeiro de margem oferecendo sombra à área de convivência.",
+    "notes": "Ponto do Grupo C. Ingazeiro de margem oferecendo sombra à orla leste do lago.",
     "isMock": true
   },
   {
@@ -494,14 +494,14 @@
     "scientificNameSuggested": "Anadenanthera colubrina",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70726,
-    "longitude": -60.12016,
+    "latitude": -12.70730,
+    "longitude": -60.12035,
     "locationAccuracy": 2.8,
     "primaryPhoto": {
       "id": "photo-013-1",
       "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
       "category": "arvore_inteira",
-      "caption": "Angico-branco no final da trilha leste",
+      "caption": "Angico-branco no final da trilha sul",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-20T11:30:00Z"
     },
@@ -524,7 +524,7 @@
     "group": "groupC",
     "collectedAt": "2026-09-20T11:28:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto 13 do Catálogo Florístico. Encerramento do trecho catalogado da Trilha Leste na transição para a mata fechada.",
+    "notes": "Ponto do Grupo C. Encerramento da Trilha Sul na transição para a mata fechada.",
     "isMock": true
   }
 ]

@@ -5,21 +5,23 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Perímetro do Parque Ecológico Municipal Marechal Cândido Rondon",
+        "name": "Área de Visitação do Parque Ecológico Municipal Marechal Cândido Rondon",
         "municipality": "Vilhena — RO",
-        "description": "Limites oficiais da reserva ambiental e área de preservação do Parque Ecológico Municipal, abrangendo o lago, trilhas e mata nativa."
+        "description": "Perímetro da área de uso público, lago, trilhas e gramados dos setores A, B e C."
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.1242, -12.7062],
-            [-60.1218, -12.7052],
-            [-60.1182, -12.7055],
-            [-60.1170, -12.7085],
-            [-60.1205, -12.7108],
-            [-60.1244, -12.7088],
-            [-60.1242, -12.7062]
+            [-60.12225, -12.70630],
+            [-60.12020, -12.70635],
+            [-60.12015, -12.70720],
+            [-60.12035, -12.70775],
+            [-60.12100, -12.70790],
+            [-60.12165, -12.70770],
+            [-60.12225, -12.70740],
+            [-60.12230, -12.70685],
+            [-60.12225, -12.70630]
           ]
         ]
       }

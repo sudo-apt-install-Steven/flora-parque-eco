@@ -1,5 +1,34 @@
 # UDM — CHANGELOG
 
+## [1.2.0] — 2026-09-21 [ANTIGRAVITY: INTERACTIVE FIELD REGIONS, PILL LAKE & SATELLITE ENGINE]
+
+### Adicionado & Aprimorado (Regiões de Coleta, Cartografia Fiel e Satélite Principal)
+- **Satélite como Camada Principal e Padrão:**
+  - `lib/store/tree-store.ts`: `layerMode` inicial definido permanentemente como `'satellite'`.
+  - Zoom livre até nível 22 com Google Satellite + fallback Esri World Imagery.
+  - Linha amarela listrada gigante (`satellite-boundary-line`) totalmente removida.
+- **Geometria Calibrada do Lago e da Passarela:**
+  - **Lago Pílula (Pill-shaped):** Formato arredondado suave (`-60.1220` a `-60.1207`, `-12.7070` a `-12.7077`) sincronizado nas 3 camadas cartográficas (Satélite, Planta e Exploração).
+  - **Passarela Transversal de Madeira:** Traçado reto cortando de NW (`[-60.12182, -12.70692]`) para SE (`[-60.12118, -12.70761]`).
+  - **Parquinho Infantil:** Círculo no gramado nordeste (`[-60.12080, -12.70682]`).
+- **3 Regiões Poligonais Interativas (Grupos de Campo A, B e C):**
+  - `geo/park-regions.geojson` e `public/geo/park-regions.geojson`: polígonos representativos das equipes de coleta:
+    - **Grupo A (Amarelo `#eab308`):** Setor Noroeste (Gramado Norte e acesso).
+    - **Grupo B (Azul `#3b82f6`):** Setor Nordeste (Parquinho e gramado leste).
+    - **Grupo C (Vermelho `#ef4444`):** Faixa Sul do Lago e Trilha Ciliar.
+  - Interatividade no MapLibre GL: realce dinâmico com borda acentuada ao passar o mouse (`cursor: pointer`), seleção por clique, voo suave da câmera (`fitBounds`/`flyTo`) e abertura automática da gaveta lateral.
+- **Gaveta de Inventário da Região (`RegionTreeList.tsx`):**
+  - Listagem dos indivíduos catalogados por setor geográfico.
+  - Carrossel fotográfico integrado com tags anatômicas.
+  - **Link Direto do PlantNet:** Acesso instantâneo à identificação botânica com botão externo seguro (`target="_blank" rel="noopener noreferrer"`).
+  - Ação de navegação para a ficha botânica completa (`TreeDetail`).
+- **Estruturação de Diretórios para Fotos do Usuário (`public/trees/`):**
+  - Pastas `public/trees/grupo-a/`, `public/trees/grupo-b/`, `public/trees/grupo-c/` criadas com `.gitkeep` e `README.md` detalhado.
+- **Garantia de Qualidade e Compilação:**
+  - 85/85 testes Vitest aprovados (100% PASS).
+  - `npx tsc --noEmit` com 0 erros de tipagem.
+  - Build estático SSG Next.js 15.5 gerando 17 páginas estáticas com 0 erros.
+
 ## [1.1.0] — 2026-09-21 [ANTIGRAVITY: GIS CALIBRATION & BOTANICAL INVENTORY]
 
 ### Corrigido & Aprimorado (Calibração Cartográfica e Catálogo Real)

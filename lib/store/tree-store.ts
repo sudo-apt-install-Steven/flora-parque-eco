@@ -126,7 +126,7 @@ export const useTreeStore = create<TreeState>((set, get) => ({
   selectedTreeId: null,
   focusKey: 0,
   activeNav: 'mapa',
-  layerMode: 'planta',
+  layerMode: 'satellite',
   filters: DEFAULT_FILTERS,
   isSearchOpen: false,
   isLegendOpen: false,
