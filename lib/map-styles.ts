@@ -1,4 +1,5 @@
 import { StyleSpecification } from 'maplibre-gl';
+import { PARK_REGIONS_GEOJSON } from '@/geo/park-regions';
 
 /**
  * Estilo do Modo SATÉLITE
@@ -22,7 +23,7 @@ export const SATELLITE_STYLE: StyleSpecification = {
     },
     'park-regions': {
       type: 'geojson',
-      data: '/geo/park-regions.geojson',
+      data: PARK_REGIONS_GEOJSON as any,
       promoteId: 'id'
     }
   },
@@ -100,7 +101,7 @@ export const PLANTA_STYLE: StyleSpecification = {
     },
     'park-regions': {
       type: 'geojson',
-      data: '/geo/park-regions.geojson',
+      data: PARK_REGIONS_GEOJSON as any,
       promoteId: 'id'
     }
   },
@@ -387,7 +388,7 @@ export const EXPLORATION_STYLE: StyleSpecification = {
     },
     'park-regions': {
       type: 'geojson',
-      data: '/geo/park-regions.geojson',
+      data: PARK_REGIONS_GEOJSON as any,
       promoteId: 'id'
     }
   },

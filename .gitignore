@@ -34,3 +34,12 @@ Thumbs.db
 # TypeScript cache
 *.tsbuildinfo
 next-env.d.ts
+
+# Test artifacts & temporary profiles
+scratch/
+edge-*-profile/
+*-profile/
+*-data/
+cdp-screenshot.png
+screenshot-*.png
+

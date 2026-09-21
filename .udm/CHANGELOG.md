@@ -1,6 +1,36 @@
 # UDM — CHANGELOG
 
-## [1.2.0] — 2026-09-21 [ANTIGRAVITY: INTERACTIVE FIELD REGIONS, PILL LAKE & SATELLITE ENGINE]
+## [1.3.0] — 2026-09-21 [CLAUDE - UI/GIS & AUDIT]
+
+### Adicionado & Auditado (Interatividade Completa GIS WebGL, Auto-Auditoria e Resiliência)
+- **Interatividade Completa do Motor GIS WebGL (MapLibre GL JS):**
+  - Alternância plenamente funcional entre as 3 camadas cartográficas: Satélite (Google Satellite com super zoom até 22 e suporte a ortofoto), Planta Técnica (lago pílula, passarela de madeira, caminhos e parquinho) e Exploração (expedição com curvas de nível e relevo botânico).
+  - Gerenciamento de estados dos marcadores via WebGL `feature-state` nativo na GPU (`NORMAL`, `HOVER`, `SELECTED`), eliminando re-renderizações e reconstrução de GeoJSON em tempo de execução.
+  - Sincronização bidirecional entre cliques em marcadores no canvas WebGL e abertura imediata do `TreePanel` (desktop) ou Bottom Sheet (mobile).
+  - Injeção dinâmica do marcador HTML ativo (`selectedMarkerRef`) com animação pulsante (`marker-pulse`) e SVG botânico.
+  - Expansão dinâmica de clusters com interpolação suave `easeTo` no Supercluster (`clusterMaxZoom: 17`, `clusterRadius: 45`).
+  - Interação completa com os polígonos dos setores de coleta (`park-regions` dos Grupos A, B e C): destaque de borda e cursor pointer no hover, clique com voo suave da câmera (`fitBounds`/`flyTo`) e abertura automática da gaveta `RegionTreeList`.
+- **Auto-Auditoria de Performance e Memoização Rigorosa:**
+  - `MapContainerComponent` blindado com `React.memo` para isolar completamente o canvas WebGL a 60 FPS contra re-renders disparados por digitação em buscas, abertura de modais ou filtros.
+  - `useMemo` empregado para converter e estabilizar dados de árvores e coleções GeoJSON.
+  - Manipulação de hover via refs mutáveis (`useRef`) e `map.setFeatureState`, sem causar re-render na árvore de componentes React.
+  - Seletores atômicos e derivados do Zustand 5 (`useTotalTrees`, `useUniqueSpecies`, `useFamilyCounts`, `useFilteredCatalog`, `useActiveTree`) prevenindo cascatas de re-renderização durante o pan/zoom.
+- **Acessibilidade e Conformidade WCAG AA (a11y):**
+  - Revisão e adição de atributos semânticos ARIA: `LayerSwitcher` com `role="radiogroup"`, `role="radio"`, `aria-checked` e `aria-label`; painel lateral com `role="region"` / `role="dialog"` e `aria-modal="true"`.
+  - Contraste de texto testado e superior a 12:1 no tema Warm Paper (`#f8f6ef`) sobre Deep Forest (`#102a26`), ultrapassando com folga o mínimo de 4.5:1 exigido pela WCAG AA.
+  - Estilos explícitos de foco via teclado (`focus-visible:ring-2 focus-visible:ring-emerald-500`) em todos os elementos táteis e botões.
+- **Resiliência Visual e Blindagem de Dados Ausentes:**
+  - Todos os acessos a dados no `TreeDetail` e `RegionTreeList` mediados por `getSafeTree()` em `lib/fallbacks.ts`.
+  - Tratamento elegante para ausência de `scientificNameSuggested`: exibe placeholder estilizado *"Em identificação botânica"* em itálico sem quebrar o grid.
+  - Tratamento para fotos ausentes: fallback automático para SVG vetorial em data URI (`DEFAULT_FALLBACK_PHOTO`) sem dependência de rede externa.
+  - Tratamento para PlantNet score zerado ou nulo: exibe badge de análise taxonômica pendente em vez de barra vazia.
+- **Página 404 e Integridade de Build Next.js SSG:**
+  - Criado `app/not-found.tsx` com identidade visual botânica Deep Forest (`#0b211d`) e botão de retorno ao mapa principal, assegurando geração estática 100% limpa no App Router.
+- **Garantia de Qualidade e Conformidade:**
+  - 85/85 testes Vitest aprovados em 12 arquivos (100% PASS).
+  - 0 erros na checagem estrita de tipos TypeScript (`tsc --noEmit -p tsconfig.json`).
+  - Build estático SSG Next.js 15.5 gerando 17 páginas estáticas com 100% de sucesso.
+
 
 ### Adicionado & Aprimorado (Regiões de Coleta, Cartografia Fiel e Satélite Principal)
 - **Satélite como Camada Principal e Padrão:**

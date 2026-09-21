@@ -88,4 +88,15 @@
   4. Cadastrar no `data/mock-trees.json` os 13 espécimes reais georreferenciados identificados no catálogo florístico de campo ("Trilha Leste / Lago"), com conformidade 100% ao `TreeSchema` do Zod, galeria com `PhotoItemSchema` e obediência absoluta à Regra de Ouro nº 2 (`displayNumber: null`).
 - **Justificativa:** O inventário arbóreo pertence ao Parque Ecológico Municipal; sobreposições territoriais com o IFRO distorciam a cartografia e impediam o zoom métrico na copa das árvores catalogadas ao longo da trilha do lago.
 
+## ADR-010: Interatividade GIS via WebGL Feature-State, Isolamento de Renderização com React.memo e Acessibilidade WCAG AA
+- **Data:** 2026-09-21
+- **Status:** ACEITO
+- **Decisão:**
+  1. Utilizar manipulação de `feature-state` na GPU (`map.setFeatureState`) no MapLibre GL JS para alternar os estados `NORMAL`, `HOVER` e `SELECTED` nos pontos de árvores e polígonos de regiões de campo (`park-regions`), proibindo re-renderizações ou refações de GeoJSON durante interações de mouse/toque.
+  2. Encapsular `MapContainerComponent` em `React.memo` com comparação rasa de props, e utilizar seletores atômicos no Zustand 5 (`useTotalTrees`, `useUniqueSpecies`, `useFamilyCounts`, etc.) para desacoplar totalmente o ciclo de vida do canvas WebGL da árvore de componentes React da UI.
+  3. Adotar semântica ARIA estrita (`role="radiogroup"`, `role="radio"`, `role="region"`, `role="dialog"` com `aria-modal="true"`) com garantia de contraste > 12:1 no tema botânico Warm Paper / Deep Forest, atendendo à conformidade WCAG AA.
+  4. Manter resiliência universal com `getSafeTree()` para campos nulos e criar `app/not-found.tsx` temático para garantir integridade do build estático Next.js SSG.
+- **Justificativa:** O mapa é o elemento mais pesado da interface; desacoplar a renderização WebGL do estado de UI garante 60 FPS estáveis mesmo em smartphones de entrada em campo, ao mesmo tempo em que proporciona acessibilidade e blindagem contra erros de dados em tempo de execução.
+
+
 

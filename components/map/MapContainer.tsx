@@ -4,6 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { PARK_CONFIG } from '@/lib/park-config';
 import { SATELLITE_STYLE, PLANTA_STYLE, EXPLORATION_STYLE } from '@/lib/map-styles';
 import { Tree, FieldGroup } from '@/lib/tree-schema';
+import { PARK_REGIONS_GEOJSON } from '@/geo/park-regions';
 import { treesToGeoJSON } from '@/lib/trees';
 import { applyRasterOverlay, removeRasterOverlay } from '@/lib/gis';
 
@@ -103,6 +104,10 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
   // Configura os ouvintes interativos de hover e clique nas 3 regiões
   const setupRegionInteractions = useCallback(
     (map: maplibregl.Map) => {
+      if (map.getSource(REGIONS_SOURCE_ID)) {
+        (map.getSource(REGIONS_SOURCE_ID) as maplibregl.GeoJSONSource).setData(PARK_REGIONS_GEOJSON as any);
+      }
+
       REGION_FILL_LAYERS.forEach((layerId) => {
         if (!map.getLayer(layerId)) return;
 
@@ -150,9 +155,9 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
 
             // Centros geográficos dos 3 setores calibrados
             const centers: Record<FieldGroup, [number, number]> = {
-              groupA: [-60.12140, -12.70650], // Gramado Noroeste
-              groupB: [-60.12040, -12.70670], // Gramado Nordeste & Parquinho
-              groupC: [-60.12090, -12.70770]  // Faixa da Margem Sul do Lago
+              groupA: [-60.12140, -12.70685], // Gramado Noroeste
+              groupB: [-60.12040, -12.70695], // Gramado Nordeste & Parquinho
+              groupC: [-60.12090, -12.70765]  // Faixa da Margem Sul do Lago
             };
             const targetCenter = centers[group] || PARK_CONFIG.center;
 
@@ -625,3 +630,4 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
 };
 
 export const MapContainer = React.memo(MapContainerComponent);
+export default MapContainer;

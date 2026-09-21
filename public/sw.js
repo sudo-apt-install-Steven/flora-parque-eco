@@ -2,7 +2,7 @@
 // Estratégia de Cache para Coleta de Campo Offline
 
 const CACHE_NAME_PREFIX = 'flora-parque-eco';
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v5';
 const STATIC_CACHE = `${CACHE_NAME_PREFIX}-static-${CACHE_VERSION}`;
 const DATA_CACHE = `${CACHE_NAME_PREFIX}-data-${CACHE_VERSION}`;
 const GEO_CACHE = `${CACHE_NAME_PREFIX}-geo-${CACHE_VERSION}`;
@@ -54,9 +54,13 @@ self.addEventListener('activate', (event) => {
 });
 
 // Verificadores de rota e estratégia
+function isGeoJsonData(url) {
+  return url.pathname.startsWith('/geo/');
+}
+
 function isVitalUiOrSvg(url, request) {
-  // SVGs cartográficos e camadas GeoJSON
-  if (url.pathname.endsWith('.svg') || url.pathname.startsWith('/geo/')) {
+  // SVGs cartográficos
+  if (url.pathname.endsWith('.svg')) {
     return true;
   }
   // Scripts e estilos vitais da UI (Next.js static assets)
@@ -85,12 +89,35 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Ignora requisições de outros esquemas (ex: chrome-extension://) ou métodos que não sejam GET
+  // Ignora requisições de outros esquemas ou métodos que não sejam GET
   if (request.method !== 'GET' || !url.protocol.startsWith('http')) {
     return;
   }
 
-  // 1. ESTRATÉGIA CACHE-FIRST: Arquivos vitais da UI e SVGs cartográficos
+  // 1. ESTRATÉGIA NETWORK-FIRST: Camadas GeoJSON cartográficas (sempre dados frescos)
+  if (isGeoJsonData(url)) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(GEO_CACHE).then((cache) => cache.put(request, responseClone));
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(request).then((cached) => {
+            if (cached) return cached;
+            return new Response(JSON.stringify({ type: 'FeatureCollection', features: [] }), {
+              headers: { 'Content-Type': 'application/geo+json' }
+            });
+          });
+        })
+    );
+    return;
+  }
+
+  // 2. ESTRATÉGIA CACHE-FIRST: Arquivos vitais da UI e SVGs cartográficos
   if (isVitalUiOrSvg(url, request)) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {

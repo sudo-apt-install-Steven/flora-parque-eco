@@ -118,6 +118,19 @@
 - [x] **QA & Sanity Check:** 85/85 testes Vitest aprovados, compilação TypeScript com 0 erros (`npx tsc --noEmit`), build de produção SSG Next.js 15.5 gerando 17 páginas com sucesso (`npm run build`).
 - [x] **Governança UDM:** Documentação atualizada e espelhada para `D:\Universal-Agent-Memory\projects\flora-parque-eco`.
 
+## Fase 16: Interatividade GIS, Integração Completa de UI & Auto-Auditoria de Performance (Concluída 100%)
+- [x] **Conexão de Dados ao Mapa WebGL:** Conexão direta dos 13 espécimes ao MapLibre GL com `promoteId: 'id'` e Supercluster hierárquico.
+- [x] **Lógica Funcional de Camadas:** Alternância sem falhas entre Satélite (super zoom 22 com Google Tiles), Planta Técnica (lago pílula, passarela, caminhos) e Exploração (curvas de nível e relevo sombreado) via `LayerSwitcher` acessível.
+- [x] **Interatividade dos Marcadores:** Clique nos marcadores acionando sincronização reativa com o Zustand store e abrindo instantaneamente o `TreePanel` (desktop) e `TreeDetail` / Bottom Sheet (mobile).
+- [x] **Marcadores Premium e Microinterações:** Estados `NORMAL`, `HOVER` e `SELECTED` via WebGL `feature-state` na GPU sem re-renderizar camadas; injeção do marcador HTML animado com `marker-pulse`.
+- [x] **Auditoria de Performance (useMemo / React.memo):** `MapContainer` blindado com `React.memo`; isolamento do canvas WebGL a 60 FPS prevenindo cascade re-renders no pan/zoom; seletores atômicos do Zustand 5 garantindo rendering cirúrgico.
+- [x] **Auditoria de Acessibilidade (a11y & WCAG AA):** Semântica ARIA completa (`radiogroup`, `radio`, `region`, `dialog`, `aria-modal`), anéis de foco por teclado visíveis e taxa de contraste testada superior a 12:1.
+- [x] **Resiliência Visual a Dados Ausentes:** Fallbacks elegantes através de `getSafeTree()` cobrindo nomes científicos ausentes, fotos faltantes (SVG em data URI) e scores do PlantNet zerados sem quebra de layout.
+- [x] **Criação da Página 404 Resiliente:** `app/not-found.tsx` botânico garantindo compilação e exportação SSG sem erros.
+- [x] **QA & Sanity Check:** 85/85 testes Vitest aprovados (100% PASS), 0 erros TypeScript estrito (`tsc --noEmit`), build estático Next.js 15.5 gerando 17 páginas com sucesso.
+- [x] **Governança UDM:** Atualização síncrona de `CURRENT_STATE.md`, `CHANGELOG.md` com a tag `[CLAUDE - UI/GIS & AUDIT]`, `TASKS.md` e novo `AGENT_HANDOFF.md` espelhados no HD e no repositório.
+
 ## Próximos Passos
 - [ ] Conectar banco de dados Supabase / PostGIS se/quando for solicitado painel administrativo com login e CRUD em tempo real.
 - [ ] Alimentar as pastas `public/trees/grupo-[a|b|c]/` com as fotos reais coletadas pelos alunos.
+- [ ] Inserir novas coordenadas dos espécimes adicionais à medida que novos setores de campo forem levantados.

@@ -1,4 +1,8 @@
-{
+/**
+ * GeoJSON das 3 Regiões Poligonais Oficiais do Parque Ecológico de Vilhena
+ * Calibrado pixel a pixel diretamente sobre a ortofoto aérea/satélite
+ */
+export const PARK_REGIONS_GEOJSON = {
   "type": "FeatureCollection",
   "name": "park-regions",
   "features": [
@@ -184,4 +188,4 @@
       }
     }
   ]
-}
+} as const;
