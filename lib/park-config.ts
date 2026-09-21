@@ -69,17 +69,17 @@ export const PARK_CONFIG = {
   fieldGroups: {
     groupA: {
       name: 'Grupo A',
-      locationDescription: 'Setor Noroeste & Acesso (Faixa da BR-174)',
+      locationDescription: 'Gramado Noroeste (em frente ao Lago)',
       color: '#eab308' // amarelo
     },
     groupB: {
       name: 'Grupo B',
-      locationDescription: 'Setor Predial, Pátio & Bosque Leste',
+      locationDescription: 'Gramado Nordeste & Parquinho Infantil',
       color: '#3b82f6' // azul
     },
     groupC: {
       name: 'Grupo C',
-      locationDescription: 'Margem Sul do Lago & Mata Ciliar',
+      locationDescription: 'Faixa da Margem Sul do Lago',
       color: '#ef4444' // vermelho
     }
   }

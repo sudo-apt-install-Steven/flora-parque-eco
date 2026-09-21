@@ -8,24 +8,26 @@
       "properties": {
         "id": "groupA",
         "group": "groupA",
-        "name": "Grupo A — Setor Noroeste & Acesso",
+        "name": "Grupo A — Gramado Noroeste",
         "shortName": "Grupo A",
         "color": "#eab308",
-        "fillOpacity": 0.28,
+        "fillOpacity": 0.35,
         "strokeColor": "#facc15",
         "strokeWidth": 2.5,
-        "description": "Faixa norte compreendendo a rodovia BR-174, área verde e acesso principal aos prédios.",
+        "description": "Gramado norte/oeste em frente ao lago, entre a pista de acesso e o parquinho.",
         "treeCount": 4
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12285, -12.70535],
-            [-60.12085, -12.70545],
-            [-60.12080, -12.70670],
-            [-60.12290, -12.70645],
-            [-60.12285, -12.70535]
+            [-60.12195, -12.70608],
+            [-60.12080, -12.70612],
+            [-60.12080, -12.70690],
+            [-60.12135, -12.70692],
+            [-60.12175, -12.70690],
+            [-60.12198, -12.70698],
+            [-60.12195, -12.70608]
           ]
         ]
       }
@@ -36,25 +38,28 @@
       "properties": {
         "id": "groupB",
         "group": "groupB",
-        "name": "Grupo B — Setor Predial, Pátio & Bosque Leste",
+        "name": "Grupo B — Gramado Nordeste & Parquinho",
         "shortName": "Grupo B",
         "color": "#3b82f6",
-        "fillOpacity": 0.28,
+        "fillOpacity": 0.35,
         "strokeColor": "#60a5fa",
         "strokeWidth": 2.5,
-        "description": "Complexo predial, pátio leste e bloco de mata fechada a nordeste do lago.",
+        "description": "Gramado leste com o parquinho infantil e transição para a mata fechada.",
         "treeCount": 4
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12085, -12.70545],
-            [-60.11930, -12.70550],
-            [-60.11915, -12.70660],
-            [-60.11985, -12.70715],
-            [-60.12075, -12.70660],
-            [-60.12085, -12.70545]
+            [-60.12080, -12.70612],
+            [-60.12015, -12.70616],
+            [-60.12005, -12.70650],
+            [-60.12008, -12.70700],
+            [-60.12000, -12.70735],
+            [-60.12045, -12.70740],
+            [-60.12065, -12.70710],
+            [-60.12080, -12.70690],
+            [-60.12080, -12.70612]
           ]
         ]
       }
@@ -65,28 +70,34 @@
       "properties": {
         "id": "groupC",
         "group": "groupC",
-        "name": "Grupo C — Margem Sul do Lago & Mata Ciliar",
+        "name": "Grupo C — Faixa da Margem Sul do Lago",
         "shortName": "Grupo C",
         "color": "#ef4444",
-        "fillOpacity": 0.32,
+        "fillOpacity": 0.38,
         "strokeColor": "#f87171",
         "strokeWidth": 2.8,
-        "description": "Faixa ciliar contornando toda a margem sul do lago e subindo na mata preservada a leste.",
+        "description": "Faixa ecológica contornando toda a margem sul do lago ao longo da pista de caminhada.",
         "treeCount": 5
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [-60.12255, -12.70705],
-            [-60.12150, -12.70785],
-            [-60.12040, -12.70825],
-            [-60.11935, -12.70750],
-            [-60.11915, -12.70685],
-            [-60.12025, -12.70775],
-            [-60.12140, -12.70755],
-            [-60.12215, -12.70700],
-            [-60.12255, -12.70705]
+            [-60.12195, -12.70735],
+            [-60.12160, -12.70748],
+            [-60.12115, -12.70765],
+            [-60.12075, -12.70772],
+            [-60.12050, -12.70755],
+            [-60.12025, -12.70742],
+            [-60.11985, -12.70730],
+            [-60.11980, -12.70748],
+            [-60.12025, -12.70762],
+            [-60.12055, -12.70778],
+            [-60.12080, -12.70792],
+            [-60.12120, -12.70784],
+            [-60.12165, -12.70768],
+            [-60.12195, -12.70752],
+            [-60.12195, -12.70735]
           ]
         ]
       }
