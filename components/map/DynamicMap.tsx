@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import React, { ComponentType } from 'react';
 import { Tree, FieldGroup } from '@/lib/tree-schema';
-import { MapContainer } from '@/components/map/MapContainer';
 
 export interface MapContainerProps {
   currentMode: 'satellite' | 'planta' | 'exploration';
@@ -14,15 +14,11 @@ export interface MapContainerProps {
   onSelectGroup?: (group: FieldGroup | 'all') => void;
 }
 
-export function DynamicMap(props: MapContainerProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
+export const DynamicMap: ComponentType<MapContainerProps> = dynamic(
+  () => import('@/components/map/MapContainer'),
+  {
+    ssr: false,
+    loading: () => (
       <div className="w-full h-full flex flex-col items-center justify-center bg-[#e7e1d0] text-[#102a26]">
         <div className="w-5 h-8 animate-spin rounded-full border-2 border-[#c4a06a]/30 border-t-[#c4a06a] mb-3" />
         <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#5c4a2e]">
@@ -37,8 +33,6 @@ export function DynamicMap(props: MapContainerProps) {
           <div className="h-8 rounded-md ui-skeleton" />
         </div>
       </div>
-    );
+    )
   }
-
-  return <MapContainer {...props} />;
-}
+);
