@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ZoomIn, X, Camera } from 'lucide-react';
 import { PhotoItem } from '@/lib/tree-schema';
+import { cn } from '@/lib/utils';
 
 interface TreeGalleryProps {
   primaryPhoto: PhotoItem | null;
@@ -28,9 +29,11 @@ export const TreeHeroPhoto: React.FC<{
   treeName: string;
   onZoom?: (photo: PhotoItem) => void;
 }> = ({ photo, treeName, onZoom }) => {
+  const [loaded, setLoaded] = useState(false);
+
   if (!photo) {
     return (
-      <div className="w-full h-48 sm:h-56 rounded-2xl bg-stone-100 dark:bg-stone-800/60 border border-dashed border-stone-300 dark:border-stone-700 flex flex-col items-center justify-center text-stone-400 text-xs p-4 text-center">
+      <div className="w-full h-48 sm:h-56 rounded-2xl bg-[#ece6d6] dark:bg-stone-800/60 border border-dashed border-stone-300 dark:border-stone-700 flex flex-col items-center justify-center text-stone-400 text-xs p-4 text-center">
         <Camera className="w-8 h-8 mb-2 opacity-50 text-stone-400" />
         <span className="font-medium">Nenhum registro fotográfico primário</span>
         <span className="text-[10px] text-stone-500 mt-0.5">Fotos em alta resolução serão capturadas em campo</span>
@@ -41,25 +44,25 @@ export const TreeHeroPhoto: React.FC<{
   return (
     <div
       onClick={() => onZoom?.(photo)}
-      className="group relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden cursor-pointer bg-stone-100 dark:bg-stone-800 shadow-sm border border-stone-200/80 dark:border-white/10"
+      className="group relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden cursor-pointer bg-[#ece6d6] dark:bg-stone-800 shadow-[0_8px_18px_rgba(16,42,38,0.08)] border border-[#102a26]/10 dark:border-white/10"
     >
+      {!loaded && <div className="absolute inset-0 ui-skeleton" />}
       <Image
         src={photo.url}
         alt={photo.caption || `Fotografia principal de ${treeName}`}
         fill
         sizes="(max-width: 768px) 100vw, 420px"
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         priority
+        onLoad={() => setLoaded(true)}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#102a26]/70 via-[#102a26]/15 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-      {/* Badge da Categoria */}
-      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase border border-white/10">
+      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#102a26]/78 text-[#f8f6ef] text-[10px] font-bold tracking-wider uppercase border border-white/10">
         {CATEGORY_LABELS[photo.category] || photo.category}
       </div>
 
-      {/* Botão Zoom */}
-      <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/50 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute top-3 right-3 p-1.5 rounded-md bg-[#102a26]/55 text-white opacity-0 group-hover:opacity-100 transition-opacity">
         <ZoomIn className="w-4 h-4" />
       </div>
 
@@ -81,7 +84,8 @@ export const TreePhotoCarousel: React.FC<{
   photos: PhotoItem[];
   treeName: string;
   onZoom?: (photo: PhotoItem) => void;
-}> = ({ photos, treeName, onZoom }) => {
+  activePhotoId?: string | null;
+}> = ({ photos, treeName, onZoom, activePhotoId }) => {
   if (photos.length === 0) return null;
 
   return (
@@ -92,25 +96,40 @@ export const TreePhotoCarousel: React.FC<{
       </div>
 
       <div className="flex gap-2.5 overflow-x-auto pb-1.5 snap-x snap-mandatory scrollbar-none smooth-touch-scroll">
-        {photos.map((photo, idx) => (
-          <div
-            key={photo.id || idx}
-            onClick={() => onZoom?.(photo)}
-            className="group relative flex-shrink-0 w-28 sm:w-32 h-24 rounded-xl overflow-hidden cursor-pointer bg-stone-100 dark:bg-stone-800 border border-stone-200/80 dark:border-white/10 snap-start focus:outline-none focus:ring-2 focus:ring-[#d6a35b]"
-          >
-            <Image
-              src={photo.thumbUrl || photo.url}
-              alt={photo.caption || `Detalhe fotográfico de ${treeName}`}
-              fill
-              sizes="130px"
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors" />
-            <div className="absolute bottom-1 left-1 right-1 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-sm text-[9px] text-white font-medium truncate text-center">
-              {CATEGORY_LABELS[photo.category] || photo.category}
-            </div>
-          </div>
-        ))}
+        {photos.map((photo, idx) => {
+          const isActive = activePhotoId ? activePhotoId === photo.id : idx === 0;
+          return (
+            <button
+              type="button"
+              key={photo.id || idx}
+              onClick={() => onZoom?.(photo)}
+              className={cn(
+                'group relative flex-shrink-0 w-28 sm:w-32 h-24 rounded-xl overflow-hidden cursor-pointer bg-[#ece6d6] dark:bg-stone-800 snap-start focus:outline-none focus:ring-2 focus:ring-[#c4a06a] border transition-all duration-200',
+                isActive
+                  ? 'border-[#c4a06a] shadow-[0_0_0_2px_rgba(196,160,106,0.35)]'
+                  : 'border-[#102a26]/10 dark:border-white/10 hover:border-[#c4a06a]/50'
+              )}
+            >
+              <Image
+                src={photo.thumbUrl || photo.url}
+                alt={photo.caption || `Detalhe fotográfico de ${treeName}`}
+                fill
+                sizes="130px"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#102a26]/20 group-hover:bg-transparent transition-colors" />
+              <div className="absolute bottom-1 left-1 right-1 px-1.5 py-0.5 rounded bg-[#102a26]/80 text-[9px] text-white font-medium truncate text-center">
+                {CATEGORY_LABELS[photo.category] || photo.category}
+              </div>
+              <span
+                className={cn(
+                  'absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full border border-white/70',
+                  isActive ? 'bg-[#c4a06a]' : 'bg-white/40'
+                )}
+              />
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -140,7 +159,12 @@ export const TreeGallery: React.FC<TreeGalleryProps> = ({ primaryPhoto, gallery,
       <TreeHeroPhoto photo={hero} treeName={treeName} onZoom={setSelectedPhoto} />
 
       {remaining.length > 0 && (
-        <TreePhotoCarousel photos={remaining} treeName={treeName} onZoom={setSelectedPhoto} />
+        <TreePhotoCarousel
+          photos={remaining}
+          treeName={treeName}
+          onZoom={setSelectedPhoto}
+          activePhotoId={selectedPhoto?.id ?? remaining[0]?.id}
+        />
       )}
 
       {/* Modal Ampliado de Fotografia */}

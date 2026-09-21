@@ -86,7 +86,7 @@ export const PLANTA_STYLE: StyleSpecification = {
       id: 'planta-paper-base',
       type: 'background',
       paint: {
-        'background-color': '#ece6d6'
+        'background-color': '#e7e1d0'
       }
     },
     {
@@ -94,11 +94,11 @@ export const PLANTA_STYLE: StyleSpecification = {
       type: 'raster',
       source: 'osm-base',
       paint: {
-        'raster-saturation': -0.92,
-        'raster-opacity': 0.22,
-        'raster-contrast': -0.05,
-        'raster-brightness-min': 0.18,
-        'raster-brightness-max': 0.98
+        'raster-saturation': -0.96,
+        'raster-opacity': 0.16,
+        'raster-contrast': -0.08,
+        'raster-brightness-min': 0.22,
+        'raster-brightness-max': 0.97
       }
     },
     // Área do Campus IFRO
@@ -108,8 +108,18 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'instituicao'],
       paint: {
-        'fill-color': '#52775e',
-        'fill-opacity': 0.12
+        'fill-color': '#4d6556',
+        'fill-opacity': 0.08
+      }
+    },
+    {
+      id: 'planta-ifro-hatch',
+      type: 'fill',
+      source: 'park-planta',
+      filter: ['==', ['get', 'category'], 'instituicao'],
+      paint: {
+        'fill-color': '#355d46',
+        'fill-opacity': 0.05
       }
     },
     {
@@ -118,10 +128,10 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'instituicao'],
       paint: {
-        'line-color': '#355d46',
-        'line-width': 1.5,
-        'line-opacity': 0.85,
-        'line-dasharray': [4, 2]
+        'line-color': '#3d5348',
+        'line-width': 1,
+        'line-opacity': 0.72,
+        'line-dasharray': [5, 3]
       }
     },
     // Lago
@@ -129,10 +139,20 @@ export const PLANTA_STYLE: StyleSpecification = {
       id: 'planta-lago-fill',
       type: 'fill',
       source: 'park-planta',
+      filter: ['in', ['get', 'category'], ['literal', ['agua']]],
+      paint: {
+        'fill-color': '#6a8b90',
+        'fill-opacity': 0.42
+      }
+    },
+    {
+      id: 'planta-lago-inner',
+      type: 'fill',
+      source: 'park-planta',
       filter: ['==', ['get', 'category'], 'agua'],
       paint: {
-        'fill-color': '#25778b',
-        'fill-opacity': 0.68
+        'fill-color': '#547880',
+        'fill-opacity': 0.18
       }
     },
     {
@@ -141,10 +161,10 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'agua'],
       paint: {
-        'line-color': '#f8f6ef',
-        'line-width': 5,
-        'line-opacity': 0.5,
-        'line-blur': 0.2
+        'line-color': '#f3efe4',
+        'line-width': 4.5,
+        'line-opacity': 0.55,
+        'line-blur': 0.35
       }
     },
     {
@@ -153,77 +173,112 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'agua'],
       paint: {
-        'line-color': '#155f70',
-        'line-width': 1.8,
-        'line-opacity': 0.92
+        'line-color': '#3d5f66',
+        'line-width': 1.15,
+        'line-opacity': 0.88
       }
     },
-    // Playground (Estrutura Recente)
+    // Playground / estrutura recente
     {
       id: 'planta-playground-fill',
       type: 'fill',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'estrutura_nova'],
+      filter: ['in', ['get', 'category'], ['literal', ['estrutura_nova', 'playground']]],
       paint: {
-        'fill-color': '#d6a35b',
-        'fill-opacity': 0.28
+        'fill-color': '#c4a06a',
+        'fill-opacity': 0.2
       }
     },
     {
       id: 'planta-playground-stroke',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'estrutura_nova'],
+      filter: ['in', ['get', 'category'], ['literal', ['estrutura_nova', 'playground']]],
       paint: {
-        'line-color': '#a07232',
-        'line-width': 1.6,
-        'line-dasharray': [2, 1.5]
+        'line-color': '#8a6a3a',
+        'line-width': 1,
+        'line-dasharray': [3, 2]
       }
     },
-    // Trilhas e Caminhos
+    // Pistas de acesso
+    {
+      id: 'planta-pistas-case',
+      type: 'line',
+      source: 'park-planta',
+      filter: ['in', ['get', 'category'], ['literal', ['pista', 'acesso']]],
+      paint: {
+        'line-color': '#f3efe4',
+        'line-width': 7,
+        'line-opacity': 0.55
+      }
+    },
+    {
+      id: 'planta-pistas',
+      type: 'line',
+      source: 'park-planta',
+      filter: ['in', ['get', 'category'], ['literal', ['pista', 'acesso']]],
+      paint: {
+        'line-color': '#6b5a45',
+        'line-width': 2.2,
+        'line-opacity': 0.9
+      }
+    },
+    // Trilhas e caminhos
     {
       id: 'planta-caminhos-case',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'caminho'],
+      filter: ['in', ['get', 'category'], ['literal', ['caminho', 'trilha']]],
       paint: {
-        'line-color': '#f8f6ef',
-        'line-width': 6,
-        'line-opacity': 0.72
+        'line-color': '#f4f0e4',
+        'line-width': 5.5,
+        'line-opacity': 0.62
       }
     },
     {
       id: 'planta-caminhos',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'caminho'],
+      filter: ['in', ['get', 'category'], ['literal', ['caminho', 'trilha']]],
       paint: {
-        'line-color': ['get', 'color'],
-        'line-width': 2.6,
-        'line-opacity': 0.9,
-        'line-dasharray': [2, 2]
+        'line-color': '#4a5c4e',
+        'line-width': 1.7,
+        'line-opacity': 0.92,
+        'line-dasharray': [3.2, 2.4]
       }
     },
-    // Ponte
+    // Ponte suspensa / travessia
     {
       id: 'planta-ponte-case',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'estrutura'],
+      filter: ['in', ['get', 'category'], ['literal', ['estrutura', 'ponte']]],
       paint: {
-        'line-color': '#f8f6ef',
-        'line-width': 7,
-        'line-opacity': 0.8
+        'line-color': '#efe8d6',
+        'line-width': 7.5,
+        'line-opacity': 0.78
       }
     },
     {
       id: 'planta-ponte',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'estrutura'],
+      filter: ['in', ['get', 'category'], ['literal', ['estrutura', 'ponte']]],
       paint: {
-        'line-color': '#a07232',
-        'line-width': 4.2
+        'line-color': '#7a5a32',
+        'line-width': 3.2
+      }
+    },
+    {
+      id: 'planta-ponte-centerline',
+      type: 'line',
+      source: 'park-planta',
+      filter: ['in', ['get', 'category'], ['literal', ['estrutura', 'ponte']]],
+      paint: {
+        'line-color': '#f3efe4',
+        'line-width': 0.7,
+        'line-opacity': 0.85,
+        'line-dasharray': [1.2, 1.8]
       }
     },
     // Pontos de entrada
@@ -233,9 +288,9 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['geometry-type'], 'Point'],
       paint: {
-        'circle-radius': 12,
+        'circle-radius': 11,
         'circle-color': '#102a26',
-        'circle-opacity': 0.16
+        'circle-opacity': 0.12
       }
     },
     {
@@ -244,10 +299,40 @@ export const PLANTA_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['geometry-type'], 'Point'],
       paint: {
-        'circle-radius': 6,
+        'circle-radius': 5,
         'circle-color': '#102a26',
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#d6a35b'
+        'circle-stroke-width': 1.4,
+        'circle-stroke-color': '#c4a06a'
+      }
+    },
+    {
+      id: 'planta-labels',
+      type: 'symbol',
+      source: 'park-planta',
+      layout: {
+        'text-field': [
+          'match',
+          ['get', 'category'],
+          'agua', 'Lago',
+          'estrutura_nova', 'Parquinho',
+          'playground', 'Parquinho',
+          'instituicao', 'IFRO',
+          'estrutura', 'Ponte',
+          'ponte', 'Ponte',
+          'acesso', 'Acesso',
+          ['get', 'name']
+        ],
+        'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
+        'text-size': 10,
+        'text-letter-spacing': 0.06,
+        'text-max-width': 8,
+        'text-optional': true
+      },
+      paint: {
+        'text-color': '#24352e',
+        'text-halo-color': '#f3efe4',
+        'text-halo-width': 1.25,
+        'text-opacity': 0.82
       }
     }
   ]
@@ -283,7 +368,7 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       id: 'exploration-paper-bg',
       type: 'background',
       paint: {
-        'background-color': '#d9c99a'
+        'background-color': '#cfc3a0'
       }
     },
     {
@@ -291,22 +376,22 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       type: 'raster',
       source: 'exploration-base',
       paint: {
-        'raster-saturation': -0.95,
-        'raster-opacity': 0.25,
-        'raster-contrast': 0.12,
-        'raster-brightness-min': 0.15,
-        'raster-brightness-max': 0.95
+        'raster-saturation': -0.98,
+        'raster-opacity': 0.18,
+        'raster-contrast': 0.08,
+        'raster-brightness-min': 0.18,
+        'raster-brightness-max': 0.9
       }
     },
-    // Zonas de vegetação destacadas
+    // Zonas de vegetação / relevo suave
     {
       id: 'exp-veg-fill',
       type: 'fill',
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'vegetacao_setor'],
       paint: {
-        'fill-color': '#355d46',
-        'fill-opacity': 0.26
+        'fill-color': '#5a6d52',
+        'fill-opacity': 0.18
       }
     },
     {
@@ -315,22 +400,35 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'vegetacao_setor'],
       paint: {
-        'line-color': '#183d35',
-        'line-width': 1.4,
-        'line-opacity': 0.86,
-        'line-dasharray': [2, 1]
+        'line-color': '#3d4c3d',
+        'line-width': 0.9,
+        'line-opacity': 0.55,
+        'line-dasharray': [2.4, 1.6]
       }
     },
-    // Curvas de nível
+    // Curvas de nível — sombra de relevo
+    {
+      id: 'exp-contours-relief',
+      type: 'line',
+      source: 'park-exploration',
+      filter: ['==', ['get', 'category'], 'curva_nivel'],
+      paint: {
+        'line-color': '#6d5c3c',
+        'line-width': 2.4,
+        'line-opacity': 0.16,
+        'line-offset': 1.15,
+        'line-blur': 0.4
+      }
+    },
     {
       id: 'exp-contours-case',
       type: 'line',
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'curva_nivel'],
       paint: {
-        'line-color': '#f1e4bd',
-        'line-width': 3.4,
-        'line-opacity': 0.35
+        'line-color': '#efe4c4',
+        'line-width': 2.6,
+        'line-opacity': 0.28
       }
     },
     {
@@ -339,9 +437,9 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'curva_nivel'],
       paint: {
-        'line-color': ['get', 'strokeColor'],
-        'line-width': 1.25,
-        'line-opacity': 0.78
+        'line-color': '#7a6644',
+        'line-width': 0.85,
+        'line-opacity': 0.62
       }
     },
     // Lago estilizado em tom de expedição
@@ -351,8 +449,8 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'agua'],
       paint: {
-        'fill-color': '#25778b',
-        'fill-opacity': 0.38
+        'fill-color': '#6a8b90',
+        'fill-opacity': 0.32
       }
     },
     {
@@ -361,9 +459,9 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-planta',
       filter: ['==', ['get', 'category'], 'agua'],
       paint: {
-        'line-color': '#155f70',
-        'line-width': 1.8,
-        'line-opacity': 0.9
+        'line-color': '#3d5f66',
+        'line-width': 1.1,
+        'line-opacity': 0.82
       }
     },
     // Trilhas de expedição
@@ -371,22 +469,22 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       id: 'exp-trilhas-case',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'caminho'],
+      filter: ['in', ['get', 'category'], ['literal', ['caminho', 'trilha', 'pista']]],
       paint: {
-        'line-color': '#f1e4bd',
-        'line-width': 5.2,
-        'line-opacity': 0.7
+        'line-color': '#efe4c4',
+        'line-width': 4.4,
+        'line-opacity': 0.5
       }
     },
     {
       id: 'exp-trilhas',
       type: 'line',
       source: 'park-planta',
-      filter: ['==', ['get', 'category'], 'caminho'],
+      filter: ['in', ['get', 'category'], ['literal', ['caminho', 'trilha', 'pista']]],
       paint: {
-        'line-color': '#9a6a2f',
-        'line-width': 2.6,
-        'line-dasharray': [3, 2]
+        'line-color': '#6f5430',
+        'line-width': 1.6,
+        'line-dasharray': [4, 2.4]
       }
     },
     // POIs de Exploração
@@ -396,9 +494,9 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'poi'],
       paint: {
-        'circle-radius': 13,
-        'circle-color': '#d6a35b',
-        'circle-opacity': 0.2
+        'circle-radius': 11,
+        'circle-color': '#c4a06a',
+        'circle-opacity': 0.16
       }
     },
     {
@@ -407,10 +505,10 @@ export const EXPLORATION_STYLE: StyleSpecification = {
       source: 'park-exploration',
       filter: ['==', ['get', 'category'], 'poi'],
       paint: {
-        'circle-radius': 6.5,
-        'circle-color': '#0b211d',
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#d6a35b'
+        'circle-radius': 5,
+        'circle-color': '#1b2c26',
+        'circle-stroke-width': 1.35,
+        'circle-stroke-color': '#c4a06a'
       }
     }
   ]

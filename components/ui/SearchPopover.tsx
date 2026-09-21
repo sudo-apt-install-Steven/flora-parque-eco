@@ -73,7 +73,7 @@ export const SearchPopover: React.FC<SearchPopoverProps> = ({
       role="dialog"
       aria-modal="true"
       aria-label="Buscar espécimes no inventário"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 md:pt-24 px-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 md:pt-24 px-4 bg-[#102a26]/45"
       onClick={onClose}
     >
       <div
@@ -114,6 +114,7 @@ export const SearchPopover: React.FC<SearchPopoverProps> = ({
         <div className="max-h-[60vh] overflow-y-auto p-2 smooth-touch-scroll">
           {results.length === 0 ? (
             <div className="py-10 text-center text-sm text-stone-500 dark:text-stone-400">
+              <div className="mx-auto mb-3 h-10 w-24 rounded-lg ui-skeleton" />
               <Trees className="w-8 h-8 mx-auto mb-2 opacity-40" />
               Nenhum espécime encontrado para &ldquo;{query}&rdquo;.
             </div>

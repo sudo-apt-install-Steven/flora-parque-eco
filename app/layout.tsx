@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="h-full w-full">
-      <body className="h-full w-full overflow-hidden bg-slate-950 text-slate-100 antialiased select-none">
+      <body className="h-full w-full overflow-hidden bg-[#0b211d] text-[#f4f1e8] antialiased select-none">
         {children}
       </body>
     </html>

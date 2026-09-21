@@ -159,6 +159,10 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
       <div className="flex flex-col gap-2">
         {filteredTrees.length === 0 ? (
           <div className="py-16 text-center text-stone-500 dark:text-stone-400">
+            <div className="mx-auto mb-4 grid max-w-sm gap-2">
+              <div className="h-14 rounded-2xl ui-skeleton" />
+              <div className="h-14 rounded-2xl ui-skeleton" />
+            </div>
             <Trees className="w-10 h-10 mx-auto mb-2 opacity-40" />
             Nenhuma espécie encontrada para os filtros selecionados.
           </div>
@@ -203,7 +207,7 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
                     {tree.scientificNameSuggested}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[10px] uppercase font-semibold text-stone-500 dark:text-stone-400">
+                    <span className="field-badge bg-[#ece6d6] dark:bg-stone-800 text-stone-600 dark:text-stone-300">
                       {tree.family}
                     </span>
                     <span className="text-[9px] text-stone-400">·</span>

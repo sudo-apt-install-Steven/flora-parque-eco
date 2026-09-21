@@ -33,6 +33,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
   const hoveredTreeIdRef = useRef<TreeFeatureId | null>(null);
   const selectedTreeIdRef = useRef<TreeFeatureId | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [layerVeilVisible, setLayerVeilVisible] = useState(false);
 
   // Helper para obter a especificação de estilo
   const getStyleForMode = (mode: 'satellite' | 'planta' | 'exploration') => {
@@ -102,7 +103,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         source: TREE_SOURCE_ID,
         filter: ['has', 'point_count'],
         paint: {
-          'circle-color': '#d6a35b',
+          'circle-color': '#c4a06a',
           'circle-opacity': 0.18,
           'circle-radius': [
             'step',
@@ -188,7 +189,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         paint: {
           'circle-color': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], '#d6a35b',
+            ['boolean', ['feature-state', 'selected'], false], '#c4a06a',
             ['boolean', ['feature-state', 'hover'], false], '#f8f6ef',
             [
               'match',
@@ -244,7 +245,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
           ],
           'circle-stroke-color': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], '#d6a35b',
+            ['boolean', ['feature-state', 'selected'], false], '#c4a06a',
             '#f8f6ef'
           ],
           'circle-opacity': 0.98
@@ -299,7 +300,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         paint: {
           'text-color': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], '#d6a35b',
+            ['boolean', ['feature-state', 'selected'], false], '#c4a06a',
             '#0b211d'
           ]
         }
@@ -470,6 +471,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
     if (!map || !mapLoaded) return;
 
     hoveredTreeIdRef.current = null;
+    setLayerVeilVisible(true);
     map.setStyle(getStyleForMode(currentMode));
 
     const handleStyleLoad = () => {
@@ -481,6 +483,8 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
       } else {
         removeRasterOverlay(map);
       }
+
+      window.setTimeout(() => setLayerVeilVisible(false), 160);
     };
 
     map.once('style.load', handleStyleLoad);
@@ -523,7 +527,11 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
       el.className = 'tree-marker is-active pointer-events-none';
       el.innerHTML = `
         <span class="marker-core marker-gold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#0b211d]"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="2.2" fill="#0b211d"/>
+            <path d="M12 3.5v3.2M12 17.3V20.5M3.5 12h3.2M17.3 12H20.5" stroke="#0b211d" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M14.6 8.2c1.6 1.8 1.8 4.1.2 5.4-1.7 1.4-3.9.4-5.1-1.4 1.4-.2 3.2-1.2 4.9-4" stroke="#0b211d" stroke-width="1.15" stroke-linecap="round"/>
+          </svg>
         </span>
         <span class="marker-pulse"></span>
       `;
@@ -555,12 +563,16 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
   }, [selectedTree, focusKey, mapLoaded]);
 
   return (
-    <div className="relative w-full h-full">
+    <div className={`relative w-full h-full map-canvas-shell layer-mode-${currentMode}`}>
       <div
         ref={mapContainerRef}
         className="w-full h-full"
         aria-label="Mapa Interativo do Parque Ecológico de Vilhena"
       />
+      {currentMode === 'exploration' && (
+        <div className="map-topo-veil" aria-hidden="true" />
+      )}
+      {layerVeilVisible && <div className="map-layer-veil" aria-hidden="true" />}
     </div>
   );
 };

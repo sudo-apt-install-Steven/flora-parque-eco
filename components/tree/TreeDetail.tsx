@@ -28,23 +28,23 @@ interface TreeDetailProps {
 const CONFIDENCE_STYLES: Record<string, { label: string; dot: string; badge: string }> = {
   alta: {
     label: 'Confiança Alta',
-    dot: 'bg-emerald-500',
-    badge: 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+    dot: 'bg-[#4d6556]',
+    badge: 'bg-[#edf1e7] text-[#24352e] dark:bg-[#102a26] dark:text-[#cfe0d6] border-[#4d6556]/25 dark:border-white/10'
   },
   media: {
     label: 'Confiança Média',
-    dot: 'bg-amber-500',
-    badge: 'bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+    dot: 'bg-[#c4a06a]',
+    badge: 'bg-[#f3efe4] text-[#5c4a2e] dark:bg-[#1b2c26] dark:text-[#d8b57d] border-[#c4a06a]/35 dark:border-white/10'
   },
   baixa: {
     label: 'Confiança Baixa',
-    dot: 'bg-rose-500',
-    badge: 'bg-rose-50 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border-rose-200 dark:border-rose-800'
+    dot: 'bg-[#8a5a4a]',
+    badge: 'bg-[#f3e8e4] text-[#5c3a32] dark:bg-[#2a1c1a] dark:text-[#e0c4bc] border-[#8a5a4a]/30 dark:border-white/10'
   },
   indeterminada: {
     label: 'Indeterminada',
     dot: 'bg-stone-400',
-    badge: 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300 border-stone-200 dark:border-stone-700'
+    badge: 'bg-[#ece6d6] text-stone-700 dark:bg-stone-800 dark:text-stone-300 border-stone-300/80 dark:border-stone-700'
   }
 };
 
@@ -140,37 +140,48 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
         </p>
 
         {/* Badges de Confiança e Verificação */}
-        <div className="flex flex-wrap items-center gap-2 mt-3">
-          <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium border', conf.badge)}>
-            <span className={cn('w-2 h-2 rounded-full', conf.dot)} />
+        <div className="flex flex-wrap items-center gap-1.5 mt-3">
+          <span className={cn('field-badge', conf.badge)}>
+            <span className={cn('w-1.5 h-1.5 rounded-full', conf.dot)} />
             {conf.label}
           </span>
 
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700">
+          <span className="field-badge bg-[#ece6d6] dark:bg-stone-800 text-stone-700 dark:text-stone-300">
             {verif.icon}
             {verif.label}
+          </span>
+
+          <span className="field-badge bg-[#f3efe4] dark:bg-[#1b2c26] text-[#5c4a2e] dark:text-[#d8b57d]">
+            {tree.family}
+          </span>
+
+          <span className="field-badge bg-[#edf1e7] dark:bg-[#102a26] text-[#24352e] dark:text-[#cfe0d6]">
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: groupInfo?.color || '#4d6556' }}
+            />
+            {groupInfo?.name || tree.group}
           </span>
         </div>
       </div>
 
       {/* 3. HIERARQUIA 3: Barra Visual Indicando a Confiança (Score) do PlantNet */}
-      <div className="p-4 rounded-2xl bg-gradient-to-br from-[#edf1e7] to-[#e4e9dd] dark:from-[#102a26]/70 dark:to-[#0b211d]/70 border border-stone-200/90 dark:border-white/10 shadow-sm space-y-2.5">
+      <div className="p-4 rounded-2xl bg-[#edf1e7] dark:bg-[#102a26]/80 border border-[#102a26]/10 dark:border-white/10 shadow-[0_8px_18px_rgba(16,42,38,0.06)] space-y-2.5">
         <div className="flex items-center justify-between text-xs">
           <span className="font-bold flex items-center gap-2 text-[#0b211d] dark:text-[#f8f6ef]">
-            <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+            <div className="w-5 h-5 rounded-full bg-[#4d6556] text-[#f8f6ef] flex items-center justify-center">
               <Leaf className="w-3 h-3" />
             </div>
             Confiança Botânica (PlantNet)
           </span>
-          <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#d6a35b]/20 text-[#0b211d] dark:text-[#d6a35b]">
+          <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#c4a06a]/20 text-[#0b211d] dark:text-[#d8b57d]">
             {scorePercent}% match
           </span>
         </div>
 
-        {/* Barra de Progresso Visual Estilizada */}
-        <div className="w-full h-2.5 rounded-full bg-stone-300/60 dark:bg-stone-800 overflow-hidden p-0.5">
+        <div className="plantnet-track w-full h-2 rounded-full bg-[#d9d4c8] dark:bg-stone-800">
           <div
-            className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-emerald-600 via-teal-500 to-[#d6a35b]"
+            className="plantnet-fill h-full rounded-full bg-[#4d6556]"
             style={{ width: `${Math.max(scorePercent, 5)}%` }}
           />
         </div>
@@ -198,6 +209,7 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
           photos={tree.gallery}
           treeName={tree.popularName}
           onZoom={setZoomedPhoto}
+          activePhotoId={zoomedPhoto?.id ?? tree.gallery[0]?.id}
         />
       )}
 

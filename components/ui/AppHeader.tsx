@@ -41,7 +41,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         onClick={() => onNavChange('mapa')}
         className="flex items-center gap-3 cursor-pointer group"
       >
-        <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-[#f0c77b] to-[#d6a35b] text-[#0b211d] flex items-center justify-center shadow-lg shadow-amber-900/20 transform group-hover:scale-105 transition-transform duration-200">
+        <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-[#c4a06a] text-[#0b211d] flex items-center justify-center shadow-[0_8px_16px_rgba(6,21,17,0.28)] transform group-hover:scale-105 transition-transform duration-200">
           <Leaf className="w-5 h-5 fill-current" />
         </div>
         <div className="flex flex-col">
@@ -67,7 +67,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           className={cn(
             'flex items-center gap-2 h-9 px-4 rounded-full text-xs font-medium transition-all duration-200',
             activeNav === 'mapa'
-              ? 'bg-gradient-to-r from-[#f0c77b] to-[#d6a35b] text-[#0b211d] font-bold shadow-md'
+              ? 'bg-[#c4a06a] text-[#0b211d] font-bold shadow-md'
               : 'text-[#a9bbb0] hover:text-[#f8f6ef] hover:bg-white/[0.08]'
           )}
         >
@@ -80,7 +80,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           className={cn(
             'flex items-center gap-2 h-9 px-4 rounded-full text-xs font-medium transition-all duration-200',
             activeNav === 'especies'
-              ? 'bg-gradient-to-r from-[#f0c77b] to-[#d6a35b] text-[#0b211d] font-bold shadow-md'
+              ? 'bg-[#c4a06a] text-[#0b211d] font-bold shadow-md'
               : 'text-[#a9bbb0] hover:text-[#f8f6ef] hover:bg-white/[0.08]'
           )}
         >
@@ -93,7 +93,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           className={cn(
             'flex items-center gap-2 h-9 px-4 rounded-full text-xs font-medium transition-all duration-200',
             activeNav === 'dados'
-              ? 'bg-gradient-to-r from-[#f0c77b] to-[#d6a35b] text-[#0b211d] font-bold shadow-md'
+              ? 'bg-[#c4a06a] text-[#0b211d] font-bold shadow-md'
               : 'text-[#a9bbb0] hover:text-[#f8f6ef] hover:bg-white/[0.08]'
           )}
         >
@@ -106,7 +106,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           className={cn(
             'flex items-center gap-2 h-9 px-4 rounded-full text-xs font-medium transition-all duration-200',
             activeNav === 'projeto'
-              ? 'bg-gradient-to-r from-[#f0c77b] to-[#d6a35b] text-[#0b211d] font-bold shadow-md'
+              ? 'bg-[#c4a06a] text-[#0b211d] font-bold shadow-md'
               : 'text-[#a9bbb0] hover:text-[#f8f6ef] hover:bg-white/[0.08]'
           )}
         >
