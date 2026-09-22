@@ -1,530 +1,2026 @@
 [
   {
-    "id": "mock-tree-001",
+    "id": "tree-a-02-jacaranda",
     "displayNumber": null,
     "popularName": "Jacarandá",
-    "scientificNameSuggested": "Jacaranda mimosifolia",
+    "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
     "family": "Bignoniaceae",
     "confidence": "alta",
     "latitude": -12.70695,
-    "longitude": -60.1215,
-    "locationAccuracy": 2.8,
+    "longitude": -60.12168,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-001-1",
-      "url": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
+      "id": "a02-p1",
+      "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
       "category": "arvore_inteira",
-      "caption": "Jacarandá no gramado noroeste",
+      "caption": "Jacarandá — Grupo A",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:15:00Z"
+      "capturedAt": "2026-09-14T10:00:00Z"
     },
     "gallery": [
       {
-        "id": "photo-001-1",
-        "url": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
+        "id": "a02-p1",
+        "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
         "category": "arvore_inteira",
-        "caption": "Porte do Jacarandá",
+        "caption": "Vista geral do espécime",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:15:00Z"
+        "capturedAt": "2026-09-14T10:00:00Z"
       },
       {
-        "id": "photo-001-2",
-        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
-        "category": "folha",
-        "caption": "Detalhe da folhagem bipinada",
+        "id": "a02-p2",
+        "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don2.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Detalhe do dossel",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:16:00Z"
+        "capturedAt": "2026-09-14T10:01:00Z"
+      },
+      {
+        "id": "a02-p3",
+        "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don3.jpeg",
+        "category": "folha",
+        "caption": "Folhagem bipinada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:02:00Z"
+      },
+      {
+        "id": "a02-p4",
+        "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don4.jpeg",
+        "category": "casca",
+        "caption": "Detalhe do tronco",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:03:00Z"
       }
     ],
     "plantnet": {
       "taxon": "Jacaranda mimosifolia D.Don",
       "score": 0.94,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:130452-1",
+      "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupA",
-    "collectedAt": "2026-09-20T10:15:00Z",
+    "collectedAt": "2026-09-14T10:00:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo A (Setor Noroeste). Indivíduo jovem localizado no gramado superior do parque.",
-    "isMock": true
+    "notes": "Grupo A — Gramado Noroeste. Indivíduo de porte médio com floração típica.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-002",
+    "id": "tree-a-03-hibiscus",
     "displayNumber": null,
-    "popularName": "Guapuruvu / Angico",
-    "scientificNameSuggested": "Schizolobium parahyba",
-    "family": "Fabaceae",
-    "confidence": "alta",
-    "latitude": -12.707,
-    "longitude": -60.1213,
-    "locationAccuracy": 3.1,
-    "primaryPhoto": {
-      "id": "photo-002-1",
-      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-      "category": "arvore_inteira",
-      "caption": "Guapuruvu no gramado",
-      "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:20:00Z"
-    },
-    "gallery": [
-      {
-        "id": "photo-002-1",
-        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-        "category": "arvore_inteira",
-        "caption": "Dossel e tronco reto",
-        "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:20:00Z"
-      }
-    ],
-    "plantnet": {
-      "taxon": "Schizolobium parahyba (Vell.) Blake",
-      "score": 0.91,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:517853-1",
-      "familySuggested": "Fabaceae"
-    },
-    "group": "groupA",
-    "collectedAt": "2026-09-20T10:20:00Z",
-    "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo A. Tronco reto e esguio característico de regeneração florestal.",
-    "isMock": true
-  },
-  {
-    "id": "mock-tree-003",
-    "displayNumber": null,
-    "popularName": "Árvore com Oco",
-    "scientificNameSuggested": "Cavanillesia platanifolia",
+    "popularName": "Hibisco",
+    "scientificNameSuggested": "Hibiscus × rosa-sinensis L.",
     "family": "Malvaceae",
-    "confidence": "media",
-    "latitude": -12.70705,
-    "longitude": -60.12165,
-    "locationAccuracy": 3.4,
+    "confidence": "alta",
+    "latitude": -12.70702,
+    "longitude": -60.12155,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-003-1",
-      "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
-      "category": "casca",
-      "caption": "Cavidade natural no tronco",
+      "id": "a03-p1",
+      "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp.jpeg",
+      "category": "flor",
+      "caption": "Hibisco em floração — Grupo A",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:26:00Z"
+      "capturedAt": "2026-09-14T10:10:00Z"
     },
     "gallery": [
       {
-        "id": "photo-003-1",
-        "url": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
-        "category": "casca",
-        "caption": "Oco que serve de micro-habitat",
+        "id": "a03-p1",
+        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp.jpeg",
+        "category": "flor",
+        "caption": "Floração característica",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:26:00Z"
+        "capturedAt": "2026-09-14T10:10:00Z"
+      },
+      {
+        "id": "a03-p2",
+        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp2.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral do arbusto",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:11:00Z"
+      },
+      {
+        "id": "a03-p3",
+        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp3.jpeg",
+        "category": "folha",
+        "caption": "Folha lobulada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:12:00Z"
+      },
+      {
+        "id": "a03-p4",
+        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp4.jpeg",
+        "category": "flor",
+        "caption": "Detalhe da flor",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:13:00Z"
       }
     ],
     "plantnet": {
-      "taxon": "Cavanillesia platanifolia (Bonpl.) H.Karst.",
-      "score": 0.78,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:559124-1",
+      "taxon": "Hibiscus rosa-sinensis L.",
+      "score": 0.97,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Hibiscus%20rosa-sinensis",
       "familySuggested": "Malvaceae"
     },
     "group": "groupA",
-    "collectedAt": "2026-09-20T10:25:00Z",
-    "verificationStatus": "em_analise",
-    "notes": "Ponto do Grupo A. Indivíduo com cavidade natural de grande relevância ecológica para fauna local.",
-    "isMock": true
+    "collectedAt": "2026-09-14T10:10:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo A — Gramado Noroeste. Arbusto ornamental com floração intensa.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-004",
+    "id": "tree-a-04-spathodea",
     "displayNumber": null,
-    "popularName": "Eucalipto",
-    "scientificNameSuggested": "Eucalyptus grandis",
-    "family": "Myrtaceae",
+    "popularName": "Espatódea / Tulipa-africana",
+    "scientificNameSuggested": "Spathodea campanulata P.Beauv.",
+    "family": "Bignoniaceae",
     "confidence": "alta",
-    "latitude": -12.7069,
-    "longitude": -60.12115,
-    "locationAccuracy": 2.5,
+    "latitude": -12.70710,
+    "longitude": -60.12178,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-004-1",
-      "url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+      "id": "a04-p1",
+      "url": "/trees/grupo-a/04-Spathodea campanulata P.Beauv/Spathodea campanulata P.Beauv.jpeg",
       "category": "arvore_inteira",
-      "caption": "Eucalipto de grande porte",
+      "caption": "Espatódea — Grupo A",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:32:00Z"
+      "capturedAt": "2026-09-14T10:20:00Z"
     },
     "gallery": [
       {
-        "id": "photo-004-1",
-        "url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+        "id": "a04-p1",
+        "url": "/trees/grupo-a/04-Spathodea campanulata P.Beauv/Spathodea campanulata P.Beauv.jpeg",
         "category": "arvore_inteira",
-        "caption": "Porte vertical elevado",
+        "caption": "Vista geral do espécime",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:32:00Z"
+        "capturedAt": "2026-09-14T10:20:00Z"
+      },
+      {
+        "id": "a04-p2",
+        "url": "/trees/grupo-a/04-Spathodea campanulata P.Beauv/Spathodea campanulata P.Beauv2.jpeg",
+        "category": "flor",
+        "caption": "Floração laranja intensa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:21:00Z"
+      },
+      {
+        "id": "a04-p3",
+        "url": "/trees/grupo-a/04-Spathodea campanulata P.Beauv/Spathodea campanulata P.Beauv3.jpeg",
+        "category": "folha",
+        "caption": "Folíolos da espécie",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:22:00Z"
       }
     ],
     "plantnet": {
-      "taxon": "Eucalyptus grandis W.Hill",
+      "taxon": "Spathodea campanulata P.Beauv.",
       "score": 0.96,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:592965-1",
-      "familySuggested": "Myrtaceae"
+      "url": "https://identify.plantnet.org/the-plant-list/species/Spathodea%20campanulata",
+      "familySuggested": "Bignoniaceae"
     },
     "group": "groupA",
-    "collectedAt": "2026-09-20T10:30:00Z",
+    "collectedAt": "2026-09-14T10:20:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo A. Espécime de porte elevado próximo ao acesso norte.",
-    "isMock": true
+    "notes": "Grupo A — Gramado Noroeste. Árvore exótica de origem africana com floração laranja conspícua.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-005",
+    "id": "tree-a-05-ipomoea",
     "displayNumber": null,
-    "popularName": "Mangueira",
-    "scientificNameSuggested": "Mangifera indica",
-    "family": "Anacardiaceae",
+    "popularName": "Algodão-do-brejo / Canudo-de-pito",
+    "scientificNameSuggested": "Ipomoea carnea Jacq.",
+    "family": "Convolvulaceae",
     "confidence": "alta",
-    "latitude": -12.70705,
-    "longitude": -60.12085,
-    "locationAccuracy": 2.2,
+    "latitude": -12.70698,
+    "longitude": -60.12148,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-005-1",
-      "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+      "id": "a05-p1",
+      "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq..jpeg",
       "category": "arvore_inteira",
-      "caption": "Mangueira sombreadora no parquinho",
+      "caption": "Ipomoea carnea — Grupo A",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:38:00Z"
+      "capturedAt": "2026-09-14T10:30:00Z"
     },
     "gallery": [
       {
-        "id": "photo-005-1",
-        "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
+        "id": "a05-p1",
+        "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq..jpeg",
         "category": "arvore_inteira",
-        "caption": "Copa ampla que sombreia o parquinho",
+        "caption": "Aspecto geral do arbusto",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:38:00Z"
+        "capturedAt": "2026-09-14T10:30:00Z"
+      },
+      {
+        "id": "a05-p2",
+        "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq2.jpeg",
+        "category": "flor",
+        "caption": "Flores róseas em trombeta",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:31:00Z"
+      },
+      {
+        "id": "a05-p3",
+        "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq3.jpeg",
+        "category": "folha",
+        "caption": "Folha cordiforme",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:32:00Z"
+      },
+      {
+        "id": "a05-p4",
+        "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq4.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Ramificação densa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:33:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Ipomoea carnea Jacq.",
+      "score": 0.91,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Ipomoea%20carnea",
+      "familySuggested": "Convolvulaceae"
+    },
+    "group": "groupA",
+    "collectedAt": "2026-09-14T10:30:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo A — Gramado Noroeste. Arbusto de margem úmida com flores róseas.",
+    "isMock": false
+  },
+  {
+    "id": "tree-a-06-mangifera",
+    "displayNumber": null,
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica L.",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70706,
+    "longitude": -60.12140,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "a06-p1",
+      "url": "/trees/grupo-a/06-Mangifera indica L/Mangifera indica L.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Mangueira — Grupo A",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T10:40:00Z"
+    },
+    "gallery": [
+      {
+        "id": "a06-p1",
+        "url": "/trees/grupo-a/06-Mangifera indica L/Mangifera indica L.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral da copa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:40:00Z"
+      },
+      {
+        "id": "a06-p2",
+        "url": "/trees/grupo-a/06-Mangifera indica L/Mangifera indica L2.jpeg",
+        "category": "folha",
+        "caption": "Folhas lanceoladas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:41:00Z"
+      },
+      {
+        "id": "a06-p3",
+        "url": "/trees/grupo-a/06-Mangifera indica L/Mangifera indica L3.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Porte adulto sombreador",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T10:42:00Z"
       }
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
       "score": 0.97,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:69904-1",
+      "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
-    "group": "groupB",
-    "collectedAt": "2026-09-20T10:35:00Z",
+    "group": "groupA",
+    "collectedAt": "2026-09-14T10:40:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo B (Setor Nordeste / Parquinho). Copa densa proporcionando sombreamento direto à área infantil.",
-    "isMock": true
+    "notes": "Grupo A — Gramado Noroeste. Mangueira adulta de copa ampla e densa.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-006",
+    "id": "tree-b-01-eucalyptus",
     "displayNumber": null,
-    "popularName": "Paineira / Sumaúma",
-    "scientificNameSuggested": "Ceiba speciosa",
-    "family": "Malvaceae",
+    "popularName": "Eucalipto",
+    "scientificNameSuggested": "Eucalyptus urophylla S.T.Blake",
+    "family": "Myrtaceae",
     "confidence": "alta",
-    "latitude": -12.7069,
-    "longitude": -60.12065,
-    "locationAccuracy": 2.6,
+    "latitude": -12.70692,
+    "longitude": -60.12088,
+    "locationAccuracy": 2.5,
     "primaryPhoto": {
-      "id": "photo-006-1",
-      "url": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
-      "category": "casca",
-      "caption": "Acúleos verdes no tronco",
+      "id": "b01-p1",
+      "url": "/trees/grupo-b/01-Eucalyptus urophylla/Eucalyptus sp.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Eucalipto — Grupo B",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:44:00Z"
+      "capturedAt": "2026-09-14T11:00:00Z"
     },
     "gallery": [
       {
-        "id": "photo-006-1",
-        "url": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
-        "category": "casca",
-        "caption": "Tronco bojudo com acúleos",
+        "id": "b01-p1",
+        "url": "/trees/grupo-b/01-Eucalyptus urophylla/Eucalyptus sp.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Porte elevado do eucalipto",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:44:00Z"
+        "capturedAt": "2026-09-14T11:00:00Z"
+      },
+      {
+        "id": "b01-p2",
+        "url": "/trees/grupo-b/01-Eucalyptus urophylla/Eucalyptus2.jpeg",
+        "category": "casca",
+        "caption": "Casca fibrosa característica",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:01:00Z"
       }
     ],
     "plantnet": {
-      "taxon": "Ceiba speciosa (A.St.-Hil.) Ravenna",
-      "score": 0.93,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1001099-1",
-      "familySuggested": "Malvaceae"
+      "taxon": "Eucalyptus urophylla S.T.Blake",
+      "score": 0.95,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Eucalyptus%20urophylla",
+      "familySuggested": "Myrtaceae"
     },
     "group": "groupB",
-    "collectedAt": "2026-09-20T10:42:00Z",
+    "collectedAt": "2026-09-14T11:00:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo B. Tronco com acúleos cônicos conspícuos na orla leste do gramado.",
-    "isMock": true
+    "notes": "Grupo B — Gramado Nordeste & Parquinho. Eucalipto de grande porte.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-007",
+    "id": "tree-b-07-mangifera-1",
     "displayNumber": null,
-    "popularName": "Mangueira Fruto",
-    "scientificNameSuggested": "Mangifera indica",
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica L.",
     "family": "Anacardiaceae",
     "confidence": "alta",
-    "latitude": -12.70705,
-    "longitude": -60.12045,
-    "locationAccuracy": 2.9,
+    "latitude": -12.70700,
+    "longitude": -60.12075,
+    "locationAccuracy": 2.5,
     "primaryPhoto": {
-      "id": "photo-007-1",
-      "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
-      "category": "fruto",
-      "caption": "Frutificação observada em campo",
+      "id": "b07-p1",
+      "url": "/trees/grupo-b/07-Mangifera indica L/Mangifera indica L.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Mangueira — Grupo B",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:50:00Z"
+      "capturedAt": "2026-09-14T11:10:00Z"
     },
     "gallery": [
       {
-        "id": "photo-007-1",
-        "url": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=800&q=80",
-        "category": "fruto",
-        "caption": "Frutos pendentes nos ramos baixos",
+        "id": "b07-p1",
+        "url": "/trees/grupo-b/07-Mangifera indica L/Mangifera indica L.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:50:00Z"
+        "capturedAt": "2026-09-14T11:10:00Z"
+      },
+      {
+        "id": "b07-p2",
+        "url": "/trees/grupo-b/07-Mangifera indica L/Mangifera indica L2.jpeg",
+        "category": "folha",
+        "caption": "Folhagem densa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:11:00Z"
+      },
+      {
+        "id": "b07-p3",
+        "url": "/trees/grupo-b/07-Mangifera indica L/Mangifera indica L3.jpeg",
+        "category": "fruto",
+        "caption": "Frutos em desenvolvimento",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:12:00Z"
       }
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.98,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:69904-1",
+      "score": 0.97,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupB",
-    "collectedAt": "2026-09-20T10:48:00Z",
+    "collectedAt": "2026-09-14T11:10:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo B. Indivíduo com frutificação observada em campo no setor leste.",
-    "isMock": true
+    "notes": "Grupo B — Gramado Nordeste. Copa densa sombreadora.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-008",
+    "id": "tree-b-08-wodyetia",
     "displayNumber": null,
-    "popularName": "Quaresmeira",
-    "scientificNameSuggested": "Tibouchina granulosa",
-    "family": "Melastomataceae",
+    "popularName": "Palmeira-rabo-de-raposa",
+    "scientificNameSuggested": "Wodyetia bifurcata A.K.Irvine",
+    "family": "Arecaceae",
     "confidence": "alta",
-    "latitude": -12.70715,
-    "longitude": -60.1203,
-    "locationAccuracy": 3,
+    "latitude": -12.70708,
+    "longitude": -60.12065,
+    "locationAccuracy": 2.5,
     "primaryPhoto": {
-      "id": "photo-008-1",
-      "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80",
-      "category": "flor",
-      "caption": "Flores arroxeadas da Quaresmeira",
+      "id": "b08-p1",
+      "url": "/trees/grupo-b/08-Wodyetia bifurcata A.K.Irvine/Wodyetia bifurcata A.K.Irvine.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Palmeira-rabo-de-raposa — Grupo B",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T10:55:00Z"
+      "capturedAt": "2026-09-14T11:20:00Z"
     },
     "gallery": [
       {
-        "id": "photo-008-1",
-        "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80",
-        "category": "flor",
-        "caption": "Floração marcante",
+        "id": "b08-p1",
+        "url": "/trees/grupo-b/08-Wodyetia bifurcata A.K.Irvine/Wodyetia bifurcata A.K.Irvine.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Palmeira ornamental elegante",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T10:55:00Z"
+        "capturedAt": "2026-09-14T11:20:00Z"
+      },
+      {
+        "id": "b08-p2",
+        "url": "/trees/grupo-b/08-Wodyetia bifurcata A.K.Irvine/Wodyetia bifurcata A.K.Irvine2.jpeg",
+        "category": "folha",
+        "caption": "Folíolos arqueados característicos",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:21:00Z"
       }
     ],
     "plantnet": {
-      "taxon": "Tibouchina granulosa (Desr.) Cogn.",
-      "score": 0.95,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:566418-1",
-      "familySuggested": "Melastomataceae"
+      "taxon": "Wodyetia bifurcata A.K.Irvine",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Wodyetia%20bifurcata",
+      "familySuggested": "Arecaceae"
     },
     "group": "groupB",
-    "collectedAt": "2026-09-20T10:52:00Z",
+    "collectedAt": "2026-09-14T11:20:00Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo B. Floração arroxeada viva na orla do parquinho.",
-    "isMock": true
+    "notes": "Grupo B — Parquinho Infantil. Palmeira ornamental australiana de grande valor paisagístico.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-009",
+    "id": "tree-b-09-psidium",
     "displayNumber": null,
-    "popularName": "Ipê Passarela",
-    "scientificNameSuggested": "Handroanthus impetiginosus",
+    "popularName": "Goiabeira",
+    "scientificNameSuggested": "Psidium guajava L.",
+    "family": "Myrtaceae",
+    "confidence": "alta",
+    "latitude": -12.70715,
+    "longitude": -60.12058,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "b09-p1",
+      "url": "/trees/grupo-b/09-Psidium guajava L/Psidium guajava L.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Goiabeira — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T11:30:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b09-p1",
+        "url": "/trees/grupo-b/09-Psidium guajava L/Psidium guajava L.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:30:00Z"
+      },
+      {
+        "id": "b09-p2",
+        "url": "/trees/grupo-b/09-Psidium guajava L/Psidium guajava L2.jpeg",
+        "category": "casca",
+        "caption": "Casca lisa esverdeada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:31:00Z"
+      },
+      {
+        "id": "b09-p3",
+        "url": "/trees/grupo-b/09-Psidium guajava L/Psidium guajava L3.jpeg",
+        "category": "folha",
+        "caption": "Folha oval com nervuras",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:32:00Z"
+      },
+      {
+        "id": "b09-p4",
+        "url": "/trees/grupo-b/09-Psidium guajava L/Psidium guajava L4.jpeg",
+        "category": "fruto",
+        "caption": "Frutos maduros observados em campo",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:33:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Psidium guajava L.",
+      "score": 0.98,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Psidium%20guajava",
+      "familySuggested": "Myrtaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T11:30:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Parquinho Infantil. Goiabeira nativa com frutos observados em campo.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-10-jacaranda",
+    "displayNumber": null,
+    "popularName": "Jacarandá",
+    "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70695,
+    "longitude": -60.12050,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b10-p1",
+      "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Jacarandá — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T11:40:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b10-p1",
+        "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Porte do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:40:00Z"
+      },
+      {
+        "id": "b10-p2",
+        "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don2.jpeg",
+        "category": "folha",
+        "caption": "Folhagem bipinada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:41:00Z"
+      },
+      {
+        "id": "b10-p3",
+        "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don3.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Detalhe do dossel",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:42:00Z"
+      },
+      {
+        "id": "b10-p4",
+        "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don4.jpeg",
+        "category": "casca",
+        "caption": "Textura do tronco",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:43:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Jacaranda mimosifolia D.Don",
+      "score": 0.94,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T11:40:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Jacarandá adulto próximo ao parquinho.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-11-pachira",
+    "displayNumber": null,
+    "popularName": "Munguba / Castanha-do-maranhão",
+    "scientificNameSuggested": "Pachira aquatica Aubl.",
+    "family": "Malvaceae",
+    "confidence": "alta",
+    "latitude": -12.70685,
+    "longitude": -60.12040,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "b11-p1",
+      "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Munguba — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T11:50:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b11-p1",
+        "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral do indivíduo",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:50:00Z"
+      },
+      {
+        "id": "b11-p2",
+        "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl2.jpeg",
+        "category": "folha",
+        "caption": "Folha palmada composta",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:51:00Z"
+      },
+      {
+        "id": "b11-p3",
+        "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl4.jpeg",
+        "category": "fruto",
+        "caption": "Fruto cápsula globosa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:52:00Z"
+      },
+      {
+        "id": "b11-p4",
+        "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl5.jpeg",
+        "category": "casca",
+        "caption": "Tronco liso e esverdeado",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:53:00Z"
+      },
+      {
+        "id": "b11-p5",
+        "url": "/trees/grupo-b/11-Pachira aquatica Aubl/Pachira aquatica Aubl6.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto geral da copa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T11:54:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Pachira aquatica Aubl.",
+      "score": 0.92,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Pachira%20aquatica",
+      "familySuggested": "Malvaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T11:50:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Orla do Parquinho. Espécie típica de ambientes úmidos ripários.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-12-cascabela",
+    "displayNumber": null,
+    "popularName": "Chapéu-de-Napoleão",
+    "scientificNameSuggested": "Cascabela thevetia (L.) Lippold",
+    "family": "Apocynaceae",
+    "confidence": "alta",
+    "latitude": -12.70720,
+    "longitude": -60.12048,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b12-p1",
+      "url": "/trees/grupo-b/12-Cascabela thevetia (L.) Lippold/Cascabela thevetia (L.) Lippold.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Chapéu-de-Napoleão — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:00:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b12-p1",
+        "url": "/trees/grupo-b/12-Cascabela thevetia (L.) Lippold/Cascabela thevetia (L.) Lippold.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:00:00Z"
+      },
+      {
+        "id": "b12-p2",
+        "url": "/trees/grupo-b/12-Cascabela thevetia (L.) Lippold/Cascabela thevetia (L.) Lippold2.jpeg",
+        "category": "flor",
+        "caption": "Flores amarelas em sino",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:01:00Z"
+      },
+      {
+        "id": "b12-p3",
+        "url": "/trees/grupo-b/12-Cascabela thevetia (L.) Lippold/Cascabela thevetia (L.) Lippold3.jpeg",
+        "category": "folha",
+        "caption": "Folha linear lanceolada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:02:00Z"
+      },
+      {
+        "id": "b12-p4",
+        "url": "/trees/grupo-b/12-Cascabela thevetia (L.) Lippold/Cascabela thevetia (L.) Lippold4.jpeg",
+        "category": "fruto",
+        "caption": "Fruto drupáceo tóxico",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:03:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Cascabela thevetia (L.) Lippold",
+      "score": 0.95,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Cascabela%20thevetia",
+      "familySuggested": "Apocynaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:00:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Arbusto ornamental de todos os órgãos tóxicos.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-13-inga-laurina",
+    "displayNumber": null,
+    "popularName": "Ingá-mirim",
+    "scientificNameSuggested": "Inga laurina (Sw.) Willd.",
+    "family": "Fabaceae",
+    "confidence": "alta",
+    "latitude": -12.70714,
+    "longitude": -60.12035,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "b13-p1",
+      "url": "/trees/grupo-b/13-Inga laurina (Sw.) Willd/inga laurina (Sw.) Willd.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Ingá-mirim — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:10:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b13-p1",
+        "url": "/trees/grupo-b/13-Inga laurina (Sw.) Willd/inga laurina (Sw.) Willd.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Espécime em campo",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:10:00Z"
+      },
+      {
+        "id": "b13-p2",
+        "url": "/trees/grupo-b/13-Inga laurina (Sw.) Willd/inga laurina (Sw.) Willd2.jpeg",
+        "category": "folha",
+        "caption": "Folíolos opostos brilhantes",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:11:00Z"
+      },
+      {
+        "id": "b13-p3",
+        "url": "/trees/grupo-b/13-Inga laurina (Sw.) Willd/inga laurina (Sw.) Willd3.jpeg",
+        "category": "fruto",
+        "caption": "Legumes cilíndricos com polpa branca",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:12:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Inga laurina (Sw.) Willd.",
+      "score": 0.90,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Inga%20laurina",
+      "familySuggested": "Fabaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:10:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Orla Leste. Ingá nativo com valor ecológico para fauna.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-14-mangifera-2",
+    "displayNumber": null,
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica L.",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70688,
+    "longitude": -60.12022,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "b14-p1",
+      "url": "/trees/grupo-b/14-Mangifera indica L/Mangifera indica L.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Mangueira — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:20:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b14-p1",
+        "url": "/trees/grupo-b/14-Mangifera indica L/Mangifera indica L.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Copa densa adulta",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:20:00Z"
+      },
+      {
+        "id": "b14-p2",
+        "url": "/trees/grupo-b/14-Mangifera indica L/Mangifera indica L2.jpeg",
+        "category": "folha",
+        "caption": "Folhas jovens avermelhadas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:21:00Z"
+      },
+      {
+        "id": "b14-p3",
+        "url": "/trees/grupo-b/14-Mangifera indica L/Mangifera indica L3.jpeg",
+        "category": "fruto",
+        "caption": "Frutos pendentes",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:22:00Z"
+      },
+      {
+        "id": "b14-p4",
+        "url": "/trees/grupo-b/14-Mangifera indica L/Mangifera indica L4.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto do dossel",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:23:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Mangifera indica L.",
+      "score": 0.97,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:20:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Segunda mangueira catalogada no setor.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-15-syzygium",
+    "displayNumber": null,
+    "popularName": "Jambo-vermelho",
+    "scientificNameSuggested": "Syzygium malaccense (L.) Merr. & L.M.Perry",
+    "family": "Myrtaceae",
+    "confidence": "alta",
+    "latitude": -12.70696,
+    "longitude": -60.12010,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b15-p1",
+      "url": "/trees/grupo-b/15-Syzygium malaccense (L.) Merr. & L.M.Perry/Syzygium malaccense (L.) Merr. & L.M.Perry.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Jambo-vermelho — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:30:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b15-p1",
+        "url": "/trees/grupo-b/15-Syzygium malaccense (L.) Merr. & L.M.Perry/Syzygium malaccense (L.) Merr. & L.M.Perry.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:30:00Z"
+      },
+      {
+        "id": "b15-p2",
+        "url": "/trees/grupo-b/15-Syzygium malaccense (L.) Merr. & L.M.Perry/Syzygium malaccense (L.) Merr. & L.M.Perry2.jpeg",
+        "category": "folha",
+        "caption": "Folhas verde-escuras brilhantes",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:31:00Z"
+      },
+      {
+        "id": "b15-p3",
+        "url": "/trees/grupo-b/15-Syzygium malaccense (L.) Merr. & L.M.Perry/Syzygium malaccense (L.) Merr. & L.M.Perry3.jpeg",
+        "category": "flor",
+        "caption": "Flores róseas com estames",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:32:00Z"
+      },
+      {
+        "id": "b15-p4",
+        "url": "/trees/grupo-b/15-Syzygium malaccense (L.) Merr. & L.M.Perry/Syzygium malaccense (L.) Merr. & L.M.Perry4.jpeg",
+        "category": "fruto",
+        "caption": "Jambos vermelhos característicos",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:33:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Syzygium malaccense (L.) Merr. & L.M.Perry",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Syzygium%20malaccense",
+      "familySuggested": "Myrtaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:30:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Frutífera exótica de origem malaio-polinésia.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-16-jacaranda-cusp",
+    "displayNumber": null,
+    "popularName": "Jacarandá-mimoso",
+    "scientificNameSuggested": "Jacaranda cuspidifolia Mart.",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70705,
+    "longitude": -60.12000,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b16-p1",
+      "url": "/trees/grupo-b/16-Jacaranda cuspidifolia Mart/Jacaranda cuspidifolia Mart.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Jacarandá-mimoso — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:40:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b16-p1",
+        "url": "/trees/grupo-b/16-Jacaranda cuspidifolia Mart/Jacaranda cuspidifolia Mart.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Porte médio ornamental",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:40:00Z"
+      },
+      {
+        "id": "b16-p2",
+        "url": "/trees/grupo-b/16-Jacaranda cuspidifolia Mart/Jacaranda cuspidifolia Mart2.jpeg",
+        "category": "flor",
+        "caption": "Flores lilases em cachos",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:41:00Z"
+      },
+      {
+        "id": "b16-p3",
+        "url": "/trees/grupo-b/16-Jacaranda cuspidifolia Mart/Jacaranda cuspidifolia Mart3.jpeg",
+        "category": "folha",
+        "caption": "Folíolos ovais",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:42:00Z"
+      },
+      {
+        "id": "b16-p4",
+        "url": "/trees/grupo-b/16-Jacaranda cuspidifolia Mart/Jacaranda cuspidifolia Mart4.jpeg",
+        "category": "casca",
+        "caption": "Casca cinzenta rugosa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:43:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Jacaranda cuspidifolia Mart.",
+      "score": 0.89,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20cuspidifolia",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:40:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Espécie nativa do Cerrado com floração lilás.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-17-trema",
+    "displayNumber": null,
+    "popularName": "Crindiúva / Periquiteira",
+    "scientificNameSuggested": "Trema micrantha (L.) Blume",
+    "family": "Cannabaceae",
+    "confidence": "alta",
+    "latitude": -12.70712,
+    "longitude": -60.12015,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b17-p1",
+      "url": "/trees/grupo-b/17-Trema micrantha (L.) Blume/Trema micrantha (L.) Blume.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Crindiúva — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T12:50:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b17-p1",
+        "url": "/trees/grupo-b/17-Trema micrantha (L.) Blume/Trema micrantha (L.) Blume.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Espécime pioneiro",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:50:00Z"
+      },
+      {
+        "id": "b17-p2",
+        "url": "/trees/grupo-b/17-Trema micrantha (L.) Blume/Trema micrantha (L.) Blume2.jpeg",
+        "category": "folha",
+        "caption": "Folhas assimétricas serrilhadas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T12:51:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Trema micrantha (L.) Blume",
+      "score": 0.88,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Trema%20micrantha",
+      "familySuggested": "Cannabaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T12:50:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Orla Leste. Espécie pioneira importante para regeneração.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-18-ipomoea",
+    "displayNumber": null,
+    "popularName": "Canudo-de-pito",
+    "scientificNameSuggested": "Ipomoea carnea Jacq.",
+    "family": "Convolvulaceae",
+    "confidence": "alta",
+    "latitude": -12.70718,
+    "longitude": -60.12028,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b18-p1",
+      "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq.jpeg",
+      "category": "arvore_inteira",
+      "caption": "Canudo-de-pito — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T13:00:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b18-p1",
+        "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto geral do arbusto",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:00:00Z"
+      },
+      {
+        "id": "b18-p2",
+        "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq2.jpeg",
+        "category": "flor",
+        "caption": "Flores róseas em trombeta",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:01:00Z"
+      },
+      {
+        "id": "b18-p3",
+        "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq3.jpeg",
+        "category": "folha",
+        "caption": "Folhagem cordiforme",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:02:00Z"
+      },
+      {
+        "id": "b18-p4",
+        "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq4.jpeg",
+        "category": "arvore_inteira",
+        "caption": "Ramificação densa de borda",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:03:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Ipomoea carnea Jacq.",
+      "score": 0.91,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Ipomoea%20carnea",
+      "familySuggested": "Convolvulaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T13:00:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Orla Leste. Segundo indivíduo da espécie catalogado no levantamento.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-19-bismarckia",
+    "displayNumber": null,
+    "popularName": "Palmeira-de-Bismarck",
+    "scientificNameSuggested": "Bismarckia nobilis Hildebr. & H.Wendl.",
+    "family": "Arecaceae",
+    "confidence": "alta",
+    "latitude": -12.70690,
+    "longitude": -60.12005,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "b19-p1",
+      "url": "/trees/grupo-b/19-Bismarckia nobilis Hildebr. & H.Wendl/Bismarckia nobilis Hildebr. & H.Wendl..jpeg",
+      "category": "arvore_inteira",
+      "caption": "Palmeira-de-Bismarck — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T13:10:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b19-p1",
+        "url": "/trees/grupo-b/19-Bismarckia nobilis Hildebr. & H.Wendl/Bismarckia nobilis Hildebr. & H.Wendl..jpeg",
+        "category": "arvore_inteira",
+        "caption": "Palmeira imponente de folhas prateadas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:10:00Z"
+      },
+      {
+        "id": "b19-p2",
+        "url": "/trees/grupo-b/19-Bismarckia nobilis Hildebr. & H.Wendl/Bismarckia nobilis Hildebr. & H.Wendl.2.jpeg",
+        "category": "folha",
+        "caption": "Folhas flabeladas prateadas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:11:00Z"
+      },
+      {
+        "id": "b19-p3",
+        "url": "/trees/grupo-b/19-Bismarckia nobilis Hildebr. & H.Wendl/Bismarckia nobilis Hildebr. & H.Wendl.3.jpeg",
+        "category": "casca",
+        "caption": "Tronco robusto",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:12:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Bismarckia nobilis Hildebr. & H.Wendl.",
+      "score": 0.96,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Bismarckia%20nobilis",
+      "familySuggested": "Arecaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T13:10:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Palmeira ornamental africana de alto valor paisagístico.",
+    "isMock": false
+  },
+  {
+    "id": "tree-b-20-jacaranda-2",
+    "displayNumber": null,
+    "popularName": "Jacarandá",
+    "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70722,
+    "longitude": -60.12008,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "b20-p1",
+      "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpg",
+      "category": "arvore_inteira",
+      "caption": "Jacarandá — Grupo B",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T13:20:00Z"
+    },
+    "gallery": [
+      {
+        "id": "b20-p1",
+        "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:20:00Z"
+      },
+      {
+        "id": "b20-p2",
+        "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don2.jpg",
+        "category": "arvore_inteira",
+        "caption": "Detalhe do porte",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:21:00Z"
+      },
+      {
+        "id": "b20-p3",
+        "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don3.jpg",
+        "category": "folha",
+        "caption": "Folhagem bipinada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:22:00Z"
+      },
+      {
+        "id": "b20-p4",
+        "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don4.jpg",
+        "category": "casca",
+        "caption": "Tronco e casca",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:23:00Z"
+      },
+      {
+        "id": "b20-p5",
+        "url": "/trees/grupo-b/20-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don5.jpg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto do dossel",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T13:24:00Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Jacaranda mimosifolia D.Don",
+      "score": 0.94,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupB",
+    "collectedAt": "2026-09-14T13:20:00Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo B — Gramado Nordeste. Terceiro indivíduo de Jacarandá no levantamento.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-01-jacaranda",
+    "displayNumber": null,
+    "popularName": "Jacarandá",
+    "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
     "family": "Bignoniaceae",
     "confidence": "alta",
     "latitude": -12.70748,
-    "longitude": -60.1215,
-    "locationAccuracy": 2.1,
+    "longitude": -60.12178,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-009-1",
-      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+      "id": "c01-p1",
+      "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145845.jpg",
       "category": "arvore_inteira",
-      "caption": "Ipê na cabeceira sul da passarela",
+      "caption": "Jacarandá — Grupo C",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T11:00:00Z"
+      "capturedAt": "2026-09-14T14:58:45Z"
     },
     "gallery": [
       {
-        "id": "photo-009-1",
-        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "id": "c01-p1",
+        "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145845.jpg",
         "category": "arvore_inteira",
-        "caption": "Localização adjacente à passarela",
+        "caption": "Vista geral em campo",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T11:00:00Z"
+        "capturedAt": "2026-09-14T14:58:45Z"
+      },
+      {
+        "id": "c01-p2",
+        "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145850.jpg",
+        "category": "arvore_inteira",
+        "caption": "Detalhe do porte",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T14:58:50Z"
+      },
+      {
+        "id": "c01-p3",
+        "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145929_HDR.jpg",
+        "category": "folha",
+        "caption": "Folhagem bipinada (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T14:59:29Z"
+      },
+      {
+        "id": "c01-p4",
+        "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145933.jpg",
+        "category": "casca",
+        "caption": "Textura da casca",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T14:59:33Z"
+      },
+      {
+        "id": "c01-p5",
+        "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145938_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista HDR do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T14:59:38Z"
       }
     ],
     "plantnet": {
-      "taxon": "Handroanthus impetiginosus (Mart. ex DC.) Mattos",
-      "score": 0.96,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77085794-1",
+      "taxon": "Jacaranda mimosifolia D.Don",
+      "score": 0.94,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupC",
-    "collectedAt": "2026-09-20T10:58:00Z",
+    "collectedAt": "2026-09-14T14:58:45Z",
     "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo C (Trilha da Margem Sul). Ponto de referência visual no acesso sul da passarela transversal do lago.",
-    "isMock": true
+    "notes": "Grupo C — Margem Sul do Lago. Primeiro espécime da trilha sul.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-010",
+    "id": "tree-c-02-cojoba",
     "displayNumber": null,
-    "popularName": "Árvore Cadeado",
-    "scientificNameSuggested": "Ficus gomelleira",
-    "family": "Moraceae",
+    "popularName": "Angico-branco / Acoita-cavalo",
+    "scientificNameSuggested": "Cojoba arborea (L.) Britton & Rose",
+    "family": "Fabaceae",
     "confidence": "media",
-    "latitude": -12.70732,
-    "longitude": -60.1217,
-    "locationAccuracy": 3.2,
+    "latitude": -12.70755,
+    "longitude": -60.12165,
+    "locationAccuracy": 3.5,
     "primaryPhoto": {
-      "id": "photo-010-1",
-      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-      "category": "casca",
-      "caption": "Tronco entrelaçado com corrente e cadeado",
+      "id": "c02-p1",
+      "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150120.jpg",
+      "category": "arvore_inteira",
+      "caption": "Cojoba arborea — Grupo C",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T11:08:00Z"
+      "capturedAt": "2026-09-14T15:01:20Z"
     },
     "gallery": [
       {
-        "id": "photo-010-1",
-        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-        "category": "casca",
-        "caption": "Detalhe da interferência antrópica histórica",
+        "id": "c02-p1",
+        "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150120.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T11:08:00Z"
+        "capturedAt": "2026-09-14T15:01:20Z"
+      },
+      {
+        "id": "c02-p2",
+        "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150127.jpg",
+        "category": "folha",
+        "caption": "Folha bipinada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:01:27Z"
+      },
+      {
+        "id": "c02-p3",
+        "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150129.jpg",
+        "category": "casca",
+        "caption": "Casca do tronco",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:01:29Z"
+      },
+      {
+        "id": "c02-p4",
+        "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150136_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Porte e copa (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:01:36Z"
       }
     ],
     "plantnet": {
-      "taxon": "Ficus gomelleira Kunth & C.D.Bouché",
-      "score": 0.84,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:852924-1",
-      "familySuggested": "Moraceae"
+      "taxon": "Cojoba arborea (L.) Britton & Rose",
+      "score": 0.78,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Cojoba%20arborea",
+      "familySuggested": "Fabaceae"
     },
     "group": "groupC",
-    "collectedAt": "2026-09-20T11:05:00Z",
+    "collectedAt": "2026-09-14T15:01:20Z",
     "verificationStatus": "identificacao_preliminar",
-    "notes": "Ponto do Grupo C. Figueira centenária com marca histórica no tronco na trilha sul.",
-    "isMock": true
+    "notes": "Grupo C — Margem Sul. Leguminosa de porte médio na borda da mata ciliar.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-011",
+    "id": "tree-c-03-tapirira",
     "displayNumber": null,
-    "popularName": "Árvore Bifurcada",
-    "scientificNameSuggested": "Qualea grandiflora",
-    "family": "Vochysiaceae",
-    "confidence": "media",
-    "latitude": -12.7076,
-    "longitude": -60.1212,
-    "locationAccuracy": 3.7,
+    "popularName": "Tapiriri / Pau-pombo",
+    "scientificNameSuggested": "Tapirira guianensis Aubl.",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70760,
+    "longitude": -60.12148,
+    "locationAccuracy": 3.0,
     "primaryPhoto": {
-      "id": "photo-011-1",
-      "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
+      "id": "c03-p1",
+      "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150225.jpg",
       "category": "arvore_inteira",
-      "caption": "Tronco bifurcado em V",
+      "caption": "Tapiriri — Grupo C",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T11:15:00Z"
+      "capturedAt": "2026-09-14T15:02:25Z"
     },
     "gallery": [
       {
-        "id": "photo-011-1",
-        "url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
+        "id": "c03-p1",
+        "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150225.jpg",
         "category": "arvore_inteira",
-        "caption": "Bifurcação a 1,5m do solo",
+        "caption": "Vista geral do espécime",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T11:15:00Z"
+        "capturedAt": "2026-09-14T15:02:25Z"
+      },
+      {
+        "id": "c03-p2",
+        "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150228.jpg",
+        "category": "folha",
+        "caption": "Folhas imparipinadas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:02:28Z"
+      },
+      {
+        "id": "c03-p3",
+        "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150235.jpg",
+        "category": "casca",
+        "caption": "Casca fissurada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:02:35Z"
+      },
+      {
+        "id": "c03-p4",
+        "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150236.jpg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto do porte",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:02:36Z"
       }
     ],
     "plantnet": {
-      "taxon": "Qualea grandiflora Mart.",
+      "taxon": "Tapirira guianensis Aubl.",
+      "score": 0.87,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Tapirira%20guianensis",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:02:25Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Espécie nativa da Amazônia e Cerrado.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-04-eucalyptus-regnans",
+    "displayNumber": null,
+    "popularName": "Eucalipto-gigante",
+    "scientificNameSuggested": "Eucalyptus regnans F.Muell.",
+    "family": "Myrtaceae",
+    "confidence": "media",
+    "latitude": -12.70765,
+    "longitude": -60.12130,
+    "locationAccuracy": 3.5,
+    "primaryPhoto": {
+      "id": "c04-p1",
+      "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150303.jpg",
+      "category": "arvore_inteira",
+      "caption": "Eucalipto-gigante — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:03:03Z"
+    },
+    "gallery": [
+      {
+        "id": "c04-p1",
+        "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150303.jpg",
+        "category": "arvore_inteira",
+        "caption": "Porte elevado",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:03:03Z"
+      },
+      {
+        "id": "c04-p2",
+        "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150307_HDR.jpg",
+        "category": "casca",
+        "caption": "Casca com listras (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:03:07Z"
+      },
+      {
+        "id": "c04-p3",
+        "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150323.jpg",
+        "category": "folha",
+        "caption": "Folhas lanceoladas",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:03:23Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Eucalyptus regnans F.Muell.",
       "score": 0.81,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:832876-1",
+      "url": "https://identify.plantnet.org/the-plant-list/species/Eucalyptus%20regnans",
+      "familySuggested": "Myrtaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:03:03Z",
+    "verificationStatus": "em_analise",
+    "notes": "Grupo C — Margem Sul. Eucalipto de grande porte na faixa ripária.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-05-mangifera",
+    "displayNumber": null,
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica L.",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70758,
+    "longitude": -60.12115,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c05-p1",
+      "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150425_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Mangueira — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:04:25Z"
+    },
+    "gallery": [
+      {
+        "id": "c05-p1",
+        "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150425_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista HDR do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:04:25Z"
+      },
+      {
+        "id": "c05-p2",
+        "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150436_HDR.jpg",
+        "category": "folha",
+        "caption": "Folhas lanceoladas (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:04:36Z"
+      },
+      {
+        "id": "c05-p3",
+        "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150439.jpg",
+        "category": "fruto",
+        "caption": "Frutos em desenvolvimento",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:04:39Z"
+      },
+      {
+        "id": "c05-p4",
+        "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150445_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Copa densa (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:04:45Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Mangifera indica L.",
+      "score": 0.97,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:04:25Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Mangueira adulta na orla do lago.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-06-ceiba",
+    "displayNumber": null,
+    "popularName": "Sumaúma / Samaúma",
+    "scientificNameSuggested": "Ceiba pentandra (L.) Gaertn.",
+    "family": "Malvaceae",
+    "confidence": "alta",
+    "latitude": -12.70765,
+    "longitude": -60.12100,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c06-p1",
+      "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150504_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Sumaúma — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:05:04Z"
+    },
+    "gallery": [
+      {
+        "id": "c06-p1",
+        "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150504_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral imponente (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:05:04Z"
+      },
+      {
+        "id": "c06-p2",
+        "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150510_HDR.jpg",
+        "category": "casca",
+        "caption": "Tronco com acúleos (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:05:10Z"
+      },
+      {
+        "id": "c06-p3",
+        "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150513_HDR.jpg",
+        "category": "folha",
+        "caption": "Folha composta digitada (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:05:13Z"
+      },
+      {
+        "id": "c06-p4",
+        "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150528_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Base do tronco (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:05:28Z"
+      },
+      {
+        "id": "c06-p5",
+        "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150532_HDR.jpg",
+        "category": "casca",
+        "caption": "Raízes tabulares visíveis (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:05:32Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Ceiba pentandra (L.) Gaertn.",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Ceiba%20pentandra",
+      "familySuggested": "Malvaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:05:04Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Sumaúma de grande porte ecológico e histórico.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-07-mangifera-2",
+    "displayNumber": null,
+    "popularName": "Mangueira",
+    "scientificNameSuggested": "Mangifera indica L.",
+    "family": "Anacardiaceae",
+    "confidence": "alta",
+    "latitude": -12.70758,
+    "longitude": -60.12085,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c07-p1",
+      "url": "/trees/grupo-c/07 - Mangifera indica L/20260914_150621.jpg",
+      "category": "arvore_inteira",
+      "caption": "Mangueira — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:06:21Z"
+    },
+    "gallery": [
+      {
+        "id": "c07-p1",
+        "url": "/trees/grupo-c/07 - Mangifera indica L/20260914_150621.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista do espécime",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:06:21Z"
+      },
+      {
+        "id": "c07-p2",
+        "url": "/trees/grupo-c/07 - Mangifera indica L/20260914_150739.jpg",
+        "category": "folha",
+        "caption": "Folhagem densa",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:07:39Z"
+      },
+      {
+        "id": "c07-p3",
+        "url": "/trees/grupo-c/07 - Mangifera indica L/20260914_150750.jpg",
+        "category": "arvore_inteira",
+        "caption": "Copa lateral",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:07:50Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Mangifera indica L.",
+      "score": 0.97,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
+      "familySuggested": "Anacardiaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:06:21Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Segundo indivíduo de mangueira na trilha sul.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-08-acacia",
+    "displayNumber": null,
+    "popularName": "Acácia-mangium",
+    "scientificNameSuggested": "Acacia mangium Willd.",
+    "family": "Fabaceae",
+    "confidence": "alta",
+    "latitude": -12.70752,
+    "longitude": -60.12065,
+    "locationAccuracy": 3.0,
+    "primaryPhoto": {
+      "id": "c08-p1",
+      "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150810_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Acácia-mangium — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:08:10Z"
+    },
+    "gallery": [
+      {
+        "id": "c08-p1",
+        "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150810_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:08:10Z"
+      },
+      {
+        "id": "c08-p2",
+        "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150812.jpg",
+        "category": "folha",
+        "caption": "Filódios lanceolados",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:08:12Z"
+      },
+      {
+        "id": "c08-p3",
+        "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150822_HDR.jpg",
+        "category": "casca",
+        "caption": "Casca rugosa acinzentada (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:08:22Z"
+      },
+      {
+        "id": "c08-p4",
+        "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150830_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto do dossel (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:08:30Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Acacia mangium Willd.",
+      "score": 0.92,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Acacia%20mangium",
+      "familySuggested": "Fabaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:08:10Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Espécie exótica de rápido crescimento usada em reflorestamento.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-09-tabebuia-1",
+    "displayNumber": null,
+    "popularName": "Ipê-rosa",
+    "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70745,
+    "longitude": -60.12050,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c09-p1",
+      "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_150948_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Ipê-rosa — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:09:48Z"
+    },
+    "gallery": [
+      {
+        "id": "c09-p1",
+        "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_150948_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:09:48Z"
+      },
+      {
+        "id": "c09-p2",
+        "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_150955_HDR.jpg",
+        "category": "flor",
+        "caption": "Flores róseas na época seca (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:09:55Z"
+      },
+      {
+        "id": "c09-p3",
+        "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_151000_HDR.jpg",
+        "category": "folha",
+        "caption": "Folíolos digitados (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:00Z"
+      },
+      {
+        "id": "c09-p4",
+        "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_151006_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto do porte (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:06Z"
+      },
+      {
+        "id": "c09-p5",
+        "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_151016.jpg",
+        "category": "casca",
+        "caption": "Casca cinza fissurada",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:16Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Tabebuia rosea (Bertol.) DC.",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:09:48Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Ipê-rosa nativo com floração espetacular.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-10-tabebuia-2",
+    "displayNumber": null,
+    "popularName": "Ipê-rosa",
+    "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70740,
+    "longitude": -60.12035,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c10-p1",
+      "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151029_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Ipê-rosa — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:10:29Z"
+    },
+    "gallery": [
+      {
+        "id": "c10-p1",
+        "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151029_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Segundo ipê-rosa catalogado (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:29Z"
+      },
+      {
+        "id": "c10-p2",
+        "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151031_HDR.jpg",
+        "category": "folha",
+        "caption": "Detalhe da folhagem (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:31Z"
+      },
+      {
+        "id": "c10-p3",
+        "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151033_HDR.jpg",
+        "category": "casca",
+        "caption": "Textura do tronco (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:33Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Tabebuia rosea (Bertol.) DC.",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:10:29Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Segundo indivíduo de ipê-rosa na trilha.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-11-tabebuia-3",
+    "displayNumber": null,
+    "popularName": "Ipê-rosa",
+    "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
+    "family": "Bignoniaceae",
+    "confidence": "alta",
+    "latitude": -12.70735,
+    "longitude": -60.12022,
+    "locationAccuracy": 2.5,
+    "primaryPhoto": {
+      "id": "c11-p1",
+      "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151041_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Ipê-rosa — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:10:41Z"
+    },
+    "gallery": [
+      {
+        "id": "c11-p1",
+        "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151041_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Terceiro ipê-rosa catalogado (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:41Z"
+      },
+      {
+        "id": "c11-p2",
+        "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151043_HDR.jpg",
+        "category": "casca",
+        "caption": "Casca do tronco (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:43Z"
+      },
+      {
+        "id": "c11-p3",
+        "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151049.jpg",
+        "category": "arvore_inteira",
+        "caption": "Aspecto geral",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:10:49Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Tabebuia rosea (Bertol.) DC.",
+      "score": 0.93,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
+      "familySuggested": "Bignoniaceae"
+    },
+    "group": "groupC",
+    "collectedAt": "2026-09-14T15:10:41Z",
+    "verificationStatus": "verificado",
+    "notes": "Grupo C — Margem Sul. Terceiro indivíduo de Tabebuia rosea nesta trilha.",
+    "isMock": false
+  },
+  {
+    "id": "tree-c-12-vochysia-1",
+    "displayNumber": null,
+    "popularName": "Quaruba / Vochísia",
+    "scientificNameSuggested": "Vochysia haenkeana Mart.",
+    "family": "Vochysiaceae",
+    "confidence": "media",
+    "latitude": -12.70730,
+    "longitude": -60.12012,
+    "locationAccuracy": 3.5,
+    "primaryPhoto": {
+      "id": "c12-p1",
+      "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151354_HDR.jpg",
+      "category": "arvore_inteira",
+      "caption": "Vochísia — Grupo C",
+      "credit": "Equipe de Campo IFRO",
+      "capturedAt": "2026-09-14T15:13:54Z"
+    },
+    "gallery": [
+      {
+        "id": "c12-p1",
+        "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151354_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Vista geral (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:13:54Z"
+      },
+      {
+        "id": "c12-p2",
+        "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151356_HDR.jpg",
+        "category": "folha",
+        "caption": "Folhas verticiladas (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:13:56Z"
+      },
+      {
+        "id": "c12-p3",
+        "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151408_HDR.jpg",
+        "category": "casca",
+        "caption": "Casca amarelada (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:14:08Z"
+      },
+      {
+        "id": "c12-p4",
+        "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151413_HDR.jpg",
+        "category": "arvore_inteira",
+        "caption": "Porte do espécime (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:14:13Z"
+      }
+    ],
+    "plantnet": {
+      "taxon": "Vochysia haenkeana Mart.",
+      "score": 0.82,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Vochysia%20haenkeana",
       "familySuggested": "Vochysiaceae"
     },
     "group": "groupC",
-    "collectedAt": "2026-09-20T11:12:00Z",
-    "verificationStatus": "em_analise",
-    "notes": "Ponto do Grupo C. Tronco bifurcado a 1,5m da base, na transição para a mata fechada.",
-    "isMock": true
+    "collectedAt": "2026-09-14T15:13:54Z",
+    "verificationStatus": "identificacao_preliminar",
+    "notes": "Grupo C — Margem Sul. Espécie do Cerrado e Florestas de Transição.",
+    "isMock": false
   },
   {
-    "id": "mock-tree-012",
+    "id": "tree-c-13-vochysia-2",
     "displayNumber": null,
-    "popularName": "Árvore Quiosque",
-    "scientificNameSuggested": "Inga vera",
-    "family": "Fabaceae",
-    "confidence": "alta",
-    "latitude": -12.7076,
-    "longitude": -60.12085,
-    "locationAccuracy": 2.4,
+    "popularName": "Quaruba / Vochísia",
+    "scientificNameSuggested": "Vochysia haenkeana Mart.",
+    "family": "Vochysiaceae",
+    "confidence": "media",
+    "latitude": -12.70725,
+    "longitude": -60.12005,
+    "locationAccuracy": 3.5,
     "primaryPhoto": {
-      "id": "photo-012-1",
-      "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+      "id": "c13-p1",
+      "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151456_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Ingazeiro próximo ao quiosque",
+      "caption": "Vochísia — Grupo C",
       "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T11:22:00Z"
+      "capturedAt": "2026-09-14T15:14:56Z"
     },
     "gallery": [
       {
-        "id": "photo-012-1",
-        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+        "id": "c13-p1",
+        "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151456_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Copa ampla que sombreia o quiosque",
+        "caption": "Segundo indivíduo (HDR)",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T11:22:00Z"
-      }
-    ],
-    "plantnet": {
-      "taxon": "Inga vera Willd.",
-      "score": 0.92,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:500989-1",
-      "familySuggested": "Fabaceae"
-    },
-    "group": "groupC",
-    "collectedAt": "2026-09-20T11:20:00Z",
-    "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo C. Ingazeiro de margem oferecendo sombra à orla leste do lago.",
-    "isMock": true
-  },
-  {
-    "id": "mock-tree-013",
-    "displayNumber": null,
-    "popularName": "Árvore Fim Trilha",
-    "scientificNameSuggested": "Anadenanthera colubrina",
-    "family": "Fabaceae",
-    "confidence": "alta",
-    "latitude": -12.70734,
-    "longitude": -60.1203,
-    "locationAccuracy": 2.8,
-    "primaryPhoto": {
-      "id": "photo-013-1",
-      "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-      "category": "arvore_inteira",
-      "caption": "Angico-branco no final da trilha sul",
-      "credit": "Equipe de Campo IFRO",
-      "capturedAt": "2026-09-20T11:30:00Z"
-    },
-    "gallery": [
+        "capturedAt": "2026-09-14T15:14:56Z"
+      },
       {
-        "id": "photo-013-1",
-        "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-        "category": "arvore_inteira",
-        "caption": "Espécime imponente de borda de mata",
+        "id": "c13-p2",
+        "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151459_HDR.jpg",
+        "category": "folha",
+        "caption": "Folhas em espiral (HDR)",
         "credit": "Equipe de Campo IFRO",
-        "capturedAt": "2026-09-20T11:30:00Z"
+        "capturedAt": "2026-09-14T15:14:59Z"
+      },
+      {
+        "id": "c13-p3",
+        "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151501_HDR.jpg",
+        "category": "casca",
+        "caption": "Casca com exsudato (HDR)",
+        "credit": "Equipe de Campo IFRO",
+        "capturedAt": "2026-09-14T15:15:01Z"
       }
     ],
     "plantnet": {
-      "taxon": "Anadenanthera colubrina (Vell.) Brenan",
-      "score": 0.94,
-      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:473722-1",
-      "familySuggested": "Fabaceae"
+      "taxon": "Vochysia haenkeana Mart.",
+      "score": 0.82,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Vochysia%20haenkeana",
+      "familySuggested": "Vochysiaceae"
     },
     "group": "groupC",
-    "collectedAt": "2026-09-20T11:28:00Z",
-    "verificationStatus": "verificado",
-    "notes": "Ponto do Grupo C. Encerramento da Trilha Sul na transição para a mata fechada.",
-    "isMock": true
+    "collectedAt": "2026-09-14T15:14:56Z",
+    "verificationStatus": "identificacao_preliminar",
+    "notes": "Grupo C — Margem Sul. Último espécime catalogado na trilha sul do lago.",
+    "isMock": false
   }
 ]
