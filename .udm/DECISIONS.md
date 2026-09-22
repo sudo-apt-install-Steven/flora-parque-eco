@@ -110,5 +110,11 @@
 - **Decisão:** O seletor de camadas deve permanecer acima da navegação móvel e o gatilho de setores deve ocupar uma faixa própria abaixo dos chips de grupos; o painel de levantamento usa altura dinâmica baseada em viewport.
 - **Justificativa:** A sobreposição de hitboxes impedia selecionar Exploração e confundia os toques em “Áreas do levantamento” e nos grupos A/B/C.
 
+## ADR-013: Motion Design Progressivo e Reduced Motion
+- **Data:** 2026-09-22
+- **Status:** ACEITO
+- **Decisão:** Animações curtas e escalonadas para entradas e feedbacks, com `prefers-reduced-motion` desativando movimento não essencial.
+- **Justificativa:** Aumentar clareza e resposta no celular sem sobrecarregar a experiência cartográfica.
+
 
 

@@ -105,3 +105,9 @@ Node.js v22.23.2, npm 10.9.8, Windows 11, `C:\Users\Steven\Documents\FloraParque
  - `LayerSwitcher` elevado para `z-40` e reposicionado em `bottom-24` no mobile; a camada `Exploração` foi validada como selecionável.
  - O gatilho `Áreas do levantamento` foi deslocado para `top-16` no mobile, abaixo dos chips de grupos, eliminando sobreposição de hitboxes.
  - `SurveyMapPanel` usa `88dvh`, `min-h-0`, rolagem/touch e alvos táteis estáveis; Grupo B foi validado em viewport 375x812.
+
+### Correção v1.8.0 — Motion Design Mobile
+- Entradas escalonadas para cards do catálogo, navegação inferior e seletor de camadas.
+- Feedbacks táteis/hover refinados sem alterar a lógica do MapLibre.
+- `prefers-reduced-motion` confirmado: movimento não essencial é desativado.
+- Produção validada: 33 cards, delays de 0/45ms e console sem erros.

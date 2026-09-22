@@ -201,7 +201,8 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
                 role="button"
                 tabIndex={0}
                 aria-label={`Abrir galeria de ${tree.popularName}`}
-                className="group flex items-center justify-between gap-4 p-3.5 rounded-2xl bg-white/70 dark:bg-white/[0.03] hover:bg-white dark:hover:bg-white/[0.08] border border-stone-200/80 dark:border-white/10 hover:border-[#d6a35b]/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                className="catalog-item-in group flex items-center justify-between gap-4 p-3.5 rounded-2xl bg-white/70 dark:bg-white/[0.03] hover:bg-white dark:hover:bg-white/[0.08] border border-stone-200/80 dark:border-white/10 hover:border-[#d6a35b]/50 transition-[transform,background-color,border-color,box-shadow] duration-200 cursor-pointer shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+                style={{ '--catalog-delay': `${Math.min(filteredTrees.indexOf(tree), 8) * 45}ms` } as React.CSSProperties}
               >
                 {/* Imagem */}
                 <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-stone-200 dark:bg-stone-800 flex-shrink-0">

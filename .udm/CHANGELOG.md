@@ -29,6 +29,12 @@
 - Corrigida estabilidade do painel de setores em telas pequenas com `88dvh`, `min-h-0`, rolagem e touch targets.
 - Validação visual em 375x812: Exploração ativa, Grupo B selecionável e lista do setor visível.
 
+## [1.8.0] — 2026-09-22 [COPILOT — MOTION DESIGN MOBILE]
+
+- Entradas escalonadas no catálogo, navegação inferior e seletor de camadas.
+- Feedbacks táteis/hover refinados e `prefers-reduced-motion` validado.
+- TypeScript, 85/85 testes, build de 37 páginas e produção mobile sem erros de console.
+
 ## [1.5.0] — 2026-09-22 [KIRO — CATÁLOGO REAL, FOTOS LOCAIS, POLÍGONOS FINALIZADOS]
 
 ### Reconstruído

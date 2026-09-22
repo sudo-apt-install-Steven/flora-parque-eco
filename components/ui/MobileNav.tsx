@@ -28,7 +28,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             'flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium transition-all duration-200',
             activeNav === 'mapa'
               ? 'bg-[#d6a35b] text-[#0b211d] font-bold shadow-md scale-105'
-              : 'text-[#9bb0a6] hover:text-[#f8f6ef]'
+              : 'text-[#9bb0a6] hover:text-[#f8f6ef] hover:-translate-y-0.5'
           )}
         >
           <MapIcon className="w-4 h-4" />
@@ -37,7 +37,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
         <button
           onClick={onOpenSearch}
-          className="flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium text-[#9bb0a6] hover:text-[#f8f6ef] transition-all duration-200"
+          className="flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium text-[#9bb0a6] hover:text-[#f8f6ef] hover:-translate-y-0.5 transition-all duration-200"
         >
           <Search className="w-4 h-4" />
           <span>Buscar</span>
@@ -49,7 +49,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             'flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium transition-all duration-200',
             activeNav === 'especies'
               ? 'bg-[#d6a35b] text-[#0b211d] font-bold shadow-md scale-105'
-              : 'text-[#9bb0a6] hover:text-[#f8f6ef]'
+              : 'text-[#9bb0a6] hover:text-[#f8f6ef] hover:-translate-y-0.5'
           )}
         >
           <Trees className="w-4 h-4" />
@@ -62,7 +62,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             'flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium transition-all duration-200',
             activeNav === 'dados'
               ? 'bg-[#d6a35b] text-[#0b211d] font-bold shadow-md scale-105'
-              : 'text-[#9bb0a6] hover:text-[#f8f6ef]'
+              : 'text-[#9bb0a6] hover:text-[#f8f6ef] hover:-translate-y-0.5'
           )}
         >
           <BarChart3 className="w-4 h-4" />
@@ -75,7 +75,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             'flex flex-col items-center justify-center gap-1 w-14 h-12 rounded-xl text-[10px] font-medium transition-all duration-200',
             activeNav === 'projeto'
               ? 'bg-[#d6a35b] text-[#0b211d] font-bold shadow-md scale-105'
-              : 'text-[#9bb0a6] hover:text-[#f8f6ef]'
+              : 'text-[#9bb0a6] hover:text-[#f8f6ef] hover:-translate-y-0.5'
           )}
         >
           <Compass className="w-4 h-4" />

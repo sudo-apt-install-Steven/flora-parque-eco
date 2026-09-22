@@ -402,3 +402,9 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 - O gatilho “Áreas do levantamento” usa `top-16` no mobile, separado dos chips `top-4`.
 - `SurveyMapPanel` foi estabilizado com `88dvh`, `min-h-0`, `touch-pan-y`, `touch-manipulation` e botões com altura mínima.
 - Teste de produção em 375x812: Grupo B ativo e lista do setor renderizada; sem erros de console da aplicação.
+
+## Atualização v1.8.0 — Motion Design Mobile
+- `catalog-item-in` aplica entrada escalonada aos cards, limitada aos primeiros 9 itens.
+- `nav-in` anima a barra mobile e estados ativos usam microelevação/toque.
+- `layer-switcher-in` suaviza a entrada do seletor de camadas.
+- `prefers-reduced-motion` verificado em produção: `animation-name: none`.
