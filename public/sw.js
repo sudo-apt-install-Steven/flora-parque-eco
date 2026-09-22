@@ -2,7 +2,7 @@
 // Estratégia de Cache para Coleta de Campo Offline
 
 const CACHE_NAME_PREFIX = 'flora-parque-eco';
-const CACHE_VERSION = 'v9';
+const CACHE_VERSION = 'v11';
 const STATIC_CACHE = `${CACHE_NAME_PREFIX}-static-${CACHE_VERSION}`;
 const DATA_CACHE = `${CACHE_NAME_PREFIX}-data-${CACHE_VERSION}`;
 const GEO_CACHE = `${CACHE_NAME_PREFIX}-geo-${CACHE_VERSION}`;

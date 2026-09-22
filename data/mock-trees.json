@@ -6,7 +6,7 @@
     "scientificNameSuggested": "Jacaranda mimosifolia",
     "family": "Bignoniaceae",
     "confidence": "alta",
-    "latitude": -12.70678,
+    "latitude": -12.70695,
     "longitude": -60.1215,
     "locationAccuracy": 2.8,
     "primaryPhoto": {
@@ -54,7 +54,7 @@
     "scientificNameSuggested": "Schizolobium parahyba",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70682,
+    "latitude": -12.707,
     "longitude": -60.1213,
     "locationAccuracy": 3.1,
     "primaryPhoto": {
@@ -94,8 +94,8 @@
     "scientificNameSuggested": "Cavanillesia platanifolia",
     "family": "Malvaceae",
     "confidence": "media",
-    "latitude": -12.70688,
-    "longitude": -60.12168,
+    "latitude": -12.70705,
+    "longitude": -60.12165,
     "locationAccuracy": 3.4,
     "primaryPhoto": {
       "id": "photo-003-1",
@@ -134,7 +134,7 @@
     "scientificNameSuggested": "Eucalyptus grandis",
     "family": "Myrtaceae",
     "confidence": "alta",
-    "latitude": -12.70692,
+    "latitude": -12.7069,
     "longitude": -60.12115,
     "locationAccuracy": 2.5,
     "primaryPhoto": {
@@ -174,7 +174,7 @@
     "scientificNameSuggested": "Mangifera indica",
     "family": "Anacardiaceae",
     "confidence": "alta",
-    "latitude": -12.70695,
+    "latitude": -12.70705,
     "longitude": -60.12085,
     "locationAccuracy": 2.2,
     "primaryPhoto": {
@@ -214,8 +214,8 @@
     "scientificNameSuggested": "Ceiba speciosa",
     "family": "Malvaceae",
     "confidence": "alta",
-    "latitude": -12.70678,
-    "longitude": -60.1205,
+    "latitude": -12.7069,
+    "longitude": -60.12065,
     "locationAccuracy": 2.6,
     "primaryPhoto": {
       "id": "photo-006-1",
@@ -254,8 +254,8 @@
     "scientificNameSuggested": "Mangifera indica",
     "family": "Anacardiaceae",
     "confidence": "alta",
-    "latitude": -12.7071,
-    "longitude": -60.12035,
+    "latitude": -12.70705,
+    "longitude": -60.12045,
     "locationAccuracy": 2.9,
     "primaryPhoto": {
       "id": "photo-007-1",
@@ -294,8 +294,8 @@
     "scientificNameSuggested": "Tibouchina granulosa",
     "family": "Melastomataceae",
     "confidence": "alta",
-    "latitude": -12.70725,
-    "longitude": -60.12025,
+    "latitude": -12.70715,
+    "longitude": -60.1203,
     "locationAccuracy": 3,
     "primaryPhoto": {
       "id": "photo-008-1",
@@ -334,7 +334,7 @@
     "scientificNameSuggested": "Handroanthus impetiginosus",
     "family": "Bignoniaceae",
     "confidence": "alta",
-    "latitude": -12.70745,
+    "latitude": -12.70748,
     "longitude": -60.1215,
     "locationAccuracy": 2.1,
     "primaryPhoto": {
@@ -374,7 +374,7 @@
     "scientificNameSuggested": "Ficus gomelleira",
     "family": "Moraceae",
     "confidence": "media",
-    "latitude": -12.70725,
+    "latitude": -12.70732,
     "longitude": -60.1217,
     "locationAccuracy": 3.2,
     "primaryPhoto": {
@@ -414,7 +414,7 @@
     "scientificNameSuggested": "Qualea grandiflora",
     "family": "Vochysiaceae",
     "confidence": "media",
-    "latitude": -12.70762,
+    "latitude": -12.7076,
     "longitude": -60.1212,
     "locationAccuracy": 3.7,
     "primaryPhoto": {
@@ -454,7 +454,7 @@
     "scientificNameSuggested": "Inga vera",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70764,
+    "latitude": -12.7076,
     "longitude": -60.12085,
     "locationAccuracy": 2.4,
     "primaryPhoto": {
@@ -494,7 +494,7 @@
     "scientificNameSuggested": "Anadenanthera colubrina",
     "family": "Fabaceae",
     "confidence": "alta",
-    "latitude": -12.70742,
+    "latitude": -12.70734,
     "longitude": -60.1203,
     "locationAccuracy": 2.8,
     "primaryPhoto": {

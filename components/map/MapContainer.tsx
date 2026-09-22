@@ -155,8 +155,8 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
 
             // Centros geográficos dos 3 setores calibrados
             const centers: Record<FieldGroup, [number, number]> = {
-              groupA: [-60.12140, -12.70685], // Gramado Noroeste
-              groupB: [-60.12050, -12.70700], // Gramado Nordeste & Parquinho
+              groupA: [-60.12135, -12.70705], // Gramado Noroeste
+              groupB: [-60.12055, -12.70710], // Gramado Nordeste & Parquinho
               groupC: [-60.12100, -12.70755]  // Faixa da Margem Sul do Lago
             };
             const targetCenter = centers[group] || PARK_CONFIG.center;

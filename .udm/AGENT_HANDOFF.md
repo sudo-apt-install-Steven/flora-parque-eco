@@ -295,9 +295,9 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 - **Parquinho Infantil:** Círculo no gramado nordeste (`[-60.12080, -12.70682]`).
 
 ### 8.3. Polígonos das 3 Regiões de Campo (`geo/park-regions.geojson`)
-- **Grupo A (Amarelo `#eab308`):** Setor Noroeste (Gramado Norte e acesso). Contém 4 espécimes catalogados (`mock-tree-001` a `004`).
-- **Grupo B (Azul `#3b82f6`):** Setor Nordeste (Parquinho infantil e gramado leste). Contém 4 espécimes catalogados (`mock-tree-005` a `008`).
-- **Grupo C (Vermelho `#ef4444`):** Margem Sul do Lago e Mata Ciliar. Contém 5 espécimes catalogados (`mock-tree-009` a `013`).
+- **Grupo A (Amarelo `#eab308`):** Gramado Noroeste em frente ao lago. Delimitado entre a pista reta de acesso a oeste e a linha divisória vertical que bissecta o centro do parquinho infantil (`lng = -60.12095`), contornando a margem norte d'água sem adentrar o lago. Contém 4 espécimes catalogados (`mock-tree-001` a `004`).
+- **Grupo B (Ciano `#06b6d4`):** Gramado Nordeste & Parquinho Infantil. Começa na linha divisória que bissecta o parquinho, engloba a metade leste do círculo e o gramado até a borda da mata leste/norte, limitando-se ao sul pela curva d'água leste do lago. Contém 4 espécimes catalogados (`mock-tree-005` a `008`).
+- **Grupo C (Vermelho `#ef4444`):** Faixa contínua curva rente à pista de caminhada sul do lago (~12-15m de espessura) contornando toda a margem d'água sul, do oeste ao sudeste. Contém 5 espécimes catalogados (`mock-tree-009` a `013`).
 - **Interatividade no MapLibre:** Hover com mudança de cursor para pointer e realce de borda; clique na região que aciona `onSelectGroup()`, animando a câmera até o centro do setor e abrindo a gaveta lateral.
 
 ### 8.4. Gaveta de Inventário da Região (`components/tree/RegionTreeList.tsx`)

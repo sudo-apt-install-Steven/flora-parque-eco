@@ -18,8 +18,8 @@ export type PhotoCategory = z.infer<typeof PhotoCategorySchema>;
  */
 export const PhotoItemSchema = z.object({
   id: z.string().min(1, 'ID da foto é obrigatório'),
-  url: z.string().url('URL da foto deve ser válida'),
-  thumbUrl: z.string().url('URL da miniatura deve ser válida').optional(),
+  url: z.string().min(1, 'URL ou caminho da foto é obrigatório'),
+  thumbUrl: z.string().min(1).optional(),
   category: PhotoCategorySchema,
   caption: z.string().optional(),
   credit: z.string().optional(),

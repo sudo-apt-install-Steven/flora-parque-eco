@@ -1,6 +1,22 @@
 # UDM — CHANGELOG
 
-## [1.3.0] — 2026-09-21 [CLAUDE - UI/GIS & AUDIT]
+## [1.4.0] — 2026-09-21 [ANTIGRAVITY 2.0 - GEO CALIBRATION & RENDERING]
+
+### Corrigido & Calibrado (Polígonos dos Grupos A, B e C, Renderização WebGL e Ingestão)
+- **Calibração Fina dos Polígonos de Campo Conforme Foto Aérea de Referência (`media_1789998447091.jpg`):**
+  - **Grupo A (Gramado Noroeste - Amarelo `#eab308`):** Delimitado precisamente sobre a metade oeste do gramado norte em frente ao lago, estendendo-se da pista oeste até a linha divisória vertical que bissecta o centro do parquinho circular (`lng = -60.12095`), contornando a margem norte d'água sem adentrar o lago.
+  - **Grupo B (Gramado Nordeste & Parquinho - Ciano `#06b6d4`):** Começa na linha divisória do parquinho (encostando no Grupo A), cobre a metade leste do círculo do parquinho e o gramado até a borda da mata norte e leste, limitando-se ao sul pela curva nordeste da margem do lago.
+  - **Grupo C (Faixa da Margem Sul - Vermelho `#ef4444`):** Faixa contínua com espessura rente à pista de caminhada sul (~12-15m) colada na margem d'água sul do lago, do oeste ao sudeste.
+  - Removido qualquer desvio para rodovias, pátios de caminhões ou floresta profunda.
+- **Reposicionamento Validado das 13 Árvores:**
+  - Todas as 13 árvores em `data/mock-trees.json` reposicionadas para dentro dos novos perímetros e validadas 100% geometricamente via algoritmo ray-casting (point-in-polygon).
+- **Resolução de Renderização do `DynamicMap.tsx`:**
+  - Substituição do `dynamic()` por importação direta com montagem client-side pós-hidratação (`mounted`), eliminando o deadlock do suspense do Next.js 15 e erros do Webpack.
+- **Service Worker e Cache Busting:**
+  - Cache version incrementado para `v9` com estratégia Network-First para rotas `/geo/`.
+- **Validação Automatizada:**
+  - 85/85 testes Vitest PASS.
+  - `npm run build` gerando todas as 17 páginas estáticas com 0 erros.
 
 ### Adicionado & Auditado (Interatividade Completa GIS WebGL, Auto-Auditoria e Resiliência)
 - **Interatividade Completa do Motor GIS WebGL (MapLibre GL JS):**

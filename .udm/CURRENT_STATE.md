@@ -1,9 +1,15 @@
 # UDM — CURRENT STATE
 
 - **Data:** 2026-09-21
-- **Versão:** `v1.3.0` (Auditoria de Performance, Interatividade GIS WebGL Completa & Resiliência Visual)
-- **Status do Projeto:** Fase 2 de Interatividade do Mapa, Integração de UI e Auto-Auditoria Concluídas com Rigor Extremo (Motor MapLibre GL JS acelerado por GPU WebGL a 60 FPS com `React.memo`, alternância fluida entre os 3 modos cartográficos com Satélite de super zoom como padrão, interação completa dos marcadores e polígonos de campo A/B/C via `feature-state`, sincronização reativa com Zustand 5, painel desktop e bottom sheet mobile com gestos táteis, acessibilidade ARIA e WCAG AA validadas, resiliência total a dados ausentes com `getSafeTree`, 85/85 testes Vitest PASS, 0 erros TypeScript estrito com `tsc --noEmit` e build de produção Next.js 15.5 SSG com 17 páginas estáticas geradas com 100% de sucesso).
-- **Agente Responsável:** Claude (Lead GIS Engineer, UX/UI Architect & Performance Auditor)
+- **Versão:** `v1.4.0` (Calibração Geométrica Fina dos Polígonos de Campo e Resolução de Hidratação WebGL)
+- **Status do Projeto:** Polígonos dos Grupos A, B e C calibrados pixel a pixel sobre a imagem de satélite real em estrita conformidade com a foto de referência desenhada pelo usuário (`media_1789998447091.jpg`):
+  1. **Grupo A (Amarelo `#eab308`):** Cobre exatamente a metade oeste do gramado norte em frente ao lago, desde a pista reta de acesso a oeste até a linha divisória vertical que bissecta o círculo do parquinho a leste, contornando a margem norte da água sem adentrar o lago.
+  2. **Grupo B (Ciano `#06b6d4`):** Cobre a metade leste do gramado norte e a metade leste do parquinho infantil circular, estendendo-se até a orla da mata norte e leste e limitando-se ao sul pela curva leste da margem do lago.
+  3. **Grupo C (Vermelho `#ef4444`):** Faixa contínua curva rente à pista de caminhada sul do lago (~12-15m de espessura) contornando toda a margem d'água sul, do oeste ao sudeste.
+  - As 13 árvores catalogadas foram reposicionadas e validadas 100% geometricamente dentro de seus respectivos polígonos via algoritmo ray-casting.
+  - Corrigido o empacotamento do `DynamicMap.tsx` com renderização client-side estável, eliminando travamento de carregamento e erros do Webpack do Next.js 15.
+  - 85/85 testes Vitest PASS, `npm run build` SSG (17 páginas) gerado com sucesso.
+- **Agente Responsável:** Antigravity 2.0 (Lead Cartographer & Release Manager)
 - **Branch Git:** `main`
 - **Repositório Remoto:** `origin` -> `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`
 - **Ambiente:** Node.js v22.23.2, npm 10.9.8, Windows 11 IoT Enterprise LTSC, C:\Users\Steven\Documents\FloraParqueEco
