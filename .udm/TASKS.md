@@ -139,6 +139,7 @@
 - [x] **`generateStaticParams`:** Funciona dinamicamente via `getAllTrees()` — 32 rotas pré-renderizadas automaticamente.
 
 ## Próximos Passos
+- [x] **Fase 20 — Correção de Catálogo e Mobile QA:** ajustar catálogo para 32 espécimes, remover centralização da ficha, traduzir PlantNet e reposicionar controles MapLibre.
 - [x] **Fase 19 — Layout Mobile do Mapa:** corrigir a camada Exploração, separar o gatilho de setores dos chips e estabilizar o painel A/B/C; validar em produção com viewport 375x812.
 - [x] **Fase 20 — Motion Design Mobile:** entradas escalonadas, feedback tátil e reduced motion validados em produção.
 - [x] **Fase 18 — Espécies, Fotos e Galeria Mobile:** corrigir preservação de fotos no pipeline, abrir galeria sem redirecionamento automático ao mapa, implementar navegação fotográfica acessível/responsiva, validar fotos reais e publicar build/testes.

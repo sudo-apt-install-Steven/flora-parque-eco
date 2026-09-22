@@ -1,6 +1,13 @@
 # UDM — CHANGELOG
 
-## [1.6.0] — 2026-09-22 [COPILOT — GALERIA DE ESPÉCIMES, PIPELINE DE FOTOS E MOBILE]
+## [1.9.0] — 2026-09-22 [COPILOT — DADOS, FICHA E CONTROLES MOBILE]
+
+- Catálogo corrigido para 32 espécimes: A=5, B=14, C=13; removido `tree-b-20-jacaranda-2`.
+- Removida a ação desnecessária de centralização nas fichas.
+- Confiança PlantNet traduzida para “% de confiança”.
+- Controles MapLibre mobile ajustados para 44px e sem sobreposição da navegação inferior.
+
+## [1.8.0] — 2026-09-22 [COPILOT — MOTION DESIGN MOBILE]
 
 ### Corrigido
 - Corrigida a causa raiz das thumbnails brancas em `lib/ingestion/pipeline.ts`: fotos locais e galerias não eram preservadas durante a ingestão inicial.
@@ -41,7 +48,7 @@
 - **`data/mock-trees.json` — 32 Espécimes Reais:**
   - Substituídos os 13 espécimes de calibração pelos 32 espécimes reais coletados em campo.
   - **Grupo A (5):** `tree-a-02-jacaranda` (*Jacaranda mimosifolia*), `tree-a-03-hibiscus` (*Hibiscus rosa-sinensis*), `tree-a-04-spathodea` (*Spathodea campanulata*), `tree-a-05-ipomoea` (*Ipomoea carnea*), `tree-a-06-mangifera` (*Mangifera indica*).
-  - **Grupo B (14):** `tree-b-01-eucalyptus` (*Eucalyptus urophylla*), `tree-b-07-mangifera-1`, `tree-b-08-wodyetia` (*Wodyetia bifurcata*), `tree-b-09-psidium` (*Psidium guajava*), `tree-b-10-jacaranda`, `tree-b-11-pachira` (*Pachira aquatica*), `tree-b-12-cascabela` (*Cascabela thevetia*), `tree-b-13-inga-laurina` (*Inga laurina*), `tree-b-14-mangifera-2`, `tree-b-15-syzygium` (*Syzygium malaccense*), `tree-b-16-jacaranda-cusp` (*Jacaranda cuspidifolia*), `tree-b-17-trema` (*Trema micrantha*), `tree-b-18-ipomoea`, `tree-b-19-bismarckia` (*Bismarckia nobilis*), `tree-b-20-jacaranda-2`.
+  - **Grupo B (14):** `tree-b-01-eucalyptus` (*Eucalyptus urophylla*), `tree-b-07-mangifera-1`, `tree-b-08-wodyetia` (*Wodyetia bifurcata*), `tree-b-09-psidium` (*Psidium guajava*), `tree-b-10-jacaranda`, `tree-b-11-pachira` (*Pachira aquatica*), `tree-b-12-cascabela` (*Cascabela thevetia*), `tree-b-13-inga-laurina` (*Inga laurina*), `tree-b-14-mangifera-2`, `tree-b-15-syzygium` (*Syzygium malaccense*), `tree-b-16-jacaranda-cusp` (*Jacaranda cuspidifolia*), `tree-b-17-trema` (*Trema micrantha*), `tree-b-18-ipomoea`, `tree-b-19-bismarckia` (*Bismarckia nobilis*).
   - **Grupo C (13):** `tree-c-01-jacaranda` a `tree-c-13-vochysia-2` — incluindo *Cojoba arborea*, *Tapirira guianensis*, *Eucalyptus regnans*, *Ceiba pentandra*, *Acacia mangium*, *Tabebuia rosea* (×3), *Vochysia haenkeana* (×2).
   - Todos com `displayNumber: null`, `isMock: false`, fotos reais de `/public/trees/grupo-[a|b|c]/`.
 

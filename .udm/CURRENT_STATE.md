@@ -1,20 +1,20 @@
 # UDM — CURRENT STATE
 
 - **Data:** 2026-09-22
-- **Versão:** `v1.6.0` (Catálogo Real com 33 Espécimes, Galeria Mobile e Fotos Locais Preservadas)
-- **Status do Projeto:** ✅ **PROJETO VALIDADO** — catálogo real com 33 espécimes, fotos locais preservadas no pipeline, galeria sem redirecionamento automático ao mapa, build SSG 100% bem-sucedido (37 páginas), 0 erros TypeScript e 85/85 testes.
+- **Versão:** `v1.9.0` (Catálogo Real com 32 Espécimes, Mobile QA e Controles MapLibre Ajustados)
+- **Status do Projeto:** ✅ **PROJETO VALIDADO** — catálogo real com 32 espécimes, fotos locais preservadas no pipeline, ficha sem ação de centralização, build SSG e 85/85 testes.
 
 ---
 
 ## Resumo da Versão v1.5.0
 
-### Catálogo Real (33 Espécimes)
+### Catálogo Real (32 Espécimes)
 O `data/mock-trees.json` foi completamente reconstruído substituindo os 13 espécimes de calibração pelos **32 espécimes reais** coletados em campo pelos estudantes do IFRO:
 
 | Grupo | Espécimes | Pastas de Fotos |
 |-------|-----------|-----------------|
 | **Grupo A** | 5 (tree-a-02 a tree-a-06) | `public/trees/grupo-a/` |
-| **Grupo B** | 15 (tree-b-01, tree-b-07 a tree-b-20) | `public/trees/grupo-b/` |
+| **Grupo B** | 14 (tree-b-01, tree-b-07 a tree-b-19) | `public/trees/grupo-b/` |
 | **Grupo C** | 13 (tree-c-01 a tree-c-13) | `public/trees/grupo-c/` |
 
 **Espécimes por grupo:**
@@ -50,7 +50,7 @@ Todas as entradas têm `displayNumber: null`, `isMock: false`, fotos reais de `/
 - `TreeGallery.tsx` agora suporta foto principal, thumbnails, anterior/próxima, ESC, setas de teclado, swipe horizontal, loading e fallback neutro somente em erro real.
 - `TreeDetail.tsx` reutiliza uma única galeria, evitando modais fotográficos duplicados.
 - No mobile, a navegação inferior é ocultada enquanto a galeria está aberta para não cobrir conteúdo; o painel usa rolagem vertical e áreas de toque adequadas.
-- Auditoria de caminhos: 154 referências de fotos em 33 espécimes, 0 caminhos ausentes em `public/trees/`.
+- Auditoria de caminhos: 154 referências de fotos no catálogo, 0 caminhos ausentes em `public/trees/`.
 
 ### Build e Qualidade
 - **Build Next.js 15.5 SSG:** ✅ 37 páginas estáticas (1 raiz + 1 not-found + 32 rotas `/tree/[id]` + 3 outras)
@@ -71,7 +71,7 @@ Todas as 32 rotas `/tree/[id]` estão pré-renderizadas:
 `tree-a-02-jacaranda`, `tree-a-03-hibiscus`, `tree-a-04-spathodea`, `tree-a-05-ipomoea`, `tree-a-06-mangifera`,
 `tree-b-01-eucalyptus`, `tree-b-07-mangifera-1`, `tree-b-08-wodyetia`, `tree-b-09-psidium`, `tree-b-10-jacaranda`,
 `tree-b-11-pachira`, `tree-b-12-cascabela`, `tree-b-13-inga-laurina`, `tree-b-14-mangifera-2`, `tree-b-15-syzygium`,
-`tree-b-16-jacaranda-cusp`, `tree-b-17-trema`, `tree-b-18-ipomoea`, `tree-b-19-bismarckia`, `tree-b-20-jacaranda-2`,
+`tree-b-16-jacaranda-cusp`, `tree-b-17-trema`, `tree-b-18-ipomoea`, `tree-b-19-bismarckia`,
 `tree-c-01-jacaranda`, `tree-c-02-cojoba`, `tree-c-03-tapirira`, `tree-c-04-eucalyptus-regnans`, `tree-c-05-mangifera`,
 `tree-c-06-ceiba`, `tree-c-07-mangifera-2`, `tree-c-08-acacia`, `tree-c-09-tabebuia-1`, `tree-c-10-tabebuia-2`,
 `tree-c-11-tabebuia-3`, `tree-c-12-vochysia-1`, `tree-c-13-vochysia-2`
@@ -111,3 +111,9 @@ Node.js v22.23.2, npm 10.9.8, Windows 11, `C:\Users\Steven\Documents\FloraParque
 - Feedbacks táteis/hover refinados sem alterar a lógica do MapLibre.
 - `prefers-reduced-motion` confirmado: movimento não essencial é desativado.
 - Produção validada: 33 cards, delays de 0/45ms e console sem erros.
+
+### Correção v1.9.0 — Dados, Ficha e Controles Mobile
+- Removido `tree-b-20-jacaranda-2`, registro excedente que elevava o catálogo para 33; distribuição final A=5, B=14, C=13.
+- Removida a ação “Centralizar este espécime no mapa” das fichas; fechamento permanece disponível no cabeçalho do painel/modal.
+- Confiança PlantNet agora aparece em português como “% de confiança”.
+- Controles de zoom, bússola e localização receberam alvos de 44px e posicionamento acima da navegação móvel.

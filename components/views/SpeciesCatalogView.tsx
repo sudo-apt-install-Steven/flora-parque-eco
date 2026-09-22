@@ -11,13 +11,11 @@ import { DEFAULT_FALLBACK_PHOTO } from '@/lib/fallbacks';
 interface SpeciesCatalogViewProps {
   trees: Tree[];
   onBackToMap: () => void;
-  onSelectTree: (tree: Tree) => void;
 }
 
 export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
   trees,
-  onBackToMap,
-  onSelectTree
+  onBackToMap
 }) => {
   const [query, setQuery] = useState('');
   const [selectedFamily, setSelectedFamily] = useState<string>('all');
@@ -304,11 +302,6 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
               <TreeDetail
                 tree={selectedTree}
                 onClose={() => setSelectedTree(null)}
-                onCenterOnMap={(tree) => {
-                  setSelectedTree(null);
-                  onSelectTree(tree);
-                  onBackToMap();
-                }}
               />
             </div>
           </section>

@@ -12,7 +12,6 @@ interface TreePanelProps {
   onClose: () => void;
   filteredTrees?: Tree[];
   onSelectTree?: (tree: Tree) => void;
-  onCenterOnMap?: (tree: Tree) => void;
   selectedGroup?: FieldGroup | 'all';
   onCloseGroup?: () => void;
 }
@@ -22,7 +21,6 @@ export const TreePanel: React.FC<TreePanelProps> = ({
   onClose,
   filteredTrees = [],
   onSelectTree,
-  onCenterOnMap,
   selectedGroup = 'all',
   onCloseGroup
 }) => {
@@ -109,7 +107,6 @@ export const TreePanel: React.FC<TreePanelProps> = ({
             <TreeDetail
               tree={selectedTree}
               onClose={onClose}
-              onCenterOnMap={onCenterOnMap}
             />
           ) : isRegionMode ? (
             <RegionTreeList
@@ -174,7 +171,6 @@ export const TreePanel: React.FC<TreePanelProps> = ({
             <TreeDetail
               tree={selectedTree}
               onClose={onClose}
-              onCenterOnMap={onCenterOnMap}
             />
           ) : isRegionMode ? (
             <RegionTreeList

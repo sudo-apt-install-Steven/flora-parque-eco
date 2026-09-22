@@ -9,9 +9,7 @@ import {
   CheckCircle2,
   AlertCircle,
   FileText,
-  LocateFixed,
-  Leaf,
-  X
+  Leaf
 } from 'lucide-react';
 import { Tree } from '@/lib/tree-schema';
 import { TreeGallery } from '@/components/tree/TreeGallery';
@@ -21,7 +19,6 @@ import { cn } from '@/lib/utils';
 interface TreeDetailProps {
   tree: Tree;
   onClose?: () => void;
-  onCenterOnMap?: (tree: Tree) => void;
 }
 
 const CONFIDENCE_STYLES: Record<string, { label: string; dot: string; badge: string }> = {
@@ -57,8 +54,7 @@ const VERIFICATION_BADGES: Record<string, { label: string; icon: React.ReactNode
 
 export const TreeDetail: React.FC<TreeDetailProps> = ({
   tree,
-  onClose,
-  onCenterOnMap
+  onClose
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -173,7 +169,7 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
             Confiança Botânica (PlantNet)
           </span>
           <span className="font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-[#c4a06a]/20 text-[#0b211d] dark:text-[#d8b57d]">
-            {scorePercent}% match
+            {scorePercent}% de confiança
           </span>
         </div>
 
@@ -256,18 +252,6 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
             {tree.notes}
           </p>
         </div>
-      )}
-
-      {/* 7. Botão de Ação: Centralizar no Mapa */}
-      {onCenterOnMap && (
-        <button
-          onClick={() => onCenterOnMap(tree)}
-          aria-label="Centralizar este espécime no mapa interativo"
-          className="flex items-center justify-center gap-2 w-full h-11 px-4 rounded-xl bg-[#0b211d] hover:bg-[#183d35] text-[#f4f1e8] font-semibold text-xs transition-all duration-200 shadow-md shadow-emerald-950/20 active:scale-[0.99]"
-        >
-          <LocateFixed className="w-4 h-4 text-[#d6a35b]" />
-          <span>Centralizar este espécime no mapa</span>
-        </button>
       )}
 
       {/* Tag de Mock Acadêmico */}

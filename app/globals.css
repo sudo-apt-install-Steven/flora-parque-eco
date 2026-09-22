@@ -77,6 +77,8 @@ h1, h2 {
 }
 
 .maplibregl-ctrl-group button {
+  min-width: 44px !important;
+  min-height: 44px !important;
   color: #f8f6ef !important;
   transition: background-color 160ms ease, transform 160ms ease, opacity 160ms ease;
 }
@@ -88,6 +90,32 @@ h1, h2 {
 
 .maplibregl-ctrl button .maplibregl-ctrl-icon {
   filter: invert(93%) sepia(11%) saturate(278%) hue-rotate(3deg) brightness(106%) contrast(95%);
+}
+
+@media (max-width: 767px) {
+  .maplibregl-ctrl-bottom-right {
+    right: 0.75rem !important;
+    bottom: 5.5rem !important;
+  }
+
+  .maplibregl-ctrl-bottom-left {
+    left: 0.75rem !important;
+    bottom: 4.5rem !important;
+  }
+
+  .maplibregl-ctrl-group {
+    border-radius: 12px !important;
+  }
+
+  .maplibregl-ctrl-group button {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .maplibregl-ctrl-attrib {
+    max-width: calc(100vw - 1.5rem) !important;
+    font-size: 9px !important;
+  }
 }
 
 .maplibregl-ctrl-scale {

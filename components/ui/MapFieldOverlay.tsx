@@ -44,7 +44,7 @@ export const MapFieldOverlay: React.FC<MapFieldOverlayProps> = ({
           {/* Badge de Contagem */}
           <span className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-[#102a26] text-[#f0c77b] shadow-sm flex-shrink-0">
             <Trees className="w-3.5 h-3.5 text-[#d6a35b]" />
-            {resultCount} / {totalCount}
+            {resultCount || totalCount} / {totalCount}
           </span>
 
           {/* Filtro: Todos */}

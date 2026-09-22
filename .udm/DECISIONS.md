@@ -110,6 +110,12 @@
 - **Decisão:** O seletor de camadas deve permanecer acima da navegação móvel e o gatilho de setores deve ocupar uma faixa própria abaixo dos chips de grupos; o painel de levantamento usa altura dinâmica baseada em viewport.
 - **Justificativa:** A sobreposição de hitboxes impedia selecionar Exploração e confundia os toques em “Áreas do levantamento” e nos grupos A/B/C.
 
+## ADR-013: Catálogo Oficial de 32 Espécimes e Ficha Sem Centralização
+- **Data:** 2026-09-22
+- **Status:** ACEITO
+- **Decisão:** O catálogo oficial usa 32 registros distribuídos em A=5, B=14 e C=13; a ficha botânica não oferece ação de centralização, e a navegação é feita pelo fechar/voltar do painel.
+- **Justificativa:** O registro B-20 não pertence à contagem de campo informada; a ficha deve permanecer informativa e não duplicar uma ação cartográfica.
+
 ## ADR-013: Motion Design Progressivo e Reduced Motion
 - **Data:** 2026-09-22
 - **Status:** ACEITO

@@ -11,7 +11,7 @@ import {
 
 describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', () => {
   it('todos os espécimes no mock-trees.json devem satisfazer rigorosamente o TreeSchema', () => {
-    expect(rawTrees.length).toBe(33);
+    expect(rawTrees.length).toBe(32);
     rawTrees.forEach((tree) => {
       const parsed = TreeSchema.safeParse(tree);
       expect(parsed.success).toBe(true);
@@ -20,7 +20,7 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
 
   it('REGRA ABSOLUTA: displayNumber deve inicialmente ser null em todas as árvores', () => {
     const trees = getValidatedTrees();
-    expect(trees.length).toBe(33);
+    expect(trees.length).toBe(32);
     trees.forEach((tree) => {
       expect(tree.displayNumber).toBeNull();
     });
@@ -44,14 +44,14 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     const groupC = getTreesByGroup('groupC');
 
     expect(groupA.length).toBe(5);
-    expect(groupB.length).toBe(15);
+    expect(groupB.length).toBe(14);
     expect(groupC.length).toBe(13);
-    expect(groupA.length + groupB.length + groupC.length).toBe(33);
+    expect(groupA.length + groupB.length + groupC.length).toBe(32);
   });
 
   it('a busca deve filtrar corretamente por nome popular, científico, família e grupo', () => {
     const byPopular = searchTrees('Jacarandá');
-    expect(byPopular.length).toBe(5);
+    expect(byPopular.length).toBe(4);
     expect(byPopular[0].id).toBe('tree-a-02-jacaranda');
 
     const byFamily = searchTrees('Fabaceae');
@@ -61,7 +61,7 @@ describe('Inventário Arbóreo — Validação de Dados e Regras de Negócio', (
     expect(byGroupA.length).toBe(5);
 
     const byGroupB = searchTrees('', 'groupB');
-    expect(byGroupB.length).toBe(15);
+    expect(byGroupB.length).toBe(14);
   });
 
   it('a conversão para GeoJSON deve gerar Point features válidas com propriedades achatadas', () => {

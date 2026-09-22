@@ -360,7 +360,7 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 
 **Distribuição dos espécimes:**
 - Grupo A (5): tree-a-02-jacaranda, tree-a-03-hibiscus, tree-a-04-spathodea, tree-a-05-ipomoea, tree-a-06-mangifera
-- Grupo B (14): tree-b-01-eucalyptus, tree-b-07-mangifera-1, tree-b-08-wodyetia, tree-b-09-psidium, tree-b-10-jacaranda, tree-b-11-pachira, tree-b-12-cascabela, tree-b-13-inga-laurina, tree-b-14-mangifera-2, tree-b-15-syzygium, tree-b-16-jacaranda-cusp, tree-b-17-trema, tree-b-18-ipomoea, tree-b-19-bismarckia, tree-b-20-jacaranda-2
+- Grupo B (14): tree-b-01-eucalyptus, tree-b-07-mangifera-1, tree-b-08-wodyetia, tree-b-09-psidium, tree-b-10-jacaranda, tree-b-11-pachira, tree-b-12-cascabela, tree-b-13-inga-laurina, tree-b-14-mangifera-2, tree-b-15-syzygium, tree-b-16-jacaranda-cusp, tree-b-17-trema, tree-b-18-ipomoea, tree-b-19-bismarckia
 - Grupo C (13): tree-c-01-jacaranda a tree-c-13-vochysia-2
 
 **Fotos locais com caracteres especiais:**
@@ -402,6 +402,12 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 - O gatilho “Áreas do levantamento” usa `top-16` no mobile, separado dos chips `top-4`.
 - `SurveyMapPanel` foi estabilizado com `88dvh`, `min-h-0`, `touch-pan-y`, `touch-manipulation` e botões com altura mínima.
 - Teste de produção em 375x812: Grupo B ativo e lista do setor renderizada; sem erros de console da aplicação.
+
+## Handoff v1.9.0 — Catálogo e Mobile
+- Catálogo final: 32 espécimes, A=5, B=14, C=13; `tree-b-20-jacaranda-2` removido.
+- Fichas não exibem mais “Centralizar este espécime no mapa”; fechar/voltar continua no painel e no modal.
+- PlantNet usa “% de confiança” em português.
+- Controles MapLibre mobile: 44px, `bottom-right` acima da barra inferior e escala separada.
 
 ## Atualização v1.8.0 — Motion Design Mobile
 - `catalog-item-in` aplica entrada escalonada aos cards, limitada aos primeiros 9 itens.

@@ -42,6 +42,9 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
   const selectedGroup = useTreeStore((s) => s.filters.group ?? 'all');
   const setSelectedGroup = useTreeStore((s) => s.setGroupFilter);
   const focusKey = useTreeStore((s) => s.focusKey);
+  const panelTrees = selectedGroup === 'all'
+    ? filteredTrees
+    : allTrees.filter((tree) => tree.group === selectedGroup);
 
   // Modais e Popovers
   const isSearchOpen = useTreeStore((s) => s.isSearchOpen);
@@ -150,9 +153,8 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
           <TreePanel
             selectedTree={selectedTree}
             onClose={() => selectTree(null)}
-            filteredTrees={filteredTrees}
+            filteredTrees={panelTrees}
             onSelectTree={selectTreeAndFocus}
-            onCenterOnMap={selectTreeAndFocus}
             selectedGroup={selectedGroup}
             onCloseGroup={() => setSelectedGroup('all')}
           />
@@ -181,7 +183,6 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
             <SpeciesCatalogView
               trees={allTrees}
               onBackToMap={() => setActiveNav('mapa')}
-              onSelectTree={selectTreeAndFocus}
             />
           </div>
         )}
