@@ -100,3 +100,8 @@ Todas as 32 rotas `/tree/[id]` estão pré-renderizadas:
 
 ## Ambiente
 Node.js v22.23.2, npm 10.9.8, Windows 11, `C:\Users\Steven\Documents\FloraParqueEco`
+
+### Correção v1.7.0 — Layout Mobile do Mapa
+ - `LayerSwitcher` elevado para `z-40` e reposicionado em `bottom-24` no mobile; a camada `Exploração` foi validada como selecionável.
+ - O gatilho `Áreas do levantamento` foi deslocado para `top-16` no mobile, abaixo dos chips de grupos, eliminando sobreposição de hitboxes.
+ - `SurveyMapPanel` usa `88dvh`, `min-h-0`, rolagem/touch e alvos táteis estáveis; Grupo B foi validado em viewport 375x812.

@@ -20,7 +20,7 @@ export const LayerSwitcher: React.FC<LayerSwitcherProps> = ({
     <div
       role="region"
       aria-label="Seletor de Camadas do Mapa"
-      className="absolute bottom-20 md:bottom-8 left-4 md:left-8 z-20 w-48 md:w-56 p-3 md:p-4 rounded-2xl bg-[#f8f6ef] dark:bg-[#0b211d] border border-[#102a26]/14 dark:border-white/12 shadow-[0_16px_36px_rgba(16,42,38,0.16)] transition-shadow duration-200 select-none"
+      className="absolute bottom-24 md:bottom-8 left-4 md:left-8 z-40 w-48 md:w-56 p-3 md:p-4 rounded-2xl bg-[#f8f6ef] dark:bg-[#0b211d] border border-[#102a26]/14 dark:border-white/12 shadow-[0_16px_36px_rgba(16,42,38,0.16)] transition-shadow duration-200 select-none"
     >
       <div className="flex items-center justify-between">
         <span className="flex items-center gap-1.5 text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-[#102a26] dark:text-[#f8f6ef]">

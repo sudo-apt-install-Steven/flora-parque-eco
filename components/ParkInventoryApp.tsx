@@ -132,7 +132,7 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
           />
 
           {/* Botão flutuante — Áreas do Levantamento */}
-          <div className="absolute top-4 left-4 z-20">
+          <div className="absolute top-16 left-4 z-20 md:top-4">
             <SurveyMapTrigger
               onClick={() => setIsSurveyOpen((v) => !v)}
               isActive={isSurveyOpen}

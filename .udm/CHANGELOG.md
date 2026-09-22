@@ -8,6 +8,7 @@
 - Atualizadas expectativas obsoletas dos testes que ainda esperavam os 13 mocks da fase anterior; a base atual possui 33 espécimes reais.
 
 ### Adicionado
+### Adicionado
 - Clique em espécime na tela “Espécies” abre galeria/ficha contextual sem navegar para o mapa.
 - Galeria com foto principal, thumbnails exclusivas da árvore, navegação anterior/próxima, setas, ESC, swipe, loading e fallback.
 - “Centralizar este espécime no mapa” mantido como ação explícita dentro da ficha.
@@ -20,6 +21,13 @@
 - Vitest: ✅ 85/85 testes em 12 suítes.
 - Build Next.js: ✅ 37 páginas estáticas.
 - Inspeção visual em produção desktop/mobile: fotos reais, galeria, ESC, teclado, ação de mapa e console sem erros da aplicação.
+
+## [1.7.0] — 2026-09-22 [COPILOT — CORREÇÃO DE POSICIONAMENTO MOBILE DO MAPA]
+
+- Corrigida a terceira camada inacessível: seletor elevado acima da navegação inferior (`z-40`, `bottom-24` mobile).
+- Corrigida sobreposição entre chips de grupos e o gatilho “Áreas do levantamento”.
+- Corrigida estabilidade do painel de setores em telas pequenas com `88dvh`, `min-h-0`, rolagem e touch targets.
+- Validação visual em 375x812: Exploração ativa, Grupo B selecionável e lista do setor visível.
 
 ## [1.5.0] — 2026-09-22 [KIRO — CATÁLOGO REAL, FOTOS LOCAIS, POLÍGONOS FINALIZADOS]
 

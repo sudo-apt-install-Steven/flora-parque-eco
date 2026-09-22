@@ -396,3 +396,9 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 - `npm run build`: 37 páginas SSG PASS.
 - Inspeção visual no servidor de produção em desktop/mobile: PASS; console sem erros da aplicação.
 - Remote atual: `https://github.com/sudo-apt-install-Steven/flora-parque-eco.git`.
+
+## Atualização v1.7.0 — Layout Mobile do Mapa
+- O `LayerSwitcher` usa `z-40` e `bottom-24` no mobile; a terceira camada foi testada como selecionável.
+- O gatilho “Áreas do levantamento” usa `top-16` no mobile, separado dos chips `top-4`.
+- `SurveyMapPanel` foi estabilizado com `88dvh`, `min-h-0`, `touch-pan-y`, `touch-manipulation` e botões com altura mínima.
+- Teste de produção em 375x812: Grupo B ativo e lista do setor renderizada; sem erros de console da aplicação.

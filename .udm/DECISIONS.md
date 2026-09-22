@@ -104,5 +104,11 @@
 - **Decisão:** A tela de espécies abre uma ficha/galeria contextual no próprio catálogo. A navegação ao mapa só ocorre pela ação explícita “Centralizar este espécime no mapa”. O pipeline de ingestão preserva `primaryPhoto` e `gallery` validados pelo `PhotoItemSchema`, inclusive caminhos locais com espaços e Unicode.
 - **Justificativa:** O catálogo é uma experiência de consulta independente do mapa e as fotos de campo são evidência exclusiva de cada espécime. Descartá-las no pipeline produzia thumbnails brancas e eliminava a galeria real.
 
+## ADR-012: Prioridade de Camadas e Setores no Mobile
+- **Data:** 2026-09-22
+- **Status:** ACEITO
+- **Decisão:** O seletor de camadas deve permanecer acima da navegação móvel e o gatilho de setores deve ocupar uma faixa própria abaixo dos chips de grupos; o painel de levantamento usa altura dinâmica baseada em viewport.
+- **Justificativa:** A sobreposição de hitboxes impedia selecionar Exploração e confundia os toques em “Áreas do levantamento” e nos grupos A/B/C.
+
 
 

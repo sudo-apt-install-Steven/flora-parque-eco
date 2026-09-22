@@ -138,7 +138,7 @@ export const SurveyMapPanel: React.FC<SurveyMapPanelProps> = ({
         role="dialog"
         aria-modal="true"
         aria-label="Mapa de Levantamento por Setores"
-        className="md:hidden fixed inset-x-0 bottom-0 z-50 bg-[#f8f6ef] dark:bg-[#0f2621] rounded-t-3xl shadow-[0_-12px_40px_rgba(16,42,38,0.28)] border-t border-[#102a26]/12 dark:border-white/10 flex flex-col max-h-[88vh] animate-sheet-in"
+        className="md:hidden fixed inset-x-0 bottom-0 z-50 bg-[#f8f6ef] dark:bg-[#0f2621] rounded-t-3xl shadow-[0_-12px_40px_rgba(16,42,38,0.28)] border-t border-[#102a26]/12 dark:border-white/10 flex flex-col max-h-[88dvh] animate-sheet-in"
       >
         <div className="w-full py-3 flex items-center justify-center">
           <div className="w-10 h-1 rounded-full bg-stone-300 dark:bg-stone-600" />
@@ -189,7 +189,7 @@ const PanelContent: React.FC<PanelContentProps> = ({
   onSelectTree,
   groupTrees,
 }) => (
-  <div className="flex flex-col h-full overflow-hidden">
+  <div className="flex min-h-0 flex-col h-full overflow-hidden touch-pan-y">
     {/* Header */}
     <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200/80 dark:border-stone-800 bg-[#f3efe4] dark:bg-black/15 flex-shrink-0">
       <div className="flex items-center gap-2.5">
@@ -215,7 +215,7 @@ const PanelContent: React.FC<PanelContentProps> = ({
     </div>
 
     {/* Scrollable body */}
-    <div className="flex-1 overflow-y-auto smooth-touch-scroll px-5 py-4 space-y-5">
+    <div className="min-h-0 flex-1 overflow-y-auto smooth-touch-scroll px-5 py-4 space-y-5 touch-pan-y">
 
       {/* ---- Reference map with SVG overlay ---- */}
       <div className="space-y-2">
@@ -237,7 +237,7 @@ const PanelContent: React.FC<PanelContentProps> = ({
           <svg
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full touch-manipulation"
             style={{ pointerEvents: 'all' }}
             aria-hidden="true"
           >
@@ -345,7 +345,7 @@ const PanelContent: React.FC<PanelContentProps> = ({
                   onMouseEnter={() => setHoveredGroup(gKey)}
                   onMouseLeave={() => setHoveredGroup(null)}
                   className={cn(
-                    'flex flex-col items-center gap-1.5 p-3 rounded-2xl border transition-all duration-200 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
+                    'flex min-h-11 flex-col items-center justify-center gap-1.5 p-3 rounded-2xl border transition-all duration-200 text-center touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
                     isActive
                       ? 'border-2 shadow-md scale-[1.03]'
                       : 'border hover:scale-[1.01] bg-white/60 dark:bg-white/5 border-stone-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10'
