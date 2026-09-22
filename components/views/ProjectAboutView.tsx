@@ -23,7 +23,7 @@ interface ProjectAboutViewProps {
 
 export const ProjectAboutView: React.FC<ProjectAboutViewProps> = ({ onBackToMap }) => {
   return (
-    <div className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] p-4 sm:p-8 md:p-12 lg:px-24 bg-[#f8f6ef] dark:bg-[#081714] text-[#102a26] dark:text-[#f8f6ef] overflow-y-auto smooth-touch-scroll">
+    <div className="p-4 sm:p-8 md:p-12 lg:px-24 bg-[#f8f6ef] dark:bg-[#081714] text-[#102a26] dark:text-[#f8f6ef]">
       {/* Botão Superior: Voltar */}
       <div className="max-w-4xl mx-auto flex items-center justify-between pb-6 border-b border-stone-200 dark:border-white/10">
         <button

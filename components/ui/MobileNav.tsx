@@ -17,7 +17,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   onOpenSearch
 }) => {
   return (
-    <div className="md:hidden fixed bottom-3 inset-x-3 z-30">
+    <div className="mobile-nav-shell md:hidden fixed bottom-3 inset-x-3 z-30">
       <nav
         aria-label="Navegação móvel inferior"
         className="flex items-center justify-around h-16 px-2 bg-[#0b211d]/90 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-2xl text-[#f4f1e8]"

@@ -11,6 +11,7 @@ import { SearchPopover } from '@/components/ui/SearchPopover';
 import { TreePanel } from '@/components/tree/TreePanel';
 import { LegendModal } from '@/components/ui/LegendModal';
 import { StatisticsModal } from '@/components/ui/StatisticsModal';
+import { SurveyMapPanel, SurveyMapTrigger } from '@/components/ui/SurveyMapPanel';
 import { SpeciesCatalogView } from '@/components/views/SpeciesCatalogView';
 import { ProjectAboutView } from '@/components/views/ProjectAboutView';
 import {
@@ -49,6 +50,9 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
   const setIsLegendOpen = useTreeStore((s) => s.setLegendOpen);
   const isStatsOpen = useTreeStore((s) => s.isStatsOpen);
   const setIsStatsOpen = useTreeStore((s) => s.setStatsOpen);
+
+  // Survey map panel
+  const [isSurveyOpen, setIsSurveyOpen] = React.useState(false);
 
   // QR Code Deep Linking: prioriza initialTreeId da rota /tree/[id] ou parâmetros de busca
   useEffect(() => {
@@ -127,6 +131,15 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
             onOpenLegend={() => setIsLegendOpen(true)}
           />
 
+          {/* Botão flutuante — Áreas do Levantamento */}
+          <div className="absolute top-4 left-4 z-20">
+            <SurveyMapTrigger
+              onClick={() => setIsSurveyOpen((v) => !v)}
+              isActive={isSurveyOpen}
+              activeGroup={selectedGroup}
+            />
+          </div>
+
           {/* Seletor de Camadas Cartográficas (Satélite, Planta, Exploração) */}
           <LayerSwitcher
             currentMode={currentMode}
@@ -143,11 +156,28 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
             selectedGroup={selectedGroup}
             onCloseGroup={() => setSelectedGroup('all')}
           />
+
+          {/* Mapa de Levantamento Interativo — Áreas A, B, C */}
+          <SurveyMapPanel
+            isOpen={isSurveyOpen}
+            onClose={() => setIsSurveyOpen(false)}
+            trees={allTrees}
+            selectedGroup={selectedGroup}
+            onSelectGroup={(group) => {
+              setSelectedGroup(group);
+              // When a group is selected, close the tree panel if open
+              if (group !== 'all') selectTree(null);
+            }}
+            onSelectTree={(tree) => {
+              setIsSurveyOpen(false);
+              selectTreeAndFocus(tree);
+            }}
+          />
         </div>
 
         {/* B. VISTA DO CATÁLOGO DE ESPÉCIES */}
         {activeNav === 'especies' && (
-          <div className="relative z-10 w-full h-full">
+          <div className="relative z-10 w-full h-full overflow-y-auto smooth-touch-scroll">
             <SpeciesCatalogView
               trees={allTrees}
               onBackToMap={() => setActiveNav('mapa')}
@@ -158,7 +188,7 @@ export function ParkInventoryApp({ initialTreeId }: ParkInventoryAppProps) {
 
         {/* C. VISTA SOBRE O PROJETO & METODOLOGIA */}
         {activeNav === 'projeto' && (
-          <div className="relative z-10 w-full h-full">
+          <div className="relative z-10 w-full h-full overflow-y-auto smooth-touch-scroll">
             <ProjectAboutView
               onBackToMap={() => setActiveNav('mapa')}
             />

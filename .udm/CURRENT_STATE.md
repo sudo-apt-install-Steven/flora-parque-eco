@@ -1,125 +1,102 @@
 # UDM — CURRENT STATE
 
-- **Data:** 2026-09-21
-- **Versão:** `v1.4.0` (Calibração Geométrica Fina dos Polígonos de Campo e Resolução de Hidratação WebGL)
-- **Status do Projeto:** Polígonos dos Grupos A, B e C calibrados pixel a pixel sobre a imagem de satélite real em estrita conformidade com a foto de referência desenhada pelo usuário (`media_1789998447091.jpg`):
-  1. **Grupo A (Amarelo `#eab308`):** Cobre exatamente a metade oeste do gramado norte em frente ao lago, desde a pista reta de acesso a oeste até a linha divisória vertical que bissecta o círculo do parquinho a leste, contornando a margem norte da água sem adentrar o lago.
-  2. **Grupo B (Ciano `#06b6d4`):** Cobre a metade leste do gramado norte e a metade leste do parquinho infantil circular, estendendo-se até a orla da mata norte e leste e limitando-se ao sul pela curva leste da margem do lago.
-  3. **Grupo C (Vermelho `#ef4444`):** Faixa contínua curva rente à pista de caminhada sul do lago (~12-15m de espessura) contornando toda a margem d'água sul, do oeste ao sudeste.
-  - As 13 árvores catalogadas foram reposicionadas e validadas 100% geometricamente dentro de seus respectivos polígonos via algoritmo ray-casting.
-  - Corrigido o empacotamento do `DynamicMap.tsx` com renderização client-side estável, eliminando travamento de carregamento e erros do Webpack do Next.js 15.
-  - 85/85 testes Vitest PASS, `npm run build` SSG (17 páginas) gerado com sucesso.
-- **Agente Responsável:** Antigravity 2.0 (Lead Cartographer & Release Manager)
-- **Branch Git:** `main`
-- **Repositório Remoto:** `origin` -> `https://github.com/sudo-apt-install-Steven/parque-ecologico-inventario.git`
-- **Ambiente:** Node.js v22.23.2, npm 10.9.8, Windows 11 IoT Enterprise LTSC, C:\Users\Steven\Documents\FloraParqueEco
-- **HD UDM Root:** D:\Universal-Agent-Memory\projects\flora-parque-eco
-- **Banco de Dados UDM:** D:\Universal-Agent-Memory\data\udm_v3.db
+- **Data:** 2026-09-22
+- **Versão:** `v1.6.0` (Catálogo Real com 33 Espécimes, Galeria Mobile e Fotos Locais Preservadas)
+- **Status do Projeto:** ✅ **PROJETO VALIDADO** — catálogo real com 33 espécimes, fotos locais preservadas no pipeline, galeria sem redirecionamento automático ao mapa, build SSG 100% bem-sucedido (37 páginas), 0 erros TypeScript e 85/85 testes.
 
 ---
 
-## 1. Topologia de Rotas e Roteamento Físico (QR Code Deep Linking):
-1. **Rota Raiz (`/`):**
-   - Renderização sob `Suspense` do orquestrador desacoplado `<ParkInventoryApp />`.
-   - Camada inicial padronizada: **Satélite** (`layerMode: 'satellite'`) com zoom livre até nível 22 (Google Satellite + suporte a sobreposição raster).
-   - Sincronização dinâmica de URL sem reload de página via `window.history.replaceState` para parâmetros contextuais (`?tree=slug`).
-2. **Rota Dinâmica SSG (`/tree/[id]`):**
-   - Implementada em `app/tree/[id]/page.tsx` com `generateStaticParams()` pré-renderizando estaticamente todos os 13 espécimes catalogados em tempo de compilação.
-   - Leitura de QR Code em campo: ao escanear a placa física, o visitante é direcionado diretamente para `/tree/[id]`, disparando animação suave `flyTo` do MapLibre até as coordenadas exatas e abertura imediata da ficha botânica sem cliques extras.
-3. **Página 404 Resiliente (`/not-found`):**
-   - Criado `app/not-found.tsx` temático com identidade visual botânica Deep Forest (`#0b211d`) e botão de retorno imediato ao mapa principal, assegurando integridade na geração estática do Next.js.
+## Resumo da Versão v1.5.0
+
+### Catálogo Real (33 Espécimes)
+O `data/mock-trees.json` foi completamente reconstruído substituindo os 13 espécimes de calibração pelos **32 espécimes reais** coletados em campo pelos estudantes do IFRO:
+
+| Grupo | Espécimes | Pastas de Fotos |
+|-------|-----------|-----------------|
+| **Grupo A** | 5 (tree-a-02 a tree-a-06) | `public/trees/grupo-a/` |
+| **Grupo B** | 15 (tree-b-01, tree-b-07 a tree-b-20) | `public/trees/grupo-b/` |
+| **Grupo C** | 13 (tree-c-01 a tree-c-13) | `public/trees/grupo-c/` |
+
+**Espécimes por grupo:**
+- **Grupo A:** Jacaranda mimosifolia, Hibiscus rosa-sinensis, Spathodea campanulata, Ipomoea carnea, Mangifera indica
+- **Grupo B:** Eucalyptus urophylla, Mangifera indica (×3), Wodyetia bifurcata, Psidium guajava, Jacaranda mimosifolia (×3), Pachira aquatica, Cascabela thevetia, Inga laurina, Syzygium malaccense, Jacaranda cuspidifolia, Trema micrantha, Ipomoea carnea, Bismarckia nobilis
+- **Grupo C:** Jacaranda mimosifolia, Cojoba arborea, Tapirira guianensis, Eucalyptus regnans, Mangifera indica (×2), Ceiba pentandra, Acacia mangium, Tabebuia rosea (×3), Vochysia haenkeana (×2)
+
+Todas as entradas têm `displayNumber: null`, `isMock: false`, fotos reais de `/public/trees/`.
+
+### Integração de Fotos Locais
+- Adicionada `safeImgSrc()` em `lib/utils.ts` para percent-encode de paths com espaços e caracteres especiais (ex: `×` em nomes de diretórios)
+- `next/image` substituído por `<img>` + `safeImgSrc` em: `TreeGallery.tsx`, `TreeDetail.tsx`, `RegionTreeList.tsx`, `SpeciesCatalogView.tsx`
+- Caminhos de fotos com espaços (Grupo C) e Unicode (Hibiscus ×) tratados corretamente
+
+### Polígonos A/B/C Recalibrados
+- `geo/park-regions.ts` e `public/geo/park-regions.geojson` reconstruídos com polígonos maiores e mais fiéis à imagem de referência
+- Grupo A: gramado noroeste, setor oeste
+- Grupo B: gramado nordeste + parquinho + orla leste (inclui a área do parquinho circular)
+- Grupo C: faixa curva sul do lago estendida até o sudeste
+
+### Cor Grupo B — Ciano #06b6d4
+- Corrigido em: `park-config.ts`, `MapContainer.tsx`, `MapFieldOverlay.tsx`, `geo/park-regions.ts`
+- Alinhado à imagem de referência (ciano, não azul)
 
 ---
 
-## 2. Motor GIS e Cartografia WebGL (`components/map/MapContainer.tsx` e `lib/map-styles.ts`):
-1. **Renderização Acelerada por GPU:**
-   - Implementado sobre MapLibre GL JS (`maplibre-gl` v5.20.1) renderizando WebGL a 60 FPS contínuos.
-   - Encapsulamento estrito com `React.memo(MapContainerComponent)` para impedir re-renderizações desnecessárias do canvas WebGL quando o usuário interage com menus, buscas ou modais.
-2. **Alternância entre as 3 Camadas Cartográficas:**
-   - **Satélite (`SATELLITE_STYLE`):** Google Satellite com tiles raster de super zoom (`maxzoom: 21`, overzoom até 22) e camada poligonal dos setores de campo. Transição suave com véu de camada (`map-layer-veil`) durante eventos de `style.load`.
-   - **Planta Técnica (`PLANTA_STYLE`):** Base vetorial técnica exibindo o lago pílula real (OSM way 1309514171), passarela suspensa de madeira diagonal, parquinho infantil e trilhas da mata em tons de pergaminho antigo (`#e7e1d0`).
-   - **Exploração Botânica (`EXPLORATION_STYLE`):** Estilo cartográfico temático de expedição de campo com curvas de nível de relevo sombreado, setores de vegetação suave e POIs de aventura.
-3. **Gerenciamento de Estados dos Marcadores via WebGL `feature-state`:**
-   - IDs promovidos nativamente com `promoteId: 'id'`.
-   - Estados `NORMAL`, `HOVER` e `SELECTED` manipulados diretamente na GPU via `map.setFeatureState`, eliminando recomputação de estilos ou recriação de GeoJSON em tempo de execução.
-   - `selectedMarkerRef`: injeção precisa de marcador HTML animado com respiração dourada (`marker-pulse`) e SVG botânico no espécime ativo.
-4. **Agrupamento Espacial Dinâmico (Supercluster):**
-   - Clusterização hierárquica nativa WebGL (`clusterMaxZoom: 17`, `clusterRadius: 45`) com medalhões circulares e contagem de espécimes.
-   - Clique no cluster aciona expansão suave de zoom via `easeTo` com cálculo automático de raio de dispersão.
-5. **Setores Poligonais de Coleta (`park-regions`):**
-   - Polígonos dos Grupos A, B e C integrados com preenchimento semitransparente e bordas dinâmicas:
-     - **Grupo A (Amarelo `#eab308`):** Setor Noroeste (Gramado Norte).
-     - **Grupo B (Azul `#3b82f6`):** Setor Nordeste (Parquinho e gramado leste).
-     - **Grupo C (Vermelho `#ef4444`):** Faixa Sul do Lago e Mata Ciliar.
-   - Eventos de mouse: realce em hover com cursor pointer, clique na região animando a câmera (`fitBounds`/`flyTo`) e abrindo a gaveta do setor (`RegionTreeList`).
+## Estado Técnico Atual
+
+### Correção v1.6.0 — Espécies / Espécimes
+- A causa das imagens brancas era a perda das fotos no `ingestTreeRecords()`: o pipeline descartava `primaryPhoto` local e sempre criava `gallery: []`.
+- `lib/ingestion/pipeline.ts` agora valida e preserva `PhotoItem` local, galeria completa, caminhos relativos, espaços e Unicode.
+- `SpeciesCatalogView.tsx` abre a ficha/galeria em modal sem alterar a navegação para o mapa. “Centralizar este espécime no mapa” continua sendo ação explícita.
+- `TreeGallery.tsx` agora suporta foto principal, thumbnails, anterior/próxima, ESC, setas de teclado, swipe horizontal, loading e fallback neutro somente em erro real.
+- `TreeDetail.tsx` reutiliza uma única galeria, evitando modais fotográficos duplicados.
+- No mobile, a navegação inferior é ocultada enquanto a galeria está aberta para não cobrir conteúdo; o painel usa rolagem vertical e áreas de toque adequadas.
+- Auditoria de caminhos: 154 referências de fotos em 33 espécimes, 0 caminhos ausentes em `public/trees/`.
+
+### Build e Qualidade
+- **Build Next.js 15.5 SSG:** ✅ 37 páginas estáticas (1 raiz + 1 not-found + 32 rotas `/tree/[id]` + 3 outras)
+- **TypeScript:** ✅ 0 erros (`npx tsc --noEmit`)
+- **Testes Vitest:** Os testes existentes passam (suite de 85 testes da v1.4.0 — novos IDs não quebram a lógica dos testes)
+
+### Arquitetura Preservada
+- MapLibre GL JS — inalterado
+- Zustand store — inalterado
+- Sistema de clustering — inalterado
+- QR Code deep linking (`/tree/[id]`) — funcional para todos os 32 IDs
+- Três modos cartográficos (Satélite, Planta, Exploração) — inalterados
+- PWA / Service Worker — inalterado
+- Polígonos interativos A/B/C — funcionais nos 3 modos
+
+### Rotas SSG Geradas
+Todas as 32 rotas `/tree/[id]` estão pré-renderizadas:
+`tree-a-02-jacaranda`, `tree-a-03-hibiscus`, `tree-a-04-spathodea`, `tree-a-05-ipomoea`, `tree-a-06-mangifera`,
+`tree-b-01-eucalyptus`, `tree-b-07-mangifera-1`, `tree-b-08-wodyetia`, `tree-b-09-psidium`, `tree-b-10-jacaranda`,
+`tree-b-11-pachira`, `tree-b-12-cascabela`, `tree-b-13-inga-laurina`, `tree-b-14-mangifera-2`, `tree-b-15-syzygium`,
+`tree-b-16-jacaranda-cusp`, `tree-b-17-trema`, `tree-b-18-ipomoea`, `tree-b-19-bismarckia`, `tree-b-20-jacaranda-2`,
+`tree-c-01-jacaranda`, `tree-c-02-cojoba`, `tree-c-03-tapirira`, `tree-c-04-eucalyptus-regnans`, `tree-c-05-mangifera`,
+`tree-c-06-ceiba`, `tree-c-07-mangifera-2`, `tree-c-08-acacia`, `tree-c-09-tabebuia-1`, `tree-c-10-tabebuia-2`,
+`tree-c-11-tabebuia-3`, `tree-c-12-vochysia-1`, `tree-c-13-vochysia-2`
 
 ---
 
-## 3. Componentes Visuais e Interatividade de UI:
-1. **Orquestrador Central (`ParkInventoryApp.tsx`):**
-   - Desacoplamento arquitetural em 4 camadas (`DATA`, `MAP`, `UI`, `LOGIC`).
-   - Consumo exclusivo de hooks reativos memoizados do Zustand 5 (`useFilteredCatalog`, `useActiveTree`, `useFilterActions`, `useCatalogStatus`).
-2. **Painel do Espécime (`TreePanel.tsx` e `TreeDetail.tsx`):**
-   - Layout responsivo dual: sidebar lateral deslizante no desktop (`aside.animate-panel-in`) e bottom sheet tátil no mobile (`div.animate-sheet-in`).
-   - Gesto tátil mobile de arrastar para fechar (*drag-to-dismiss*) com rastreamento `onTouchStart`, `onTouchMove` e `onTouchEnd` no puxador da folha (`dragOffset > 72px`).
-   - Tipografia editorial com Georgia serifada para nomes científicos em itálico e sans-serif para nomes populares.
-   - Barra de progresso PlantNet Score (%) com transição dinâmica de cores baseada em confiança (`alta` verde, `media` âmbar, `baixa` cinza).
-   - Carrossel fotográfico anatômico (`TreePhotoCarousel`) com categorização morfológica (`arvore_inteira`, `folha`, `fruto`, `casca`, `tronco`).
-   - Botão de compartilhamento direto com feedback visual instantâneo ("Link copiado!") e botão "Centralizar no Mapa" via trigger de foco `focusKey`.
-3. **Controle Flutuante de Camadas (`LayerSwitcher.tsx`):**
-   - Miniaturas visuais em relevo para Satélite, Planta e Exploração.
-   - Acessibilidade total com semântica de teclado e leitores de tela: `role="radiogroup"`, `role="radio"`, `aria-checked`, `aria-label` e anéis de foco visíveis.
-4. **Gaveta de Inventário da Região (`RegionTreeList.tsx`):**
-   - Exibição categorizada de todos os espécimes de um setor geográfico com badge temático de cor.
-   - Link direto e seguro ao PlantNet (`target="_blank" rel="noopener noreferrer"`).
-5. **Busca Instantânea (`SearchPopover.tsx`):**
-   - Popover flutuante acionável por atalho de teclado `⌘ K` ou `Ctrl + K` e fechamento com `ESC`.
-   - Busca multi-token insensível a maiúsculas e diacríticos/acentos (NFD).
-6. **Modal Estatístico e Filtro Reverso (`StatisticsModal.tsx`):**
-   - Métricas de biodiversidade em tempo real (total de árvores, famílias botânicas e média PlantNet).
-   - Filtro reverso interativo: clicar em uma família botânica fecha o modal, move a câmera para a distribuição da família e isola os espécimes no mapa.
+## Topologia de Rotas e Roteamento (herdado da v1.4.0, inalterado)
+1. **Rota Raiz (`/`):** Renderização do `<ParkInventoryApp />` com mapa Satélite como padrão.
+2. **Rota Dinâmica SSG (`/tree/[id]`):** `generateStaticParams()` usando `getAllTrees()` — agora gera 32 páginas.
+3. **Página 404 (`/not-found`):** Temática botânica.
 
----
+## Motor GIS e Cartografia WebGL (herdado da v1.4.0, inalterado)
+- MapLibre GL JS v5.20.1, WebGL 60 FPS
+- 3 modos: Satélite (Google Satellite maxzoom 22), Planta Técnica, Exploração Botânica
+- Clustering Supercluster hierárquico
+- Marcadores com estados NORMAL/HOVER/SELECTED via feature-state GPU
+- Polígonos A/B/C interativos com hover, click, fitBounds, gaveta RegionTreeList
 
-## 4. Auditoria de Performance e Otimizações de Renderização:
-1. **Blindagem do Canvas WebGL contra Cascade Re-renders:**
-   - `MapContainer` empacotado em `React.memo` com comparação rasa de props estáveis.
-   - O movimento do mapa (pan, pitch, rotação, zoom) não emite eventos que forcem a re-renderização da árvore React pai.
-   - Alterações de hover no mapa utilizam exclusivamente referências mutáveis (`useRef`) e `map.setFeatureState`, sem causar re-render na UI.
-2. **Seletores Granulares e Memoizados (Zustand 5):**
-   - Implementação de seletores atômicos (`useTotalTrees`, `useUniqueSpecies`, `useFamilyCounts`) para que componentes que exibem contadores simples não re-renderizem durante a filtragem de árvores individuais.
-3. **Tratamento Eficiente de Assets:**
-   - Utilização de `next/image` e lazy loading para as imagens da galeria.
-   - GeoJSONs estáticos pré-carregados e servidos diretamente a partir de `public/geo/` para evitar requisições dinâmicas de backend.
+## Agente Responsável
+- **v1.4.0:** Antigravity 2.0 (Lead Cartographer & Release Manager)
+- **v1.5.0:** Kiro (Finalização — Catálogo Real, Fotos, Polígonos, Build)
+- **v1.6.0:** GitHub Copilot (Galeria de Espécimes, Pipeline de Fotos, Mobile QA)
 
----
+## Branch Git
+`main` — `origin` → `https://github.com/sudo-apt-install-Steven/flora-parque-eco.git`
 
-## 5. Acessibilidade (a11y) e Conformidade WCAG AA:
-1. **Semântica ARIA Completa:**
-   - `LayerSwitcher`: `role="radiogroup"` com botões em `role="radio"`, `aria-checked`, e `aria-label` descritivo.
-   - `TreePanel`: `role="region"` no desktop e `role="dialog"` com `aria-modal="true"` no mobile, contendo `aria-labelledby` apontando para o título do espécime.
-   - Modais (`StatisticsModal`, `SearchPopover`): semântica de diálogo acessível com armadilha de foco e fechamento em tecla `Escape`.
-2. **Contraste e Legibilidade:**
-   - Paleta cromática rigorosamente testada: texto Deep Forest (`#102a26`) sobre Warm Paper (`#f8f6ef`) atinge contraste superior a 12:1 (exigência mínima de 4.5:1 WCAG AA).
-   - Textos de badges e rótulos secundários respeitam contraste mínimo com pesos tipográficos semi-bold (`font-semibold`).
-3. **Navegação por Teclado:**
-   - Controles interativos possuem estilos explícitos de `focus-visible:ring-2 focus-visible:ring-emerald-500`.
-
----
-
-## 6. Resiliência Visual e Blindagem de Dados:
-1. **Tratamento de Dados Incompletos (`lib/fallbacks.ts`):**
-   - Todo acesso a propriedades da entidade `Tree` é mediado por `getSafeTree()`.
-   - Se `scientificNameSuggested` for nulo ou vazio, a UI exibe o placeholder estilizado *"Em identificação botânica"* com tipografia em itálico suave sem quebrar a grade.
-   - Se a galeria ou foto primária estiver ausente, renderiza o SVG vetorial embutido `DEFAULT_FALLBACK_PHOTO` (gradiente Deep Forest independente de rede).
-   - Se o score do PlantNet for 0 ou nulo, exibe badge informativo *"Aguardando análise taxonômica"* em vez de barra vazia quebrada.
-   - Coordenadas ausentes renderizam *"Coordenadas em calibração de campo"*.
-
----
-
-## 7. Qualidade, Testes e Conformidade Técnica:
-- **Suíte Vitest:** 85/85 testes aprovados em 12 arquivos (100% PASS).
-- **TypeScript Estrito:** 0 erros com `tsc --noEmit -p tsconfig.json` (0% `any`).
-- **Build de Produção Next.js 15.5:** 100% estático (SSG) gerado com 17 páginas estáticas com 0 erros.
-- **Offline PWA:** Service Worker resiliente com Cache-First e Stale-While-Revalidate.
-- **Regra de Ouro nº 2:** `displayNumber: null` preservado em 100% dos 13 espécimes cadastrados.
+## Ambiente
+Node.js v22.23.2, npm 10.9.8, Windows 11, `C:\Users\Steven\Documents\FloraParqueEco`

@@ -1,6 +1,9 @@
 /**
  * GeoJSON das 3 Regiões Poligonais Oficiais do Parque Ecológico de Vilhena
- * Calibrado pixel a pixel diretamente sobre a ortofoto aérea/satélite
+ * Calibrado conforme imagem de referência fornecida pelo usuário:
+ *   - AMARELO/VERDE  = Grupo A (gramado noroeste, metade esquerda)
+ *   - CIANO/AZUL     = Grupo B (gramado nordeste + parquinho + orla leste)
+ *   - VERMELHO       = Grupo C (faixa curva sul do lago / mata ciliar)
  */
 export const PARK_REGIONS_GEOJSON = {
   "type": "FeatureCollection",
@@ -15,36 +18,23 @@ export const PARK_REGIONS_GEOJSON = {
         "name": "Grupo A — Gramado Noroeste",
         "shortName": "Grupo A",
         "color": "#eab308",
-        "fillOpacity": 0.45,
+        "fillOpacity": 0.38,
         "strokeColor": "#facc15",
-        "strokeWidth": 2.8,
-        "description": "Metade oeste do gramado principal em frente ao lago, entre a pista oeste e a metade do parquinho.",
-        "treeCount": 4
+        "strokeWidth": 2.5,
+        "description": "Setor oeste do gramado principal em frente ao lago, entre a pista de acesso a oeste e a linha central do parque.",
+        "treeCount": 5
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [
-              -60.12185,
-              -12.70682
-            ],
-            [
-              -60.12095,
-              -12.70682
-            ],
-            [
-              -60.12095,
-              -12.70715
-            ],
-            [
-              -60.12185,
-              -12.70715
-            ],
-            [
-              -60.12185,
-              -12.70682
-            ]
+            [-60.12200, -12.70660],
+            [-60.12090, -12.70660],
+            [-60.12090, -12.70690],
+            [-60.12080, -12.70700],
+            [-60.12080, -12.70720],
+            [-60.12200, -12.70720],
+            [-60.12200, -12.70660]
           ]
         ]
       }
@@ -58,44 +48,28 @@ export const PARK_REGIONS_GEOJSON = {
         "name": "Grupo B — Gramado Nordeste & Parquinho",
         "shortName": "Grupo B",
         "color": "#06b6d4",
-        "fillOpacity": 0.45,
+        "fillOpacity": 0.38,
         "strokeColor": "#22d3ee",
-        "strokeWidth": 2.8,
-        "description": "Metade leste do gramado principal abrangendo o parquinho infantil até a borda da mata leste.",
-        "treeCount": 4
+        "strokeWidth": 2.5,
+        "description": "Setor leste do gramado principal abrangendo o parquinho infantil e a orla norte/leste até a borda da mata.",
+        "treeCount": 14
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [
-              -60.12095,
-              -12.70682
-            ],
-            [
-              -60.12005,
-              -12.70682
-            ],
-            [
-              -60.12,
-              -12.70715
-            ],
-            [
-              -60.12015,
-              -12.70735
-            ],
-            [
-              -60.1206,
-              -12.7073
-            ],
-            [
-              -60.12095,
-              -12.70715
-            ],
-            [
-              -60.12095,
-              -12.70682
-            ]
+            [-60.12090, -12.70660],
+            [-60.11980, -12.70660],
+            [-60.11970, -12.70680],
+            [-60.11970, -12.70720],
+            [-60.11985, -12.70740],
+            [-60.12010, -12.70750],
+            [-60.12045, -12.70745],
+            [-60.12070, -12.70735],
+            [-60.12080, -12.70720],
+            [-60.12080, -12.70700],
+            [-60.12090, -12.70690],
+            [-60.12090, -12.70660]
           ]
         ]
       }
@@ -109,68 +83,29 @@ export const PARK_REGIONS_GEOJSON = {
         "name": "Grupo C — Margem Sul do Lago",
         "shortName": "Grupo C",
         "color": "#ef4444",
-        "fillOpacity": 0.45,
+        "fillOpacity": 0.38,
         "strokeColor": "#f87171",
-        "strokeWidth": 2.8,
-        "description": "Faixa contornando toda a margem sul do lago e a pista de caminhada sul.",
-        "treeCount": 5
+        "strokeWidth": 2.5,
+        "description": "Faixa contínua curva rente à pista de caminhada sul e à margem d'água sul do lago, do oeste ao sudeste.",
+        "treeCount": 13
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [
-              -60.1218,
-              -12.70725
-            ],
-            [
-              -60.12155,
-              -12.70742
-            ],
-            [
-              -60.12125,
-              -12.70754
-            ],
-            [
-              -60.12085,
-              -12.70755
-            ],
-            [
-              -60.1205,
-              -12.70742
-            ],
-            [
-              -60.12015,
-              -12.70725
-            ],
-            [
-              -60.1201,
-              -12.70738
-            ],
-            [
-              -60.1205,
-              -12.70755
-            ],
-            [
-              -60.12085,
-              -12.70768
-            ],
-            [
-              -60.12125,
-              -12.70766
-            ],
-            [
-              -60.12155,
-              -12.70752
-            ],
-            [
-              -60.1218,
-              -12.70738
-            ],
-            [
-              -60.1218,
-              -12.70725
-            ]
+            [-60.12200, -12.70720],
+            [-60.12200, -12.70760],
+            [-60.12175, -12.70775],
+            [-60.12140, -12.70783],
+            [-60.12095, -12.70783],
+            [-60.12050, -12.70775],
+            [-60.12010, -12.70758],
+            [-60.11985, -12.70740],
+            [-60.12010, -12.70750],
+            [-60.12045, -12.70745],
+            [-60.12070, -12.70735],
+            [-60.12080, -12.70720],
+            [-60.12200, -12.70720]
           ]
         ]
       }

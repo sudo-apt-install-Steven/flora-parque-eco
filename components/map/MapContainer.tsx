@@ -4,7 +4,6 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { PARK_CONFIG } from '@/lib/park-config';
 import { SATELLITE_STYLE, PLANTA_STYLE, EXPLORATION_STYLE } from '@/lib/map-styles';
 import { Tree, FieldGroup } from '@/lib/tree-schema';
-import { PARK_REGIONS_GEOJSON } from '@/geo/park-regions';
 import { treesToGeoJSON } from '@/lib/trees';
 import { applyRasterOverlay, removeRasterOverlay } from '@/lib/gis';
 
@@ -20,12 +19,6 @@ export interface MapContainerProps {
 
 const INTERACTIVE_TREE_LAYER = 'unclustered-point-hitbox';
 const TREE_SOURCE_ID = 'trees-source';
-const REGIONS_SOURCE_ID = 'park-regions';
-const REGION_FILL_LAYERS = [
-  'satellite-regions-fill',
-  'planta-regions-fill',
-  'exp-regions-fill'
-];
 
 type TreeFeatureId = string | number;
 
@@ -36,30 +29,33 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
   onSelectTree,
   focusKey = 0,
   selectedGroup = 'all',
-  onSelectGroup
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const selectedMarkerRef = useRef<maplibregl.Marker | null>(null);
   const hoveredTreeIdRef = useRef<TreeFeatureId | null>(null);
   const selectedTreeIdRef = useRef<TreeFeatureId | null>(null);
-  const hoveredRegionIdRef = useRef<string | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [layerVeilVisible, setLayerVeilVisible] = useState(false);
 
-  // Helper para obter a especificação de estilo
   const getStyleForMode = (mode: 'satellite' | 'planta' | 'exploration') => {
     switch (mode) {
-      case 'satellite':
-        return SATELLITE_STYLE;
-      case 'planta':
-        return PLANTA_STYLE;
-      case 'exploration':
-        return EXPLORATION_STYLE;
-      default:
-        return SATELLITE_STYLE;
+      case 'satellite': return SATELLITE_STYLE;
+      case 'planta': return PLANTA_STYLE;
+      case 'exploration': return EXPLORATION_STYLE;
+      default: return SATELLITE_STYLE;
     }
   };
+
+  // Group colour lookup — used for marker colours
+  const groupColor = useCallback((group: string): string => {
+    switch (group) {
+      case 'groupA': return '#eab308';
+      case 'groupB': return '#06b6d4';
+      case 'groupC': return '#ef4444';
+      default: return '#eab308';
+    }
+  }, []);
 
   const clearTreeFeatureState = useCallback((map: maplibregl.Map, id: TreeFeatureId | null, state: 'hover' | 'selected') => {
     if (id === null || !map.getSource(TREE_SOURCE_ID)) return;
@@ -74,7 +70,6 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
   const syncSelectedFeatureState = useCallback(
     (map: maplibregl.Map) => {
       clearTreeFeatureState(map, selectedTreeIdRef.current, 'selected');
-
       if (selectedTree?.id && selectedTree.latitude !== null && selectedTree.longitude !== null) {
         selectedTreeIdRef.current = selectedTree.id;
         setTreeFeatureState(map, selectedTree.id, 'selected');
@@ -85,97 +80,35 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
     [clearTreeFeatureState, selectedTree, setTreeFeatureState]
   );
 
-  // Sincroniza estado de seleção visual nas regiões poligonais (A, B, C)
-  const syncRegionSelectedState = useCallback(
+  // Applies dim/highlight based on selectedGroup
+  const syncGroupFilter = useCallback(
     (map: maplibregl.Map) => {
-      if (!map.getSource(REGIONS_SOURCE_ID)) return;
-
-      ['groupA', 'groupB', 'groupC'].forEach((groupId) => {
-        const isSelected = selectedGroup === groupId;
-        map.setFeatureState(
-          { source: REGIONS_SOURCE_ID, id: groupId },
-          { selected: isSelected }
-        );
-      });
+      if (!map.getLayer('unclustered-point-outer')) return;
+      if (selectedGroup === 'all') {
+        map.setPaintProperty('unclustered-point-outer', 'circle-opacity', 0.98);
+        map.setPaintProperty('unclustered-point-aura', 'circle-opacity', [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false], 0.35,
+          ['boolean', ['feature-state', 'hover'], false], 0.28,
+          0.15
+        ]);
+      } else {
+        // Dim non-matching trees, highlight matching ones
+        map.setPaintProperty('unclustered-point-outer', 'circle-opacity', [
+          'case',
+          ['==', ['get', 'group'], selectedGroup], 0.98,
+          0.18
+        ]);
+        map.setPaintProperty('unclustered-point-aura', 'circle-opacity', [
+          'case',
+          ['==', ['get', 'group'], selectedGroup], 0.28,
+          0.04
+        ]);
+      }
     },
     [selectedGroup]
   );
 
-  // Configura os ouvintes interativos de hover e clique nas 3 regiões
-  const setupRegionInteractions = useCallback(
-    (map: maplibregl.Map) => {
-      if (map.getSource(REGIONS_SOURCE_ID)) {
-        (map.getSource(REGIONS_SOURCE_ID) as maplibregl.GeoJSONSource).setData(PARK_REGIONS_GEOJSON as any);
-      }
-
-      REGION_FILL_LAYERS.forEach((layerId) => {
-        if (!map.getLayer(layerId)) return;
-
-        // Hover na região
-        map.on('mousemove', layerId, (e) => {
-          const feature = e.features?.[0];
-          const regionId = (feature?.id ?? feature?.properties?.id) as string | undefined;
-
-          if (regionId && hoveredRegionIdRef.current !== regionId) {
-            if (hoveredRegionIdRef.current && map.getSource(REGIONS_SOURCE_ID)) {
-              map.setFeatureState(
-                { source: REGIONS_SOURCE_ID, id: hoveredRegionIdRef.current },
-                { hover: false }
-              );
-            }
-            hoveredRegionIdRef.current = regionId;
-            if (map.getSource(REGIONS_SOURCE_ID)) {
-              map.setFeatureState(
-                { source: REGIONS_SOURCE_ID, id: regionId },
-                { hover: true }
-              );
-            }
-          }
-          map.getCanvas().style.cursor = 'pointer';
-        });
-
-        // Saída do mouse da região
-        map.on('mouseleave', layerId, () => {
-          if (hoveredRegionIdRef.current && map.getSource(REGIONS_SOURCE_ID)) {
-            map.setFeatureState(
-              { source: REGIONS_SOURCE_ID, id: hoveredRegionIdRef.current },
-              { hover: false }
-            );
-          }
-          hoveredRegionIdRef.current = null;
-          map.getCanvas().style.cursor = '';
-        });
-
-        // Clique na região: seleciona o grupo e enquadra o setor
-        map.on('click', layerId, (e) => {
-          const feature = e.features?.[0];
-          const group = feature?.properties?.group as FieldGroup | undefined;
-          if (group && onSelectGroup) {
-            onSelectGroup(group);
-
-            // Centros geográficos dos 3 setores calibrados
-            const centers: Record<FieldGroup, [number, number]> = {
-              groupA: [-60.12135, -12.70705], // Gramado Noroeste
-              groupB: [-60.12055, -12.70710], // Gramado Nordeste & Parquinho
-              groupC: [-60.12100, -12.70755]  // Faixa da Margem Sul do Lago
-            };
-            const targetCenter = centers[group] || PARK_CONFIG.center;
-
-            map.easeTo({
-              center: targetCenter,
-              zoom: 18.2,
-              duration: 520,
-              offset: window.innerWidth < 768 ? [0, -90] : [-120, 0],
-              easing: (t) => 1 - Math.pow(1 - t, 3)
-            });
-          }
-        });
-      });
-    },
-    [onSelectGroup]
-  );
-
-  // Atualiza ou injeta as camadas de árvores no mapa
   const setupTreeLayers = useCallback(
     (map: maplibregl.Map) => {
       const geojsonData = treesToGeoJSON(trees);
@@ -184,6 +117,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         const source = map.getSource(TREE_SOURCE_ID) as maplibregl.GeoJSONSource;
         source.setData(geojsonData);
         syncSelectedFeatureState(map);
+        syncGroupFilter(map);
         return;
       }
 
@@ -196,7 +130,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         promoteId: 'id'
       });
 
-      // Halo externo do cluster
+      // Cluster halo
       map.addLayer({
         id: 'clusters-halo',
         type: 'circle',
@@ -205,20 +139,12 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         paint: {
           'circle-color': '#c4a06a',
           'circle-opacity': 0.18,
-          'circle-radius': [
-            'step',
-            ['get', 'point_count'],
-            24,
-            5,
-            31,
-            15,
-            38
-          ],
+          'circle-radius': ['step', ['get', 'point_count'], 24, 5, 31, 15, 38],
           'circle-blur': 0.18
         }
       });
 
-      // Nó do cluster com medalhão nobre
+      // Cluster node
       map.addLayer({
         id: 'clusters',
         type: 'circle',
@@ -226,22 +152,14 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         filter: ['has', 'point_count'],
         paint: {
           'circle-color': '#0b211d',
-          'circle-radius': [
-            'step',
-            ['get', 'point_count'],
-            16,
-            5,
-            20,
-            15,
-            25
-          ],
+          'circle-radius': ['step', ['get', 'point_count'], 16, 5, 20, 15, 25],
           'circle-stroke-width': 2.2,
           'circle-stroke-color': '#d6a35b',
           'circle-opacity': 0.95
         }
       });
 
-      // Rótulo numérico elegante com contagem do cluster
+      // Cluster count label
       map.addLayer({
         id: 'cluster-count',
         type: 'symbol',
@@ -252,12 +170,10 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
           'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
           'text-size': 11
         },
-        paint: {
-          'text-color': '#f8f6ef'
-        }
+        paint: { 'text-color': '#f8f6ef' }
       });
 
-      // Halo sutil ao redor do ponto individual com as cores temáticas oficiais
+      // Individual point aura
       map.addLayer({
         id: 'unclustered-point-aura',
         type: 'circle',
@@ -268,20 +184,18 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
             'case',
             ['boolean', ['feature-state', 'selected'], false], '#c4a06a',
             ['boolean', ['feature-state', 'hover'], false], '#f8f6ef',
-            [
-              'match',
-              ['get', 'group'],
-              'groupA', '#eab308', // amarelo
-              'groupB', '#3b82f6', // azul
-              'groupC', '#ef4444', // vermelho
+            ['match', ['get', 'group'],
+              'groupA', '#eab308',
+              'groupB', '#06b6d4',
+              'groupC', '#ef4444',
               '#eab308'
             ]
           ],
           'circle-radius': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], 23,
-            ['boolean', ['feature-state', 'hover'], false], 18,
-            14
+            ['boolean', ['feature-state', 'selected'], false], 20,
+            ['boolean', ['feature-state', 'hover'], false], 16,
+            12
           ],
           'circle-opacity': [
             'case',
@@ -293,7 +207,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         }
       });
 
-      // Medalhão principal por equipe de campo (Cores Oficiais: A Amarelo, B Azul, C Vermelho)
+      // Main individual marker
       map.addLayer({
         id: 'unclustered-point-outer',
         type: 'circle',
@@ -301,24 +215,23 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         filter: ['!', ['has', 'point_count']],
         paint: {
           'circle-color': [
-            'match',
-            ['get', 'group'],
-            'groupA', '#eab308', // amarelo
-            'groupB', '#3b82f6', // azul
-            'groupC', '#ef4444', // vermelho
+            'match', ['get', 'group'],
+            'groupA', '#eab308',
+            'groupB', '#06b6d4',
+            'groupC', '#ef4444',
             '#eab308'
           ],
           'circle-radius': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], 12,
-            ['boolean', ['feature-state', 'hover'], false], 11,
-            9
+            ['boolean', ['feature-state', 'selected'], false], 10,
+            ['boolean', ['feature-state', 'hover'], false], 9,
+            7
           ],
           'circle-stroke-width': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], 3.5,
-            ['boolean', ['feature-state', 'hover'], false], 3,
-            2.25
+            ['boolean', ['feature-state', 'selected'], false], 3,
+            ['boolean', ['feature-state', 'hover'], false], 2.5,
+            2
           ],
           'circle-stroke-color': [
             'case',
@@ -329,7 +242,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         }
       });
 
-      // Núcleo botânico
+      // Inner core dot
       map.addLayer({
         id: 'unclustered-point-inner',
         type: 'circle',
@@ -338,33 +251,29 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         paint: {
           'circle-radius': [
             'case',
-            ['boolean', ['feature-state', 'selected'], false], 5.5,
-            ['boolean', ['feature-state', 'hover'], false], 4.5,
-            3.5
+            ['boolean', ['feature-state', 'selected'], false], 4,
+            ['boolean', ['feature-state', 'hover'], false], 3.5,
+            3
           ],
-          'circle-color': [
-            'case',
-            ['boolean', ['feature-state', 'selected'], false], '#ffffff',
-            '#ffffff'
-          ],
-          'circle-opacity': 0.95
+          'circle-color': '#ffffff',
+          'circle-opacity': 0.92
         }
       });
 
-      // Hitbox transparente para interação precisa em mobile e desktop
+      // Invisible hitbox for easy tapping
       map.addLayer({
         id: INTERACTIVE_TREE_LAYER,
         type: 'circle',
         source: TREE_SOURCE_ID,
         filter: ['!', ['has', 'point_count']],
         paint: {
-          'circle-radius': 22,
+          'circle-radius': 20,
           'circle-color': '#ffffff',
           'circle-opacity': 0.01
         }
       });
 
-      // Clique no cluster para zoom
+      // Cluster click
       map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
         const clusterId = features[0]?.properties?.cluster_id;
@@ -382,7 +291,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         }
       });
 
-      // Clique na árvore individual
+      // Individual tree click
       map.on('click', INTERACTIVE_TREE_LAYER, (e) => {
         const feature = e.features?.[0];
         if (feature?.properties?.id) {
@@ -402,12 +311,11 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         }
       });
 
-      // Hover nas árvores
+      // Hover
       map.on('mousemove', INTERACTIVE_TREE_LAYER, (e) => {
         const feature = e.features?.[0];
         const featureId = (feature?.id ?? feature?.properties?.id) as TreeFeatureId | undefined;
         if (featureId === undefined) return;
-
         if (hoveredTreeIdRef.current !== featureId) {
           clearTreeFeatureState(map, hoveredTreeIdRef.current, 'hover');
           hoveredTreeIdRef.current = featureId;
@@ -423,11 +331,12 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
       });
 
       syncSelectedFeatureState(map);
+      syncGroupFilter(map);
     },
-    [clearTreeFeatureState, onSelectTree, setTreeFeatureState, syncSelectedFeatureState, trees]
+    [clearTreeFeatureState, groupColor, onSelectTree, setTreeFeatureState, syncGroupFilter, syncSelectedFeatureState, trees]
   );
 
-  // Inicialização do MapLibre GL
+  // Init map
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
@@ -439,66 +348,38 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
       minZoom: PARK_CONFIG.minZoom,
       maxZoom: PARK_CONFIG.maxZoom,
       maxBounds: PARK_CONFIG.maxBounds,
-      attributionControl: {
-        compact: true
-      }
+      attributionControl: { compact: true }
     });
 
-    // Controles de Navegação (Zoom e Bússola)
     map.addControl(
-      new maplibregl.NavigationControl({
-        showCompass: true,
-        showZoom: true,
-        visualizePitch: true
-      }),
+      new maplibregl.NavigationControl({ showCompass: true, showZoom: true, visualizePitch: true }),
       'bottom-right'
     );
-
-    // Controle de Geolocalização do Visitante (GPS em tempo real)
     map.addControl(
-      new maplibregl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true,
-        showAccuracyCircle: true
-      }),
+      new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true, showAccuracyCircle: true }),
       'bottom-right'
     );
-
-    // Barra de Escala Métrica
     map.addControl(
-      new maplibregl.ScaleControl({
-        maxWidth: 100,
-        unit: 'metric'
-      }),
+      new maplibregl.ScaleControl({ maxWidth: 100, unit: 'metric' }),
       'bottom-left'
     );
 
     map.on('load', () => {
       setMapLoaded(true);
       setupTreeLayers(map);
-      setupRegionInteractions(map);
-      syncRegionSelectedState(map);
     });
 
-    // Clique no mapa vazio: se clicou fora de regiões e árvores, limpa a seleção
+    // Empty-space click: deselect
     map.on('click', (e) => {
-      const activeLayers = ['clusters', INTERACTIVE_TREE_LAYER, ...REGION_FILL_LAYERS].filter((id) =>
-        map.getLayer(id)
-      );
-      const features = map.queryRenderedFeatures(e.point, {
-        layers: activeLayers
-      });
+      const activeLayers = ['clusters', INTERACTIVE_TREE_LAYER].filter((id) => map.getLayer(id));
+      const features = map.queryRenderedFeatures(e.point, { layers: activeLayers });
       if (features.length === 0) {
         onSelectTree(null);
       }
     });
 
     mapRef.current = map;
-    if (typeof window !== 'undefined') {
-      (window as any)._map = map;
-    }
+    if (typeof window !== 'undefined') (window as any)._map = map;
 
     return () => {
       if (selectedMarkerRef.current) {
@@ -508,63 +389,56 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
       map.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Reação a trocas de estilo/modo (Satélite, Planta, Exploração)
+  // Style mode changes
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
-
     hoveredTreeIdRef.current = null;
-    hoveredRegionIdRef.current = null;
     setLayerVeilVisible(true);
     map.setStyle(getStyleForMode(currentMode));
 
     const handleStyleLoad = () => {
       setupTreeLayers(map);
-      setupRegionInteractions(map);
-      syncRegionSelectedState(map);
       syncSelectedFeatureState(map);
-
       if (currentMode === 'satellite' && PARK_CONFIG.customRasterOverlay.enabled) {
         applyRasterOverlay(map, PARK_CONFIG.customRasterOverlay);
       } else {
         removeRasterOverlay(map);
       }
-
       window.setTimeout(() => setLayerVeilVisible(false), 160);
     };
-
     map.once('style.load', handleStyleLoad);
-  }, [currentMode, mapLoaded, setupTreeLayers, setupRegionInteractions, syncRegionSelectedState, syncSelectedFeatureState]);
+  }, [currentMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Atualização dos dados de árvores quando a lista de filtros mudar
+  // Trees data update
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
-
     const source = map.getSource(TREE_SOURCE_ID) as maplibregl.GeoJSONSource | undefined;
     if (source) {
       source.setData(treesToGeoJSON(trees));
       syncSelectedFeatureState(map);
+      syncGroupFilter(map);
     }
-  }, [trees, mapLoaded, syncSelectedFeatureState]);
+  }, [trees, mapLoaded, syncSelectedFeatureState, syncGroupFilter]);
 
-  // Sincroniza visual SELECTED nas regiões poligonais
+  // Group filter changes
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
-    syncRegionSelectedState(map);
-  }, [selectedGroup, mapLoaded, syncRegionSelectedState]);
+    syncGroupFilter(map);
+  }, [selectedGroup, mapLoaded, syncGroupFilter]);
 
-  // Sincroniza visual SELECTED nas camadas WebGL de árvores
+  // Selected tree visual state
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
     syncSelectedFeatureState(map);
   }, [selectedTree, mapLoaded, syncSelectedFeatureState]);
 
-  // Marcador Botânico Ativo no MapLibre (v0 Botanical Leaf Marker com aura pulsante)
+  // Active marker HTML injection
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
@@ -590,10 +464,7 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
         </span>
         <span class="marker-pulse"></span>
       `;
-      selectedMarkerRef.current = new maplibregl.Marker({
-        element: el,
-        anchor: 'center'
-      })
+      selectedMarkerRef.current = new maplibregl.Marker({ element: el, anchor: 'center' })
         .setLngLat([selectedTree.longitude, selectedTree.latitude])
         .addTo(map);
     } else {
@@ -601,11 +472,10 @@ const MapContainerComponent: React.FC<MapContainerProps> = ({
     }
   }, [selectedTree, mapLoaded]);
 
-  // Centralização e realce quando uma árvore é selecionada
+  // Camera follow when tree selected / focusKey changes
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded || !selectedTree) return;
-
     if (selectedTree.latitude !== null && selectedTree.longitude !== null) {
       map.easeTo({
         center: [selectedTree.longitude, selectedTree.latitude],

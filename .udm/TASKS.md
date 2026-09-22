@@ -130,7 +130,18 @@
 - [x] **QA & Sanity Check:** 85/85 testes Vitest aprovados (100% PASS), 0 erros TypeScript estrito (`tsc --noEmit`), build estático Next.js 15.5 gerando 17 páginas com sucesso.
 - [x] **Governança UDM:** Atualização síncrona de `CURRENT_STATE.md`, `CHANGELOG.md` com a tag `[CLAUDE - UI/GIS & AUDIT]`, `TASKS.md` e novo `AGENT_HANDOFF.md` espelhados no HD e no repositório.
 
+## Fase 17: Finalização — Catálogo Real, Fotos Locais, Polígonos e Build (Concluída 100%)
+- [x] **Catálogo Real:** `data/mock-trees.json` reconstruído com os 32 espécimes reais (Grupo A: 5, Grupo B: 14, Grupo C: 13) usando fotos locais de `/public/trees/`. Todos com `displayNumber: null`, `isMock: false`.
+- [x] **Polígonos A/B/C:** `geo/park-regions.ts` e `public/geo/park-regions.geojson` recalibrados conforme imagem de referência oficial do usuário. Grupo B agora inclui parquinho infantil e orla leste; Grupo C cobre faixa sul até sudeste.
+- [x] **Cor Grupo B:** Corrigida de azul `#3b82f6` para ciano `#06b6d4` em todos os arquivos relevantes.
+- [x] **Integração de fotos locais:** `safeImgSrc()` adicionado em `lib/utils.ts`; `next/image` substituído por `<img>` + `safeImgSrc` onde necessário para suportar paths com espaços e Unicode.
+- [x] **Build SSG:** 37 páginas estáticas geradas, 0 erros TypeScript, 0 erros de lint.
+- [x] **`generateStaticParams`:** Funciona dinamicamente via `getAllTrees()` — 32 rotas pré-renderizadas automaticamente.
+
 ## Próximos Passos
-- [ ] Conectar banco de dados Supabase / PostGIS se/quando for solicitado painel administrativo com login e CRUD em tempo real.
-- [ ] Alimentar as pastas `public/trees/grupo-[a|b|c]/` com as fotos reais coletadas pelos alunos.
-- [ ] Inserir novas coordenadas dos espécimes adicionais à medida que novos setores de campo forem levantados.
+- [x] **Fase 18 — Espécies, Fotos e Galeria Mobile:** corrigir preservação de fotos no pipeline, abrir galeria sem redirecionamento automático ao mapa, implementar navegação fotográfica acessível/responsiva, validar fotos reais e publicar build/testes.
+- [ ] Validar coordenadas GPS reais dos 32 espécimes quando disponíveis e atualizar `latitude`/`longitude` em `mock-trees.json`.
+- [ ] Quando as placas físicas com numeração oficial forem instaladas, atualizar `displayNumber` (atualmente `null`).
+- [ ] Conectar banco de dados Supabase / PostGIS se/quando solicitado painel administrativo com login e CRUD.
+
+

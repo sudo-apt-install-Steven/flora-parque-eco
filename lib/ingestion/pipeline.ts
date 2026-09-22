@@ -9,6 +9,7 @@ import {
   IngestionError,
   IngestionWarning,
   PhotoItem,
+  PhotoItemSchema,
   PlantNetData
 } from '@/lib/tree-schema';
 import { parseCsvString } from '@/lib/ingestion/csv-parser';
@@ -249,17 +250,36 @@ export function ingestTreeRecords(
         opts.defaultStatus
       );
 
-      // Fotos
+      // Fotos: preserva a galeria local já validada do catálogo, incluindo caminhos
+      // relativos em public/ e caracteres especiais nos nomes dos diretórios.
       let primaryPhoto: PhotoItem | null = null;
-      const photoUrl = cleanString(raw.photoUrl ?? raw.primaryPhoto ?? raw.foto_url, '');
-      if (photoUrl && (photoUrl.startsWith('http://') || photoUrl.startsWith('https://'))) {
-        primaryPhoto = {
-          id: `photo-${id}-main`,
-          url: photoUrl,
-          thumbUrl: photoUrl,
-          category: 'arvore_inteira',
-          caption: `Fotografia primária de ${popularName}`
-        };
+      const gallery: PhotoItem[] = [];
+      const rawPrimaryPhoto = raw.primaryPhoto;
+      if (rawPrimaryPhoto && typeof rawPrimaryPhoto === 'object') {
+        const parsedPhoto = PhotoItemSchema.safeParse(rawPrimaryPhoto);
+        if (parsedPhoto.success) {
+          primaryPhoto = parsedPhoto.data;
+        }
+      } else {
+        const photoUrl = cleanString(raw.photoUrl ?? raw.primaryPhoto ?? raw.foto_url, '');
+        if (photoUrl && (photoUrl.startsWith('http://') || photoUrl.startsWith('https://'))) {
+          primaryPhoto = {
+            id: `photo-${id}-main`,
+            url: photoUrl,
+            thumbUrl: photoUrl,
+            category: 'arvore_inteira',
+            caption: `Fotografia primária de ${popularName}`
+          };
+        }
+      }
+
+      if (Array.isArray(raw.gallery)) {
+        for (const rawPhoto of raw.gallery) {
+          const parsedPhoto = PhotoItemSchema.safeParse(rawPhoto);
+          if (parsedPhoto.success) {
+            gallery.push(parsedPhoto.data);
+          }
+        }
       }
 
       // PlantNet
@@ -302,7 +322,7 @@ export function ingestTreeRecords(
         longitude: lng,
         locationAccuracy: accuracy,
         primaryPhoto,
-        gallery: [],
+        gallery,
         plantnet,
         group,
         collectedAt,

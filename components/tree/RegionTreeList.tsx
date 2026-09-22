@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Trees, ChevronRight, Eye, Sparkles, MapPin } from 'lucide-react';
+import { ExternalLink, ChevronRight, Eye } from 'lucide-react';
 import { Tree, FieldGroup } from '@/lib/tree-schema';
 import { PARK_CONFIG } from '@/lib/park-config';
-import { cn } from '@/lib/utils';
+import { cn, safeImgSrc } from '@/lib/utils';
 
 interface RegionTreeListProps {
   group: FieldGroup;
@@ -81,6 +81,7 @@ export const RegionTreeList: React.FC<RegionTreeListProps> = ({
           groupTrees.map((tree, idx) => {
             const plantnetUrl = getPlantNetUrl(tree);
             const mainPhoto = tree.primaryPhoto?.url || '/images/tree-fallback.svg';
+            const mainPhotoSrc = safeImgSrc(mainPhoto);
 
             return (
               <div
@@ -120,41 +121,45 @@ export const RegionTreeList: React.FC<RegionTreeListProps> = ({
                 </div>
 
                 {/* Galeria Completa das Fotos da Árvore */}
-                <div className="mt-3 flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+                <div className="mt-3 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
                   {/* Foto Principal */}
                   <div
-                    onClick={() => setSelectedPhotoModal(mainPhoto)}
+                    onClick={() => setSelectedPhotoModal(mainPhotoSrc)}
                     className="relative w-16 h-16 rounded-xl overflow-hidden bg-stone-100 dark:bg-black/30 border border-stone-200 dark:border-white/10 flex-shrink-0 cursor-pointer group/photo"
                     title="Clique para ampliar"
                   >
                     <img
-                      src={mainPhoto}
+                      src={mainPhotoSrc}
                       alt={tree.popularName}
                       className="w-full h-full object-cover group-hover/photo:scale-110 transition-transform duration-300"
+                      onError={(e) => { const t = e.currentTarget; if (!t.dataset.fb) { t.dataset.fb='1'; t.style.opacity='0.3'; } }}
                     />
                     <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/photo:opacity-100 flex items-center justify-center transition-opacity">
                       <Eye className="w-4 h-4 text-white drop-shadow" />
                     </div>
                   </div>
 
-                  {/* Fotos adicionais da galeria */}
-                  {tree.gallery?.map((photo, pIdx) => (
+                  {tree.gallery?.map((photo, pIdx) => {
+                    const pSrc = safeImgSrc(photo.url);
+                    return (
                     <div
                       key={photo.id || pIdx}
-                      onClick={() => setSelectedPhotoModal(photo.url)}
+                      onClick={() => setSelectedPhotoModal(pSrc)}
                       className="relative w-16 h-16 rounded-xl overflow-hidden bg-stone-100 dark:bg-black/30 border border-stone-200 dark:border-white/10 flex-shrink-0 cursor-pointer group/photo"
                       title={photo.caption || `Foto ${pIdx + 2}`}
                     >
                       <img
-                        src={photo.url}
+                        src={pSrc}
                         alt={photo.caption || tree.popularName}
                         className="w-full h-full object-cover group-hover/photo:scale-110 transition-transform duration-300"
+                        onError={(e) => { const t = e.currentTarget; if (!t.dataset.fb) { t.dataset.fb='1'; t.style.opacity='0.3'; } }}
                       />
                       <span className="absolute bottom-0.5 inset-x-0.5 text-center text-[8px] font-bold bg-black/60 text-white rounded uppercase px-0.5 truncate">
                         {photo.category || 'Foto'}
                       </span>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 {/* Barra de Ações: Ver Ficha Detalhada */}

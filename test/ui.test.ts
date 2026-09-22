@@ -72,7 +72,7 @@ describe('UI & Cartografia — Helpers e Configuração de Interface', () => {
 
     const parsed = new URL(shareUrl);
     expect(parsed.searchParams.get('tree')).toBe(tree.id);
-    expect(parsed.searchParams.get('tree')).toBe('mock-tree-001');
+    expect(parsed.searchParams.get('tree')).toBe('tree-a-02-jacaranda');
   });
 
   it('os GeoJSONs cartográficos devem estar disponíveis em public/geo para o MapLibre', () => {

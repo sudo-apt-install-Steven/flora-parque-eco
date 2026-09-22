@@ -1,6 +1,50 @@
 # UDM — CHANGELOG
 
-## [1.4.0] — 2026-09-21 [ANTIGRAVITY 2.0 - GEO CALIBRATION & RENDERING]
+## [1.6.0] — 2026-09-22 [COPILOT — GALERIA DE ESPÉCIMES, PIPELINE DE FOTOS E MOBILE]
+
+### Corrigido
+- Corrigida a causa raiz das thumbnails brancas em `lib/ingestion/pipeline.ts`: fotos locais e galerias não eram preservadas durante a ingestão inicial.
+- `PhotoItemSchema` agora valida as fotos preservadas do JSON antes de compor o catálogo em Zustand.
+- Atualizadas expectativas obsoletas dos testes que ainda esperavam os 13 mocks da fase anterior; a base atual possui 33 espécimes reais.
+
+### Adicionado
+- Clique em espécime na tela “Espécies” abre galeria/ficha contextual sem navegar para o mapa.
+- Galeria com foto principal, thumbnails exclusivas da árvore, navegação anterior/próxima, setas, ESC, swipe, loading e fallback.
+- “Centralizar este espécime no mapa” mantido como ação explícita dentro da ficha.
+- Modal mobile com rolagem própria, foco visível, áreas de toque e ocultação temporária da navegação inferior para evitar sobreposição.
+- `prefers-reduced-motion` aplicado aos estados animados.
+
+### Validação
+- 154 caminhos de fotos auditados contra `public/trees/`: 0 ausentes.
+- TypeScript: ✅ 0 erros.
+- Vitest: ✅ 85/85 testes em 12 suítes.
+- Build Next.js: ✅ 37 páginas estáticas.
+- Inspeção visual em produção desktop/mobile: fotos reais, galeria, ESC, teclado, ação de mapa e console sem erros da aplicação.
+
+## [1.5.0] — 2026-09-22 [KIRO — CATÁLOGO REAL, FOTOS LOCAIS, POLÍGONOS FINALIZADOS]
+
+### Reconstruído
+- **`data/mock-trees.json` — 32 Espécimes Reais:**
+  - Substituídos os 13 espécimes de calibração pelos 32 espécimes reais coletados em campo.
+  - **Grupo A (5):** `tree-a-02-jacaranda` (*Jacaranda mimosifolia*), `tree-a-03-hibiscus` (*Hibiscus rosa-sinensis*), `tree-a-04-spathodea` (*Spathodea campanulata*), `tree-a-05-ipomoea` (*Ipomoea carnea*), `tree-a-06-mangifera` (*Mangifera indica*).
+  - **Grupo B (14):** `tree-b-01-eucalyptus` (*Eucalyptus urophylla*), `tree-b-07-mangifera-1`, `tree-b-08-wodyetia` (*Wodyetia bifurcata*), `tree-b-09-psidium` (*Psidium guajava*), `tree-b-10-jacaranda`, `tree-b-11-pachira` (*Pachira aquatica*), `tree-b-12-cascabela` (*Cascabela thevetia*), `tree-b-13-inga-laurina` (*Inga laurina*), `tree-b-14-mangifera-2`, `tree-b-15-syzygium` (*Syzygium malaccense*), `tree-b-16-jacaranda-cusp` (*Jacaranda cuspidifolia*), `tree-b-17-trema` (*Trema micrantha*), `tree-b-18-ipomoea`, `tree-b-19-bismarckia` (*Bismarckia nobilis*), `tree-b-20-jacaranda-2`.
+  - **Grupo C (13):** `tree-c-01-jacaranda` a `tree-c-13-vochysia-2` — incluindo *Cojoba arborea*, *Tapirira guianensis*, *Eucalyptus regnans*, *Ceiba pentandra*, *Acacia mangium*, *Tabebuia rosea* (×3), *Vochysia haenkeana* (×2).
+  - Todos com `displayNumber: null`, `isMock: false`, fotos reais de `/public/trees/grupo-[a|b|c]/`.
+
+### Adicionado
+- **`lib/utils.ts` — `safeImgSrc()`:** Função de percent-encoding de caminhos locais com espaços e caracteres Unicode (ex: `×` em `Hibiscus × rosa-sinensis`). URLs externas http/https passam sem modificação.
+- **Polígonos A/B/C recalibrados (`geo/park-regions.ts` + `public/geo/park-regions.geojson`):** Geometria ampliada e mais fiel à imagem de referência do usuário. Grupo A cobre o gramado noroeste completo; Grupo B engloba o parquinho infantil e a orla leste; Grupo C contorna a margem sul do lago em faixa curva até o sudeste. `treeCount` atualizado: A=5, B=14, C=13.
+
+### Corrigido
+- **Cor Grupo B → Ciano `#06b6d4`** (era azul `#3b82f6`, inconsistente com a imagem de referência): corrigido em `park-config.ts`, `MapContainer.tsx`, `MapFieldOverlay.tsx`, `geo/park-regions.ts` e `public/geo/park-regions.geojson`.
+- **`next/image` substituído por `<img>` + `safeImgSrc`** em `TreeGallery.tsx`, `TreeDetail.tsx`, `RegionTreeList.tsx` e `SpeciesCatalogView.tsx` — resolve 404s por caminhos com espaços e Unicode não-encoded em build de produção.
+- **`RegionTreeList.tsx`** — imports limpos (`Trees`, `Sparkles`, `MapPin` removidos, não utilizados).
+
+### Validação
+- **Build SSG Next.js 15.5:** ✅ 37 páginas estáticas geradas (32 rotas `/tree/[id]` + raiz + not-found + outros), 0 erros.
+- **TypeScript `tsc --noEmit`:** ✅ 0 erros.
+
+
 
 ### Corrigido & Calibrado (Polígonos dos Grupos A, B e C, Renderização WebGL e Ingestão)
 - **Calibração Fina dos Polígonos de Campo Conforme Foto Aérea de Referência (`media_1789998447091.jpg`):**

@@ -345,3 +345,54 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 
 
 
+
+---
+
+## 10. Atualização v1.5.0 — Kiro (2026-09-22)
+
+### O que mudou nesta versão:
+
+**Catálogo reconstruído com 32 espécimes reais:**
+- `data/mock-trees.json` substituído integralmente — os 13 espécimes de calibração foram removidos e substituídos pelos 32 espécimes reais coletados em campo pelos estudantes do IFRO.
+- IDs seguem o padrão `tree-[grupo]-[numero]-[nome-simplificado]`.
+- Todos com `displayNumber: null` e `isMock: false`.
+- Fotos apontam para `/trees/grupo-[a|b|c]/[pasta-especie]/[arquivo].jpeg` — paths locais dentro de `public/`.
+
+**Distribuição dos espécimes:**
+- Grupo A (5): tree-a-02-jacaranda, tree-a-03-hibiscus, tree-a-04-spathodea, tree-a-05-ipomoea, tree-a-06-mangifera
+- Grupo B (14): tree-b-01-eucalyptus, tree-b-07-mangifera-1, tree-b-08-wodyetia, tree-b-09-psidium, tree-b-10-jacaranda, tree-b-11-pachira, tree-b-12-cascabela, tree-b-13-inga-laurina, tree-b-14-mangifera-2, tree-b-15-syzygium, tree-b-16-jacaranda-cusp, tree-b-17-trema, tree-b-18-ipomoea, tree-b-19-bismarckia, tree-b-20-jacaranda-2
+- Grupo C (13): tree-c-01-jacaranda a tree-c-13-vochysia-2
+
+**Fotos locais com caracteres especiais:**
+- Criada `safeImgSrc(url)` em `lib/utils.ts` — percent-encoda cada segmento do path local.
+- `next/image` substituído por `<img>` nativo em: `TreeGallery.tsx`, `TreeDetail.tsx`, `RegionTreeList.tsx`, `SpeciesCatalogView.tsx`.
+
+**Polígonos A/B/C:**
+- Recalibrados em `geo/park-regions.ts` e `public/geo/park-regions.geojson`.
+- Cor Grupo B corrigida: `#3b82f6` → `#06b6d4` (ciano) em todos os arquivos.
+
+**Build de produção:**
+- `npm run build`: ✅ 37 páginas SSG, 0 erros.
+- `npx tsc --noEmit`: ✅ 0 erros.
+
+### Para o próximo agente:
+1. Coordenadas GPS dos 32 espécimes são estimativas por região. Atualizar quando EXIF/GPS de campo estiver disponível.
+2. `displayNumber: null` em todos — aguarda instalação das placas físicas numeradas.
+3. O Grupo B tem numeração não-sequencial (01, 07-20) — reflete a numeração real do levantamento de campo.
+
+## 11. Atualização v1.6.0 — GitHub Copilot (2026-09-22)
+
+### Correção de Espécies / Espécimes
+- Causa confirmada das imagens brancas: `ingestTreeRecords()` descartava objetos `primaryPhoto` locais e substituía toda `gallery` por array vazio.
+- O pipeline agora preserva fotos locais e metadados após validação por `PhotoItemSchema`; `safeImgSrc()` mantém percent-encoding de espaços e Unicode.
+- A tela de espécies abre `TreeDetail` em galeria modal contextual; o mapa só é acionado por “Centralizar este espécime no mapa”.
+- `TreeGallery` oferece principal, thumbnails da árvore selecionada, anterior/próxima, teclado, ESC, swipe, loading e fallback real.
+- No mobile, o modal usa bottom sheet confortável, rolagem vertical, touch targets e oculta temporariamente a navegação inferior para evitar sobreposição.
+
+### Validação e Handoff
+- 33 espécimes, 154 referências de fotos, 0 caminhos ausentes em `public/trees/`.
+- `npx tsc --noEmit`: PASS.
+- `npm test`: 85/85 PASS.
+- `npm run build`: 37 páginas SSG PASS.
+- Inspeção visual no servidor de produção em desktop/mobile: PASS; console sem erros da aplicação.
+- Remote atual: `https://github.com/sudo-apt-install-Steven/flora-parque-eco.git`.

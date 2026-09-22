@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ArrowUpRight, Search, Trees, Sparkles, Filter } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ChevronLeft, ArrowUpRight, Search, Trees, Sparkles, Filter, X } from 'lucide-react';
 import { Tree } from '@/lib/tree-schema';
 import { PARK_CONFIG } from '@/lib/park-config';
-import { cn } from '@/lib/utils';
+import { cn, safeImgSrc } from '@/lib/utils';
+import { TreeDetail } from '@/components/tree/TreeDetail';
+import { DEFAULT_FALLBACK_PHOTO } from '@/lib/fallbacks';
 
 interface SpeciesCatalogViewProps {
   trees: Tree[];
@@ -20,6 +21,22 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
 }) => {
   const [query, setQuery] = useState('');
   const [selectedFamily, setSelectedFamily] = useState<string>('all');
+  const [selectedTree, setSelectedTree] = useState<Tree | null>(null);
+
+  useEffect(() => {
+    if (!selectedTree) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedTree(null);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedTree]);
 
   // Métricas dinâmicas reais
   const stats = useMemo(() => {
@@ -56,7 +73,7 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
   }, [trees, query, selectedFamily]);
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] p-4 sm:p-8 md:p-12 lg:px-24 bg-[#f4f1e8] dark:bg-[#091a17] text-[#102a26] dark:text-[#f8f6ef] overflow-y-auto smooth-touch-scroll">
+    <div className="p-4 sm:p-8 md:p-12 lg:px-24 bg-[#f4f1e8] dark:bg-[#091a17] text-[#102a26] dark:text-[#f8f6ef]">
       {/* Botão Voltar */}
       <button
         onClick={onBackToMap}
@@ -169,25 +186,37 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
         ) : (
           filteredTrees.map((tree) => {
             const groupConfig = PARK_CONFIG.fieldGroups[tree.group];
-            const heroImage = tree.primaryPhoto?.thumbUrl || tree.primaryPhoto?.url || '/placeholder.jpg';
+            const heroImage = tree.primaryPhoto?.thumbUrl || tree.primaryPhoto?.url || DEFAULT_FALLBACK_PHOTO.url;
 
             return (
               <article
                 key={tree.id}
-                onClick={() => {
-                  onSelectTree(tree);
-                  onBackToMap();
+                onClick={() => setSelectedTree(tree)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedTree(tree);
+                  }
                 }}
+                role="button"
+                tabIndex={0}
+                aria-label={`Abrir galeria de ${tree.popularName}`}
                 className="group flex items-center justify-between gap-4 p-3.5 rounded-2xl bg-white/70 dark:bg-white/[0.03] hover:bg-white dark:hover:bg-white/[0.08] border border-stone-200/80 dark:border-white/10 hover:border-[#d6a35b]/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
               >
                 {/* Imagem */}
                 <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-stone-200 dark:bg-stone-800 flex-shrink-0">
-                  <Image
-                    src={heroImage}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={safeImgSrc(heroImage)}
                     alt={tree.popularName}
-                    fill
-                    sizes="64px"
-                    className="object-cover group-hover:scale-110 transition-transform duration-200"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200"
+                    onError={(event) => {
+                      const target = event.currentTarget;
+                      if (!target.dataset.fallback) {
+                        target.dataset.fallback = '1';
+                        target.src = DEFAULT_FALLBACK_PHOTO.url;
+                      }
+                    }}
                   />
                 </div>
 
@@ -238,6 +267,52 @@ export const SpeciesCatalogView: React.FC<SpeciesCatalogViewProps> = ({
           })
         )}
       </div>
+
+      {selectedTree && (
+        <div
+          className="fixed inset-0 z-[60] flex items-end md:items-center justify-center bg-[#102a26]/55 p-0 md:p-6 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setSelectedTree(null)}
+        >
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="species-gallery-title"
+            className="relative flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-[#102a26]/10 bg-[#f8f6ef] shadow-2xl dark:border-white/10 dark:bg-[#0f2621] md:max-h-[calc(100vh-3rem)] md:rounded-3xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex shrink-0 items-center justify-between border-b border-stone-200/80 bg-[#f3efe4] px-5 py-3 dark:border-stone-800 dark:bg-black/15 sm:px-6">
+              <div className="min-w-0 pr-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#a07232]">
+                  Galeria do espécime
+                </span>
+                <h2 id="species-gallery-title" className="truncate font-serif text-lg font-bold text-[#0b211d] dark:text-[#f8f6ef]">
+                  {selectedTree.popularName}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedTree(null)}
+                aria-label="Fechar galeria do espécime"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-stone-500 transition-colors hover:bg-stone-200/70 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-[#c4a06a] dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 smooth-touch-scroll sm:px-6">
+              <TreeDetail
+                tree={selectedTree}
+                onClose={() => setSelectedTree(null)}
+                onCenterOnMap={(tree) => {
+                  setSelectedTree(null);
+                  onSelectTree(tree);
+                  onBackToMap();
+                }}
+              />
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   );
 };

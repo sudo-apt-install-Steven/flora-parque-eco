@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import {
   MapPin,
   Sparkles,
@@ -14,8 +13,8 @@ import {
   Leaf,
   X
 } from 'lucide-react';
-import { Tree, PhotoItem } from '@/lib/tree-schema';
-import { TreeHeroPhoto, TreePhotoCarousel } from '@/components/tree/TreeGallery';
+import { Tree } from '@/lib/tree-schema';
+import { TreeGallery } from '@/components/tree/TreeGallery';
 import { PARK_CONFIG } from '@/lib/park-config';
 import { cn } from '@/lib/utils';
 
@@ -62,7 +61,6 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
   onCenterOnMap
 }) => {
   const [copied, setCopied] = useState(false);
-  const [zoomedPhoto, setZoomedPhoto] = useState<PhotoItem | null>(null);
 
   const groupInfo = PARK_CONFIG.fieldGroups[tree.group];
   const conf = CONFIDENCE_STYLES[tree.confidence] || CONFIDENCE_STYLES.indeterminada;
@@ -93,10 +91,10 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
   return (
     <div className="space-y-5 text-[#102a26] dark:text-[#f8f6ef]">
       {/* 1. HIERARQUIA 1: Foto Principal Dominante */}
-      <TreeHeroPhoto
-        photo={tree.primaryPhoto}
+      <TreeGallery
+        primaryPhoto={tree.primaryPhoto}
+        gallery={tree.gallery}
         treeName={tree.popularName}
-        onZoom={setZoomedPhoto}
       />
 
       {/* 2. HIERARQUIA 2: Cabeçalho Editorial — Nome Científico e Popular */}
@@ -204,15 +202,6 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
       </div>
 
       {/* 4. HIERARQUIA 4: Galeria Fotográfica em Carrossel Deslizante (next/image) */}
-      {tree.gallery && tree.gallery.length > 0 && (
-        <TreePhotoCarousel
-          photos={tree.gallery}
-          treeName={tree.popularName}
-          onZoom={setZoomedPhoto}
-          activePhotoId={zoomedPhoto?.id ?? tree.gallery[0]?.id}
-        />
-      )}
-
       {/* 5. Grade de Fatos Botânicos & Localização */}
       <dl className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#eef0e5] dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 text-xs">
         <div>
@@ -288,56 +277,6 @@ export const TreeDetail: React.FC<TreeDetailProps> = ({
         </div>
       )}
 
-      {/* Modal de Zoom Fotográfico Compartilhado */}
-      {zoomedPhoto && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
-          onClick={() => setZoomedPhoto(null)}
-        >
-          <div
-            className="relative max-w-2xl w-full bg-[#0b211d] rounded-3xl overflow-hidden shadow-2xl border border-white/10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setZoomedPhoto(null)}
-              aria-label="Fechar fotografia ampliada"
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="relative w-full h-[60vh] max-h-[500px]">
-              <Image
-                src={zoomedPhoto.url}
-                alt={zoomedPhoto.caption || tree.popularName}
-                fill
-                sizes="(max-width: 768px) 100vw, 650px"
-                className="object-contain"
-              />
-            </div>
-
-            <div className="p-4 bg-[#0b211d]/95 text-white text-xs border-t border-white/10 flex items-center justify-between">
-              <div>
-                <span className="font-bold text-[#d6a35b] mr-2">
-                  [{zoomedPhoto.category}]
-                </span>
-                <span className="text-[#f8f6ef]">{zoomedPhoto.caption || tree.popularName}</span>
-                {zoomedPhoto.credit && (
-                  <div className="text-[10px] text-stone-400 mt-0.5">Crédito: {zoomedPhoto.credit}</div>
-                )}
-              </div>
-              <button
-                onClick={() => setZoomedPhoto(null)}
-                className="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-white font-medium transition-colors"
-              >
-                Fechar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

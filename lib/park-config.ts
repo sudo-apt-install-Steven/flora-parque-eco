@@ -75,7 +75,7 @@ export const PARK_CONFIG = {
     groupB: {
       name: 'Grupo B',
       locationDescription: 'Gramado Nordeste & Parquinho Infantil',
-      color: '#3b82f6' // azul
+      color: '#06b6d4' // ciano (conforme imagem de referência)
     },
     groupC: {
       name: 'Grupo C',

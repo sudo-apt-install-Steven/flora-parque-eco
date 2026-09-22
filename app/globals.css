@@ -184,6 +184,17 @@ h1, h2 {
   }
 }
 
+@keyframes panel-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes sheet-in {
   from {
     opacity: 0;
@@ -199,6 +210,10 @@ h1, h2 {
   animation: panel-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.animate-panel-in-left {
+  animation: panel-in-left 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .animate-sheet-in {
   animation: sheet-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -207,6 +222,11 @@ h1, h2 {
 .smooth-touch-scroll {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+}
+
+body:has([aria-labelledby="species-gallery-title"]) .mobile-nav-shell {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Esconder barra de rolagem mantendo funcionalidade */
@@ -254,6 +274,17 @@ h1, h2 {
 .ui-skeleton {
   background: #d9d4c8;
   animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .field-badge {

@@ -98,5 +98,11 @@
   4. Manter resiliência universal com `getSafeTree()` para campos nulos e criar `app/not-found.tsx` temático para garantir integridade do build estático Next.js SSG.
 - **Justificativa:** O mapa é o elemento mais pesado da interface; desacoplar a renderização WebGL do estado de UI garante 60 FPS estáveis mesmo em smartphones de entrada em campo, ao mesmo tempo em que proporciona acessibilidade e blindagem contra erros de dados em tempo de execução.
 
+## ADR-011: Galeria Contextual de Espécimes e Preservação de Fotos Locais
+- **Data:** 2026-09-22
+- **Status:** ACEITO
+- **Decisão:** A tela de espécies abre uma ficha/galeria contextual no próprio catálogo. A navegação ao mapa só ocorre pela ação explícita “Centralizar este espécime no mapa”. O pipeline de ingestão preserva `primaryPhoto` e `gallery` validados pelo `PhotoItemSchema`, inclusive caminhos locais com espaços e Unicode.
+- **Justificativa:** O catálogo é uma experiência de consulta independente do mapa e as fotos de campo são evidência exclusiva de cada espécime. Descartá-las no pipeline produzia thumbnails brancas e eliminava a galeria real.
+
 
 

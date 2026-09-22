@@ -67,7 +67,7 @@
     "id": "tree-a-03-hibiscus",
     "displayNumber": null,
     "popularName": "Hibisco",
-    "scientificNameSuggested": "Hibiscus × rosa-sinensis L.",
+    "scientificNameSuggested": "Hibiscus rosa-sinensis L.",
     "family": "Malvaceae",
     "confidence": "alta",
     "latitude": -12.70702,
@@ -75,7 +75,7 @@
     "locationAccuracy": 3.0,
     "primaryPhoto": {
       "id": "a03-p1",
-      "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp.jpeg",
+      "url": "/trees/grupo-a/03-Hibiscus \u00d7 rosa-sinensis L/Hibiscus spp.jpeg",
       "category": "flor",
       "caption": "Hibisco em floração — Grupo A",
       "credit": "Equipe de Campo IFRO",
@@ -84,7 +84,7 @@
     "gallery": [
       {
         "id": "a03-p1",
-        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp.jpeg",
+        "url": "/trees/grupo-a/03-Hibiscus \u00d7 rosa-sinensis L/Hibiscus spp.jpeg",
         "category": "flor",
         "caption": "Floração característica",
         "credit": "Equipe de Campo IFRO",
@@ -92,7 +92,7 @@
       },
       {
         "id": "a03-p2",
-        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp2.jpeg",
+        "url": "/trees/grupo-a/03-Hibiscus \u00d7 rosa-sinensis L/Hibiscus spp2.jpeg",
         "category": "arvore_inteira",
         "caption": "Vista geral do arbusto",
         "credit": "Equipe de Campo IFRO",
@@ -100,7 +100,7 @@
       },
       {
         "id": "a03-p3",
-        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp3.jpeg",
+        "url": "/trees/grupo-a/03-Hibiscus \u00d7 rosa-sinensis L/Hibiscus spp3.jpeg",
         "category": "folha",
         "caption": "Folha lobulada",
         "credit": "Equipe de Campo IFRO",
@@ -108,7 +108,7 @@
       },
       {
         "id": "a03-p4",
-        "url": "/trees/grupo-a/03-Hibiscus × rosa-sinensis L/Hibiscus spp4.jpeg",
+        "url": "/trees/grupo-a/03-Hibiscus \u00d7 rosa-sinensis L/Hibiscus spp4.jpeg",
         "category": "flor",
         "caption": "Detalhe da flor",
         "credit": "Equipe de Campo IFRO",
@@ -186,7 +186,7 @@
   {
     "id": "tree-a-05-ipomoea",
     "displayNumber": null,
-    "popularName": "Algodão-do-brejo / Canudo-de-pito",
+    "popularName": "Algodão-do-brejo",
     "scientificNameSuggested": "Ipomoea carnea Jacq.",
     "family": "Convolvulaceae",
     "confidence": "alta",
@@ -586,7 +586,7 @@
   {
     "id": "tree-b-11-pachira",
     "displayNumber": null,
-    "popularName": "Munguba / Castanha-do-maranhão",
+    "popularName": "Munguba",
     "scientificNameSuggested": "Pachira aquatica Aubl.",
     "family": "Malvaceae",
     "confidence": "alta",
@@ -970,7 +970,7 @@
   {
     "id": "tree-b-17-trema",
     "displayNumber": null,
-    "popularName": "Crindiúva / Periquiteira",
+    "popularName": "Crindiúva",
     "scientificNameSuggested": "Trema micrantha (L.) Blume",
     "family": "Cannabaceae",
     "confidence": "alta",
@@ -1246,7 +1246,7 @@
         "id": "c01-p3",
         "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145929_HDR.jpg",
         "category": "folha",
-        "caption": "Folhagem bipinada (HDR)",
+        "caption": "Folhagem bipinada HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T14:59:29Z"
       },
@@ -1282,7 +1282,7 @@
   {
     "id": "tree-c-02-cojoba",
     "displayNumber": null,
-    "popularName": "Angico-branco / Acoita-cavalo",
+    "popularName": "Angico-branco",
     "scientificNameSuggested": "Cojoba arborea (L.) Britton & Rose",
     "family": "Fabaceae",
     "confidence": "media",
@@ -1326,7 +1326,7 @@
         "id": "c02-p4",
         "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150136_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Porte e copa (HDR)",
+        "caption": "Porte e copa HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:01:36Z"
       }
@@ -1346,7 +1346,7 @@
   {
     "id": "tree-c-03-tapirira",
     "displayNumber": null,
-    "popularName": "Tapiriri / Pau-pombo",
+    "popularName": "Tapiriri",
     "scientificNameSuggested": "Tapirira guianensis Aubl.",
     "family": "Anacardiaceae",
     "confidence": "alta",
@@ -1438,7 +1438,7 @@
         "id": "c04-p2",
         "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150307_HDR.jpg",
         "category": "casca",
-        "caption": "Casca com listras (HDR)",
+        "caption": "Casca com listras HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:03:07Z"
       },
@@ -1494,7 +1494,7 @@
         "id": "c05-p2",
         "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150436_HDR.jpg",
         "category": "folha",
-        "caption": "Folhas lanceoladas (HDR)",
+        "caption": "Folhas lanceoladas HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:04:36Z"
       },
@@ -1510,7 +1510,7 @@
         "id": "c05-p4",
         "url": "/trees/grupo-c/05 - Mangifera indica L/20260914_150445_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Copa densa (HDR)",
+        "caption": "Copa densa HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:04:45Z"
       }
@@ -1530,7 +1530,7 @@
   {
     "id": "tree-c-06-ceiba",
     "displayNumber": null,
-    "popularName": "Sumaúma / Samaúma",
+    "popularName": "Sumaúma",
     "scientificNameSuggested": "Ceiba pentandra (L.) Gaertn.",
     "family": "Malvaceae",
     "confidence": "alta",
@@ -1550,7 +1550,7 @@
         "id": "c06-p1",
         "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150504_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Vista geral imponente (HDR)",
+        "caption": "Vista geral imponente HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:05:04Z"
       },
@@ -1558,7 +1558,7 @@
         "id": "c06-p2",
         "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150510_HDR.jpg",
         "category": "casca",
-        "caption": "Tronco com acúleos (HDR)",
+        "caption": "Tronco com acúleos HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:05:10Z"
       },
@@ -1566,7 +1566,7 @@
         "id": "c06-p3",
         "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150513_HDR.jpg",
         "category": "folha",
-        "caption": "Folha composta digitada (HDR)",
+        "caption": "Folha composta digitada HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:05:13Z"
       },
@@ -1574,7 +1574,7 @@
         "id": "c06-p4",
         "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150528_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Base do tronco (HDR)",
+        "caption": "Base do tronco HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:05:28Z"
       },
@@ -1582,7 +1582,7 @@
         "id": "c06-p5",
         "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150532_HDR.jpg",
         "category": "casca",
-        "caption": "Raízes tabulares visíveis (HDR)",
+        "caption": "Raízes tabulares visíveis HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:05:32Z"
       }
@@ -1678,7 +1678,7 @@
         "id": "c08-p1",
         "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150810_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Vista geral (HDR)",
+        "caption": "Vista geral HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:08:10Z"
       },
@@ -1694,7 +1694,7 @@
         "id": "c08-p3",
         "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150822_HDR.jpg",
         "category": "casca",
-        "caption": "Casca rugosa acinzentada (HDR)",
+        "caption": "Casca rugosa acinzentada HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:08:22Z"
       },
@@ -1702,7 +1702,7 @@
         "id": "c08-p4",
         "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150830_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Aspecto do dossel (HDR)",
+        "caption": "Aspecto do dossel HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:08:30Z"
       }
@@ -1742,7 +1742,7 @@
         "id": "c09-p1",
         "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_150948_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Vista geral (HDR)",
+        "caption": "Vista geral HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:09:48Z"
       },
@@ -1750,7 +1750,7 @@
         "id": "c09-p2",
         "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_150955_HDR.jpg",
         "category": "flor",
-        "caption": "Flores róseas na época seca (HDR)",
+        "caption": "Flores róseas na época seca HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:09:55Z"
       },
@@ -1758,7 +1758,7 @@
         "id": "c09-p3",
         "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_151000_HDR.jpg",
         "category": "folha",
-        "caption": "Folíolos digitados (HDR)",
+        "caption": "Folíolos digitados HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:00Z"
       },
@@ -1766,7 +1766,7 @@
         "id": "c09-p4",
         "url": "/trees/grupo-c/09 - Tabebuia rosea (Bertol.) DC/20260914_151006_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Aspecto do porte (HDR)",
+        "caption": "Aspecto do porte HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:06Z"
       },
@@ -1814,7 +1814,7 @@
         "id": "c10-p1",
         "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151029_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Segundo ipê-rosa catalogado (HDR)",
+        "caption": "Segundo ipê-rosa catalogado HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:29Z"
       },
@@ -1822,7 +1822,7 @@
         "id": "c10-p2",
         "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151031_HDR.jpg",
         "category": "folha",
-        "caption": "Detalhe da folhagem (HDR)",
+        "caption": "Detalhe da folhagem HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:31Z"
       },
@@ -1830,7 +1830,7 @@
         "id": "c10-p3",
         "url": "/trees/grupo-c/10 - Tabebuia rosea (Bertol.) DC/20260914_151033_HDR.jpg",
         "category": "casca",
-        "caption": "Textura do tronco (HDR)",
+        "caption": "Textura do tronco HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:33Z"
       }
@@ -1870,7 +1870,7 @@
         "id": "c11-p1",
         "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151041_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Terceiro ipê-rosa catalogado (HDR)",
+        "caption": "Terceiro ipê-rosa catalogado HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:41Z"
       },
@@ -1878,7 +1878,7 @@
         "id": "c11-p2",
         "url": "/trees/grupo-c/11 - Tabebuia rosea (Bertol.) DC/20260914_151043_HDR.jpg",
         "category": "casca",
-        "caption": "Casca do tronco (HDR)",
+        "caption": "Casca do tronco HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:10:43Z"
       },
@@ -1906,7 +1906,7 @@
   {
     "id": "tree-c-12-vochysia-1",
     "displayNumber": null,
-    "popularName": "Quaruba / Vochísia",
+    "popularName": "Quaruba",
     "scientificNameSuggested": "Vochysia haenkeana Mart.",
     "family": "Vochysiaceae",
     "confidence": "media",
@@ -1917,7 +1917,7 @@
       "id": "c12-p1",
       "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151354_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Vochísia — Grupo C",
+      "caption": "Quaruba — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:13:54Z"
     },
@@ -1926,7 +1926,7 @@
         "id": "c12-p1",
         "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151354_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Vista geral (HDR)",
+        "caption": "Vista geral HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:13:54Z"
       },
@@ -1934,7 +1934,7 @@
         "id": "c12-p2",
         "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151356_HDR.jpg",
         "category": "folha",
-        "caption": "Folhas verticiladas (HDR)",
+        "caption": "Folhas verticiladas HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:13:56Z"
       },
@@ -1942,7 +1942,7 @@
         "id": "c12-p3",
         "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151408_HDR.jpg",
         "category": "casca",
-        "caption": "Casca amarelada (HDR)",
+        "caption": "Casca amarelada HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:14:08Z"
       },
@@ -1950,7 +1950,7 @@
         "id": "c12-p4",
         "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151413_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Porte do espécime (HDR)",
+        "caption": "Porte do espécime HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:14:13Z"
       }
@@ -1970,7 +1970,7 @@
   {
     "id": "tree-c-13-vochysia-2",
     "displayNumber": null,
-    "popularName": "Quaruba / Vochísia",
+    "popularName": "Quaruba",
     "scientificNameSuggested": "Vochysia haenkeana Mart.",
     "family": "Vochysiaceae",
     "confidence": "media",
@@ -1981,7 +1981,7 @@
       "id": "c13-p1",
       "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151456_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Vochísia — Grupo C",
+      "caption": "Quaruba — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:14:56Z"
     },
@@ -1990,7 +1990,7 @@
         "id": "c13-p1",
         "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151456_HDR.jpg",
         "category": "arvore_inteira",
-        "caption": "Segundo indivíduo (HDR)",
+        "caption": "Segundo indivíduo HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:14:56Z"
       },
@@ -1998,7 +1998,7 @@
         "id": "c13-p2",
         "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151459_HDR.jpg",
         "category": "folha",
-        "caption": "Folhas em espiral (HDR)",
+        "caption": "Folhas em espiral HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:14:59Z"
       },
@@ -2006,7 +2006,7 @@
         "id": "c13-p3",
         "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151501_HDR.jpg",
         "category": "casca",
-        "caption": "Casca com exsudato (HDR)",
+        "caption": "Casca com exsudato HDR",
         "credit": "Equipe de Campo IFRO",
         "capturedAt": "2026-09-14T15:15:01Z"
       }

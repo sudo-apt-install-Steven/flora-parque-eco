@@ -82,11 +82,11 @@ export const MapFieldOverlay: React.FC<MapFieldOverlayProps> = ({
             className={cn(
               'flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-semibold transition-all duration-200 flex-shrink-0',
               selectedGroup === 'groupB'
-                ? 'bg-[#3b82f6] text-white font-bold shadow-sm'
+                ? 'bg-[#06b6d4] text-white font-bold shadow-sm'
                 : 'text-stone-700 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-white/10'
             )}
           >
-            <span className="w-2 h-2 rounded-full bg-[#3b82f6]" />
+            <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
             Grupo B
           </button>
 
@@ -128,7 +128,7 @@ export const MapFieldOverlay: React.FC<MapFieldOverlayProps> = ({
             <span className="text-stone-300">Grupo A (Setor Noroeste)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#3b82f6] ring-2 ring-[#3b82f6]/25" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#06b6d4] ring-2 ring-[#06b6d4]/25" />
             <span className="text-stone-300">Grupo B (Setor Nordeste / Parquinho)</span>
           </div>
           <div className="flex items-center gap-2">
