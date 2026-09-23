@@ -2,10 +2,10 @@
   {
     "id": "tree-a-02-jacaranda",
     "displayNumber": null,
-    "popularName": "Jacarandá",
+    "popularName": "Jacarandá-mimoso",
     "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70695,
     "longitude": -60.12168,
     "locationAccuracy": 3.0,
@@ -13,7 +13,7 @@
       "id": "a02-p1",
       "url": "/trees/grupo-a/02-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
       "category": "arvore_inteira",
-      "caption": "Jacarandá — Grupo A",
+      "caption": "Jacarandá-mimoso — Grupo A",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T10:00:00Z"
     },
@@ -53,13 +53,13 @@
     ],
     "plantnet": {
       "taxon": "Jacaranda mimosifolia D.Don",
-      "score": 0.94,
+      "score": 0.77,
       "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupA",
     "collectedAt": "2026-09-14T10:00:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo A — Gramado Noroeste. Indivíduo de porte médio com floração típica.",
     "isMock": false
   },
@@ -67,9 +67,9 @@
     "id": "tree-a-03-hibiscus",
     "displayNumber": null,
     "popularName": "Hibisco",
-    "scientificNameSuggested": "Hibiscus rosa-sinensis L.",
+    "scientificNameSuggested": "Hibiscus × rosa-sinensis L.",
     "family": "Malvaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70702,
     "longitude": -60.12155,
     "locationAccuracy": 3.0,
@@ -116,24 +116,24 @@
       }
     ],
     "plantnet": {
-      "taxon": "Hibiscus rosa-sinensis L.",
-      "score": 0.97,
+      "taxon": "Hibiscus × rosa-sinensis L.",
+      "score": 0.58,
       "url": "https://identify.plantnet.org/the-plant-list/species/Hibiscus%20rosa-sinensis",
       "familySuggested": "Malvaceae"
     },
     "group": "groupA",
     "collectedAt": "2026-09-14T10:10:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo A — Gramado Noroeste. Arbusto ornamental com floração intensa.",
     "isMock": false
   },
   {
     "id": "tree-a-04-spathodea",
     "displayNumber": null,
-    "popularName": "Espatódea / Tulipa-africana",
+    "popularName": "Bisnagueira",
     "scientificNameSuggested": "Spathodea campanulata P.Beauv.",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70710,
     "longitude": -60.12178,
     "locationAccuracy": 3.0,
@@ -141,7 +141,7 @@
       "id": "a04-p1",
       "url": "/trees/grupo-a/04-Spathodea campanulata P.Beauv/Spathodea campanulata P.Beauv.jpeg",
       "category": "arvore_inteira",
-      "caption": "Espatódea — Grupo A",
+      "caption": "Bisnagueira — Grupo A",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T10:20:00Z"
     },
@@ -173,20 +173,20 @@
     ],
     "plantnet": {
       "taxon": "Spathodea campanulata P.Beauv.",
-      "score": 0.96,
+      "score": 0.54,
       "url": "https://identify.plantnet.org/the-plant-list/species/Spathodea%20campanulata",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupA",
     "collectedAt": "2026-09-14T10:20:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo A — Gramado Noroeste. Árvore exótica de origem africana com floração laranja conspícua.",
     "isMock": false
   },
   {
     "id": "tree-a-05-ipomoea",
     "displayNumber": null,
-    "popularName": "Algodão-do-brejo",
+    "popularName": "Algodão-bravo",
     "scientificNameSuggested": "Ipomoea carnea Jacq.",
     "family": "Convolvulaceae",
     "confidence": "alta",
@@ -197,7 +197,7 @@
       "id": "a05-p1",
       "url": "/trees/grupo-a/05-Ipomoea carnea Jacq/Ipomoea carnea Jacq..jpeg",
       "category": "arvore_inteira",
-      "caption": "Ipomoea carnea — Grupo A",
+      "caption": "Algodão-bravo — Grupo A",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T10:30:00Z"
     },
@@ -237,7 +237,7 @@
     ],
     "plantnet": {
       "taxon": "Ipomoea carnea Jacq.",
-      "score": 0.91,
+      "score": 0.94,
       "url": "https://identify.plantnet.org/the-plant-list/species/Ipomoea%20carnea",
       "familySuggested": "Convolvulaceae"
     },
@@ -253,7 +253,7 @@
     "popularName": "Mangueira",
     "scientificNameSuggested": "Mangifera indica L.",
     "family": "Anacardiaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70706,
     "longitude": -60.12140,
     "locationAccuracy": 2.5,
@@ -293,13 +293,13 @@
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.97,
+      "score": 0.71,
       "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupA",
     "collectedAt": "2026-09-14T10:40:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo A — Gramado Noroeste. Mangueira adulta de copa ampla e densa.",
     "isMock": false
   },
@@ -357,7 +357,7 @@
     "popularName": "Mangueira",
     "scientificNameSuggested": "Mangifera indica L.",
     "family": "Anacardiaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70700,
     "longitude": -60.12075,
     "locationAccuracy": 2.5,
@@ -397,13 +397,13 @@
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.97,
+      "score": 0.81,
       "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T11:10:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Copa densa sombreadora.",
     "isMock": false
   },
@@ -509,7 +509,7 @@
     ],
     "plantnet": {
       "taxon": "Psidium guajava L.",
-      "score": 0.98,
+      "score": 0.94,
       "url": "https://identify.plantnet.org/the-plant-list/species/Psidium%20guajava",
       "familySuggested": "Myrtaceae"
     },
@@ -522,10 +522,10 @@
   {
     "id": "tree-b-10-jacaranda",
     "displayNumber": null,
-    "popularName": "Jacarandá",
+    "popularName": "Jacarandá-mimoso",
     "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70695,
     "longitude": -60.12050,
     "locationAccuracy": 3.0,
@@ -533,7 +533,7 @@
       "id": "b10-p1",
       "url": "/trees/grupo-b/10-Jacaranda mimosifolia D.Don/Jacaranda mimosifolia D.Don.jpeg",
       "category": "arvore_inteira",
-      "caption": "Jacarandá — Grupo B",
+      "caption": "Jacarandá-mimoso — Grupo B",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T11:40:00Z"
     },
@@ -573,13 +573,13 @@
     ],
     "plantnet": {
       "taxon": "Jacaranda mimosifolia D.Don",
-      "score": 0.94,
+      "score": 0.83,
       "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T11:40:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Jacarandá adulto próximo ao parquinho.",
     "isMock": false
   },
@@ -589,7 +589,7 @@
     "popularName": "Munguba",
     "scientificNameSuggested": "Pachira aquatica Aubl.",
     "family": "Malvaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70685,
     "longitude": -60.12040,
     "locationAccuracy": 2.5,
@@ -645,23 +645,23 @@
     ],
     "plantnet": {
       "taxon": "Pachira aquatica Aubl.",
-      "score": 0.92,
+      "score": 0.68,
       "url": "https://identify.plantnet.org/the-plant-list/species/Pachira%20aquatica",
       "familySuggested": "Malvaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T11:50:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo B — Orla do Parquinho. Espécie típica de ambientes úmidos ripários.",
     "isMock": false
   },
   {
     "id": "tree-b-12-cascabela",
     "displayNumber": null,
-    "popularName": "Chapéu-de-Napoleão",
+    "popularName": "Chapéu-de-napoleão",
     "scientificNameSuggested": "Cascabela thevetia (L.) Lippold",
     "family": "Apocynaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70720,
     "longitude": -60.12048,
     "locationAccuracy": 3.0,
@@ -709,13 +709,13 @@
     ],
     "plantnet": {
       "taxon": "Cascabela thevetia (L.) Lippold",
-      "score": 0.95,
+      "score": 0.73,
       "url": "https://identify.plantnet.org/the-plant-list/species/Cascabela%20thevetia",
       "familySuggested": "Apocynaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T12:00:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Arbusto ornamental de todos os órgãos tóxicos.",
     "isMock": false
   },
@@ -765,7 +765,7 @@
     ],
     "plantnet": {
       "taxon": "Inga laurina (Sw.) Willd.",
-      "score": 0.90,
+      "score": 0.99,
       "url": "https://identify.plantnet.org/the-plant-list/species/Inga%20laurina",
       "familySuggested": "Fabaceae"
     },
@@ -781,7 +781,7 @@
     "popularName": "Mangueira",
     "scientificNameSuggested": "Mangifera indica L.",
     "family": "Anacardiaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70688,
     "longitude": -60.12022,
     "locationAccuracy": 2.5,
@@ -829,13 +829,13 @@
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.97,
+      "score": 0.81,
       "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T12:20:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Segunda mangueira catalogada no setor.",
     "isMock": false
   },
@@ -845,7 +845,7 @@
     "popularName": "Jambo-vermelho",
     "scientificNameSuggested": "Syzygium malaccense (L.) Merr. & L.M.Perry",
     "family": "Myrtaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70696,
     "longitude": -60.12010,
     "locationAccuracy": 3.0,
@@ -893,23 +893,23 @@
     ],
     "plantnet": {
       "taxon": "Syzygium malaccense (L.) Merr. & L.M.Perry",
-      "score": 0.93,
+      "score": 0.62,
       "url": "https://identify.plantnet.org/the-plant-list/species/Syzygium%20malaccense",
       "familySuggested": "Myrtaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T12:30:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo B — Gramado Nordeste. Frutífera exótica de origem malaio-polinésia.",
     "isMock": false
   },
   {
     "id": "tree-b-16-jacaranda-cusp",
     "displayNumber": null,
-    "popularName": "Jacarandá-mimoso",
+    "popularName": "Jacarandá-de-minas",
     "scientificNameSuggested": "Jacaranda cuspidifolia Mart.",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70705,
     "longitude": -60.12000,
     "locationAccuracy": 3.0,
@@ -957,23 +957,23 @@
     ],
     "plantnet": {
       "taxon": "Jacaranda cuspidifolia Mart.",
-      "score": 0.89,
+      "score": 0.78,
       "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20cuspidifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T12:40:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Espécie nativa do Cerrado com floração lilás.",
     "isMock": false
   },
   {
     "id": "tree-b-17-trema",
     "displayNumber": null,
-    "popularName": "Crindiúva",
+    "popularName": "Trema (Crindiúva)",
     "scientificNameSuggested": "Trema micrantha (L.) Blume",
     "family": "Cannabaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70712,
     "longitude": -60.12015,
     "locationAccuracy": 3.0,
@@ -1005,20 +1005,20 @@
     ],
     "plantnet": {
       "taxon": "Trema micrantha (L.) Blume",
-      "score": 0.88,
+      "score": 0.70,
       "url": "https://identify.plantnet.org/the-plant-list/species/Trema%20micrantha",
       "familySuggested": "Cannabaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T12:50:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Orla Leste. Espécie pioneira importante para regeneração.",
     "isMock": false
   },
   {
     "id": "tree-b-18-ipomoea",
     "displayNumber": null,
-    "popularName": "Canudo-de-pito",
+    "popularName": "Algodão-bravo",
     "scientificNameSuggested": "Ipomoea carnea Jacq.",
     "family": "Convolvulaceae",
     "confidence": "alta",
@@ -1029,7 +1029,7 @@
       "id": "b18-p1",
       "url": "/trees/grupo-b/18-Ipomoea carnea Jacq/Ipomoea carnea Jacq.jpeg",
       "category": "arvore_inteira",
-      "caption": "Canudo-de-pito — Grupo B",
+      "caption": "Algodão-bravo — Grupo B",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T13:00:00Z"
     },
@@ -1069,7 +1069,7 @@
     ],
     "plantnet": {
       "taxon": "Ipomoea carnea Jacq.",
-      "score": 0.91,
+      "score": 0.95,
       "url": "https://identify.plantnet.org/the-plant-list/species/Ipomoea%20carnea",
       "familySuggested": "Convolvulaceae"
     },
@@ -1082,10 +1082,10 @@
   {
     "id": "tree-b-19-bismarckia",
     "displayNumber": null,
-    "popularName": "Palmeira-de-Bismarck",
+    "popularName": "Palmeira-azul",
     "scientificNameSuggested": "Bismarckia nobilis Hildebr. & H.Wendl.",
     "family": "Arecaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70690,
     "longitude": -60.12005,
     "locationAccuracy": 2.5,
@@ -1093,7 +1093,7 @@
       "id": "b19-p1",
       "url": "/trees/grupo-b/19-Bismarckia nobilis Hildebr. & H.Wendl/Bismarckia nobilis Hildebr. & H.Wendl..jpeg",
       "category": "arvore_inteira",
-      "caption": "Palmeira-de-Bismarck — Grupo B",
+      "caption": "Palmeira-azul — Grupo B",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T13:10:00Z"
     },
@@ -1125,23 +1125,23 @@
     ],
     "plantnet": {
       "taxon": "Bismarckia nobilis Hildebr. & H.Wendl.",
-      "score": 0.96,
+      "score": 0.77,
       "url": "https://identify.plantnet.org/the-plant-list/species/Bismarckia%20nobilis",
       "familySuggested": "Arecaceae"
     },
     "group": "groupB",
     "collectedAt": "2026-09-14T13:10:00Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo B — Gramado Nordeste. Palmeira ornamental africana de alto valor paisagístico.",
     "isMock": false
   },
   {
     "id": "tree-c-01-jacaranda",
     "displayNumber": null,
-    "popularName": "Jacarandá",
+    "popularName": "Jacarandá-mimoso",
     "scientificNameSuggested": "Jacaranda mimosifolia D.Don",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70748,
     "longitude": -60.12178,
     "locationAccuracy": 3.0,
@@ -1149,7 +1149,7 @@
       "id": "c01-p1",
       "url": "/trees/grupo-c/01 - Jacaranda mimosifolia D.Don/20260914_145845.jpg",
       "category": "arvore_inteira",
-      "caption": "Jacarandá — Grupo C",
+      "caption": "Jacarandá-mimoso — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T14:58:45Z"
     },
@@ -1197,20 +1197,20 @@
     ],
     "plantnet": {
       "taxon": "Jacaranda mimosifolia D.Don",
-      "score": 0.94,
+      "score": 0.60,
       "url": "https://identify.plantnet.org/the-plant-list/species/Jacaranda%20mimosifolia",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T14:58:45Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo C — Margem Sul do Lago. Primeiro espécime da trilha sul.",
     "isMock": false
   },
   {
     "id": "tree-c-02-cojoba",
     "displayNumber": null,
-    "popularName": "Angico-branco",
+    "popularName": "Brinco-de-índio",
     "scientificNameSuggested": "Cojoba arborea (L.) Britton & Rose",
     "family": "Fabaceae",
     "confidence": "media",
@@ -1221,7 +1221,7 @@
       "id": "c02-p1",
       "url": "/trees/grupo-c/02 - Cojoba arborea (L.) Britton & Rose/20260914_150120.jpg",
       "category": "arvore_inteira",
-      "caption": "Cojoba arborea — Grupo C",
+      "caption": "Brinco-de-índio — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:01:20Z"
     },
@@ -1261,7 +1261,7 @@
     ],
     "plantnet": {
       "taxon": "Cojoba arborea (L.) Britton & Rose",
-      "score": 0.78,
+      "score": 0.79,
       "url": "https://identify.plantnet.org/the-plant-list/species/Cojoba%20arborea",
       "familySuggested": "Fabaceae"
     },
@@ -1274,10 +1274,10 @@
   {
     "id": "tree-c-03-tapirira",
     "displayNumber": null,
-    "popularName": "Tapiriri",
+    "popularName": "Pau-pombo",
     "scientificNameSuggested": "Tapirira guianensis Aubl.",
     "family": "Anacardiaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70760,
     "longitude": -60.12148,
     "locationAccuracy": 3.0,
@@ -1285,7 +1285,7 @@
       "id": "c03-p1",
       "url": "/trees/grupo-c/03 - Tapirira guianensis Aubl/20260914_150225.jpg",
       "category": "arvore_inteira",
-      "caption": "Tapiriri — Grupo C",
+      "caption": "Pau-pombo — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:02:25Z"
     },
@@ -1325,23 +1325,23 @@
     ],
     "plantnet": {
       "taxon": "Tapirira guianensis Aubl.",
-      "score": 0.87,
+      "score": 0.64,
       "url": "https://identify.plantnet.org/the-plant-list/species/Tapirira%20guianensis",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:02:25Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo C — Margem Sul. Espécie nativa da Amazônia e Cerrado.",
     "isMock": false
   },
   {
     "id": "tree-c-04-eucalyptus-regnans",
     "displayNumber": null,
-    "popularName": "Eucalipto-gigante",
-    "scientificNameSuggested": "Eucalyptus regnans F.Muell.",
+    "popularName": "Eucalipto",
+    "scientificNameSuggested": "Eucalyptus urophylla S.T.Blake",
     "family": "Myrtaceae",
-    "confidence": "media",
+    "confidence": "alta",
     "latitude": -12.70765,
     "longitude": -60.12130,
     "locationAccuracy": 3.5,
@@ -1349,7 +1349,7 @@
       "id": "c04-p1",
       "url": "/trees/grupo-c/04 - Eucalyptus regnans F.Muell/20260914_150303.jpg",
       "category": "arvore_inteira",
-      "caption": "Eucalipto-gigante — Grupo C",
+      "caption": "Eucalipto — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:03:03Z"
     },
@@ -1380,14 +1380,14 @@
       }
     ],
     "plantnet": {
-      "taxon": "Eucalyptus regnans F.Muell.",
-      "score": 0.81,
-      "url": "https://identify.plantnet.org/the-plant-list/species/Eucalyptus%20regnans",
+      "taxon": "Eucalyptus urophylla S.T.Blake",
+      "score": 0.91,
+      "url": "https://identify.plantnet.org/the-plant-list/species/Eucalyptus%20urophylla",
       "familySuggested": "Myrtaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:03:03Z",
-    "verificationStatus": "em_analise",
+    "verificationStatus": "verificado",
     "notes": "Grupo C — Margem Sul. Eucalipto de grande porte na faixa ripária.",
     "isMock": false
   },
@@ -1397,7 +1397,7 @@
     "popularName": "Mangueira",
     "scientificNameSuggested": "Mangifera indica L.",
     "family": "Anacardiaceae",
-    "confidence": "alta",
+    "confidence": "baixa",
     "latitude": -12.70758,
     "longitude": -60.12115,
     "locationAccuracy": 2.5,
@@ -1445,23 +1445,23 @@
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.97,
+      "score": 0.49,
       "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:04:25Z",
-    "verificationStatus": "verificado",
-    "notes": "Grupo C — Margem Sul. Mangueira adulta na orla do lago.",
+    "verificationStatus": "identificacao_preliminar",
+    "notes": "Grupo C — Margem Sul. Mangueira adulta na orla do lago. Score baixo — exige confirmação em campo.",
     "isMock": false
   },
   {
     "id": "tree-c-06-ceiba",
     "displayNumber": null,
-    "popularName": "Sumaúma",
+    "popularName": "Samaúma",
     "scientificNameSuggested": "Ceiba pentandra (L.) Gaertn.",
     "family": "Malvaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70765,
     "longitude": -60.12100,
     "locationAccuracy": 2.5,
@@ -1469,7 +1469,7 @@
       "id": "c06-p1",
       "url": "/trees/grupo-c/06 - Ceiba pentandra (L.) Gaertn/20260914_150504_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Sumaúma — Grupo C",
+      "caption": "Samaúma — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:05:04Z"
     },
@@ -1517,14 +1517,14 @@
     ],
     "plantnet": {
       "taxon": "Ceiba pentandra (L.) Gaertn.",
-      "score": 0.93,
+      "score": 0.64,
       "url": "https://identify.plantnet.org/the-plant-list/species/Ceiba%20pentandra",
       "familySuggested": "Malvaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:05:04Z",
-    "verificationStatus": "verificado",
-    "notes": "Grupo C — Margem Sul. Sumaúma de grande porte ecológico e histórico.",
+    "verificationStatus": "identificacao_preliminar",
+    "notes": "Grupo C — Margem Sul. Samaúma de grande porte ecológico; atrai morcegos polinizadores e produz paina usada por aves.",
     "isMock": false
   },
   {
@@ -1573,7 +1573,7 @@
     ],
     "plantnet": {
       "taxon": "Mangifera indica L.",
-      "score": 0.97,
+      "score": 0.98,
       "url": "https://identify.plantnet.org/the-plant-list/species/Mangifera%20indica",
       "familySuggested": "Anacardiaceae"
     },
@@ -1586,7 +1586,7 @@
   {
     "id": "tree-c-08-acacia",
     "displayNumber": null,
-    "popularName": "Acácia-mangium",
+    "popularName": "Acácia-australiana",
     "scientificNameSuggested": "Acacia mangium Willd.",
     "family": "Fabaceae",
     "confidence": "alta",
@@ -1597,7 +1597,7 @@
       "id": "c08-p1",
       "url": "/trees/grupo-c/08 - Acacia mangium Willd/20260914_150810_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Acácia-mangium — Grupo C",
+      "caption": "Acácia-australiana — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:08:10Z"
     },
@@ -1637,14 +1637,14 @@
     ],
     "plantnet": {
       "taxon": "Acacia mangium Willd.",
-      "score": 0.92,
+      "score": 0.93,
       "url": "https://identify.plantnet.org/the-plant-list/species/Acacia%20mangium",
       "familySuggested": "Fabaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:08:10Z",
     "verificationStatus": "verificado",
-    "notes": "Grupo C — Margem Sul. Espécie exótica de rápido crescimento usada em reflorestamento.",
+    "notes": "Grupo C — Margem Sul. Espécie exótica invasora de rápido crescimento; ponto de atenção para manejo futuro.",
     "isMock": false
   },
   {
@@ -1653,7 +1653,7 @@
     "popularName": "Ipê-rosa",
     "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70745,
     "longitude": -60.12050,
     "locationAccuracy": 2.5,
@@ -1709,13 +1709,13 @@
     ],
     "plantnet": {
       "taxon": "Tabebuia rosea (Bertol.) DC.",
-      "score": 0.93,
+      "score": 0.82,
       "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:09:48Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo C — Margem Sul. Ipê-rosa nativo com floração espetacular.",
     "isMock": false
   },
@@ -1725,7 +1725,7 @@
     "popularName": "Ipê-rosa",
     "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70740,
     "longitude": -60.12035,
     "locationAccuracy": 2.5,
@@ -1765,13 +1765,13 @@
     ],
     "plantnet": {
       "taxon": "Tabebuia rosea (Bertol.) DC.",
-      "score": 0.93,
+      "score": 0.61,
       "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:10:29Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "identificacao_preliminar",
     "notes": "Grupo C — Margem Sul. Segundo indivíduo de ipê-rosa na trilha.",
     "isMock": false
   },
@@ -1781,7 +1781,7 @@
     "popularName": "Ipê-rosa",
     "scientificNameSuggested": "Tabebuia rosea (Bertol.) DC.",
     "family": "Bignoniaceae",
-    "confidence": "alta",
+    "confidence": "media",
     "latitude": -12.70735,
     "longitude": -60.12022,
     "locationAccuracy": 2.5,
@@ -1821,20 +1821,20 @@
     ],
     "plantnet": {
       "taxon": "Tabebuia rosea (Bertol.) DC.",
-      "score": 0.93,
+      "score": 0.79,
       "url": "https://identify.plantnet.org/the-plant-list/species/Tabebuia%20rosea",
       "familySuggested": "Bignoniaceae"
     },
     "group": "groupC",
     "collectedAt": "2026-09-14T15:10:41Z",
-    "verificationStatus": "verificado",
+    "verificationStatus": "em_analise",
     "notes": "Grupo C — Margem Sul. Terceiro indivíduo de Tabebuia rosea nesta trilha.",
     "isMock": false
   },
   {
     "id": "tree-c-12-vochysia-1",
     "displayNumber": null,
-    "popularName": "Quaruba",
+    "popularName": "Cambará",
     "scientificNameSuggested": "Vochysia haenkeana Mart.",
     "family": "Vochysiaceae",
     "confidence": "media",
@@ -1845,7 +1845,7 @@
       "id": "c12-p1",
       "url": "/trees/grupo-c/12 - Vochysia haenkeana Mart/20260914_151354_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Quaruba — Grupo C",
+      "caption": "Cambará — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:13:54Z"
     },
@@ -1885,7 +1885,7 @@
     ],
     "plantnet": {
       "taxon": "Vochysia haenkeana Mart.",
-      "score": 0.82,
+      "score": 0.55,
       "url": "https://identify.plantnet.org/the-plant-list/species/Vochysia%20haenkeana",
       "familySuggested": "Vochysiaceae"
     },
@@ -1898,7 +1898,7 @@
   {
     "id": "tree-c-13-vochysia-2",
     "displayNumber": null,
-    "popularName": "Quaruba",
+    "popularName": "Cambará",
     "scientificNameSuggested": "Vochysia haenkeana Mart.",
     "family": "Vochysiaceae",
     "confidence": "media",
@@ -1909,7 +1909,7 @@
       "id": "c13-p1",
       "url": "/trees/grupo-c/13 - Vochysia haenkeana Mart/20260914_151456_HDR.jpg",
       "category": "arvore_inteira",
-      "caption": "Quaruba — Grupo C",
+      "caption": "Cambará — Grupo C",
       "credit": "Equipe de Campo IFRO",
       "capturedAt": "2026-09-14T15:14:56Z"
     },
@@ -1941,7 +1941,7 @@
     ],
     "plantnet": {
       "taxon": "Vochysia haenkeana Mart.",
-      "score": 0.82,
+      "score": 0.60,
       "url": "https://identify.plantnet.org/the-plant-list/species/Vochysia%20haenkeana",
       "familySuggested": "Vochysiaceae"
     },

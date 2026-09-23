@@ -43,3 +43,6 @@ edge-*-profile/
 cdp-screenshot.png
 screenshot-*.png
 
+
+# PDF temporário de inspeção local
+scratch/pdf-review/

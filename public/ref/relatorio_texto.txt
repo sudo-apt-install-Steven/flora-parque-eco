@@ -1,0 +1,591 @@
+
+
+=== PAGINA 1 ===
+INSTITUTO FEDERAL DE RONDÔNIA – IFRO CAMPUS VILHENA
+PROJETO INTEGRADOR
+“Aprendizagem das Ciências da Natureza em Espaços Não Formais de Ensino: Um Estudo de Caso no 
+Parque Ecológico Municipal Marechal Rondon”
+RELATÓRIO DE PESQUISA – DIVERSIDADE VEGETAL E INTERAÇÕES ECOLÓGICAS
+Parque Ecológico Municipal Marechal Rondon
+Equipe / eixo temático Equipe 2 – Diversidade vegetal e interações 
+ecológicas
+Turma / turno 3B Informática 
+Integrantes
+Vinícius Silva Martins Costa
+Steven Tayllon Teixeira Jeronimo de Melos
+Luan Carlos Souza de Jesus
+Guilherme Sperfeld Vorgnes
+João Paulo Crisóstomo Neves
+Marcilei Alves de Lira
+Arthur Santos Ribeiro Barboza Mathias
+Data(s) da pesquisa 14/09/2026
+Professor(a)
+Alan Candido da Silva
+1. O que queremos investigar?
+Pergunta central: Quais espécies vegetais estão presentes na área recreativa do Parque e qual é a importância 
+ecológica dessa vegetação?
+O que pretendemos descobrir?
+Com esta pesquisa, pretendemos identificar as espécies vegetais presentes na área recreativa do Parque 
+Ecológico Municipal Marechal Rondon, reconhecendo suas famílias botânicas e diferenciando espécies nativas 
+de exóticas. Também buscamos compreender a importância ecológica dessa vegetação, observando sua relação 
+com a fauna local, a presença de espécies frutíferas e eventuais sinais de degradação ou manejo humano.
+Hipóteses ou expectativas iniciais:
+Antes da coleta, a equipe esperava encontrar uma diversidade vegetal considerável, com predominância de 
+espécies nativas, mas também a presença de algumas exóticas usadas para fins paisagísticos. Esperava-se ainda 
+encontrar árvores frutíferas capazes de atrair aves e outros animais, além de sinais de manejo humano (poda ou 
+plantio), típicos de uma área recreativa de uso público.
+
+=== PAGINA 2 ===
+2. Como realizamos a pesquisa?
+Para investigar as espécies vegetais presentes na área recreativa do parque, foram definidos setores de 
+observação, com localização das espécies por meio de registro fotográfico e identificação com auxílio do 
+aplicativo PlantNet.
+2.1 Local e período
+A pesquisa foi realizada no Parque Ecológico Municipal Marechal Rondon, em Vilhena–RO, no dia 14/09/2026, 
+no período da tarde, entre 14h45 e 15h30. Para viabilizar um levantamento mais amplo, o parque foi dividido 
+em três setores, cada um investigado por uma equipe: a Equipe 1 ficou responsável pela área verde, 
+correspondente à região gramada e arborizada próxima à entrada/estrutura administrativa do parque; a Equipe 2 
+investigou a área ciano, referente à região com trilha, mais arborizada, situada à margem direita do lago; e a 
+Equipe 3 ficou com a área vermelha, correspondente à faixa de mata ciliar ao redor da borda do lago, o número 
+de plantas analisadas por cada dupla está detalhado no (Anexo A).
+2.2 Procedimentos
+Cada equipe percorreu seu respectivo setor fotografando, com o celular, diferentes partes das plantas 
+encontradas  tronco, folhas e galhos, além de frutos e flores quando presentes  a fim de auxiliar na identificação. 
+As imagens foram então submetidas ao aplicativo PlantNet (PLANTNET, 2026), utilizado para a análise e 
+identificação das espécies.
+2.3 Materiais e instrumentos utilizados
+Celulares (câmera fotográfica)
+Aplicativo PlantNet (identificação de espécies vegetais)
+Mapa/imagem de satélite do parque, com marcação dos setores investigados por cada equipe
+3. O que encontramos?
+Ao longo da pesquisa de campo, a equipe registrou um total de 32 observações de plantas na área recreativa do 
+Parque Ecológico Municipal Marechal Rondon, totalizando 21 espécies distintas distribuídas em 10 famílias 
+botânicas. Os dados brutos, obtidos por meio de fotografias e identificação com o aplicativo PlantNet, estão 
+organizados na tabela a seguir (item 3.1) e resumidos no gráfico de frequência por espécie (item 3.2). Registros 
+fotográficos complementares e o croqui da área estão apresentados na seção 6
+3.1 Registro dos dados
+
+=== PAGINA 3 ===
+Nº Nome popular Nome científico 
+sugerido Família Localização Foto Confi
+ança
+1 Eucalipto Eucalyptus 
+urophylla. Myrtaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+95%
+2 Jacarandá-
+mimoso
+Jacaranda 
+mimosifolia D.Don
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+77%
+3 Hibisco Hibiscus × rosa-
+sinensis L Malvaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+58%
+4 Bisnagueira Spathodea 
+campanulata P.Beauv.
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+54%
+5 Algodão bravo Ipomoea carnea Jacq. Convolvula
+ceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+94%
+6 Mangueira Mangifera indica L. Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+71%
+
+
+=== PAGINA 4 ===
+7 Mangueira Mangifera indica L. Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+81%
+8 Palmeira-rabo-
+de-raposa
+Wodyetia bifurcata 
+A.K.Irvine Arecaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+95%
+9 Goiabeira Psidium guajava L. Myrtaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+94%
+10 Jacarandá 
+mimoso
+Jacaranda 
+mimosifolia D.Don
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+83%
+11 Munguba Pachira aquatica 
+Aubl. Malvaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+68%
+12 Chapéu-de-
+napoleão
+Cascabela thevetia 
+(L.) Lippold
+Apocynace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+73%
+13 Ingá-mirim Inga laurina (Sw.) 
+Willd. Fabaceae
+Parque 
+Ecológico 
+Municipal 
+ 99%
+
+=== PAGINA 5 ===
+Marechal 
+Rondon
+14 Mangueira Mangifera indica L. Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+81%
+15 Jambo-
+vermelho Syzygium malaccense Myrtaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+62%
+16 Jacarandá-de-
+minas
+Jacaranda 
+cuspidifolia Mart.
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+78%
+17 Trema 
+(Crindiúva)
+Trema micrantha (L.) 
+Blume
+Cannabace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+70%
+18 Algodão-bravo Ipomoea carnea Jacq. Convolvula
+ceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+95%
+19 Palmeira-azul Bismarckia nobilis 
+Hildebr. & H.Wendl. Arecaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+77%
+
+
+=== PAGINA 6 ===
+20 Jacarandá 
+mimoso
+Jacaranda 
+mimosifolia D.Don
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+60%
+21 Brinco de Índio Cojoba arborea (L.) 
+Britton & Rose Fabaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+79%
+22 Pau pombo Tapirira guianensis 
+Aubl.
+Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+64%
+23 Eucalipto Eucalyptus 
+urophylla. Myrtaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+91%
+24 Mangueira Mangifera indica L. Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+49%
+25 Samaúma Ceiba pentandra (L.) 
+Gaertn. Malvaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+64%
+26 Mangueira Mangifera indica L. Anacardiac
+eae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+98%
+
+=== PAGINA 7 ===
+27 Acácia 
+australiana
+Acacia mangium 
+Willd. Fabaceae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+93%
+28 Ipê rosa Tabebuia rosea 
+(Bertol.) DC.
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+82%
+29 Ipê rosa Tabebuia rosea 
+(Bertol.) DC.
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+61%
+30 Ipê rosa Tabebuia rosea 
+(Bertol.) DC.
+Bignoniace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+79%
+31 Cambará Vochysia haenkeana 
+Mart.
+Vochysiace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+55%
+32 Cambará Vochysia haenkeana 
+Mart.
+Vochysiace
+ae
+Parque 
+Ecológico 
+Municipal 
+Marechal 
+Rondon
+60%
+3.2 Tabelas, gráficos e registros fotográficos
+
+=== PAGINA 8 ===
+Porcentagens de Árvores Exóticas e Nativas
+Nativas
+52,4%
+exóticas
+47,6%
+4. O que os resultados significam?
+Responda às perguntas abaixo utilizando os dados obtidos e os conhecimentos científicos estudados.
+Quantas espécies foram encontradas?
+R: Foram registrados 32 espécimes ao longo da pesquisa, pertencentes a 21 espécies vegetais distintas.
+
+=== PAGINA 9 ===
+Quantas famílias botânicas foram identificadas?
+R: Foram identificadas 10 famílias botânicas: Myrtaceae, Bignoniaceae, Malvaceae, Convolvulaceae, 
+Anacardiaceae, Arecaceae, Apocynaceae, Fabaceae, Cannabaceae e Vochysiaceae.
+Existem espécies nativas e exóticas? Quais?
+R:Sim. Das 21 espécies identificadas, 11 são nativas do Brasil(WIKIPÉDIA, 2026; JARDIM BOTÂNICO DO 
+RIO DE JANEIRO, 2021) (Algodão-bravo, Goiabeira, Munguba, Ingá-mirim, Jacarandá-de-minas, Trema, 
+Brinco-de-índio, Pau-pombo, Samaúma, Ipê-rosa, Cambará) e 10 são exóticas (Eucalipto, Jacarandá-mimoso, 
+Hibisco, Bisnagueira, Mangueira, Palmeira-rabo-de-raposa, Chapéu-de-napoleão, Jambo-vermelho, Palmeira-
+azul, Acácia-australiana).
+Quais espécies são mais abundantes?
+R:A Mangueira (Mangifera indica) foi a espécie mais registrada, com 5 indivíduos observados, seguida pelo 
+Ipê-rosa e pelo Jacarandá-mimoso, cada um com 3 registros.
+Existem espécies frutíferas ou com importância ecológica especial?
+R:Sim. Entre as frutíferas, destacam-se a Mangueira, a Goiabeira, o Jambo-vermelho e o Ingá-mirim, cujos 
+frutos servem de alimento para a fauna local. A Samaúma tem importância ecológica especial por atrair 
+morcegos polinizadores e produzir a paina, usada por aves na construção de ninhos.
+Há relação entre a vegetação e a presença de animais?
+R:Sim. Foram observadas algumas aves próxima à margem do lago, na área sombreada por um Ipê rosa, 
+evidenciando o uso da vegetação como abrigo. Além disso, as espécies frutíferas registradas (Mangueira, 
+Goiabeira, Jambo-vermelho, Ingá-mirim) representam fontes de alimento que atraem aves e outros animais.
+A vegetação está distribuída de forma homogênea?
+R:Não. A distribuição variou conforme o setor: a área verde (Equipe 1) concentrou espécies exóticas próximas à 
+estrutura administrativa; a área ciano (Equipe 2) apresentou vegetação mais arborizada ao longo da trilha; e a 
+área vermelha (Equipe 3), correspondente à mata ciliar, concentrou a maior parte das espécies nativas adaptadas 
+a ambientes úmidos, como o Algodão-bravo, a Munguba e o Ingá-mirim.
+Existem sinais de degradação, poda, supressão ou doenças?
+R: Foram observados líquens na casca de exemplares de Mangueira, o que geralmente indica boa qualidade do 
+ar no entorno. Não foram identificados sinais evidentes de doenças, mas a presença de espécies exóticas 
+potencialmente invasoras (Bisnagueira e Acácia-australiana) é um ponto de atenção para o manejo futuro da 
+área.
+5. Nossa conclusão
+O que descobrimos?
+R: A pesquisa revelou uma vegetação heterogênea no parque, com o registro de 32 espécimes distribuídos em 
+21 espécies vegetais e 10 famílias botânicas. Constatou-se um relativo equilíbrio entre espécies nativas (11) e 
+exóticas (10). Observou-se, ainda, que a distribuição da vegetação não é homogênea: as espécies nativas 
+concentram-se predominantemente na área de mata ciliar, ao redor do lago, enquanto as espécies exóticas em 
+sua maioria ornamentais predominam nas áreas de uso recreativo e paisagístico do parque.
+Nossa hipótese/expectativa inicial foi confirmada?
+
+=== PAGINA 10 ===
+R: Sim. Os dados coletados corroboram a hipótese inicial da equipe, tanto em relação à diversidade vegetal 
+observada quanto à proporção entre espécies nativas e exóticas.
+Qual é a principal conclusão da equipe?
+R: Conclui-se que a vegetação do Parque Ecológico Municipal Marechal Rondon desempenha uma dupla 
+função: paisagística, por meio das espécies exóticas ornamentais, e ecológica, por meio das espécies nativas, 
+responsáveis pela proteção das margens do lago e pela manutenção da fauna associada. Destaca-se, ainda, a 
+necessidade de atenção ao manejo das espécies exóticas com potencial invasor identificadas na área.
+O que poderia ser investigado posteriormente?
+R: Sugere-se, para estudos futuros, a investigação do impacto das espécies exóticas invasoras sobre a vegetação 
+nativa do entorno, bem como a análise da relação entre os períodos de floração/frutificação e a presença de 
+fauna ao longo do ano.
+6. Registros complementares
+6.1 Croqui ou mapa da área
+6.2 Registros fotográficos
+As fotografias utilizadas para a identificação das espécies incluindo imagens de plantas inteiras, folhas, flores, 
+frutos e caule/casca foram organizadas por espécie e estão disponíveis para consulta no seguinte link: 
+[https://www.dropbox.com/scl/fo/udh8dj11kgaj5ctcp4q9h/AJZR2Wk2YE4jy9ndmlGSYM0?
+rlkey=8otp16xw0r292vbyumkdd8yiz&st=vc79cx5h&dl=0]
+7. Contribuição de cada integrante
+Registre o que cada integrante efetivamente realizou durante a pesquisa e na elaboração do relatório.
+
+=== PAGINA 11 ===
+Integrante Função O que realizou Contribuição para 
+os dados/análises
+Contribuição para 
+o relatório
+Vinícius Silva 
+Martins Costa
+ Coordenador do 
+grupo e responsável 
+pelo relatório
+ Participou da coleta 
+fotográfica em 
+campo e conduziu a 
+organização geral da 
+pesquisa
+Sistematizou e 
+organizou todos os 
+registros coletados 
+pela equipe na 
+tabela de dados (32 
+espécimes)
+ Redigiu 
+integralmente o 
+relatório, incluindo 
+pesquisa 
+complementar, 
+tabelas e gráficos
+ Steven Tayllon 
+Teixeira Jeronimo 
+de Melos
+ Apoio de campo e 
+mapeamento
+ Auxiliou na coleta 
+fotográfica, na 
+classificação das 
+espécies via 
+PlantNet e na 
+elaboração dos 
+mapas/setores do 
+parque
+ Colaborou na 
+identificação de 
+espécies e na 
+definição dos 
+setores de coleta
+ Contribuiu com as 
+informações usadas 
+na seção de 
+metodologia e no 
+mapa da área
+João Paulo 
+Crisóstomo Neves
+ Registro 
+fotográfico
+ Fotografou espécies 
+vegetais em campo
+ Forneceu material 
+fotográfico utilizado 
+na identificação das 
+espécies
+ Contribuiu com os 
+registros visuais que 
+embasam a tabela de 
+dados
+ Guilherme Sperfeld 
+Vorgnes
+ Registro 
+fotográfico e 
+classificação
+ Fotografou plantas 
+e auxiliou na 
+classificação das 
+espécies
+ Colaborou na 
+identificação das 
+espécies via 
+PlantNet
+ Contribuiu com 
+registros 
+fotográficos e dados 
+de classificação
+  Luan Carlos Souza 
+de Jesus
+ Registro 
+fotográfico
+ Fotografou as 
+plantas em campo
+ Forneceu material 
+fotográfico utilizado 
+na identificação das 
+espécies
+ Contribuiu com 
+registros visuais que 
+embasam a tabela de 
+dados
+ Marcilei Alves de 
+Lira
+ Classificação das 
+plantas
+ Classificou as 
+espécies vegetais 
+coletadas
+ Colaborou na 
+identificação e 
+confirmação das 
+espécies via 
+PlantNet
+ Contribuiu com 
+dados de 
+classificação 
+utilizados no 
+relatório
+Arthur Santos 
+Ribeiro Barboza 
+Mathias
+ Apoio de campo
+ Auxiliou na coleta 
+fotográfica das 
+espécies em campo
+ Contribuiu com o 
+registro fotográfico 
+do levantamento
+ Contribuiu com 
+material de campo 
+utilizado na tabela 
+de dados
+
+=== PAGINA 12 ===
+8. Referências e fontes utilizadas
+PLANTNET. Aplicativo de identificação de plantas por imagem. [S. l.]: Pl@ntNet, [2026]. Disponível em: 
+https://plantnet.org. Acesso em: 14 set. 2026.
+WIKIPÉDIA. Consultas realizadas para verificação da origem (nativa ou exótica) das espécies vegetais 
+identificadas. [S. l.]: Wikimedia Foundation, [2026]. Disponível em: https://pt.wikipedia.org. Acesso em: 16 set. 
+2026.
+JARDIM BOTÂNICO DO RIO DE JANEIRO. Flora do Brasil 2020. Rio de Janeiro: The Brazil Flora 
+Group, 2021. Disponível em: https://floradobrasil.jbrj.gov.br. Acesso em: 19 set. 2026.
+9. Anexos
+Anexo A — Ficha de campo com o registro do número de plantas analisadas por dupla
