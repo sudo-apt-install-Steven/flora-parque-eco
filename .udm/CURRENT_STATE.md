@@ -110,7 +110,7 @@ Node.js v22.23.2, npm 10.9.8, Windows 11, `C:\Users\Steven\Documents\FloraParque
 - Entradas escalonadas para cards do catálogo, navegação inferior e seletor de camadas.
 - Feedbacks táteis/hover refinados sem alterar a lógica do MapLibre.
 - `prefers-reduced-motion` confirmado: movimento não essencial é desativado.
-- Produção validada: 33 cards, delays de 0/45ms e console sem erros.
+- Produção validada: 32 cards, delays de 0/45ms e console sem erros.
 
 ### Correção v1.9.0 — Dados, Ficha e Controles Mobile
 - Removido `tree-b-20-jacaranda-2`, registro excedente que elevava o catálogo para 33; distribuição final A=5, B=14, C=13.

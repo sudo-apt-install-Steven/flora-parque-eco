@@ -12,7 +12,7 @@
 ### Corrigido
 - Corrigida a causa raiz das thumbnails brancas em `lib/ingestion/pipeline.ts`: fotos locais e galerias não eram preservadas durante a ingestão inicial.
 - `PhotoItemSchema` agora valida as fotos preservadas do JSON antes de compor o catálogo em Zustand.
-- Atualizadas expectativas obsoletas dos testes que ainda esperavam os 13 mocks da fase anterior; a base atual possui 33 espécimes reais.
+- Atualizadas expectativas obsoletas dos testes que ainda esperavam os 13 mocks da fase anterior; a base atual possui 32 espécimes reais.
 
 ### Adicionado
 ### Adicionado

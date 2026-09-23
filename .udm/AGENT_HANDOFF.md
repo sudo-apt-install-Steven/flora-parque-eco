@@ -390,7 +390,7 @@ O build estático gera as páginas pré-renderizadas de todos os espécimes e a 
 - No mobile, o modal usa bottom sheet confortável, rolagem vertical, touch targets e oculta temporariamente a navegação inferior para evitar sobreposição.
 
 ### Validação e Handoff
-- 33 espécimes, 154 referências de fotos, 0 caminhos ausentes em `public/trees/`.
+- 32 espécimes, 154 referências de fotos, 0 caminhos ausentes em `public/trees/`.
 - `npx tsc --noEmit`: PASS.
 - `npm test`: 85/85 PASS.
 - `npm run build`: 37 páginas SSG PASS.
